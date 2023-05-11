@@ -1,0 +1,2516 @@
+i> 000153E0 Build: master@9fa41c27b on Jul 26 2022
+i> 000153E0 Storage root: C:\Users\alexj\Documents\Xenia
+i> 000153E0 Loaded config: C:\Users\alexj\Documents\Xenia\xenia.config.toml
+i> 000153E0 Content root: C:\Users\alexj\Documents\Xenia\content
+i> 000153E0 Cache root: C:\Users\alexj\Documents\Xenia\cache
+i> 00014FFC winkey: "^A" binds key 0x41 to controller input DPAD_LEFT.
+i> 00014FFC winkey: "^D" binds key 0x44 to controller input DPAD_RIGHT.
+i> 00014FFC winkey: "^S" binds key 0x53 to controller input DPAD_DOWN.
+i> 00014FFC winkey: "^W" binds key 0x57 to controller input DPAD_UP.
+i> 00014FFC winkey: "_A" binds key 0x41 to controller input LEFT_THUMB_LEFT.
+i> 00014FFC winkey: "_D" binds key 0x44 to controller input LEFT_THUMB_RIGHT.
+i> 00014FFC winkey: "_S" binds key 0x53 to controller input LEFT_THUMB_DOWN.
+i> 00014FFC winkey: "_W" binds key 0x57 to controller input LEFT_THUMB_UP.
+i> 00014FFC winkey: "F" binds key 0x46 to controller input LEFT_THUMB_PRESSED.
+i> 00014FFC winkey: "0x26" binds key 0x26 to controller input RIGHT_THUMB_UP.
+i> 00014FFC winkey: "0x28" binds key 0x28 to controller input RIGHT_THUMB_DOWN.
+i> 00014FFC winkey: "0x27" binds key 0x27 to controller input RIGHT_THUMB_RIGHT.
+i> 00014FFC winkey: "0x25" binds key 0x25 to controller input RIGHT_THUMB_LEFT.
+i> 00014FFC winkey: "K" binds key 0x4B to controller input RIGHT_THUMB_PRESSED.
+i> 00014FFC winkey: "L" binds key 0x4C to controller input X.
+i> 00014FFC winkey: "0xDE" binds key 0xDE to controller input B.
+i> 00014FFC winkey: "0xBA" binds key 0xBA to controller input A.
+i> 00014FFC winkey: "P" binds key 0x50 to controller input Y.
+i> 00014FFC winkey: "Q" binds key 0x51 to controller input LEFT_TRIGGER.
+i> 00014FFC winkey: "I" binds key 0x49 to controller input LEFT_TRIGGER.
+i> 00014FFC winkey: "E" binds key 0x45 to controller input RIGHT_TRIGGER.
+i> 00014FFC winkey: "O" binds key 0x4F to controller input RIGHT_TRIGGER.
+i> 00014FFC winkey: "Z" binds key 0x5A to controller input BACK.
+i> 00014FFC winkey: "X" binds key 0x58 to controller input START.
+i> 00014FFC winkey: "1" binds key 0x31 to controller input LEFT_SHOULDER.
+i> 00014FFC winkey: "3" binds key 0x33 to controller input RIGHT_SHOULDER.
+w> 000153E0 SDL GameControllerDB: file 'gamecontrollerdb.txt' does not exist.
+i> 00014FFC DXGI adapter: NVIDIA GeForce GTX 1660 Ti (vendor 0x10DE, device 0x2182)
+i> 00014FFC Direct3D 12 device and OS features:
+* Max GPU virtual address bits per resource: 40
+* Non-zeroed heap creation: yes
+* Pixel-shader-specified stencil reference: no
+* Programmable sample positions: tier 2
+* Rasterizer-ordered views: yes
+* Resource binding: tier 3
+* Tiled resources: tier 3
+* Unaligned block-compressed textures: yes
+i> 00014FFC Added handle:F8000004 for class xe::kernel::XObject
+i> 00014FFC XThreadF8000004 (1) Stack: 70010000-70030000
+i> 00014FFC Added handle:F8000008 for class xe::kernel::XObject
+K> F8000004 XThread::Execute thid 1 (handle=F8000004, 'GPU Commands (F8000004)', native=000149CC, <host>)
+i> 00014FFC XThreadF8000008 (2) Stack: 70050000-70070000
+K> F8000008 XThread::Execute thid 2 (handle=F8000008, 'GPU VSync (F8000008)', native=00014A40, <host>)
+i> 00014FFC Added handle:F800000C for class xe::kernel::XObject
+i> 00014FFC XThreadF800000C (3) Stack: 70090000-700B0000
+i> 00014FFC Added handle:F8000010 for class xe::kernel::XObject
+i> 00014FFC XThreadF8000010 (4) Stack: 700D0000-700F0000
+i> 00014FFC Added handle:F8000014 for class xe::kernel::XObject
+i> 00014FFC Added handle:F8000018 for class xe::kernel::XObject
+K> F800000C XThread::Execute thid 3 (handle=F800000C, 'XMA Decoder (F800000C)', native=0000BE90, <host>)
+K> F8000010 XThread::Execute thid 4 (handle=F8000010, 'Audio Worker (F8000010)', native=00013420, <host>)
+i> 00014FFC Added handle:F800001C for class xe::kernel::XObject
+i> 00014FFC Loading STFS header file: D:\360 Stuff\Content\0000000000000000\Assassins Creed II\00004000\E398896F1EB0F47C080355F96EA4A69F
+i> 00014FFC SVOD successfully mapped 33 files.
+i> 00014FFC SVOD uses an EGDF layout. Magic block present at 0x2000.
+F> 00014FFC StfsContainerDevice::ResolvePath(\GameInfo.bin)
+i> 00014FFC Launching module game:\default.xex
+i> 00014FFC Added handle:F8000020 for class xe::kernel::XObject
+F> 00014FFC StfsContainerDevice::ResolvePath(\default.xex)
+F> 00014FFC StfsContainerDevice::ResolvePath(\default.xexp)
+C> 00014FFC WARNING: imported a variable with no value: ExThreadObjectType
+i> 00014FFC Module \Device\Cdrom0\default.xex:
+    Module Flags: 00000001
+Security Header:
+     Image Flags: 00000008
+    Load Address: 82000000
+      Image Size: 01570000
+    Export Table: 00000000
+Optional Header Count: 15
+  XEX_HEADER_RESOURCE_INFO:
+    5553083B 834C0000-835687B1, 690097b
+  XEX_HEADER_FILE_FORMAT_INFO (TODO):
+  XEX_HEADER_ENTRY_POINT: 82E9C9C8
+  XEX_HEADER_IMAGE_BASE_ADDRESS: 82000000
+  XEX_HEADER_IMPORT_LIBRARIES:
+    xam.xex - 184 imports
+      Version: 0.0.9328.32
+      Min Version: 0.0.8498.32
+    xboxkrnl.exe - 320 imports
+      Version: 0.0.9328.32
+      Min Version: 0.0.8498.32
+  XEX_HEADER_CHECKSUM_TIMESTAMP (TODO):
+  XEX_HEADER_ORIGINAL_PE_NAME: scimitar_final_ltcg.exe
+  XEX_HEADER_STATIC_LIBRARIES:
+    XMCORE   : 2.0.9328.0
+    XONLINE  : 2.0.9328.0
+    XAPILIB  : 2.0.9328.0
+    XGRAPHC  : 2.0.9328.0
+    XBOXKRNL : 2.0.9328.0
+    LIBCPMT  : 2.0.9328.0
+    D3DX9    : 2.0.9328.0
+    XMP      : 2.0.9328.0
+    XAUDIO2  : 2.0.9328.4
+    XAPOBA   : 2.0.9328.4
+    D3D9LTCG : 2.0.9328.0
+    XAUDLTCG : 2.0.9328.0
+  XEX_HEADER_TLS_INFO:
+          Slot Count: 64
+    Raw Data Address: 834B3000
+           Data Size: 160
+       Raw Data Size: 160
+  XEX_HEADER_DEFAULT_STACK_SIZE: 262144
+  XEX_HEADER_SYSTEM_FLAGS: 00002000
+  XEX_HEADER_EXECUTION_INFO:
+       Media ID: 6EA4A69F
+       Title ID: 5553083B
+    Savegame ID: 5553083B
+    Disc Number / Total: 1 / 1
+  XEX_HEADER_GAME_RATINGS (TODO):
+  XEX_HEADER_LAN_KEY: 0A FF F4 7A BD E6 D2 6B 28 46 91 24 2C 5B 0A DF
+  XEX_HEADER_XBOX360_LOGO (TODO):
+Sections:
+    0 RODATA    1 pages    82000000 - 82010000 (65536 bytes)
+    1 RODATA    1 pages    82010000 - 82020000 (65536 bytes)
+    2 RODATA    1 pages    82020000 - 82030000 (65536 bytes)
+    3 RODATA    1 pages    82030000 - 82040000 (65536 bytes)
+    4 RODATA    1 pages    82040000 - 82050000 (65536 bytes)
+    5 RODATA    1 pages    82050000 - 82060000 (65536 bytes)
+    6 RODATA    1 pages    82060000 - 82070000 (65536 bytes)
+    7 RODATA    1 pages    82070000 - 82080000 (65536 bytes)
+    8 RODATA    1 pages    82080000 - 82090000 (65536 bytes)
+    9 RODATA    1 pages    82090000 - 820A0000 (65536 bytes)
+   10 RODATA    1 pages    820A0000 - 820B0000 (65536 bytes)
+   11 RODATA    1 pages    820B0000 - 820C0000 (65536 bytes)
+   12 RODATA    1 pages    820C0000 - 820D0000 (65536 bytes)
+   13 RODATA    1 pages    820D0000 - 820E0000 (65536 bytes)
+   14 RODATA    1 pages    820E0000 - 820F0000 (65536 bytes)
+   15 RODATA    1 pages    820F0000 - 82100000 (65536 bytes)
+   16 RODATA    1 pages    82100000 - 82110000 (65536 bytes)
+   17 RODATA    1 pages    82110000 - 82120000 (65536 bytes)
+   18 RODATA    1 pages    82120000 - 82130000 (65536 bytes)
+   19 RODATA    1 pages    82130000 - 82140000 (65536 bytes)
+   20 RODATA    1 pages    82140000 - 82150000 (65536 bytes)
+   21 RODATA    1 pages    82150000 - 82160000 (65536 bytes)
+   22 RODATA    1 pages    82160000 - 82170000 (65536 bytes)
+   23 RODATA    1 pages    82170000 - 82180000 (65536 bytes)
+   24 RODATA    1 pages    82180000 - 82190000 (65536 bytes)
+   25 RODATA    1 pages    82190000 - 821A0000 (65536 bytes)
+   26 RODATA    1 pages    821A0000 - 821B0000 (65536 bytes)
+   27 RODATA    1 pages    821B0000 - 821C0000 (65536 bytes)
+   28 RODATA    1 pages    821C0000 - 821D0000 (65536 bytes)
+   29 RODATA    1 pages    821D0000 - 821E0000 (65536 bytes)
+   30 RODATA    1 pages    821E0000 - 821F0000 (65536 bytes)
+   31 RODATA    1 pages    821F0000 - 82200000 (65536 bytes)
+   32 RODATA    1 pages    82200000 - 82210000 (65536 bytes)
+   33 RODATA    1 pages    82210000 - 82220000 (65536 bytes)
+   34 RODATA    1 pages    82220000 - 82230000 (65536 bytes)
+   35 RODATA    1 pages    82230000 - 82240000 (65536 bytes)
+   36 RODATA    1 pages    82240000 - 82250000 (65536 bytes)
+   37 RODATA    1 pages    82250000 - 82260000 (65536 bytes)
+   38 RODATA    1 pages    82260000 - 82270000 (65536 bytes)
+   39 RODATA    1 pages    82270000 - 82280000 (65536 bytes)
+   40 RODATA    1 pages    82280000 - 82290000 (65536 bytes)
+   41 RODATA    1 pages    82290000 - 822A0000 (65536 bytes)
+   42 CODE      1 pages    822A0000 - 822B0000 (65536 bytes)
+   43 CODE      1 pages    822B0000 - 822C0000 (65536 bytes)
+   44 CODE      1 pages    822C0000 - 822D0000 (65536 bytes)
+   45 CODE      1 pages    822D0000 - 822E0000 (65536 bytes)
+   46 CODE      1 pages    822E0000 - 822F0000 (65536 bytes)
+   47 CODE      1 pages    822F0000 - 82300000 (65536 bytes)
+   48 CODE      1 pages    82300000 - 82310000 (65536 bytes)
+   49 CODE      1 pages    82310000 - 82320000 (65536 bytes)
+   50 CODE      1 pages    82320000 - 82330000 (65536 bytes)
+   51 CODE      1 pages    82330000 - 82340000 (65536 bytes)
+   52 CODE      1 pages    82340000 - 82350000 (65536 bytes)
+   53 CODE      1 pages    82350000 - 82360000 (65536 bytes)
+   54 CODE      1 pages    82360000 - 82370000 (65536 bytes)
+   55 CODE      1 pages    82370000 - 82380000 (65536 bytes)
+   56 CODE      1 pages    82380000 - 82390000 (65536 bytes)
+   57 CODE      1 pages    82390000 - 823A0000 (65536 bytes)
+   58 CODE      1 pages    823A0000 - 823B0000 (65536 bytes)
+   59 CODE      1 pages    823B0000 - 823C0000 (65536 bytes)
+   60 CODE      1 pages    823C0000 - 823D0000 (65536 bytes)
+   61 CODE      1 pages    823D0000 - 823E0000 (65536 bytes)
+   62 CODE      1 pages    823E0000 - 823F0000 (65536 bytes)
+   63 CODE      1 pages    823F0000 - 82400000 (65536 bytes)
+   64 CODE      1 pages    82400000 - 82410000 (65536 bytes)
+   65 CODE      1 pages    82410000 - 82420000 (65536 bytes)
+   66 CODE      1 pages    82420000 - 82430000 (65536 bytes)
+   67 CODE      1 pages    82430000 - 82440000 (65536 bytes)
+   68 CODE      1 pages    82440000 - 82450000 (65536 bytes)
+   69 CODE      1 pages    82450000 - 82460000 (65536 bytes)
+   70 CODE      1 pages    82460000 - 82470000 (65536 bytes)
+   71 CODE      1 pages    82470000 - 82480000 (65536 bytes)
+   72 CODE      1 pages    82480000 - 82490000 (65536 bytes)
+   73 CODE      1 pages    82490000 - 824A0000 (65536 bytes)
+   74 CODE      1 pages    824A0000 - 824B0000 (65536 bytes)
+   75 CODE      1 pages    824B0000 - 824C0000 (65536 bytes)
+   76 CODE      1 pages    824C0000 - 824D0000 (65536 bytes)
+   77 CODE      1 pages    824D0000 - 824E0000 (65536 bytes)
+   78 CODE      1 pages    824E0000 - 824F0000 (65536 bytes)
+   79 CODE      1 pages    824F0000 - 82500000 (65536 bytes)
+   80 CODE      1 pages    82500000 - 82510000 (65536 bytes)
+   81 CODE      1 pages    82510000 - 82520000 (65536 bytes)
+   82 CODE      1 pages    82520000 - 82530000 (65536 bytes)
+   83 CODE      1 pages    82530000 - 82540000 (65536 bytes)
+   84 CODE      1 pages    82540000 - 82550000 (65536 bytes)
+   85 CODE      1 pages    82550000 - 82560000 (65536 bytes)
+   86 CODE      1 pages    82560000 - 82570000 (65536 bytes)
+   87 CODE      1 pages    82570000 - 82580000 (65536 bytes)
+   88 CODE      1 pages    82580000 - 82590000 (65536 bytes)
+   89 CODE      1 pages    82590000 - 825A0000 (65536 bytes)
+   90 CODE      1 pages    825A0000 - 825B0000 (65536 bytes)
+   91 CODE      1 pages    825B0000 - 825C0000 (65536 bytes)
+   92 CODE      1 pages    825C0000 - 825D0000 (65536 bytes)
+   93 CODE      1 pages    825D0000 - 825E0000 (65536 bytes)
+   94 CODE      1 pages    825E0000 - 825F0000 (65536 bytes)
+   95 CODE      1 pages    825F0000 - 82600000 (65536 bytes)
+   96 CODE      1 pages    82600000 - 82610000 (65536 bytes)
+   97 CODE      1 pages    82610000 - 82620000 (65536 bytes)
+   98 CODE      1 pages    82620000 - 82630000 (65536 bytes)
+   99 CODE      1 pages    82630000 - 82640000 (65536 bytes)
+  100 CODE      1 pages    82640000 - 82650000 (65536 bytes)
+  101 CODE      1 pages    82650000 - 82660000 (65536 bytes)
+  102 CODE      1 pages    82660000 - 82670000 (65536 bytes)
+  103 CODE      1 pages    82670000 - 82680000 (65536 bytes)
+  104 CODE      1 pages    82680000 - 82690000 (65536 bytes)
+  105 CODE      1 pages    82690000 - 826A0000 (65536 bytes)
+  106 CODE      1 pages    826A0000 - 826B0000 (65536 bytes)
+  107 CODE      1 pages    826B0000 - 826C0000 (65536 bytes)
+  108 CODE      1 pages    826C0000 - 826D0000 (65536 bytes)
+  109 CODE      1 pages    826D0000 - 826E0000 (65536 bytes)
+  110 CODE      1 pages    826E0000 - 826F0000 (65536 bytes)
+  111 CODE      1 pages    826F0000 - 82700000 (65536 bytes)
+  112 CODE      1 pages    82700000 - 82710000 (65536 bytes)
+  113 CODE      1 pages    82710000 - 82720000 (65536 bytes)
+  114 CODE      1 pages    82720000 - 82730000 (65536 bytes)
+  115 CODE      1 pages    82730000 - 82740000 (65536 bytes)
+  116 CODE      1 pages    82740000 - 82750000 (65536 bytes)
+  117 CODE      1 pages    82750000 - 82760000 (65536 bytes)
+  118 CODE      1 pages    82760000 - 82770000 (65536 bytes)
+  119 CODE      1 pages    82770000 - 82780000 (65536 bytes)
+  120 CODE      1 pages    82780000 - 82790000 (65536 bytes)
+  121 CODE      1 pages    82790000 - 827A0000 (65536 bytes)
+  122 CODE      1 pages    827A0000 - 827B0000 (65536 bytes)
+  123 CODE      1 pages    827B0000 - 827C0000 (65536 bytes)
+  124 CODE      1 pages    827C0000 - 827D0000 (65536 bytes)
+  125 CODE      1 pages    827D0000 - 827E0000 (65536 bytes)
+  126 CODE      1 pages    827E0000 - 827F0000 (65536 bytes)
+  127 CODE      1 pages    827F0000 - 82800000 (65536 bytes)
+  128 CODE      1 pages    82800000 - 82810000 (65536 bytes)
+  129 CODE      1 pages    82810000 - 82820000 (65536 bytes)
+  130 CODE      1 pages    82820000 - 82830000 (65536 bytes)
+  131 CODE      1 pages    82830000 - 82840000 (65536 bytes)
+  132 CODE      1 pages    82840000 - 82850000 (65536 bytes)
+  133 CODE      1 pages    82850000 - 82860000 (65536 bytes)
+  134 CODE      1 pages    82860000 - 82870000 (65536 bytes)
+  135 CODE      1 pages    82870000 - 82880000 (65536 bytes)
+  136 CODE      1 pages    82880000 - 82890000 (65536 bytes)
+  137 CODE      1 pages    82890000 - 828A0000 (65536 bytes)
+  138 CODE      1 pages    828A0000 - 828B0000 (65536 bytes)
+  139 CODE      1 pages    828B0000 - 828C0000 (65536 bytes)
+  140 CODE      1 pages    828C0000 - 828D0000 (65536 bytes)
+  141 CODE      1 pages    828D0000 - 828E0000 (65536 bytes)
+  142 CODE      1 pages    828E0000 - 828F0000 (65536 bytes)
+  143 CODE      1 pages    828F0000 - 82900000 (65536 bytes)
+  144 CODE      1 pages    82900000 - 82910000 (65536 bytes)
+  145 CODE      1 pages    82910000 - 82920000 (65536 bytes)
+  146 CODE      1 pages    82920000 - 82930000 (65536 bytes)
+  147 CODE      1 pages    82930000 - 82940000 (65536 bytes)
+  148 CODE      1 pages    82940000 - 82950000 (65536 bytes)
+  149 CODE      1 pages    82950000 - 82960000 (65536 bytes)
+  150 CODE      1 pages    82960000 - 82970000 (65536 bytes)
+  151 CODE      1 pages    82970000 - 82980000 (65536 bytes)
+  152 CODE      1 pages    82980000 - 82990000 (65536 bytes)
+  153 CODE      1 pages    82990000 - 829A0000 (65536 bytes)
+  154 CODE      1 pages    829A0000 - 829B0000 (65536 bytes)
+  155 CODE      1 pages    829B0000 - 829C0000 (65536 bytes)
+  156 CODE      1 pages    829C0000 - 829D0000 (65536 bytes)
+  157 CODE      1 pages    829D0000 - 829E0000 (65536 bytes)
+  158 CODE      1 pages    829E0000 - 829F0000 (65536 bytes)
+  159 CODE      1 pages    829F0000 - 82A00000 (65536 bytes)
+  160 CODE      1 pages    82A00000 - 82A10000 (65536 bytes)
+  161 CODE      1 pages    82A10000 - 82A20000 (65536 bytes)
+  162 CODE      1 pages    82A20000 - 82A30000 (65536 bytes)
+  163 CODE      1 pages    82A30000 - 82A40000 (65536 bytes)
+  164 CODE      1 pages    82A40000 - 82A50000 (65536 bytes)
+  165 CODE      1 pages    82A50000 - 82A60000 (65536 bytes)
+  166 CODE      1 pages    82A60000 - 82A70000 (65536 bytes)
+  167 CODE      1 pages    82A70000 - 82A80000 (65536 bytes)
+  168 CODE      1 pages    82A80000 - 82A90000 (65536 bytes)
+  169 CODE      1 pages    82A90000 - 82AA0000 (65536 bytes)
+  170 CODE      1 pages    82AA0000 - 82AB0000 (65536 bytes)
+  171 CODE      1 pages    82AB0000 - 82AC0000 (65536 bytes)
+  172 CODE      1 pages    82AC0000 - 82AD0000 (65536 bytes)
+  173 CODE      1 pages    82AD0000 - 82AE0000 (65536 bytes)
+  174 CODE      1 pages    82AE0000 - 82AF0000 (65536 bytes)
+  175 CODE      1 pages    82AF0000 - 82B00000 (65536 bytes)
+  176 CODE      1 pages    82B00000 - 82B10000 (65536 bytes)
+  177 CODE      1 pages    82B10000 - 82B20000 (65536 bytes)
+  178 CODE      1 pages    82B20000 - 82B30000 (65536 bytes)
+  179 CODE      1 pages    82B30000 - 82B40000 (65536 bytes)
+  180 CODE      1 pages    82B40000 - 82B50000 (65536 bytes)
+  181 CODE      1 pages    82B50000 - 82B60000 (65536 bytes)
+  182 CODE      1 pages    82B60000 - 82B70000 (65536 bytes)
+  183 CODE      1 pages    82B70000 - 82B80000 (65536 bytes)
+  184 CODE      1 pages    82B80000 - 82B90000 (65536 bytes)
+  185 CODE      1 pages    82B90000 - 82BA0000 (65536 bytes)
+  186 CODE      1 pages    82BA0000 - 82BB0000 (65536 bytes)
+  187 CODE      1 pages    82BB0000 - 82BC0000 (65536 bytes)
+  188 CODE      1 pages    82BC0000 - 82BD0000 (65536 bytes)
+  189 CODE      1 pages    82BD0000 - 82BE0000 (65536 bytes)
+  190 CODE      1 pages    82BE0000 - 82BF0000 (65536 bytes)
+  191 CODE      1 pages    82BF0000 - 82C00000 (65536 bytes)
+  192 CODE      1 pages    82C00000 - 82C10000 (65536 bytes)
+  193 CODE      1 pages    82C10000 - 82C20000 (65536 bytes)
+  194 CODE      1 pages    82C20000 - 82C30000 (65536 bytes)
+  195 CODE      1 pages    82C30000 - 82C40000 (65536 bytes)
+  196 CODE      1 pages    82C40000 - 82C50000 (65536 bytes)
+  197 CODE      1 pages    82C50000 - 82C60000 (65536 bytes)
+  198 CODE      1 pages    82C60000 - 82C70000 (65536 bytes)
+  199 CODE      1 pages    82C70000 - 82C80000 (65536 bytes)
+  200 CODE      1 pages    82C80000 - 82C90000 (65536 bytes)
+  201 CODE      1 pages    82C90000 - 82CA0000 (65536 bytes)
+  202 CODE      1 pages    82CA0000 - 82CB0000 (65536 bytes)
+  203 CODE      1 pages    82CB0000 - 82CC0000 (65536 bytes)
+  204 CODE      1 pages    82CC0000 - 82CD0000 (65536 bytes)
+  205 CODE      1 pages    82CD0000 - 82CE0000 (65536 bytes)
+  206 CODE      1 pages    82CE0000 - 82CF0000 (65536 bytes)
+  207 CODE      1 pages    82CF0000 - 82D00000 (65536 bytes)
+  208 CODE      1 pages    82D00000 - 82D10000 (65536 bytes)
+  209 CODE      1 pages    82D10000 - 82D20000 (65536 bytes)
+  210 CODE      1 pages    82D20000 - 82D30000 (65536 bytes)
+  211 CODE      1 pages    82D30000 - 82D40000 (65536 bytes)
+  212 CODE      1 pages    82D40000 - 82D50000 (65536 bytes)
+  213 CODE      1 pages    82D50000 - 82D60000 (65536 bytes)
+  214 CODE      1 pages    82D60000 - 82D70000 (65536 bytes)
+  215 CODE      1 pages    82D70000 - 82D80000 (65536 bytes)
+  216 CODE      1 pages    82D80000 - 82D90000 (65536 bytes)
+  217 CODE      1 pages    82D90000 - 82DA0000 (65536 bytes)
+  218 CODE      1 pages    82DA0000 - 82DB0000 (65536 bytes)
+  219 CODE      1 pages    82DB0000 - 82DC0000 (65536 bytes)
+  220 CODE      1 pages    82DC0000 - 82DD0000 (65536 bytes)
+  221 CODE      1 pages    82DD0000 - 82DE0000 (65536 bytes)
+  222 CODE      1 pages    82DE0000 - 82DF0000 (65536 bytes)
+  223 CODE      1 pages    82DF0000 - 82E00000 (65536 bytes)
+  224 CODE      1 pages    82E00000 - 82E10000 (65536 bytes)
+  225 CODE      1 pages    82E10000 - 82E20000 (65536 bytes)
+  226 CODE      1 pages    82E20000 - 82E30000 (65536 bytes)
+  227 CODE      1 pages    82E30000 - 82E40000 (65536 bytes)
+  228 CODE      1 pages    82E40000 - 82E50000 (65536 bytes)
+  229 CODE      1 pages    82E50000 - 82E60000 (65536 bytes)
+  230 CODE      1 pages    82E60000 - 82E70000 (65536 bytes)
+  231 CODE      1 pages    82E70000 - 82E80000 (65536 bytes)
+  232 CODE      1 pages    82E80000 - 82E90000 (65536 bytes)
+  233 CODE      1 pages    82E90000 - 82EA0000 (65536 bytes)
+  234 CODE      1 pages    82EA0000 - 82EB0000 (65536 bytes)
+  235 CODE      1 pages    82EB0000 - 82EC0000 (65536 bytes)
+  236 CODE      1 pages    82EC0000 - 82ED0000 (65536 bytes)
+  237 CODE      1 pages    82ED0000 - 82EE0000 (65536 bytes)
+  238 CODE      1 pages    82EE0000 - 82EF0000 (65536 bytes)
+  239 CODE      1 pages    82EF0000 - 82F00000 (65536 bytes)
+  240 CODE      1 pages    82F00000 - 82F10000 (65536 bytes)
+  241 CODE      1 pages    82F10000 - 82F20000 (65536 bytes)
+  242 CODE      1 pages    82F20000 - 82F30000 (65536 bytes)
+  243 CODE      1 pages    82F30000 - 82F40000 (65536 bytes)
+  244 CODE      1 pages    82F40000 - 82F50000 (65536 bytes)
+  245 CODE      1 pages    82F50000 - 82F60000 (65536 bytes)
+  246 CODE      1 pages    82F60000 - 82F70000 (65536 bytes)
+  247 CODE      1 pages    82F70000 - 82F80000 (65536 bytes)
+  248 CODE      1 pages    82F80000 - 82F90000 (65536 bytes)
+  249 CODE      1 pages    82F90000 - 82FA0000 (65536 bytes)
+  250 CODE      1 pages    82FA0000 - 82FB0000 (65536 bytes)
+  251 CODE      1 pages    82FB0000 - 82FC0000 (65536 bytes)
+  252 CODE      1 pages    82FC0000 - 82FD0000 (65536 bytes)
+  253 CODE      1 pages    82FD0000 - 82FE0000 (65536 bytes)
+  254 CODE      1 pages    82FE0000 - 82FF0000 (65536 bytes)
+  255 CODE      1 pages    82FF0000 - 83000000 (65536 bytes)
+  256 CODE      1 pages    83000000 - 83010000 (65536 bytes)
+  257 CODE      1 pages    83010000 - 83020000 (65536 bytes)
+  258 CODE      1 pages    83020000 - 83030000 (65536 bytes)
+  259 CODE      1 pages    83030000 - 83040000 (65536 bytes)
+  260 CODE      1 pages    83040000 - 83050000 (65536 bytes)
+  261 CODE      1 pages    83050000 - 83060000 (65536 bytes)
+  262 CODE      1 pages    83060000 - 83070000 (65536 bytes)
+  263 CODE      1 pages    83070000 - 83080000 (65536 bytes)
+  264 CODE      1 pages    83080000 - 83090000 (65536 bytes)
+  265 CODE      1 pages    83090000 - 830A0000 (65536 bytes)
+  266 CODE      1 pages    830A0000 - 830B0000 (65536 bytes)
+  267 CODE      1 pages    830B0000 - 830C0000 (65536 bytes)
+  268 CODE      1 pages    830C0000 - 830D0000 (65536 bytes)
+  269 CODE      1 pages    830D0000 - 830E0000 (65536 bytes)
+  270 CODE      1 pages    830E0000 - 830F0000 (65536 bytes)
+  271 CODE      1 pages    830F0000 - 83100000 (65536 bytes)
+  272 CODE      1 pages    83100000 - 83110000 (65536 bytes)
+  273 CODE      1 pages    83110000 - 83120000 (65536 bytes)
+  274 CODE      1 pages    83120000 - 83130000 (65536 bytes)
+  275 CODE      1 pages    83130000 - 83140000 (65536 bytes)
+  276 CODE      1 pages    83140000 - 83150000 (65536 bytes)
+  277 CODE      1 pages    83150000 - 83160000 (65536 bytes)
+  278 CODE      1 pages    83160000 - 83170000 (65536 bytes)
+  279 CODE      1 pages    83170000 - 83180000 (65536 bytes)
+  280 CODE      1 pages    83180000 - 83190000 (65536 bytes)
+  281 CODE      1 pages    83190000 - 831A0000 (65536 bytes)
+  282 CODE      1 pages    831A0000 - 831B0000 (65536 bytes)
+  283 CODE      1 pages    831B0000 - 831C0000 (65536 bytes)
+  284 CODE      1 pages    831C0000 - 831D0000 (65536 bytes)
+  285 CODE      1 pages    831D0000 - 831E0000 (65536 bytes)
+  286 CODE      1 pages    831E0000 - 831F0000 (65536 bytes)
+  287 CODE      1 pages    831F0000 - 83200000 (65536 bytes)
+  288 CODE      1 pages    83200000 - 83210000 (65536 bytes)
+  289 CODE      1 pages    83210000 - 83220000 (65536 bytes)
+  290 CODE      1 pages    83220000 - 83230000 (65536 bytes)
+  291 CODE      1 pages    83230000 - 83240000 (65536 bytes)
+  292 CODE      1 pages    83240000 - 83250000 (65536 bytes)
+  293 CODE      1 pages    83250000 - 83260000 (65536 bytes)
+  294 CODE      1 pages    83260000 - 83270000 (65536 bytes)
+  295 CODE      1 pages    83270000 - 83280000 (65536 bytes)
+  296 CODE      1 pages    83280000 - 83290000 (65536 bytes)
+  297 CODE      1 pages    83290000 - 832A0000 (65536 bytes)
+  298 CODE      1 pages    832A0000 - 832B0000 (65536 bytes)
+  299 RWDATA    1 pages    832B0000 - 832C0000 (65536 bytes)
+  300 RWDATA    1 pages    832C0000 - 832D0000 (65536 bytes)
+  301 RWDATA    1 pages    832D0000 - 832E0000 (65536 bytes)
+  302 RWDATA    1 pages    832E0000 - 832F0000 (65536 bytes)
+  303 RWDATA    1 pages    832F0000 - 83300000 (65536 bytes)
+  304 RWDATA    1 pages    83300000 - 83310000 (65536 bytes)
+  305 RWDATA    1 pages    83310000 - 83320000 (65536 bytes)
+  306 RWDATA    1 pages    83320000 - 83330000 (65536 bytes)
+  307 RWDATA    1 pages    83330000 - 83340000 (65536 bytes)
+  308 RWDATA    1 pages    83340000 - 83350000 (65536 bytes)
+  309 RWDATA    1 pages    83350000 - 83360000 (65536 bytes)
+  310 RWDATA    1 pages    83360000 - 83370000 (65536 bytes)
+  311 RWDATA    1 pages    83370000 - 83380000 (65536 bytes)
+  312 RWDATA    1 pages    83380000 - 83390000 (65536 bytes)
+  313 RWDATA    1 pages    83390000 - 833A0000 (65536 bytes)
+  314 RWDATA    1 pages    833A0000 - 833B0000 (65536 bytes)
+  315 RWDATA    1 pages    833B0000 - 833C0000 (65536 bytes)
+  316 RWDATA    1 pages    833C0000 - 833D0000 (65536 bytes)
+  317 RWDATA    1 pages    833D0000 - 833E0000 (65536 bytes)
+  318 RWDATA    1 pages    833E0000 - 833F0000 (65536 bytes)
+  319 RWDATA    1 pages    833F0000 - 83400000 (65536 bytes)
+  320 RWDATA    1 pages    83400000 - 83410000 (65536 bytes)
+  321 RWDATA    1 pages    83410000 - 83420000 (65536 bytes)
+  322 RWDATA    1 pages    83420000 - 83430000 (65536 bytes)
+  323 RWDATA    1 pages    83430000 - 83440000 (65536 bytes)
+  324 RWDATA    1 pages    83440000 - 83450000 (65536 bytes)
+  325 RWDATA    1 pages    83450000 - 83460000 (65536 bytes)
+  326 RWDATA    1 pages    83460000 - 83470000 (65536 bytes)
+  327 RWDATA    1 pages    83470000 - 83480000 (65536 bytes)
+  328 RWDATA    1 pages    83480000 - 83490000 (65536 bytes)
+  329 RWDATA    1 pages    83490000 - 834A0000 (65536 bytes)
+  330 RWDATA    1 pages    834A0000 - 834B0000 (65536 bytes)
+  331 RWDATA    1 pages    834B0000 - 834C0000 (65536 bytes)
+  332 RODATA    1 pages    834C0000 - 834D0000 (65536 bytes)
+  333 RODATA    1 pages    834D0000 - 834E0000 (65536 bytes)
+  334 RODATA    1 pages    834E0000 - 834F0000 (65536 bytes)
+  335 RODATA    1 pages    834F0000 - 83500000 (65536 bytes)
+  336 RODATA    1 pages    83500000 - 83510000 (65536 bytes)
+  337 RODATA    1 pages    83510000 - 83520000 (65536 bytes)
+  338 RODATA    1 pages    83520000 - 83530000 (65536 bytes)
+  339 RODATA    1 pages    83530000 - 83540000 (65536 bytes)
+  340 RODATA    1 pages    83540000 - 83550000 (65536 bytes)
+  341 RODATA    1 pages    83550000 - 83560000 (65536 bytes)
+  342 RODATA    1 pages    83560000 - 83570000 (65536 bytes)
+Imports:
+ xam - 92 imports
+   Version: 0.0.9328.32
+   Min Version: 0.0.8498.32
+
+         Total:   92
+         Known:  100% (92 known, 0 unknown)
+   Implemented:   86% (80 implemented, 12 unimplemented)
+
+   F 82000400 832917D4 3D1 ( 977)    XGetVideoMode
+   F 82000404 832917E4 28C ( 652)    XNotifyPositionUI
+   F 82000408 832917F4 1F4 ( 500)    XMsgInProcessCall
+   F 8200040C 83291804 1EC ( 492)    XamFree
+   F 82000410 83291814 1EA ( 490)    XamAlloc
+   F 82000414 83291824 001 (   1)    NetDll_WSAStartup
+   F 82000418 83291834 282 ( 642)    XamGetSystemVersion
+   F 8200041C 83291844 002 (   2)    NetDll_WSACleanup
+   F 82000420 83291854 003 (   3)    NetDll_socket
+   F 82000424 83291864 004 (   4)    NetDll_closesocket
+   F 82000428 83291874 006 (   6)    NetDll_ioctlsocket
+   F 8200042C 83291884 007 (   7)    NetDll_setsockopt
+   F 82000430 83291894 009 (   9) !! NetDll_getsockname
+   F 82000434 832918A4 00B (  11)    NetDll_bind
+   F 82000438 832918B4 00C (  12)    NetDll_connect
+   F 8200043C 832918C4 00D (  13)    NetDll_listen
+   F 82000440 832918D4 00E (  14)    NetDll_accept
+   F 82000444 832918E4 00F (  15)    NetDll_select
+   F 82000448 832918F4 010 (  16) !! NetDll_WSAGetOverlappedResult
+   F 8200044C 83291904 012 (  18)    NetDll_recv
+   F 82000450 83291914 014 (  20)    NetDll_recvfrom
+   F 82000454 83291924 015 (  21)    NetDll_WSARecvFrom
+   F 82000458 83291934 016 (  22)    NetDll_send
+   F 8200045C 83291944 018 (  24)    NetDll_sendto
+   F 82000460 83291954 019 (  25)    NetDll_WSASendTo
+   F 82000464 83291964 01A (  26)    NetDll_inet_addr
+   F 82000468 83291974 01B (  27)    NetDll_WSAGetLastError
+   F 8200046C 83291984 01C (  28)    NetDll_WSASetLastError
+   F 82000470 83291994 01D (  29)    NetDll_WSACreateEvent
+   F 82000474 832919A4 01E (  30)    NetDll_WSACloseEvent
+   F 82000478 832919B4 020 (  32)    NetDll_WSAResetEvent
+   F 8200047C 832919C4 021 (  33)    NetDll_WSAWaitForMultipleEvents
+   F 82000480 832919D4 022 (  34)    NetDll___WSAFDIsSet
+   F 82000484 832919E4 2BC ( 700)    XamShowSigninUI
+   F 82000488 832919F4 2C1 ( 705)    XamShowKeyboardUI
+   F 8200048C 83291A04 2C7 ( 711) !! XamShowMarketplaceUI
+   F 82000490 83291A14 2CB ( 715)    XamShowDeviceSelectorUI
+   F 82000494 83291A24 2D9 ( 729)    XamShowDirtyDiscErrorUI
+   F 82000498 83291A34 1A4 ( 420)    XamLoaderLaunchTitle
+   F 8200049C 83291A44 1F7 ( 503)    XMsgStartIORequest
+   F 820004A0 83291A54 20E ( 526)    XamUserGetName
+   F 820004A4 83291A64 210 ( 528)    XamUserGetSigninState
+   F 820004A8 83291A74 2EE ( 750)    XamUserCreateAchievementEnumerator
+   F 820004AC 83291A84 20A ( 522)    XamUserGetXUID
+   F 820004B0 83291A94 259 ( 601)    XamContentCreateEx
+   F 820004B4 83291AA4 25B ( 603)    XamContentDelete
+   F 820004B8 83291AB4 25A ( 602)    XamContentClose
+   F 820004BC 83291AC4 267 ( 615)    XamContentFlush
+   F 820004C0 83291AD4 262 ( 610)    XamContentGetCreator
+   F 820004C4 83291AE4 266 ( 614)    XamContentGetLicenseMask
+   F 820004C8 83291AF4 25C ( 604)    XamContentCreateEnumerator
+   F 820004CC 83291B04 265 ( 613)    XamContentGetDeviceState
+   F 820004D0 83291B14 25E ( 606)    XamContentGetDeviceData
+   F 820004D4 83291B24 190 ( 400)    XamInputGetCapabilities
+   F 820004D8 832916E4 191 ( 401)    XamInputGetState
+   F 820004DC 83291794 192 ( 402)    XamInputSetState
+   F 820004E0 83291B34 2DC ( 732) !! XamShowMessageBoxUIEx
+   F 820004E4 83291B44 3CD ( 973)    XGetLanguage
+   F 820004E8 83291B54 3CB ( 971)    XGetAVPack
+   F 820004EC 83291B64 1A9 ( 425)    XamLoaderTerminateTitle
+   F 820004F0 83291B74 280 ( 640)    XamGetExecutionId
+   F 820004F4 83291B84 1B3 ( 435)    XamTaskShouldExit
+   F 820004F8 83291B94 1B1 ( 433) !! XamTaskCloseHandle
+   F 820004FC 83291BA4 1AF ( 431)    XamTaskSchedule
+   F 82000500 83292504 054 (  84)    NetDll_XNetSetSystemLinkPort
+   F 82000504 832924F4 1FC ( 508)    XMsgStartIORequestEx
+   F 82000508 83292404 250 ( 592)    XamEnumerate
+   F 8200050C 832923F4 227 ( 551)    XamUserGetSigninInfo
+   F 82000510 832923E4 28A ( 650)    XamNotifyCreateListener
+   F 82000514 832923D4 24E ( 590)    XamCreateEnumeratorHandle
+   F 82000518 832923C4 24F ( 591)    XamGetPrivateEnumStructureFromHandle
+   F 8200051C 832923B4 049 (  73)    NetDll_XNetGetTitleXnAddr
+   F 82000520 832923A4 048 (  72)    NetDll_XNetQosRelease
+   F 82000524 83292394 046 (  70) !! NetDll_XNetQosLookup
+   F 82000528 83292384 044 (  68)    NetDll_XNetDnsRelease
+   F 8200052C 83292374 043 (  67)    NetDll_XNetDnsLookup
+   F 82000530 83292364 042 (  66) !! NetDll_XNetGetConnectStatus
+   F 82000534 83292354 041 (  65) !! NetDll_XNetConnect
+   F 82000538 83292344 040 (  64)    NetDll_XNetXnAddrToMachineId
+   F 8200053C 83292334 03F (  63) !! NetDll_XNetUnregisterInAddr
+   F 82000540 83292324 03A (  58) !! NetDll_XNetServerToInAddr
+   F 82000544 83292314 039 (  57)    NetDll_XNetXnAddrToInAddr
+   F 82000548 83292304 034 (  52)    NetDll_XNetCleanup
+   F 8200054C 832922F4 033 (  51)    NetDll_XNetStartup
+   F 82000550 832922E4 136 ( 310) !! XNetLogonGetTitleID
+   F 82000554 832922D4 135 ( 309) !! XNetLogonGetMachineID
+   F 82000558 832922C4 21A ( 538)    XamUserWriteProfileSettings
+   F 8200055C 832922B4 219 ( 537)    XamUserReadProfileSettings
+   F 82000560 832922A4 3CC ( 972)    XGetGameRegion
+   F 82000564 83292294 1A6 ( 422)    XamLoaderSetLaunchData
+   F 82000568 83291694 28B ( 651)    XNotifyGetNext
+   F 8200056C 83292514 1F8 ( 504)    XMsgCancelIORequest
+
+ xboxkrnl - 166 imports
+   Version: 0.0.9328.32
+   Min Version: 0.0.8498.32
+
+         Total:  166
+         Known:  100% (166 known, 0 unknown)
+   Implemented:   87% (146 implemented, 20 unimplemented)
+
+   F 82000574 83291774 105 ( 261)    ObDereferenceObject
+   F 82000578 83291E04 0B0 ( 176)    KeWaitForSingleObject
+   F 8200057C 83291E14 09D ( 157)    KeSetEvent
+   F 82000580 83291E24 00B (  11)    ExAllocatePoolTypeWithTag
+   F 82000584 83291E34 00F (  15)    ExFreePool
+   F 82000588 83291E44 13F ( 319)    RtlTimeFieldsToTime
+   F 8200058C 83291E54 140 ( 320)    RtlTimeToTimeFields
+   F 82000590 83291E64 192 ( 402)    XeCryptSha
+   F 82000594 83291E74 035 (  53) !! IoCompleteRequest
+   F 82000598 83291E84 0F0 ( 240)    NtReadFile
+   F 8200059C 832917A4 0B4 ( 180)    KfReleaseSpinLock
+   F 820005A0 832916B4 0B1 ( 177)    KfAcquireSpinLock
+   F 820005A4 832916A4 05F (  95)    KeEnterCriticalRegion
+   F 820005A8 83291E94 00D (  13)    ExCreateThread
+   F 820005AC 83291EA4 149 ( 329) !! RtlUpcaseUnicodeChar
+   F 820005B0 83291EB4 109 ( 265) !! ObIsTitleObject
+   F 820005B4 83291EC4 034 (  52) !! IoCheckShareAccess
+   F 820005B8 83291ED4 047 (  71) !! IoSetShareAccess
+   F 820005BC 83291EE4 084 ( 132)    KeQuerySystemTime
+   F 820005C0 83291EF4 045 (  69) !! IoRemoveShareAccess
+   F 820005C4 83291F04 25A ( 602) !! StfsControlDevice
+   F 820005C8 83291F14 259 ( 601) !! StfsCreateDevice
+   F 820005CC 83291F24 257 ( 599) !! XeKeysConsoleSignatureVerification
+   F 820005D0 83291F34 256 ( 598) !! XeKeysConsolePrivateKeySign
+   F 820005D4 83291F44 0DC ( 220)    NtFreeVirtualMemory
+   F 820005D8 83291F54 0CC ( 204)    NtAllocateVirtualMemory
+   F 820005DC 83291F64 0DB ( 219)    NtFlushBuffersFile
+   F 820005E0 83291F74 03B (  59) !! IoDismountVolume
+   F 820005E4 83291F84 103 ( 259)    ObCreateSymbolicLink
+   F 820005E8 83291F94 104 ( 260)    ObDeleteSymbolicLink
+   F 820005EC 83291FA4 08F ( 143)    KeResetEvent
+   F 820005F0 83291FB4 015 (  21)    ExRegisterTitleTerminateNotification
+   F 820005F4 83291684 0F6 ( 246)    NtSetEvent
+   V 820005F8          0AD ( 173)    KeTimeStampBundle
+   F 820005FC 83291FC4 0E4 ( 228)    NtQueryDirectoryFile
+   F 82000600 83291FD4 0F1 ( 241)    NtReadFileScatter
+   F 82000604 83291FE4 0DA ( 218)    NtDuplicateObject
+   V 82000608          059 (  89)    KeDebugMonitorData
+   F 8200060C 83291FF4 0F5 ( 245)    NtResumeThread
+   F 82000610 83292004 10E ( 270)    ObOpenObjectByPointer
+   F 82000614 83292014 10B ( 267)    ObLookupThreadByThreadId
+   F 82000618 83291764 110 ( 272)    ObReferenceObjectByHandle
+   V 8200061C          01B (  27) !! ExThreadObjectType
+   F 82000620 83292024 081 ( 129)    KeQueryBasePriorityThread
+   F 82000624 83292034 09C ( 156)    KeSetDisableBoostThread
+   F 82000628 83292044 0FC ( 252)    NtSuspendThread
+   F 8200062C 83292054 097 ( 151)    KeSetAffinityThread
+   V 82000630          1AE ( 430)    ExLoadedCommandLine
+   F 82000634 83292064 028 (  40)    HalReturnToFirmware
+   F 82000638 83292074 126 ( 294)    RtlFillMemoryUlong
+   F 8200063C 83292084 053 (  83)    KeBugCheckEx
+   F 82000640 83292094 11B ( 283)    RtlCompareMemoryUlong
+   F 82000644 832920A4 0EE ( 238)    NtQueryVirtualMemory
+   F 82000648 832920B4 136 ( 310)    RtlRaiseException
+   F 8200064C 832920C4 03C (  60) !! IoDismountVolumeByFileHandle
+   F 82000650 832920D4 019 (  25)    ExTerminateThread
+   V 82000654          266 ( 614)    KeCertMonitorData
+   V 82000658          1BE ( 446)    VdGlobalDevice
+   V 8200065C          1BF ( 447)    VdGlobalXamDevice
+   F 82000660 83291714 083 ( 131)    KeQueryPerformanceFrequency
+   F 82000664 832920E4 1C7 ( 455)    VdPersistDisplay
+   F 82000668 832916D4 25B ( 603)    VdSwap
+   F 8200066C 832916C4 1BD ( 445)    VdGetSystemCommandBuffer
+   F 82000670 832920F4 1D9 ( 473)    VdSetSystemCommandBufferGpuIdentifierAddress
+   F 82000674 83292104 1DF ( 479)    KiApcNormalRoutineNop
+   F 82000678 83292114 0BE ( 190)    MmGetPhysicalAddress
+   F 8200067C 83292124 089 ( 137)    KeReleaseSpinLockFromRaisedIrql
+   F 82000680 83292134 1B6 ( 438)    VdEnableRingBufferRPtrWriteBack
+   F 82000684 83292144 1C3 ( 451)    VdInitializeRingBuffer
+   F 82000688 83292154 04D (  77)    KeAcquireSpinLockAtRaisedIrql
+   F 8200068C 83292164 1B4 ( 436)    VdEnableDisableClockGating
+   F 82000690 83292174 13B ( 315)    sprintf
+   F 82000694 83292184 1B9 ( 441)    VdGetCurrentDisplayGamma
+   F 82000698 83292194 1D3 ( 467)    VdSetDisplayMode
+   F 8200069C 832921A4 1CA ( 458)    VdQueryVideoMode
+   F 820006A0 832921B4 1BA ( 442)    VdGetCurrentDisplayInformation
+   F 820006A4 832921C4 1C9 ( 457)    VdQueryVideoFlags
+   F 820006A8 832921D4 1D5 ( 469)    VdSetGraphicsInterruptCallback
+   F 820006AC 832921E4 1C2 ( 450)    VdInitializeEngines
+   F 820006B0 832921F4 1C6 ( 454)    VdIsHSIOTrainingSucceeded
+   F 820006B4 83292204 1DC ( 476)    VdShutdownEngines
+   F 820006B8 83292214 14D ( 333)    _vsnprintf
+   F 820006BC 83292224 052 (  82)    KeBugCheck
+   F 820006C0 83292234 1C5 ( 453)    VdInitializeScalerCommandBuffer
+   V 820006C4          1C0 ( 448)    VdGpuClockInMHz
+   F 820006C8 83292244 1B1 ( 433)    VdCallGraphicsNotificationRoutines
+   F 820006CC 83291784 269 ( 617)    VdRetrainEDRAM
+   F 820006D0 83292254 26A ( 618)    VdRetrainEDRAMWorker
+   V 820006D4          1C1 ( 449)    VdHSIOCalibrationLock
+   F 820006D8 83292264 06F ( 111)    KeInitializeDpc
+   F 820006DC 83292274 06B ( 107)    KeLockL2
+   F 820006E0 83292284 06C ( 108)    KeUnlockL2
+   F 820006E4 83291DF4 039 (  57) !! IoDeleteDevice
+   F 820006E8 832917B4 07D ( 125)    KeLeaveCriticalRegion
+   F 820006EC 83291DE4 037 (  55)    IoCreateDevice
+   F 820006F0 83291DD4 10F ( 271) !! ObReferenceObject
+   F 820006F4 83291DC4 041 (  65) !! IoInvalidDeviceRequest
+   F 820006F8 83291DB4 05A (  90)    KeDelayExecutionThread
+   F 820006FC 83291DA4 143 ( 323)    RtlUnicodeToMultiByteN
+   F 82000700 83291D94 0CE ( 206)    NtClearEvent
+   F 82000704 83291D84 1A5 ( 421) !! __C_specific_handler
+   F 82000708 83291D74 010 (  16)    ExGetXConfigSetting
+   F 8200070C 83291D64 0C4 ( 196)    MmQueryAddressProtect
+   F 82000710 83291D54 0BD ( 189)    MmFreePhysicalMemory
+   F 82000714 83291D44 0C5 ( 197)    MmQueryAllocationSize
+   F 82000718 83291D34 0BA ( 186)    MmAllocatePhysicalMemoryEx
+   F 8200071C 83291D24 133 ( 307)    RtlMultiByteToUnicodeN
+   V 82000720          158 ( 344)    XboxKrnlVersion
+   F 82000724 83291D14 194 ( 404)    XexCheckExecutablePrivilege
+   F 82000728 83291D04 0E7 ( 231)    NtQueryFullAttributesFile
+   F 8200072C 83291CF4 13A ( 314)    _snprintf
+   F 82000730 83291CE4 135 ( 309)    RtlNtStatusToDosError
+   F 82000734 83291CD4 19B ( 411) !! XexLoadImageHeaders
+   F 82000738 83291CC4 0D1 ( 209)    NtCreateEvent
+   F 8200073C 83291CB4 0D2 ( 210)    NtCreateFile
+   F 82000740 83291CA4 0D9 ( 217)    NtDeviceIoControlFile
+   V 82000744          193 ( 403)    XexExecutableModuleHandle
+   F 82000748 83291C94 12B ( 299)    RtlImageXexHeaderField
+   F 8200074C 83291C84 0E8 ( 232)    NtQueryInformationFile
+   F 82000750 83291C74 0DF ( 223)    NtOpenFile
+   F 82000754 83291C64 0EF ( 239)    NtQueryVolumeInformationFile
+   F 82000758 83291C54 0FF ( 255)    NtWriteFile
+   F 8200075C 83291C44 0FD ( 253)    NtWaitForSingleObjectEx
+   F 82000760 83291C34 0CF ( 207)    NtClose
+   F 82000764 83291C24 11D ( 285)    RtlCompareStringN
+   V 82000768          156 ( 342)    XboxHardwareInfo
+   F 8200076C 83291C14 0F7 ( 247)    NtSetInformationFile
+   F 82000770 83291744 125 ( 293)    RtlEnterCriticalSection
+   F 82000774 83291734 130 ( 304)    RtlLeaveCriticalSection
+   F 82000778 83291C04 12E ( 302)    RtlInitializeCriticalSection
+   F 8200077C 83292414 152 ( 338)    KeTlsAlloc
+   F 82000780 83292424 155 ( 341)    KeTlsSetValue
+   F 82000784 832917C4 154 ( 340)    KeTlsGetValue
+   F 82000788 83291674 12F ( 303)    RtlInitializeCriticalSectionAndSpinCount
+   F 8200078C 83291704 141 ( 321)    RtlTryEnterCriticalSection
+   F 82000790 83292434 153 ( 339)    KeTlsFree
+   F 82000794 83292444 147 ( 327) !! RtlUnwind
+   F 82000798 832916F4 05D (  93)    KeEnableFpuExceptions
+   F 8200079C 83292454 119 ( 281) !! RtlCaptureContext
+   F 820007A0 83292464 009 (   9)    ExAllocatePool
+   F 820007A4 83292474 101 ( 257)    NtYieldExecution
+   F 820007A8 83292484 0D5 ( 213)    NtCreateSemaphore
+   F 820007AC 83292494 0F3 ( 243)    NtReleaseSemaphore
+   F 820007B0 832924A4 0FE ( 254)    NtWaitForMultipleObjectsEx
+   F 820007B4 832924B4 001 (   1)    DbgBreakPoint
+   F 820007B8 832924C4 127 ( 295)    RtlFreeAnsiString
+   F 820007BC 832924D4 142 ( 322)    RtlUnicodeStringToAnsiString
+   F 820007C0 832924E4 12D ( 301)    RtlInitUnicodeString
+   F 820007C4 83291BF4 14E ( 334)    vsprintf
+   F 820007C8 83291BE4 12C ( 300)    RtlInitAnsiString
+   F 820007CC 83291724 066 ( 102)    KeGetCurrentProcessType
+   F 820007D0 83291BD4 195 ( 405)    XexGetModuleHandle
+   F 820007D4 83291BC4 197 ( 407)    XexGetProcedureAddress
+   F 820007D8 83291BB4 003 (   3)    DbgPrint
+   F 820007DC 83291754 099 ( 153)    KeSetBasePriorityThread
+   F 820007E0 83292524 1FF ( 511)    XAudioGetSpeakerConfig
+   F 820007E4 83292534 1F8 ( 504)    XAudioGetVoiceCategoryVolume
+   F 820007E8 83292544 0C2 ( 194)    MmMapIoSpace
+   F 820007EC 83292554 224 ( 548)    XMACreateContext
+   F 820007F0 83292564 226 ( 550)    XMAReleaseContext
+   F 820007F4 83292574 0AF ( 175)    KeWaitForMultipleObjects
+   F 820007F8 83292584 1F5 ( 501)    XAudioSubmitRenderDriverFrame
+   F 820007FC 83292594 1F4 ( 500)    XAudioUnregisterRenderDriverClient
+   F 82000800 832925A4 1F3 ( 499)    XAudioRegisterRenderDriverClient
+   F 82000804 832925B4 0F2 ( 242)    NtReleaseMutant
+   F 82000808 832925C4 0D4 ( 212)    NtCreateMutant
+
+G> F8000004 Translated 4 shaders from the storage in 4 milliseconds
+i> 00014FFC Added handle:F8000024 for class xe::kernel::XObject
+i> 00014FFC XThreadF8000024 (5) Stack: 70110000-70130000
+i> 00014FFC KernelState: Launching module...
+i> 00014FFC Added handle:F8000028 for class xe::kernel::XObject
+K> F8000024 XThread::Execute thid 5 (handle=F8000024, 'Kernel Dispatch (F8000024)', native=0000E3B4, <host>)
+i> 00014FFC XThreadF8000028 (6) Stack: 70150000-70190000
+K> F8000028 XThread::Execute thid 6 (handle=F8000028, 'Main XThread (F8000028)', native=000151F0)
+i> F8000028 Added handle:F800002C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000030 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000034 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000038 for class xe::kernel::XObject
+i> F8000028 Added handle:F800003C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000040 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000044 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000048 for class xe::kernel::XObject
+i> F8000028 Added handle:F800004C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000050 for class xe::kernel::XObject
+F> F8000028 StfsContainerDevice::ResolvePath()
+i> F8000028 Added handle:F8000054 for class xe::kernel::XObject
+i> F8000028 Removed handle:F8000054 for class xe::kernel::XFile
+i> F8000028 Added handle:F8000054 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000058 for class xe::kernel::XObject
+i> F8000028 Added handle:F800005C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000060 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000064 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000068 for class xe::kernel::XObject
+i> F8000028 Added handle:F800006C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000070 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000074 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000078 for class xe::kernel::XObject
+i> F8000028 Added handle:F800007C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000080 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000084 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000088 for class xe::kernel::XObject
+i> F8000028 Added handle:F800008C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000090 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000094 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000098 for class xe::kernel::XObject
+i> F8000028 Added handle:F800009C for class xe::kernel::XObject
+i> F8000028 Added handle:F80000A0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000A4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000A8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000AC for class xe::kernel::XObject
+i> F8000028 Added handle:F80000B0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000B4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000B8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000BC for class xe::kernel::XObject
+i> F8000028 Added handle:F80000C0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000C4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000C8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000CC for class xe::kernel::XObject
+i> F8000028 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000D4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000D8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000DC for class xe::kernel::XObject
+i> F8000028 Added handle:F80000E0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000E4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000E8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000EC for class xe::kernel::XObject
+i> F8000028 Added handle:F80000F0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000F4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000F8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80000FC for class xe::kernel::XObject
+i> F8000028 Added handle:F8000100 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000108 for class xe::kernel::XObject
+i> F8000028 Added handle:F800010C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000110 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000118 for class xe::kernel::XObject
+i> F8000028 Added handle:F800011C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000120 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000124 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000128 for class xe::kernel::XObject
+i> F8000028 Added handle:F800012C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000130 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000134 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000138 for class xe::kernel::XObject
+i> F8000028 Added handle:F800013C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000140 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000144 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000148 for class xe::kernel::XObject
+i> F8000028 Added handle:F800014C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000150 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000154 for class xe::kernel::XObject
+i> F8000028 XThreadF8000154 (7) Stack: 701B0000-701C0000
+K> F8000154 XThread::Execute thid 7 (handle=F8000154, 'XThread141F8 (F8000154)', native=000141F8)
+i> F8000028 RtlRaiseException(7018F740(406D1388))
+i> F8000028 Added handle:F8000158 for class xe::kernel::XObject
+i> F8000028 Added handle:F800015C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000160 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000164 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000168 for class xe::kernel::XObject
+i> F8000028 Added handle:F800016C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000170 for class xe::kernel::XObject
+i> F8000028 XThreadF8000170 (8) Stack: 701E0000-70200000
+i> F8000028 RtlRaiseException(7018F9B0(406D1388))
+K> F8000170 XThread::Execute thid 8 (handle=F8000170, 'Loading (F8000170)', native=00015454)
+i> F8000154 RtlRaiseException(701BFCE0(406D1388))
+i> F8000170 RtlRaiseException(701FFCE0(406D1388))
+i> F8000170 RtlRaiseException(701FFC10(406D1388))
+G> F8000028 SetInterruptCallback(8240CA78, 40003F00)
+i> F8000028 Added handle:F8000174 for class xe::kernel::XObject
+i> F8000028 XThreadF8000174 (9) Stack: 70220000-70230000
+i> F8000028 Added handle:F8000178 for class xe::kernel::XObject
+i> F8000028 XThreadF8000178 (A) Stack: 70250000-70260000
+K> F8000174 XThread::Execute thid 9 (handle=F8000174, 'XThread10A7C (F8000174)', native=00010A7C)
+K> F8000178 XThread::Execute thid 10 (handle=F8000178, 'XThread118F8 (F8000178)', native=000118F8)
+w> F8000004 GPU: Write to unknown register (0081 = 80010000)
+w> F8000004 GPU: Write to unknown register (0082 = 00000000)
+i> F8000174 Added handle:F800017C for class xe::kernel::XObject
+i> F8000178 Added handle:F8000180 for class xe::kernel::XObject
+F> F8000028 StfsContainerDevice::ResolvePath()
+i> F8000028 Added handle:F8000184 for class xe::kernel::XObject
+i> F8000028 Removed handle:F8000184 for class xe::kernel::XFile
+i> F8000028 Added handle:F8000184 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000188 for class xe::kernel::XObject
+i> F8000028 Added handle:F800018C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000190 for class xe::kernel::XObject
+i> F8000028 XThreadF8000190 (B) Stack: 70280000-702A0000
+i> F8000028 RtlRaiseException(7018F9A0(406D1388))
+K> F8000190 XThread::Execute thid 11 (handle=F8000190, 'SaveGameManagerBackgroundThread (F8000190)', native=000131C0)
+i> F8000190 RtlRaiseException(7029FCE0(406D1388))
+i> F8000190 RtlRaiseException(7029FC10(406D1388))
+i> F8000028 Added handle:F8000194 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000198 for class xe::kernel::XObject
+i> F8000028 Added handle:F800019C for class xe::kernel::XObject
+i> F8000028 Added handle:F80001A0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001A4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001A8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001AC for class xe::kernel::XObject
+i> F8000028 Added handle:F80001B0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001B4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001B8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001BC for class xe::kernel::XObject
+i> F8000028 Added handle:F80001C0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001C4 for class xe::kernel::XObject
+i> F8000028 XThreadF80001C4 (C) Stack: 702C0000-702E0000
+i> F8000028 RtlRaiseException(7018F930(406D1388))
+K> F80001C4 XThread::Execute thid 12 (handle=F80001C4, 'TaskThread1 (F80001C4)', native=00015480)
+i> F80001C4 RtlRaiseException(702DFCE0(406D1388))
+i> F80001C4 RtlRaiseException(702DFC10(406D1388))
+i> F8000028 Added handle:F80001C8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001CC for class xe::kernel::XObject
+i> F8000028 Added handle:F80001D0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001D4 for class xe::kernel::XObject
+i> F8000028 XThreadF80001D4 (D) Stack: 70300000-70320000
+i> F8000028 RtlRaiseException(7018F930(406D1388))
+K> F80001D4 XThread::Execute thid 13 (handle=F80001D4, 'TaskThread2 (F80001D4)', native=000153D4)
+i> F80001D4 RtlRaiseException(7031FCE0(406D1388))
+i> F80001D4 RtlRaiseException(7031FC10(406D1388))
+i> F8000028 Added handle:F80001D8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001DC for class xe::kernel::XObject
+i> F8000028 Added handle:F80001E0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001E4 for class xe::kernel::XObject
+i> F8000028 XThreadF80001E4 (E) Stack: 70340000-70360000
+i> F8000028 RtlRaiseException(7018F930(406D1388))
+K> F80001E4 XThread::Execute thid 14 (handle=F80001E4, 'TaskThread3 (F80001E4)', native=000014D4)
+i> F80001E4 RtlRaiseException(7035FCE0(406D1388))
+i> F80001E4 RtlRaiseException(7035FC10(406D1388))
+i> F8000028 Added handle:F80001E8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001EC for class xe::kernel::XObject
+i> F8000028 Added handle:F80001F0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001F4 for class xe::kernel::XObject
+i> F8000028 XThreadF80001F4 (F) Stack: 70380000-703A0000
+i> F8000028 RtlRaiseException(7018F930(406D1388))
+K> F80001F4 XThread::Execute thid 15 (handle=F80001F4, 'TaskThread4 (F80001F4)', native=00013B10)
+i> F80001F4 RtlRaiseException(7039FCE0(406D1388))
+i> F80001F4 RtlRaiseException(7039FC10(406D1388))
+i> F8000028 Added handle:F80001F8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80001FC for class xe::kernel::XObject
+i> F8000028 Added handle:F8000200 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000204 for class xe::kernel::XObject
+i> F8000028 XThreadF8000204 (10) Stack: 703C0000-703E0000
+i> F8000028 RtlRaiseException(7018F930(406D1388))
+K> F8000204 XThread::Execute thid 16 (handle=F8000204, 'TaskThread5 (F8000204)', native=00015120)
+i> F8000204 RtlRaiseException(703DFCE0(406D1388))
+i> F8000204 RtlRaiseException(703DFC10(406D1388))
+i> F8000028 Added handle:F8000208 for class xe::kernel::XObject
+i> F8000028 Added handle:F800020C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000210 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000214 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000218 for class xe::kernel::XObject
+i> F8000028 XThreadF8000218 (11) Stack: 70400000-70410000
+K> F8000218 XThread::Execute thid 17 (handle=F8000218, 'XThread15558 (F8000218)', native=00015558)
+i> F8000028 Added handle:F800021C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000220 for class xe::kernel::XObject
+i> F8000028 XThreadF8000220 (12) Stack: 70430000-70440000
+K> F8000220 XThread::Execute thid 18 (handle=F8000220, 'XThread140C4 (F8000220)', native=000140C4)
+i> F8000028 Added handle:F8000224 for class xe::kernel::XObject
+i> F8000028 XThreadF8000224 (13) Stack: 70460000-704A0000
+i> F8000028 Added handle:F8000228 for class xe::kernel::XObject
+K> F8000224 XThread::Execute thid 19 (handle=F8000224, 'XThread4350 (F8000224)', native=00004350)
+i> F8000224 Added handle:F800022C for class xe::kernel::XObject
+i> F8000224 Added handle:F8000230 for class xe::kernel::XObject
+i> F8000224 Added handle:F8000234 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000238 for class xe::kernel::XObject
+i> F8000224 Added handle:F800023C for class xe::kernel::XObject
+i> F8000010 Added handle:F8000240 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000244 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000248 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F800024C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000250 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000254 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 XThreadF8000254 (14) Stack: 704C0000-704D0000
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+K> F8000254 XThread::Execute thid 20 (handle=F8000254, 'XThread15700 (F8000254)', native=00015700)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000258 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata)
+i> F8000028 Added handle:F800025C for class xe::kernel::XObject
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_eng.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_eng.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_eng.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_fre.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_fre.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_fre.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ger.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ger.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ger.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ita.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ita.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_ita.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_sfx.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_sfx.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_sfx.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_spa.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_spa.pck)
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon\sounds_spa.pck)
+i> F8000028 xeRtlNtStatusToDosError 80000006 => 12
+i> F8000028 Removed handle:F800025C for class xe::kernel::XFile
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon)
+i> F8000028 Added handle:F800025C for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+F> F8000028 StfsContainerDevice::ResolvePath(\sounddata\xenon)
+i> F8000028 Added handle:F8000260 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Removed handle:F800025C for class xe::kernel::XFile
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000224 Added handle:F800025C for class xe::kernel::XObject
+i> F8000028 Added handle:F8000264 for class xe::kernel::XObject
+i> F8000220 Added handle:F8000268 for class xe::kernel::XObject
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000254 Added handle:F800026C for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000028 Removed handle:F8000264 for class xe::kernel::XEvent
+i> F8000218 Removed handle:F8000268 for class xe::kernel::XEvent
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000264 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000268 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000270 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000274 for class xe::kernel::XObject
+F> F8000170 StfsContainerDevice::ResolvePath()
+i> F8000170 Added handle:F8000278 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+!> F8000170 NtQueryInformationFile(XFileSectorInformation) unimplemented
+i> F8000170 xeRtlNtStatusToDosError C000000D => 57
+i> F8000170 Removed handle:F8000278 for class xe::kernel::XFile
+F> F8000170 StfsContainerDevice::ResolvePath()
+i> F8000170 Added handle:F8000278 for class xe::kernel::XObject
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000170 Added handle:F800027C for class xe::kernel::XObject
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+F> F8000028 StfsContainerDevice::ResolvePath(\videos)
+i> F8000028 Added handle:F8000280 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Removed handle:F8000280 for class xe::kernel::XFile
+F> F8000028 StfsContainerDevice::ResolvePath(\videos\en)
+i> F8000028 Added handle:F8000280 for class xe::kernel::XObject
+i> F8000028 Removed handle:F8000280 for class xe::kernel::XFile
+F> F8000028 StfsContainerDevice::ResolvePath(\videos\en)
+i> F8000028 Added handle:F8000280 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Removed handle:F8000280 for class xe::kernel::XFile
+F> F8000028 StfsContainerDevice::ResolvePath(\videos\en)
+i> F8000028 Added handle:F8000280 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Removed handle:F8000280 for class xe::kernel::XFile
+i> F8000028 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000028 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 Added handle:F8000280 for class xe::kernel::XObject
+i> F8000028 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000170 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000220 Added handle:F8000288 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 Added handle:F800028C for class xe::kernel::XObject
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 Added handle:F8000290 for class xe::kernel::XObject
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 Removed handle:F8000288 for class xe::kernel::XEvent
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000220 Added handle:F8000288 for class xe::kernel::XObject
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 Removed handle:F8000288 for class xe::kernel::XEvent
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000220 Added handle:F8000288 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000218 Removed handle:F8000288 for class xe::kernel::XEvent
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000220 Added handle:F8000288 for class xe::kernel::XObject
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000218 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000218 Removed handle:F8000288 for class xe::kernel::XEvent
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000170 Added handle:F8000284 for class xe::kernel::XObject
+i> F8000170 Removed handle:F8000284 for class xe::kernel::XEvent
+i> F8000028 Added handle:F8000284 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000288 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F8000294 for class xe::kernel::XObject
+i> F8000028 Added handle:F8000298 for class xe::kernel::XObject
+i> F8000028 Added handle:F800029C for class xe::kernel::XObject
+i> F8000028 Added handle:F80002A0 for class xe::kernel::XObject
+i> F8000028 Added handle:F80002A4 for class xe::kernel::XObject
+i> F8000028 Added handle:F80002A8 for class xe::kernel::XObject
+i> F8000028 Added handle:F80002AC for class xe::kernel::XObject
+i> F8000028 Added handle:F80002B0 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 Added handle:F80002B4 for class xe::kernel::XObject
+i> F8000028 XThreadF80002B4 (15) Stack: 704F0000-70510000
+i> F8000028 RtlRaiseException(7018F8F0(406D1388))
+K> F80002B4 XThread::Execute thid 21 (handle=F80002B4, 'Loading Support (F80002B4)', native=000146E8)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F80002B4 RtlRaiseException(7050FCE0(406D1388))
+i> F80002B4 RtlRaiseException(7050FC10(406D1388))
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000028 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F8000154 xeRtlNtStatusToDosError 103 => 3E5
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F80001C4 Added handle:F80002B8 for class xe::kernel::XObject
+i> F80001C4 XThreadF80002B8 (16) Stack: 70530000-70570000
+i> F80001C4 Added handle:F80002BC for class xe::kernel::XObject
+K> F80002B8 XThread::Execute thid 22 (handle=F80002B8, 'XThread1150C (F80002B8)', native=0001150C)
+i> F80001E4 Added handle:F80002C0 for class xe::kernel::XObject
+i> F80001D4 Added handle:F80002C4 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F80002B8 Added handle:F80002C8 for class xe::kernel::XObject
+i> F80001C4 Added handle:F80002CC for class xe::kernel::XObject
+i> F80002B8 Added handle:F80002D0 for class xe::kernel::XObject
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000010 Added handle:F80002D4 for class xe::kernel::XObject
+i> F8000010 Added handle:F80002D8 for class xe::kernel::XObject
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F80001C4 Added handle:F80002DC for class xe::kernel::XObject
+i> F80001C4 XThreadF80002DC (17) Stack: 70590000-705A0000
+i> F80001C4 Added handle:F80002E0 for class xe::kernel::XObject
+i> F80001C4 Added handle:F80002E4 for class xe::kernel::XObject
+i> F80001C4 Added handle:F80002E8 for class xe::kernel::XObject
+K> F80002DC XThread::Execute thid 23 (handle=F80002DC, 'XThread13ADC (F80002DC)', native=00013ADC)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000204 VdSwap(BF49BE04, 703DF8C0, FFCA5008, 703DF910, BEEF0001, 703DF8AC(BF59D000), 703DF8B0(00000006), 703DF8A0(00000000), 703DF8A8(00000500), 703DF8A4(000002D0))
+G> F8000004 Created a 640x1024 4xMSAA depth render target with guest format 0 at EDRAM base 720
+G> F8000004 Generated vertex shader (108b) - hash 1E6883FCCDE1F688:
+/*    0.0 */       exec
+/*    3   */          vfetch_full r1.xyz1, r0.x, vf95, DataFormat=FMT_32_32_32_FLOAT, Stride=7, Signed=true, NumFormat=integer, PrefetchCount=7
+/*    4   */          vfetch_mini r0, Offset=3, DataFormat=FMT_32_32_32_32_FLOAT, Signed=true, NumFormat=integer
+/*    0.1 */       alloc interpolators
+/*    1.0 */       exec
+/*    5   */          max o0, r0, r0
+/*    1.1 */       alloc position
+/*    2.0 */       exec
+/*    6   */          max oPos, r1, r1
+/*    2.1 */       exece
+/*    7   */          nop
+
+G> 00014504 Creating graphics pipeline with VS 1E6883FCCDE1F688
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000204 VdSwap(BF4A3AB4, 703DF8C0, FFCA5008, 703DF910, BEEF0001, 703DF8AC(BF59D000), 703DF8B0(00000006), 703DF8A0(00000000), 703DF8A8(00000500), 703DF8A4(000002D0))
+G> F8000004 Created a 1280x2048 1xMSAA color render target with guest format 0 at EDRAM base 720
+G> F8000004 Generated vertex shader (96b) - hash D5E12A97B3A84881:
+/*    0.0 */       exec
+/*    3   */          vfetch_full r1.xyz1, r0.x, vf0, DataFormat=FMT_32_32_32_FLOAT, Stride=5, Signed=true, NumFormat=integer, PrefetchCount=5
+/*    4   */          vfetch_mini r0.xy__, Offset=3, DataFormat=FMT_32_32_FLOAT, Signed=true, NumFormat=integer
+/*    0.1 */       alloc position
+/*    1.0 */       exec
+/*    5   */          max oPos, r1, r1
+/*    1.1 */       alloc interpolators
+/*    2.0 */       exece
+/*    6   */          max o0.xy__, r0.xyyy, r0.xyyy
+/*    2.1 */       cnop
+
+G> F8000004 Generated pixel shader (144b) - hash F6AFAEAD7D170F51:
+/*    0.0 */       exec
+/*    2   */          tfetch2D r1.x___, r0.xy, tf0
+/*    3   */          tfetch2D r1._x__, r0.xy, tf1
+/*    4   */          tfetch2D r1.__x_, r0.xy, tf2
+/*    0.1 */       alloc colors
+/*    1.0 */       exece
+/*    5   */          mul r0._y__, c0.wwww, c3.xxxx
+/*    6   */          dp3 r0.x___, r1.zxyy, c0.zxyy
+/*    7   */          dp3 r0.__z_, r1.zxyy, c1.zxyy
+              +       maxs r0._, c1.ww
+/*    8   */          dp3 r1.x___, r1.zxyy, c2.zxyy
+              +       muls_prev r0.___w, c3.x
+/*    9   */          mad oC0.__z_, c2.wwww, c3.xxxx, r1.xxxx
+/*   10   */          add oC0.xy__, r0.xzzz, r0.ywww
+              +       maxs oC0.___w, c3.ww
+/*    1.1 */       cnop
+
+G> 00015738 Creating graphics pipeline with VS D5E12A97B3A84881, PS F6AFAEAD7D170F51
+G> F8000004 Created linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C88E000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C88E000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Created linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C96F000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C96F000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Created linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C9B3000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C9B3000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+G> F8000004 Generated vertex shader (96b) - hash B6C9863F710683EC:
+/*    0.0 */       exec
+/*    3   */          nop
+/*    0.1 */       alloc interpolators
+/*    1.0 */       exec
+/*    4   */          max o0.0000, r0, r0
+/*    1.1 */       alloc position
+/*    2.0 */       exec
+/*    5   */          max oPos.0001, r1, r1
+/*    2.1 */       exece
+/*    6   */          nop
+
+G> 00012FEC Creating graphics pipeline with VS B6C9863F710683EC
+i> F8000004 XE_SWAP
+G> F8000004 Created tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000004 GPU: Write to unknown register (1E4E = 00000000)
+G> 00012E44 Creating graphics pipeline with VS D5E12A97B3A84881, PS F6AFAEAD7D170F51
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000204 VdSwap(BF4ABBF4, 703DF8C0, FFCA5008, 703DF910, BEEF0001, 703DF8AC(BF59D000), 703DF8B0(00000006), 703DF8A0(00000000), 703DF8A8(00000500), 703DF8A4(000002D0))
+G> F8000004 Created linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C725000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C725000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Created linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C806000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C806000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Created linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C84A000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C84A000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+i> F80001E4 VdSwap(BF4B3D24, 7035F8C0, FFCA5008, 7035F910, BEEF0001, 7035F8AC(BF59D000), 7035F8B0(00000006), 7035F8A0(00000000), 7035F8A8(00000500), 7035F8A4(000002D0))
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C88E000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C96F000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C9B3000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+i> F80001E4 VdSwap(BF4BBE64, 7035F8C0, FFCA5008, 7035F910, BEEF0001, 7035F8AC(BF59D000), 7035F8B0(00000006), 7035F8A0(00000000), 7035F8A8(00000500), 7035F8A4(000002D0))
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F80001D4 VdSwap(BF4C3FA4, 7031F8C0, FFCA5008, 7031F910, BEEF0001, 7031F8AC(BF59D000), 7031F8B0(00000006), 7031F8A0(00000000), 7031F8A8(00000500), 7031F8A4(000002D0))
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C725000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C806000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C84A000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F80001C4 VdSwap(BF4CC0E4, 702DF8C0, FFCA5008, 702DF910, BEEF0001, 702DF8AC(BF59D000), 702DF8B0(00000006), 702DF8A0(00000000), 702DF8A8(00000500), 702DF8A4(000002D0))
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C88E000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C96F000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C9B3000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+i> F80001D4 Added handle:F80002EC for class xe::kernel::XObject
+i> F8000204 VdSwap(BF4D4224, 703DF8C0, FFCA5008, 703DF910, BEEF0001, 703DF8AC(BF59D000), 703DF8B0(00000006), 703DF8A0(00000000), 703DF8A8(00000500), 703DF8A4(000002D0))
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C725000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C806000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C84A000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F80001E4 VdSwap(BF4DC364, 7035F8C0, FFCA5008, 7035F910, BEEF0001, 7035F8AC(BF59D000), 7035F8B0(00000006), 7035F8A0(00000000), 7035F8A8(00000500), 7035F8A4(000002D0))
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+w> F8000224 XMA: Write to unknown register (0601): 00000002
+w> F8000224 XMA: Write to unknown register (0601): 00000003
+w> F80002B8 XMA: Write to unknown register (0601): 00000002
+w> F80002B8 XMA: Write to unknown register (0601): 00000003
+i> F8000004 XE_SWAP
+G> F8000004 Loaded tiled 1280x720x1 2D k_8_8_8_8 texture with 1 unpacked mip level, base at 0x1F59D000 (pitch 1280, size 0x00398000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 1280x720x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C88E000 (pitch 1280, size 0x000E1000), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C96F000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+G> F8000004 Loaded linear 640x360x1 2D k_8 texture with 1 unpacked mip level, base at 0x1C9B3000 (pitch 768, size 0x00043780), mips at 0x00000000 (size 0x00000000)
+i> 000153E0        Time, 
+i> 000153E0     Average, 
+i> 000153E0         Max, 
+i> 000153E0         Min, 
+i> 000153E0    Call Avg, 
+i> 000153E0     Count, 
+i> 000153E0        Excl, 
+i> 000153E0    Avg Excl, 
+i> 000153E0    Max Excl, 
+i> 000153E0 apu
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0        12, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0 xe::apu::AudioSystem->client_callback
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0        24, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0 xe::apu::XmaDecoder::WriteRegister
+i> 000153E0      0.01ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0        12, 
+i> 000153E0      0.01ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0 xe::apu::AudioSystem::SubmitFrame
+i> 000153E0 cpu
+i> 000153E0     34.26ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0        27, 
+i> 000153E0      0.08ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0 xe::cpu::Processor::Execute
+i> 000153E0     31.33ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0         0, 
+i> 000153E0     31.33ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0 xe::cpu::ppc::PPCTranslator::Translate
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 
+i> 000153E0         0, 
+i> 000153E0      0.00ms, 
+i> 000153E0      0.00ms, 

@@ -1,0 +1,40 @@
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\bin\Debug\XLCompanion.exe.config
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\bin\Debug\XLCompanion.exe
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\bin\Debug\XLCompanion.pdb
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.AssemblyReference.cache
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.SuggestedBindingRedirects.cache
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.Form1.resources
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.Properties.Resources.resources
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.GenerateResource.cache
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.CoreCompileInputs.cache
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.exe
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.pdb
+C:\Users\alexj\source\repos\XLCompanion\XLCompanion\obj\Debug\XLCompanion.SettingsForm.resources
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\bin\Debug\XLCompanion.exe.config
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\bin\Debug\XLCompanion.exe
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\bin\Debug\XLCompanion.pdb
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.AssemblyReference.cache
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.SuggestedBindingRedirects.cache
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.Form1.resources
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.Properties.Resources.resources
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.SettingsForm.resources
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.GenerateResource.cache
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.csproj.CoreCompileInputs.cache
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.exe
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.pdb
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.ImportForm.resources
+C:\Users\alexj\Downloads\XL Companion (2)\XLCompanion\XLCompanion\obj\Debug\XLCompanion.AboutBox.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\bin\Debug\XLCompanion.exe.config
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\bin\Debug\XLCompanion.exe
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\bin\Debug\XLCompanion.pdb
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.csproj.AssemblyReference.cache
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.AboutBox.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.Form1.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.ImportForm.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.Properties.Resources.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.SettingsForm.resources
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.csproj.GenerateResource.cache
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.csproj.CoreCompileInputs.cache
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.exe
+D:\GitHub\Continuum\Continuum-Launcher\XLCompanion\obj\Debug\XLCompanion.pdb

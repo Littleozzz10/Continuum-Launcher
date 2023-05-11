@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/alexj/source/repos/XeniaLauncher/XeniaLauncher/Content/Fonts/Bold.spritefont</SourceFile>
+  <SourceTime>2023-01-21T20:50:28.2776539-06:00</SourceTime>
+  <DestFile>C:/Users/alexj/source/repos/XeniaLauncher/XeniaLauncher/Content/bin/Windows/Content/Fonts/Bold.xnb</DestFile>
+  <DestTime>2023-03-18T19:52:48.8435577-05:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2022-07-26T06:44:56-05:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2022-07-26T06:44:56-05:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

@@ -1,0 +1,1117 @@
+i> 0000A9F8 Build: canary_experimental@459497f0b on Jan 13 2023
+i> 0000A9F8 Storage root: C:\Users\alexj\source\repos\XeniaLauncher\XeniaLauncher\bin\Debug\net6.0-windows\XData\Canary\Project Gotham Racing 4
+i> 0000A9F8 Content root: C:\Users\alexj\source\repos\XeniaLauncher\XeniaLauncher\bin\Debug\net6.0-windows\XData\Canary\Project Gotham Racing 4\content
+i> 0000A9F8 Cache root: C:\Users\alexj\source\repos\XeniaLauncher\XeniaLauncher\bin\Debug\net6.0-windows\XData\Canary\Project Gotham Racing 4\cache
+i> 0000DACC winkey: "0x08" binds key 0x8 to controller input GUIDE.
+i> 0000DACC winkey: "^A" binds key 0x41 to controller input DPAD_LEFT.
+i> 0000DACC winkey: "^D" binds key 0x44 to controller input DPAD_RIGHT.
+i> 0000DACC winkey: "^S" binds key 0x53 to controller input DPAD_DOWN.
+i> 0000DACC winkey: "^W" binds key 0x57 to controller input DPAD_UP.
+i> 0000DACC winkey: "_A" binds key 0x41 to controller input LEFT_THUMB_LEFT.
+i> 0000DACC winkey: "_D" binds key 0x44 to controller input LEFT_THUMB_RIGHT.
+i> 0000DACC winkey: "_S" binds key 0x53 to controller input LEFT_THUMB_DOWN.
+i> 0000DACC winkey: "_W" binds key 0x57 to controller input LEFT_THUMB_UP.
+i> 0000DACC winkey: "F" binds key 0x46 to controller input LEFT_THUMB_PRESSED.
+i> 0000DACC winkey: "0x26" binds key 0x26 to controller input RIGHT_THUMB_UP.
+i> 0000DACC winkey: "0x28" binds key 0x28 to controller input RIGHT_THUMB_DOWN.
+i> 0000DACC winkey: "0x27" binds key 0x27 to controller input RIGHT_THUMB_RIGHT.
+i> 0000DACC winkey: "0x25" binds key 0x25 to controller input RIGHT_THUMB_LEFT.
+i> 0000DACC winkey: "K" binds key 0x4B to controller input RIGHT_THUMB_PRESSED.
+i> 0000DACC winkey: "L" binds key 0x4C to controller input X.
+i> 0000DACC winkey: "0xDE" binds key 0xDE to controller input B.
+i> 0000DACC winkey: "0xBA" binds key 0xBA to controller input A.
+i> 0000DACC winkey: "P" binds key 0x50 to controller input Y.
+i> 0000DACC winkey: "Q" binds key 0x51 to controller input LEFT_TRIGGER.
+i> 0000DACC winkey: "I" binds key 0x49 to controller input LEFT_TRIGGER.
+i> 0000DACC winkey: "E" binds key 0x45 to controller input RIGHT_TRIGGER.
+i> 0000DACC winkey: "O" binds key 0x4F to controller input RIGHT_TRIGGER.
+i> 0000DACC winkey: "Z" binds key 0x5A to controller input BACK.
+i> 0000DACC winkey: "X" binds key 0x58 to controller input START.
+i> 0000DACC winkey: "1" binds key 0x31 to controller input LEFT_SHOULDER.
+i> 0000DACC winkey: "3" binds key 0x33 to controller input RIGHT_SHOULDER.
+i> 0000A9F8 SDL Version 2.24.2 initialized.
+i> 0000A9F8 SDL OnControllerDeviceAdded: "Controller (Xbox One For Windows)", JoystickType(1), GameControllerType(2), VendorID(0x045E), ProductID(0x02FF)
+i> 0000A9F8 SDL OnControllerDeviceAdded: Added at index 0.
+w> 0000A9F8 SDL GameControllerDB: file 'gamecontrollerdb.txt' does not exist.
+i> 0000DACC PatchDB: Loaded patches for 0 titles
+i> 0000DACC DXGI adapter: NVIDIA GeForce GTX 1660 Ti (vendor 0x10DE, device 0x2182)
+i> 0000DACC Direct3D 12 device and OS features:
+* Max GPU virtual address bits per resource: 40
+* Non-zeroed heap creation: yes
+* Pixel-shader-specified stencil reference: no
+* Programmable sample positions: tier 2
+* Rasterizer-ordered views: yes
+* Resource binding: tier 3
+* Tiled resources: tier 3
+* Unaligned block-compressed textures: yes
+i> 0000DACC Added handle:01000004 for class xe::kernel::XObject
+i> 0000DACC XThread01000004 (1) Stack: 70010000-70030000
+i> 0000DACC Added handle:01000008 for class xe::kernel::XObject
+K> 01000004 XThread::Execute thid 1 (handle=01000004, 'GPU Commands (01000004)', native=0000A6F4, <host>)
+i> 0000DACC XThread01000008 (2) Stack: 70050000-70070000
+K> 01000008 XThread::Execute thid 2 (handle=01000008, 'GPU VSync (01000008)', native=00004B00, <host>)
+i> 0000DACC Added handle:0100000C for class xe::kernel::XObject
+i> 0000DACC XThread0100000C (3) Stack: 70090000-700B0000
+i> 0000DACC Added handle:01000010 for class xe::kernel::XObject
+i> 0000DACC XThread01000010 (4) Stack: 700D0000-700F0000
+i> 0000DACC Added handle:01000014 for class xe::kernel::XObject
+K> 01000010 XThread::Execute thid 4 (handle=01000010, 'Audio Worker (01000010)', native=0000DEB8, <host>)
+i> 0000DACC Added handle:01000018 for class xe::kernel::XObject
+K> 0100000C XThread::Execute thid 3 (handle=0100000C, 'XMA Decoder (0100000C)', native=0000DBE4, <host>)
+i> 0000DACC Added handle:0100001C for class xe::kernel::XObject
+i> 0000DACC Loading STFS header file: D:\360 Stuff\Content\0000000000000000\Project Gotham Racing 4\00004000\777031DC7619A81045207F225A381A4E
+i> 0000DACC SVOD successfully mapped 37 files.
+i> 0000DACC SVOD uses an EGDF layout. Magic block present at 0x2000.
+F> 0000DACC StfsContainerDevice::ResolvePath(\GameInfo.bin)
+i> 0000DACC Loading module game:\default.xex
+i> 0000DACC Added handle:F8000000 for class xe::kernel::XObject
+F> 0000DACC StfsContainerDevice::ResolvePath(\default.xex)
+C> 0000DACC WARNING: imported a variable with no value: ExThreadObjectType
+i> 0000DACC Module \Device\Cdrom0\default.xex:
+Module Hash: C68266E1F9C7F634
+    Module Flags: 00000001
+Security Header:
+     Image Flags: 00000008
+    Load Address: 82000000
+      Image Size: 00D70000
+    Export Table: 00000000
+Optional Header Count: 16
+  XEX_HEADER_RESOURCE_INFO:
+    UIScript 82BF0000-82C9C944, 706884b
+    4D5307F9 82C9C980-82D69885, 839429b
+  XEX_HEADER_FILE_FORMAT_INFO (TODO):
+  XEX_HEADER_ENTRY_POINT: 8267CA00
+  XEX_HEADER_IMAGE_BASE_ADDRESS: 82000000
+  XEX_HEADER_IMPORT_LIBRARIES:
+    xam.xex - 236 imports
+      Version: 0.0.6132.32
+      Min Version: 0.0.5766.32
+    xboxkrnl.exe - 339 imports
+      Version: 0.0.6132.32
+      Min Version: 0.0.5766.32
+  XEX_HEADER_CHECKSUM_TIMESTAMP (TODO):
+  XEX_HEADER_ORIGINAL_PE_NAME: default.exe
+  XEX_HEADER_STATIC_LIBRARIES:
+    XFFB     : 2.0.6132.0
+    XAPILIB  : 2.0.6132.2
+    D3D9     : 2.0.6132.0
+    D3DX9    : 2.0.6132.0
+    XBOXKRNL : 2.0.6132.0
+    LIBCPMT  : 2.0.6132.0
+    XGRAPHC  : 2.0.6132.0
+    XONLINE  : 2.0.6132.0
+    XMP      : 2.0.6132.0
+    XAUD     : 2.0.6132.0
+    XHV      : 2.0.6132.0
+  XEX_HEADER_TLS_INFO:
+          Slot Count: 64
+    Raw Data Address: 00000000
+           Data Size: 0
+       Raw Data Size: 0
+  XEX_HEADER_DEFAULT_STACK_SIZE: 262144
+  XEX_HEADER_SYSTEM_FLAGS: 00000600
+  XEX_HEADER_EXECUTION_INFO:
+       Media ID: 5A381A4E
+       Title ID: 4D5307F9
+    Savegame ID: 4D5307F9
+    Disc Number / Total: 1 / 1
+  XEX_HEADER_TITLE_WORKSPACE_SIZE: 524288
+  XEX_HEADER_GAME_RATINGS (TODO):
+  XEX_HEADER_LAN_KEY: 43 FF 45 C2 A7 82 88 9A 2D 3B EF E3 9D EF 8C 9A
+  XEX_HEADER_XBOX360_LOGO (TODO):
+Sections:
+    0 RODATA    1 pages    82000000 - 82010000 (65536 bytes)
+    1 RODATA    1 pages    82010000 - 82020000 (65536 bytes)
+    2 RODATA    1 pages    82020000 - 82030000 (65536 bytes)
+    3 RODATA    1 pages    82030000 - 82040000 (65536 bytes)
+    4 RODATA    1 pages    82040000 - 82050000 (65536 bytes)
+    5 RODATA    1 pages    82050000 - 82060000 (65536 bytes)
+    6 RODATA    1 pages    82060000 - 82070000 (65536 bytes)
+    7 RODATA    1 pages    82070000 - 82080000 (65536 bytes)
+    8 RODATA    1 pages    82080000 - 82090000 (65536 bytes)
+    9 RODATA    1 pages    82090000 - 820A0000 (65536 bytes)
+   10 RODATA    1 pages    820A0000 - 820B0000 (65536 bytes)
+   11 RODATA    1 pages    820B0000 - 820C0000 (65536 bytes)
+   12 RODATA    1 pages    820C0000 - 820D0000 (65536 bytes)
+   13 RODATA    1 pages    820D0000 - 820E0000 (65536 bytes)
+   14 RODATA    1 pages    820E0000 - 820F0000 (65536 bytes)
+   15 RODATA    1 pages    820F0000 - 82100000 (65536 bytes)
+   16 RODATA    1 pages    82100000 - 82110000 (65536 bytes)
+   17 RODATA    1 pages    82110000 - 82120000 (65536 bytes)
+   18 RODATA    1 pages    82120000 - 82130000 (65536 bytes)
+   19 RODATA    1 pages    82130000 - 82140000 (65536 bytes)
+   20 RODATA    1 pages    82140000 - 82150000 (65536 bytes)
+   21 RODATA    1 pages    82150000 - 82160000 (65536 bytes)
+   22 RODATA    1 pages    82160000 - 82170000 (65536 bytes)
+   23 RODATA    1 pages    82170000 - 82180000 (65536 bytes)
+   24 RODATA    1 pages    82180000 - 82190000 (65536 bytes)
+   25 RODATA    1 pages    82190000 - 821A0000 (65536 bytes)
+   26 RODATA    1 pages    821A0000 - 821B0000 (65536 bytes)
+   27 RODATA    1 pages    821B0000 - 821C0000 (65536 bytes)
+   28 RODATA    1 pages    821C0000 - 821D0000 (65536 bytes)
+   29 RODATA    1 pages    821D0000 - 821E0000 (65536 bytes)
+   30 RODATA    1 pages    821E0000 - 821F0000 (65536 bytes)
+   31 RODATA    1 pages    821F0000 - 82200000 (65536 bytes)
+   32 RODATA    1 pages    82200000 - 82210000 (65536 bytes)
+   33 RODATA    1 pages    82210000 - 82220000 (65536 bytes)
+   34 RODATA    1 pages    82220000 - 82230000 (65536 bytes)
+   35 RODATA    1 pages    82230000 - 82240000 (65536 bytes)
+   36 RODATA    1 pages    82240000 - 82250000 (65536 bytes)
+   37 RODATA    1 pages    82250000 - 82260000 (65536 bytes)
+   38 RODATA    1 pages    82260000 - 82270000 (65536 bytes)
+   39 CODE      1 pages    82270000 - 82280000 (65536 bytes)
+   40 CODE      1 pages    82280000 - 82290000 (65536 bytes)
+   41 CODE      1 pages    82290000 - 822A0000 (65536 bytes)
+   42 CODE      1 pages    822A0000 - 822B0000 (65536 bytes)
+   43 CODE      1 pages    822B0000 - 822C0000 (65536 bytes)
+   44 CODE      1 pages    822C0000 - 822D0000 (65536 bytes)
+   45 CODE      1 pages    822D0000 - 822E0000 (65536 bytes)
+   46 CODE      1 pages    822E0000 - 822F0000 (65536 bytes)
+   47 CODE      1 pages    822F0000 - 82300000 (65536 bytes)
+   48 CODE      1 pages    82300000 - 82310000 (65536 bytes)
+   49 CODE      1 pages    82310000 - 82320000 (65536 bytes)
+   50 CODE      1 pages    82320000 - 82330000 (65536 bytes)
+   51 CODE      1 pages    82330000 - 82340000 (65536 bytes)
+   52 CODE      1 pages    82340000 - 82350000 (65536 bytes)
+   53 CODE      1 pages    82350000 - 82360000 (65536 bytes)
+   54 CODE      1 pages    82360000 - 82370000 (65536 bytes)
+   55 CODE      1 pages    82370000 - 82380000 (65536 bytes)
+   56 CODE      1 pages    82380000 - 82390000 (65536 bytes)
+   57 CODE      1 pages    82390000 - 823A0000 (65536 bytes)
+   58 CODE      1 pages    823A0000 - 823B0000 (65536 bytes)
+   59 CODE      1 pages    823B0000 - 823C0000 (65536 bytes)
+   60 CODE      1 pages    823C0000 - 823D0000 (65536 bytes)
+   61 CODE      1 pages    823D0000 - 823E0000 (65536 bytes)
+   62 CODE      1 pages    823E0000 - 823F0000 (65536 bytes)
+   63 CODE      1 pages    823F0000 - 82400000 (65536 bytes)
+   64 CODE      1 pages    82400000 - 82410000 (65536 bytes)
+   65 CODE      1 pages    82410000 - 82420000 (65536 bytes)
+   66 CODE      1 pages    82420000 - 82430000 (65536 bytes)
+   67 CODE      1 pages    82430000 - 82440000 (65536 bytes)
+   68 CODE      1 pages    82440000 - 82450000 (65536 bytes)
+   69 CODE      1 pages    82450000 - 82460000 (65536 bytes)
+   70 CODE      1 pages    82460000 - 82470000 (65536 bytes)
+   71 CODE      1 pages    82470000 - 82480000 (65536 bytes)
+   72 CODE      1 pages    82480000 - 82490000 (65536 bytes)
+   73 CODE      1 pages    82490000 - 824A0000 (65536 bytes)
+   74 CODE      1 pages    824A0000 - 824B0000 (65536 bytes)
+   75 CODE      1 pages    824B0000 - 824C0000 (65536 bytes)
+   76 CODE      1 pages    824C0000 - 824D0000 (65536 bytes)
+   77 CODE      1 pages    824D0000 - 824E0000 (65536 bytes)
+   78 CODE      1 pages    824E0000 - 824F0000 (65536 bytes)
+   79 CODE      1 pages    824F0000 - 82500000 (65536 bytes)
+   80 CODE      1 pages    82500000 - 82510000 (65536 bytes)
+   81 CODE      1 pages    82510000 - 82520000 (65536 bytes)
+   82 CODE      1 pages    82520000 - 82530000 (65536 bytes)
+   83 CODE      1 pages    82530000 - 82540000 (65536 bytes)
+   84 CODE      1 pages    82540000 - 82550000 (65536 bytes)
+   85 CODE      1 pages    82550000 - 82560000 (65536 bytes)
+   86 CODE      1 pages    82560000 - 82570000 (65536 bytes)
+   87 CODE      1 pages    82570000 - 82580000 (65536 bytes)
+   88 CODE      1 pages    82580000 - 82590000 (65536 bytes)
+   89 CODE      1 pages    82590000 - 825A0000 (65536 bytes)
+   90 CODE      1 pages    825A0000 - 825B0000 (65536 bytes)
+   91 CODE      1 pages    825B0000 - 825C0000 (65536 bytes)
+   92 CODE      1 pages    825C0000 - 825D0000 (65536 bytes)
+   93 CODE      1 pages    825D0000 - 825E0000 (65536 bytes)
+   94 CODE      1 pages    825E0000 - 825F0000 (65536 bytes)
+   95 CODE      1 pages    825F0000 - 82600000 (65536 bytes)
+   96 CODE      1 pages    82600000 - 82610000 (65536 bytes)
+   97 CODE      1 pages    82610000 - 82620000 (65536 bytes)
+   98 CODE      1 pages    82620000 - 82630000 (65536 bytes)
+   99 CODE      1 pages    82630000 - 82640000 (65536 bytes)
+  100 CODE      1 pages    82640000 - 82650000 (65536 bytes)
+  101 CODE      1 pages    82650000 - 82660000 (65536 bytes)
+  102 CODE      1 pages    82660000 - 82670000 (65536 bytes)
+  103 CODE      1 pages    82670000 - 82680000 (65536 bytes)
+  104 CODE      1 pages    82680000 - 82690000 (65536 bytes)
+  105 CODE      1 pages    82690000 - 826A0000 (65536 bytes)
+  106 CODE      1 pages    826A0000 - 826B0000 (65536 bytes)
+  107 CODE      1 pages    826B0000 - 826C0000 (65536 bytes)
+  108 CODE      1 pages    826C0000 - 826D0000 (65536 bytes)
+  109 CODE      1 pages    826D0000 - 826E0000 (65536 bytes)
+  110 CODE      1 pages    826E0000 - 826F0000 (65536 bytes)
+  111 CODE      1 pages    826F0000 - 82700000 (65536 bytes)
+  112 CODE      1 pages    82700000 - 82710000 (65536 bytes)
+  113 CODE      1 pages    82710000 - 82720000 (65536 bytes)
+  114 CODE      1 pages    82720000 - 82730000 (65536 bytes)
+  115 CODE      1 pages    82730000 - 82740000 (65536 bytes)
+  116 CODE      1 pages    82740000 - 82750000 (65536 bytes)
+  117 CODE      1 pages    82750000 - 82760000 (65536 bytes)
+  118 CODE      1 pages    82760000 - 82770000 (65536 bytes)
+  119 CODE      1 pages    82770000 - 82780000 (65536 bytes)
+  120 CODE      1 pages    82780000 - 82790000 (65536 bytes)
+  121 CODE      1 pages    82790000 - 827A0000 (65536 bytes)
+  122 CODE      1 pages    827A0000 - 827B0000 (65536 bytes)
+  123 CODE      1 pages    827B0000 - 827C0000 (65536 bytes)
+  124 CODE      1 pages    827C0000 - 827D0000 (65536 bytes)
+  125 CODE      1 pages    827D0000 - 827E0000 (65536 bytes)
+  126 CODE      1 pages    827E0000 - 827F0000 (65536 bytes)
+  127 CODE      1 pages    827F0000 - 82800000 (65536 bytes)
+  128 CODE      1 pages    82800000 - 82810000 (65536 bytes)
+  129 CODE      1 pages    82810000 - 82820000 (65536 bytes)
+  130 CODE      1 pages    82820000 - 82830000 (65536 bytes)
+  131 CODE      1 pages    82830000 - 82840000 (65536 bytes)
+  132 CODE      1 pages    82840000 - 82850000 (65536 bytes)
+  133 CODE      1 pages    82850000 - 82860000 (65536 bytes)
+  134 CODE      1 pages    82860000 - 82870000 (65536 bytes)
+  135 CODE      1 pages    82870000 - 82880000 (65536 bytes)
+  136 CODE      1 pages    82880000 - 82890000 (65536 bytes)
+  137 CODE      1 pages    82890000 - 828A0000 (65536 bytes)
+  138 CODE      1 pages    828A0000 - 828B0000 (65536 bytes)
+  139 CODE      1 pages    828B0000 - 828C0000 (65536 bytes)
+  140 CODE      1 pages    828C0000 - 828D0000 (65536 bytes)
+  141 CODE      1 pages    828D0000 - 828E0000 (65536 bytes)
+  142 CODE      1 pages    828E0000 - 828F0000 (65536 bytes)
+  143 CODE      1 pages    828F0000 - 82900000 (65536 bytes)
+  144 CODE      1 pages    82900000 - 82910000 (65536 bytes)
+  145 CODE      1 pages    82910000 - 82920000 (65536 bytes)
+  146 CODE      1 pages    82920000 - 82930000 (65536 bytes)
+  147 CODE      1 pages    82930000 - 82940000 (65536 bytes)
+  148 CODE      1 pages    82940000 - 82950000 (65536 bytes)
+  149 CODE      1 pages    82950000 - 82960000 (65536 bytes)
+  150 CODE      1 pages    82960000 - 82970000 (65536 bytes)
+  151 CODE      1 pages    82970000 - 82980000 (65536 bytes)
+  152 CODE      1 pages    82980000 - 82990000 (65536 bytes)
+  153 CODE      1 pages    82990000 - 829A0000 (65536 bytes)
+  154 CODE      1 pages    829A0000 - 829B0000 (65536 bytes)
+  155 CODE      1 pages    829B0000 - 829C0000 (65536 bytes)
+  156 CODE      1 pages    829C0000 - 829D0000 (65536 bytes)
+  157 CODE      1 pages    829D0000 - 829E0000 (65536 bytes)
+  158 RWDATA    1 pages    829E0000 - 829F0000 (65536 bytes)
+  159 RWDATA    1 pages    829F0000 - 82A00000 (65536 bytes)
+  160 RWDATA    1 pages    82A00000 - 82A10000 (65536 bytes)
+  161 RWDATA    1 pages    82A10000 - 82A20000 (65536 bytes)
+  162 RWDATA    1 pages    82A20000 - 82A30000 (65536 bytes)
+  163 RWDATA    1 pages    82A30000 - 82A40000 (65536 bytes)
+  164 RWDATA    1 pages    82A40000 - 82A50000 (65536 bytes)
+  165 RWDATA    1 pages    82A50000 - 82A60000 (65536 bytes)
+  166 RWDATA    1 pages    82A60000 - 82A70000 (65536 bytes)
+  167 RWDATA    1 pages    82A70000 - 82A80000 (65536 bytes)
+  168 RWDATA    1 pages    82A80000 - 82A90000 (65536 bytes)
+  169 RWDATA    1 pages    82A90000 - 82AA0000 (65536 bytes)
+  170 RWDATA    1 pages    82AA0000 - 82AB0000 (65536 bytes)
+  171 RWDATA    1 pages    82AB0000 - 82AC0000 (65536 bytes)
+  172 RWDATA    1 pages    82AC0000 - 82AD0000 (65536 bytes)
+  173 RWDATA    1 pages    82AD0000 - 82AE0000 (65536 bytes)
+  174 RWDATA    1 pages    82AE0000 - 82AF0000 (65536 bytes)
+  175 RWDATA    1 pages    82AF0000 - 82B00000 (65536 bytes)
+  176 RWDATA    1 pages    82B00000 - 82B10000 (65536 bytes)
+  177 RWDATA    1 pages    82B10000 - 82B20000 (65536 bytes)
+  178 RWDATA    1 pages    82B20000 - 82B30000 (65536 bytes)
+  179 RWDATA    1 pages    82B30000 - 82B40000 (65536 bytes)
+  180 RWDATA    1 pages    82B40000 - 82B50000 (65536 bytes)
+  181 RWDATA    1 pages    82B50000 - 82B60000 (65536 bytes)
+  182 RWDATA    1 pages    82B60000 - 82B70000 (65536 bytes)
+  183 RWDATA    1 pages    82B70000 - 82B80000 (65536 bytes)
+  184 RWDATA    1 pages    82B80000 - 82B90000 (65536 bytes)
+  185 RWDATA    1 pages    82B90000 - 82BA0000 (65536 bytes)
+  186 RWDATA    1 pages    82BA0000 - 82BB0000 (65536 bytes)
+  187 RWDATA    1 pages    82BB0000 - 82BC0000 (65536 bytes)
+  188 RWDATA    1 pages    82BC0000 - 82BD0000 (65536 bytes)
+  189 RWDATA    1 pages    82BD0000 - 82BE0000 (65536 bytes)
+  190 RWDATA    1 pages    82BE0000 - 82BF0000 (65536 bytes)
+  191 RODATA    1 pages    82BF0000 - 82C00000 (65536 bytes)
+  192 RODATA    1 pages    82C00000 - 82C10000 (65536 bytes)
+  193 RODATA    1 pages    82C10000 - 82C20000 (65536 bytes)
+  194 RODATA    1 pages    82C20000 - 82C30000 (65536 bytes)
+  195 RODATA    1 pages    82C30000 - 82C40000 (65536 bytes)
+  196 RODATA    1 pages    82C40000 - 82C50000 (65536 bytes)
+  197 RODATA    1 pages    82C50000 - 82C60000 (65536 bytes)
+  198 RODATA    1 pages    82C60000 - 82C70000 (65536 bytes)
+  199 RODATA    1 pages    82C70000 - 82C80000 (65536 bytes)
+  200 RODATA    1 pages    82C80000 - 82C90000 (65536 bytes)
+  201 RODATA    1 pages    82C90000 - 82CA0000 (65536 bytes)
+  202 RODATA    1 pages    82CA0000 - 82CB0000 (65536 bytes)
+  203 RODATA    1 pages    82CB0000 - 82CC0000 (65536 bytes)
+  204 RODATA    1 pages    82CC0000 - 82CD0000 (65536 bytes)
+  205 RODATA    1 pages    82CD0000 - 82CE0000 (65536 bytes)
+  206 RODATA    1 pages    82CE0000 - 82CF0000 (65536 bytes)
+  207 RODATA    1 pages    82CF0000 - 82D00000 (65536 bytes)
+  208 RODATA    1 pages    82D00000 - 82D10000 (65536 bytes)
+  209 RODATA    1 pages    82D10000 - 82D20000 (65536 bytes)
+  210 RODATA    1 pages    82D20000 - 82D30000 (65536 bytes)
+  211 RODATA    1 pages    82D30000 - 82D40000 (65536 bytes)
+  212 RODATA    1 pages    82D40000 - 82D50000 (65536 bytes)
+  213 RODATA    1 pages    82D50000 - 82D60000 (65536 bytes)
+  214 RODATA    1 pages    82D60000 - 82D70000 (65536 bytes)
+Imports:
+ xam - 118 imports
+   Version: 0.0.6132.32
+   Min Version: 0.0.5766.32
+
+         Total:  118
+         Known:  100% (118 known, 0 unknown)
+   Implemented:   84% (100 implemented, 18 unimplemented)
+
+   F 82000400 829BEE7C 3D1 ( 977)    XGetVideoMode
+   F 82000404 829BEE8C 3CC ( 972)    XGetGameRegion
+   F 82000408 829BEE9C 1A6 ( 422)    XamLoaderSetLaunchData
+   F 8200040C 829BEEAC 1A8 ( 424)    XamLoaderGetLaunchData
+   F 82000410 829BEEBC 1A7 ( 423)    XamLoaderGetLaunchDataSize
+   F 82000414 829BEECC 28B ( 651)    XNotifyGetNext
+   F 82000418 829BEEDC 190 ( 400)    XamInputGetCapabilities
+   F 8200041C 829BEEEC 191 ( 401)    XamInputGetState
+   F 82000420 829BEEFC 192 ( 402)    XamInputSetState
+   F 82000424 829BEF0C 2BC ( 700)    XamShowSigninUI
+   F 82000428 829BEF1C 2C8 ( 712) !! XamShowPlayersUI
+   F 8200042C 829BEF2C 2C1 ( 705)    XamShowKeyboardUI
+   F 82000430 829BEF3C 2D5 ( 725) !! XamShowGamerCardUIForXUID
+   F 82000434 829BEF4C 2C6 ( 710) !! XamShowPlayerReviewUI
+   F 82000438 829BEF5C 2CB ( 715)    XamShowDeviceSelectorUI
+   F 8200043C 829BEF6C 2CD ( 717) !! XamShowGameInviteUI
+   F 82000440 829BEF7C 2D9 ( 729)    XamShowDirtyDiscErrorUI
+   F 82000444 829BEF8C 1F7 ( 503)    XMsgStartIORequest
+   F 82000448 829BEF9C 20E ( 526)    XamUserGetName
+   F 8200044C 829BEFAC 210 ( 528)    XamUserGetSigninState
+   F 82000450 829BEFBC 213 ( 531)    XamUserAreUsersFriends
+   F 82000454 829BEFCC 212 ( 530)    XamUserCheckPrivilege
+   F 82000458 829BEFDC 282 ( 642)    XamGetSystemVersion
+   F 8200045C 829BEFEC 2F7 ( 759) !! XamUserCreateStatsEnumerator
+   F 82000460 829BEFFC 2F0 ( 752)    XamWriteGamerTile
+   F 82000464 829BF00C 2EE ( 750)    XamUserCreateAchievementEnumerator
+   F 82000468 829BF01C 20A ( 522)    XamUserGetXUID
+   F 8200046C 829BF02C 259 ( 601)    XamContentCreateEx
+   F 82000470 829BF03C 25B ( 603)    XamContentDelete
+   F 82000474 829BF04C 25A ( 602)    XamContentClose
+   F 82000478 829BF05C 267 ( 615)    XamContentFlush
+   F 8200047C 829BF06C 25C ( 604)    XamContentCreateEnumerator
+   F 82000480 829BF07C 265 ( 613)    XamContentGetDeviceState
+   F 82000484 829BF08C 25E ( 606)    XamContentGetDeviceData
+   F 82000488 829BF09C 250 ( 592)    XamEnumerate
+   F 8200048C 829BF0AC 1A4 ( 420)    XamLoaderLaunchTitle
+   F 82000490 829BF0BC 1F8 ( 504)    XMsgCancelIORequest
+   F 82000494 829BF0CC 28A ( 650)    XamNotifyCreateListener
+   F 82000498 829BF0DC 2DC ( 732)    XamShowMessageBoxUIEx
+   F 8200049C 829BF0EC 3CD ( 973)    XGetLanguage
+   F 820004A0 829BF0FC 3CB ( 971)    XGetAVPack
+   F 820004A4 829BF10C 1A9 ( 425)    XamLoaderTerminateTitle
+   F 820004A8 829BF11C 1B3 ( 435)    XamTaskShouldExit
+   F 820004AC 829BF12C 1B1 ( 433) !! XamTaskCloseHandle
+   F 820004B0 829BF13C 1AF ( 431)    XamTaskSchedule
+   F 820004B4 829BF14C 280 ( 640)    XamGetExecutionId
+   F 820004B8 829BFEEC 30E ( 782) !! XamVoiceSubmitPacket
+   F 820004BC 829BFEDC 30F ( 783)    XamVoiceClose
+   F 820004C0 829BFECC 30D ( 781)    XamVoiceHeadsetPresent
+   F 820004C4 829BFEBC 316 ( 790)    XamSessionCreateHandle
+   F 820004C8 829BFE0C 227 ( 551)    XamUserGetSigninInfo
+   F 820004CC 829BFDFC 28C ( 652)    XNotifyPositionUI
+   F 820004D0 829BFDEC 1FC ( 508)    XMsgStartIORequestEx
+   F 820004D4 829BFDDC 022 (  34)    NetDll___WSAFDIsSet
+   F 820004D8 829BFDCC 021 (  33)    NetDll_WSAWaitForMultipleEvents
+   F 820004DC 829BFDBC 020 (  32)    NetDll_WSAResetEvent
+   F 820004E0 829BFDAC 01F (  31)    NetDll_WSASetEvent
+   F 820004E4 829BFD9C 01E (  30)    NetDll_WSACloseEvent
+   F 820004E8 829BFD8C 01D (  29)    NetDll_WSACreateEvent
+   F 820004EC 829BFD7C 01C (  28)    NetDll_WSASetLastError
+   F 820004F0 829BFD6C 01B (  27)    NetDll_WSAGetLastError
+   F 820004F4 829BFD5C 01A (  26)    NetDll_inet_addr
+   F 820004F8 829BFD4C 023 (  35) !! NetDll_WSAEventSelect
+   F 820004FC 829BFD3C 019 (  25)    NetDll_WSASendTo
+   F 82000500 829BFD2C 018 (  24)    NetDll_sendto
+   F 82000504 829BFD1C 017 (  23) !! NetDll_WSASend
+   F 82000508 829BFD0C 016 (  22)    NetDll_send
+   F 8200050C 829BFCFC 015 (  21)    NetDll_WSARecvFrom
+   F 82000510 829BFCEC 014 (  20)    NetDll_recvfrom
+   F 82000514 829BFCDC 013 (  19) !! NetDll_WSARecv
+   F 82000518 829BFCCC 012 (  18)    NetDll_recv
+   F 8200051C 829BFCBC 011 (  17) !! NetDll_WSACancelOverlappedIO
+   F 82000520 829BFCAC 010 (  16) !! NetDll_WSAGetOverlappedResult
+   F 82000524 829BFC9C 00F (  15)    NetDll_select
+   F 82000528 829BFC8C 00E (  14)    NetDll_accept
+   F 8200052C 829BFC7C 00D (  13)    NetDll_listen
+   F 82000530 829BFC6C 00C (  12)    NetDll_connect
+   F 82000534 829BFC5C 00B (  11)    NetDll_bind
+   F 82000538 829BFC4C 00A (  10) !! NetDll_getpeername
+   F 8200053C 829BFC3C 009 (   9)    NetDll_getsockname
+   F 82000540 829BFC2C 008 (   8)    NetDll_getsockopt
+   F 82000544 829BFC1C 007 (   7)    NetDll_setsockopt
+   F 82000548 829BFC0C 006 (   6)    NetDll_ioctlsocket
+   F 8200054C 829BFBFC 005 (   5)    NetDll_shutdown
+   F 82000550 829BFBEC 004 (   4)    NetDll_closesocket
+   F 82000554 829BFBDC 003 (   3)    NetDll_socket
+   F 82000558 829BFBCC 002 (   2)    NetDll_WSACleanup
+   F 8200055C 829BFBBC 001 (   1)    NetDll_WSAStartup
+   F 82000560 829BFBAC 24E ( 590)    XamCreateEnumeratorHandle
+   F 82000564 829BFB9C 24F ( 591)    XamGetPrivateEnumStructureFromHandle
+   F 82000568 829BFB8C 317 ( 791)    XamSessionRefObjByHandle
+   F 8200056C 829BFB7C 21A ( 538)    XamUserWriteProfileSettings
+   F 82000570 829BFB6C 219 ( 537)    XamUserReadProfileSettings
+   F 82000574 829BFB5C 136 ( 310) !! XNetLogonGetTitleID
+   F 82000578 829BFB4C 1EA ( 490)    XamAlloc
+   F 8200057C 829BFB3C 1F4 ( 500)    XMsgInProcessCall
+   F 82000580 829BFB2C 1EC ( 492)    XamFree
+   F 82000584 829BFB1C 04B (  75)    NetDll_XNetGetEthernetLinkStatus
+   F 82000588 829BFB0C 04A (  74)    NetDll_XNetGetDebugXnAddr
+   F 8200058C 829BFAFC 049 (  73)    NetDll_XNetGetTitleXnAddr
+   F 82000590 829BFAEC 048 (  72)    NetDll_XNetQosRelease
+   F 82000594 829BFADC 046 (  70) !! NetDll_XNetQosLookup
+   F 82000598 829BFACC 045 (  69)    NetDll_XNetQosListen
+   F 8200059C 829BFABC 044 (  68)    NetDll_XNetDnsRelease
+   F 820005A0 829BFAAC 043 (  67)    NetDll_XNetDnsLookup
+   F 820005A4 829BFA9C 042 (  66) !! NetDll_XNetGetConnectStatus
+   F 820005A8 829BFA8C 040 (  64)    NetDll_XNetXnAddrToMachineId
+   F 820005AC 829BFA7C 03F (  63) !! NetDll_XNetUnregisterInAddr
+   F 820005B0 829BFA6C 03E (  62)    NetDll_XNetInAddrToString
+   F 820005B4 829BFA5C 03A (  58) !! NetDll_XNetServerToInAddr
+   F 820005B8 829BFA4C 039 (  57)    NetDll_XNetXnAddrToInAddr
+   F 820005BC 829BFA3C 038 (  56)    NetDll_XNetUnregisterKey
+   F 820005C0 829BFA2C 037 (  55)    NetDll_XNetRegisterKey
+   F 820005C4 829BFA1C 036 (  54)    NetDll_XNetCreateKey
+   F 820005C8 829BFA0C 035 (  53)    NetDll_XNetRandom
+   F 820005CC 829BF9FC 034 (  52)    NetDll_XNetCleanup
+   F 820005D0 829BF9EC 033 (  51)    NetDll_XNetStartup
+   F 820005D4 829BFEFC 30C ( 780)    XamVoiceCreate
+
+ xboxkrnl - 175 imports
+   Version: 0.0.6132.32
+   Min Version: 0.0.5766.32
+
+         Total:  175
+         Known:  100% (175 known, 0 unknown)
+   Implemented:   88% (155 implemented, 20 unimplemented)
+
+   F 820005DC 829BF56C 0E4 ( 228)    NtQueryDirectoryFile
+   F 820005E0 829BF57C 0F1 ( 241)    NtReadFileScatter
+   F 820005E4 829BF58C 0F0 ( 240)    NtReadFile
+   F 820005E8 829BF59C 0DA ( 218)    NtDuplicateObject
+   F 820005EC 829BF5AC 041 (  65) !! IoInvalidDeviceRequest
+   F 820005F0 829BF5BC 10F ( 271)    ObReferenceObject
+   F 820005F4 829BF5CC 037 (  55)    IoCreateDevice
+   F 820005F8 829BF5DC 07D ( 125)    KeLeaveCriticalRegion
+   F 820005FC 829BF5EC 039 (  57) !! IoDeleteDevice
+   F 82000600 829BF5FC 05F (  95)    KeEnterCriticalRegion
+   F 82000604 829BF60C 00B (  11)    ExAllocatePoolTypeWithTag
+   F 82000608 829BF55C 00D (  13)    ExCreateThread
+   F 8200060C 829BF62C 192 ( 402)    XeCryptSha
+   F 82000610 829BF63C 035 (  53) !! IoCompleteRequest
+   F 82000614 829BF64C 0B4 ( 180)    KfReleaseSpinLock
+   F 82000618 829BF65C 0B1 ( 177)    KfAcquireSpinLock
+   F 8200061C 829BF66C 0B0 ( 176)    KeWaitForSingleObject
+   F 82000620 829BF67C 09D ( 157)    KeSetEvent
+   F 82000624 829BF68C 052 (  82)    KeBugCheck
+   F 82000628 829BF69C 149 ( 329)    RtlUpcaseUnicodeChar
+   F 8200062C 829BF6AC 109 ( 265) !! ObIsTitleObject
+   F 82000630 829BF6BC 034 (  52) !! IoCheckShareAccess
+   F 82000634 829BF6CC 047 (  71) !! IoSetShareAccess
+   F 82000638 829BF6DC 045 (  69) !! IoRemoveShareAccess
+   F 8200063C 829BF6EC 25A ( 602) !! StfsControlDevice
+   F 82000640 829BF6FC 259 ( 601) !! StfsCreateDevice
+   F 82000644 829BF70C 257 ( 599) !! XeKeysConsoleSignatureVerification
+   F 82000648 829BF71C 256 ( 598) !! XeKeysConsolePrivateKeySign
+   F 8200064C 829BF72C 0DB ( 219)    NtFlushBuffersFile
+   F 82000650 829BF73C 03B (  59) !! IoDismountVolume
+   F 82000654 829BF74C 103 ( 259)    ObCreateSymbolicLink
+   F 82000658 829BF75C 104 ( 260)    ObDeleteSymbolicLink
+   F 8200065C 829BF76C 08F ( 143)    KeResetEvent
+   F 82000660 829BF77C 015 (  21)    ExRegisterTitleTerminateNotification
+   F 82000664 829BF78C 143 ( 323)    RtlUnicodeToMultiByteN
+   F 82000668 829BF79C 05A (  90)    KeDelayExecutionThread
+   F 8200066C 829BF7AC 196 ( 406)    XexGetModuleSection
+   F 82000670 829BF7BC 009 (   9)    ExAllocatePool
+   V 82000674          1AE ( 430)    ExLoadedCommandLine
+   F 82000678 829BF7CC 028 (  40)    HalReturnToFirmware
+   F 8200067C 829BF7DC 019 (  25)    ExTerminateThread
+   F 82000680 829BF7EC 03C (  60) !! IoDismountVolumeByFileHandle
+   F 82000684 829BF7FC 18F ( 399)    XeCryptShaInit
+   F 82000688 829BF80C 190 ( 400)    XeCryptShaUpdate
+   F 8200068C 829BF81C 191 ( 401)    XeCryptShaFinal
+   F 82000690 829BF82C 14D ( 333)    _vsnprintf
+   V 82000694          1BE ( 446)    VdGlobalDevice
+   F 82000698 829BF83C 1C7 ( 455)    VdPersistDisplay
+   F 8200069C 829BF84C 25B ( 603)    VdSwap
+   F 820006A0 829BF85C 1BD ( 445)    VdGetSystemCommandBuffer
+   V 820006A4          266 ( 614)    KeCertMonitorData
+   F 820006A8 829BF86C 089 ( 137)    KeReleaseSpinLockFromRaisedIrql
+   F 820006AC 829BF87C 04D (  77)    KeAcquireSpinLockAtRaisedIrql
+   F 820006B0 829BF88C 1DF ( 479)    KiApcNormalRoutineNop
+   F 820006B4 829BF89C 1B6 ( 438)    VdEnableRingBufferRPtrWriteBack
+   F 820006B8 829BF8AC 1C3 ( 451)    VdInitializeRingBuffer
+   F 820006BC 829BF8BC 0BE ( 190)    MmGetPhysicalAddress
+   F 820006C0 829BF8CC 1D9 ( 473)    VdSetSystemCommandBufferGpuIdentifierAddress
+   F 820006C4 829BF8DC 1B4 ( 436)    VdEnableDisableClockGating
+   F 820006C8 829BF8EC 13B ( 315)    sprintf
+   F 820006CC 829BF8FC 1B9 ( 441)    VdGetCurrentDisplayGamma
+   F 820006D0 829BF90C 1C9 ( 457)    VdQueryVideoFlags
+   F 820006D4 829BF91C 1B1 ( 433)    VdCallGraphicsNotificationRoutines
+   V 820006D8          1C0 ( 448)    VdGpuClockInMHz
+   F 820006DC 829BF92C 1CA ( 458)    VdQueryVideoMode
+   F 820006E0 829BF93C 1C5 ( 453)    VdInitializeScalerCommandBuffer
+   F 820006E4 829BF94C 269 ( 617)    VdRetrainEDRAM
+   F 820006E8 829BF95C 26A ( 618)    VdRetrainEDRAMWorker
+   V 820006EC          1C1 ( 449)    VdHSIOCalibrationLock
+   F 820006F0 829BF96C 1DC ( 476)    VdShutdownEngines
+   F 820006F4 829BF97C 1BA ( 442)    VdGetCurrentDisplayInformation
+   F 820006F8 829BF98C 1D3 ( 467)    VdSetDisplayMode
+   F 820006FC 829BF99C 1D5 ( 469)    VdSetGraphicsInterruptCallback
+   F 82000700 829BF9AC 1C2 ( 450)    VdInitializeEngines
+   F 82000704 829BF9BC 1C6 ( 454)    VdIsHSIOTrainingSucceeded
+   F 82000708 829BF9CC 06B ( 107)    KeLockL2
+   F 8200070C 829BF9DC 06C ( 108)    KeUnlockL2
+   F 82000710 829BF54C 003 (   3)    DbgPrint
+   F 82000714 829BF53C 001 (   1)    DbgBreakPoint
+   F 82000718 829BF52C 010 (  16)    ExGetXConfigSetting
+   F 8200071C 829BF51C 13F ( 319)    RtlTimeFieldsToTime
+   F 82000720 829BF50C 021 (  33)    FscSetCacheElementCount
+   F 82000724 829BF4FC 084 ( 132)    KeQuerySystemTime
+   F 82000728 829BF4EC 0F5 ( 245)    NtResumeThread
+   F 8200072C 829BF4DC 140 ( 320)    RtlTimeToTimeFields
+   F 82000730 829BF4CC 194 ( 404)    XexCheckExecutablePrivilege
+   F 82000734 829BF4BC 0E7 ( 231)    NtQueryFullAttributesFile
+   F 82000738 829BF4AC 13A ( 314)    _snprintf
+   F 8200073C 829BF49C 19B ( 411) !! XexLoadImageHeaders
+   F 82000740 829BF48C 0D9 ( 217)    NtDeviceIoControlFile
+   V 82000744          193 ( 403)    XexExecutableModuleHandle
+   F 82000748 829BF47C 12B ( 299)    RtlImageXexHeaderField
+   F 8200074C 829BF46C 0DF ( 223)    NtOpenFile
+   F 82000750 829BF45C 0EF ( 239)    NtQueryVolumeInformationFile
+   F 82000754 829BF44C 11D ( 285)    RtlCompareStringN
+   V 82000758          156 ( 342)    XboxHardwareInfo
+   F 8200075C 829BF43C 0FE ( 254)    NtWaitForMultipleObjectsEx
+   F 82000760 829BF42C 0F3 ( 243)    NtReleaseSemaphore
+   F 82000764 829BF41C 0D5 ( 213)    NtCreateSemaphore
+   F 82000768 829BF40C 0D2 ( 210)    NtCreateFile
+   F 8200076C 829BF3FC 0CF ( 207)    NtClose
+   F 82000770 829BF3EC 0E8 ( 232)    NtQueryInformationFile
+   F 82000774 829BF3DC 0F7 ( 247)    NtSetInformationFile
+   F 82000778 829BF3CC 12C ( 300)    RtlInitAnsiString
+   F 8200077C 829BF3BC 0FF ( 255)    NtWriteFile
+   F 82000780 829BF3AC 0FD ( 253)    NtWaitForSingleObjectEx
+   F 82000784 829BF39C 0BD ( 189)    MmFreePhysicalMemory
+   F 82000788 829BF38C 0C5 ( 197)    MmQueryAllocationSize
+   F 8200078C 829BF37C 0BA ( 186)    MmAllocatePhysicalMemoryEx
+   F 82000790 829BF36C 0C6 ( 198)    MmQueryStatistics
+   F 82000794 829BF35C 136 ( 310)    RtlRaiseException
+   F 82000798 829BF34C 0EE ( 238)    NtQueryVirtualMemory
+   F 8200079C 829BF33C 11B ( 283)    RtlCompareMemoryUlong
+   F 820007A0 829BF32C 0DC ( 220)    NtFreeVirtualMemory
+   F 820007A4 829BF31C 1A5 ( 421) !! __C_specific_handler
+   F 820007A8 829BF30C 066 ( 102)    KeGetCurrentProcessType
+   F 820007AC 829BF2FC 053 (  83)    KeBugCheckEx
+   F 820007B0 829BF2EC 126 ( 294)    RtlFillMemoryUlong
+   F 820007B4 829BF2DC 0CC ( 204)    NtAllocateVirtualMemory
+   V 820007B8          0AD ( 173)    KeTimeStampBundle
+   V 820007BC          059 (  89)    KeDebugMonitorData
+   F 820007C0 829BF2CC 097 ( 151)    KeSetAffinityThread
+   F 820007C4 829BF2BC 0FC ( 252)    NtSuspendThread
+   F 820007C8 829BF2AC 09C ( 156)    KeSetDisableBoostThread
+   V 820007CC          01B (  27) !! ExThreadObjectType
+   F 820007D0 829BF29C 110 ( 272)    ObReferenceObjectByHandle
+   F 820007D4 829BF28C 099 ( 153)    KeSetBasePriorityThread
+   F 820007D8 829BF27C 105 ( 261)    ObDereferenceObject
+   F 820007DC 829BF26C 0CE ( 206)    NtClearEvent
+   F 820007E0 829BF25C 0F6 ( 246)    NtSetEvent
+   F 820007E4 829BF24C 0D1 ( 209)    NtCreateEvent
+   F 820007E8 829BF23C 090 ( 144) !! KeRestoreFloatingPointState
+   F 820007EC 829BF22C 095 ( 149) !! KeSaveFloatingPointState
+   F 820007F0 829BF21C 083 ( 131)    KeQueryPerformanceFrequency
+   F 820007F4 829BF20C 0C4 ( 196)    MmQueryAddressProtect
+   F 820007F8 829BF1FC 133 ( 307)    RtlMultiByteToUnicodeN
+   F 820007FC 829BF1EC 135 ( 309)    RtlNtStatusToDosError
+   V 82000800          158 ( 344)    XboxKrnlVersion
+   F 82000804 829BF1DC 195 ( 405)    XexGetModuleHandle
+   F 82000808 829BF1CC 197 ( 407)    XexGetProcedureAddress
+   F 8200080C 829BF1BC 155 ( 341)    KeTlsSetValue
+   F 82000810 829BF1AC 154 ( 340)    KeTlsGetValue
+   F 82000814 829BF19C 152 ( 338)    KeTlsAlloc
+   F 82000818 829BFE1C 12F ( 303)    RtlInitializeCriticalSectionAndSpinCount
+   F 8200081C 829BFE2C 147 ( 327) !! RtlUnwind
+   F 82000820 829BFE3C 153 ( 339)    KeTlsFree
+   F 82000824 829BFE4C 05D (  93)    KeEnableFpuExceptions
+   F 82000828 829BFE5C 119 ( 281) !! RtlCaptureContext
+   F 8200082C 829BFE6C 0D4 ( 212)    NtCreateMutant
+   F 82000830 829BFE7C 0F2 ( 242)    NtReleaseMutant
+   F 82000834 829BFE8C 127 ( 295)    RtlFreeAnsiString
+   F 82000838 829BFE9C 142 ( 322)    RtlUnicodeStringToAnsiString
+   F 8200083C 829BFEAC 12D ( 301)    RtlInitUnicodeString
+   F 82000840 829BF18C 130 ( 304)    RtlLeaveCriticalSection
+   F 82000844 829BF17C 141 ( 321)    RtlTryEnterCriticalSection
+   F 82000848 829BF16C 125 ( 293)    RtlEnterCriticalSection
+   F 8200084C 829BF15C 12E ( 302)    RtlInitializeCriticalSection
+   F 82000850 829BF61C 00F (  15)    ExFreePool
+   F 82000854 829BFF0C 085 ( 133)    KeRaiseIrqlToDpcLevel
+   F 82000858 829BFF1C 0B3 ( 179)    KfLowerIrql
+   F 8200085C 829BFF2C 1F3 ( 499)    XAudioRegisterRenderDriverClient
+   F 82000860 829BFF3C 1F4 ( 500)    XAudioUnregisterRenderDriverClient
+   F 82000864 829BFF4C 1F5 ( 501)    XAudioSubmitRenderDriverFrame
+   F 82000868 829BFF5C 226 ( 550)    XMAReleaseContext
+   F 8200086C 829BFF6C 224 ( 548)    XMACreateContext
+   F 82000870 829BFF7C 0AE ( 174)    KeTryToAcquireSpinLockAtRaisedIrql
+   F 82000874 829BFF8C 088 ( 136)    KeReleaseSemaphore
+   F 82000878 829BFF9C 1F8 ( 504)    XAudioGetVoiceCategoryVolume
+   F 8200087C 829BFFAC 1F7 ( 503)    XAudioGetVoiceCategoryVolumeChangeMask
+   F 82000880 829BFFBC 0AF ( 175)    KeWaitForMultipleObjects
+   F 82000884 829BFFCC 092 ( 146)    KeResumeThread
+   F 82000888 829BFFDC 074 ( 116)    KeInitializeSemaphore
+   F 8200088C 829BFFEC 0CD ( 205)    NtCancelTimer
+   F 82000890 829BFFFC 0FA ( 250)    NtSetTimerEx
+   F 82000894 829C000C 0D7 ( 215)    NtCreateTimer
+
+i> 0000DACC Title name: PGR 4
+i> 0000DACC -------------------- ACHIEVEMENTS --------------------
+i> 0000DACC 12 - Winning Streak - Win 3 race events back to back in either Arcade or Single Player Career Mode.
+ - 30
+i> 0000DACC 13 - 1-2 Finish - Complete a Ranked Match Team Championship with your team taking the top two positions. - 10
+i> 0000DACC 14 - Team Domination - Complete a Ranked Match Team Championship with your team taking up the top four positions. - 20
+i> 0000DACC 15 - Team Leader - Earn the most points for your team in a Ranked Match Team Championship. - 10
+i> 0000DACC 16 - Showboater - Earn 9000 Kudos in a single race. - 20
+i> 0000DACC 17 - 5-Star Racer - Earn 5 Kudos Stars. - 20
+i> 0000DACC 18 - Superstar - Earn 5 Kudos Stars three times in a race. - 40
+i> 0000DACC 20 - Mind Your Manners - Win a Street Race in Arcade or Gotham Career mode without making contact with walls. - 25
+i> 0000DACC 21 - The Unicyclist - Perform a long Wheelie on a motorcycle. - 20
+i> 0000DACC 22 - Bibendum
+ - Play all 3 Test Track disciplines and set a score in each one. - 10
+i> 0000DACC 23 - Weather Master - Win races in rain, fog, and snow in either Arcade or Single Player Career modes. - 25
+i> 0000DACC 24 - Winner - Win your first event in either Arcade or Single Player Career modes. - 5
+i> 0000DACC 25 - Silver Gotham Arcader
+ - Earn a Silver medal in every Arcade event. - 40
+i> 0000DACC 27 - Gold Gotham Arcader - Earn a Gold medal in every Arcade event. - 10
+i> 0000DACC 28 - Platinum Gotham Arcader - Earn a Platinum medal in every Arcade event. - 10
+i> 0000DACC 29 - Silver Double - Earn at least a Silver medal with both a bike and a car in any Arcade event. - 30
+i> 0000DACC 30 - Gold Double - Earn at least a Gold medal with both a bike and a car in any Arcade event. - 5
+i> 0000DACC 31 - Platinum Double - Earn at least a Platinum medal with both a bike and a car in any Arcade event. - 5
+i> 0000DACC 32 - Arcade Chapter Complete - Complete any chapter in Arcade mode. - 30
+i> 0000DACC 33 - Professional - Reach the rank of Professional in Single Player Career mode. - 70
+i> 0000DACC 35 - Hotshot - Reach the rank of Hotshot in Single Player Career mode. - 70
+i> 0000DACC 36 - Master - Reach the rank of Master in Single Player Career mode. - 40
+i> 0000DACC 37 - Hero - Become a National Champion in Single Player Career mode. - 20
+i> 0000DACC 38 - Champion - Win your first Championship in either Single Player Career or Ranked Match play. - 10
+i> 0000DACC 39 - Motorcycle Ace - Win a Single Player Career Championship on a motorcycle. - 25
+i> 0000DACC 40 - Major Winner - Win a Major in Single Player Career mode. - 40
+i> 0000DACC 41 - Dominator - Win all three Single Player Career Majors.  - 20
+i> 0000DACC 42 - Stuntman - Perform your first stunt on a bike.
+ - 5
+i> 0000DACC 43 - Buy an Achievement - Buy the K1,000,000 gamer picture to earn this Achievement. - 20
+i> 0000DACC 45 - Back it Up! - In a split-screen Street Race, finish 1st and 2nd in reverse gear against at least one AI opponent. - 10
+i> 0000DACC 46 - Strike a Pose - Get two bikes facing each other, 15 metres apart, with each performing an impressive endo. - 10
+i> 0000DACC 47 - First Timer - Complete your first Ranked Match Championship. - 10
+i> 0000DACC 48 - 8th Wonder of the World - Complete a lap of the Michelin Test Track 'figure of 8' while sliding. - 20
+i> 0000DACC 49 - Catch 'Em All - Swap paint with every opponent in an eight vehicle race. - 5
+i> 0000DACC 50 - Endo King - Earn 100 Kudos by performing an Endo with a motorcycle. - 20
+i> 0000DACC 51 - Seat of your Pants - Complete a Hot Lap event in Arcade mode without touching your brake. - 25
+i> 0000DACC 52 - Rubbin' is Racin' - Knock off the wing mirrors on all of your opponents' vehicles in a Single Player Street Race event. - 20
+i> 0000DACC 53 - Show Jump - Get eight vehicles in the air at the same time. - 10
+i> 0000DACC 54 - I Love PGR - Buy everything in the PGR Shop or complete PGR 3 and get to Rank #1 - 5
+i> 0000DACC 55 - Whitewash - Win every event in a Single Player or Ranked Match Championship. - 50
+i> 0000DACC 56 - You Won't Believe Your Eyes! - Create a 3D image using Photo Mode. - 5
+i> 0000DACC 57 - Secret Agent - Puzzle #2 - 5
+i> 0000DACC 58 - 3CZV657 - Puzzle #1 - 5
+i> 0000DACC 59 - Tonight Make Me Unstoppable - Puzzle #3 - 5
+i> 0000DACC 60 - Play It Again Sam - Improve on a medal earned in any arcade event - 20
+i> 0000DACC 61 - PGR On Demand - Photo - Upload a photo and vote on a photo in PGR On Demand - 5
+i> 0000DACC 62 - PGR On Demand - Video - Upload a replay and vote on a replay using PGR On Demand - 5
+i> 0000DACC 63 - Giant Killer - Win against a human opponent with Rank 1 single player status on Xbox LIVE. - 20
+i> 0000DACC 64 - Numero Uno - Reach Rank Number One on the Single Player Career Drivers' Leaderboard. - 50
+i> 0000DACC 65 - Beat Bizarre - Defeat a PGR 4 team member on Xbox LIVE, or defeat anyone who's bested a PGR 4 team member.
+ - 10
+i> 0000DACC ----------------- END OF ACHIEVEMENTS ----------------
+i> 0000DACC Added handle:01000020 for class xe::kernel::XObject
+i> 0000DACC XThread01000020 (5) Stack: 70110000-70130000
+i> 0000DACC KernelState: Launching module...
+i> 0000DACC Added handle:F8000004 for class xe::kernel::XObject
+K> 01000020 XThread::Execute thid 5 (handle=01000020, 'Kernel Dispatch (01000020)', native=0000BE18, <host>)
+i> 0000DACC XThreadF8000004 (6) Stack: 70150000-70190000
+K> F8000004 XThread::Execute thid 6 (handle=F8000004, 'Main XThread (F8000004)', native=0000CD20)
+i> F8000004 Added handle:F8000008 for class xe::kernel::XObject
+i> F8000004 Added handle:F800000C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000010 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000014 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000018 for class xe::kernel::XObject
+i> F8000004 Added handle:F800001C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000020 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000020 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800001C for class xe::kernel::XEvent
+i> F8000004 Removed handle:F8000018 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000014 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000010 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800000C for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000008 for class xe::kernel::XMutant
+i> F8000004 Added handle:F8000008 for class xe::kernel::XObject
+i> F8000004 Added handle:F800000C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000010 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000014 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000018 for class xe::kernel::XObject
+i> F8000004 Added handle:F800001C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000020 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000024 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000028 for class xe::kernel::XObject
+i> F8000004 Added handle:F800002C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000030 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000034 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000038 for class xe::kernel::XObject
+i> F8000004 Added handle:F800003C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000040 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000044 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000048 for class xe::kernel::XObject
+i> F8000004 Added handle:F800004C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000050 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000054 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000058 for class xe::kernel::XObject
+i> F8000004 Added handle:F800005C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000060 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000064 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000068 for class xe::kernel::XObject
+i> F8000004 Added handle:F800006C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000070 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000074 for class xe::kernel::XObject
+i> F8000004 XThreadF8000074 (7) Stack: 701B0000-701D0000
+i> F8000004 Added handle:F8000078 for class xe::kernel::XObject
+K> F8000074 XThread::Execute thid 7 (handle=F8000074, 'XThreadD608 (F8000074)', native=0000D608)
+i> F8000004 XThreadF8000078 (8) Stack: 701F0000-70210000
+i> F8000004 Added handle:F800007C for class xe::kernel::XObject
+K> F8000078 XThread::Execute thid 8 (handle=F8000078, 'XThread2654 (F8000078)', native=00002654)
+i> F8000004 Added handle:F8000080 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000084 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000088 for class xe::kernel::XObject
+i> F8000004 XThreadF8000088 (9) Stack: 70230000-70240000
+K> F8000088 XThread::Execute thid 9 (handle=F8000088, 'XThreadDD3C (F8000088)', native=0000DD3C)
+i> F8000004 Added handle:F800008C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000090 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000094 for class xe::kernel::XObject
+i> F8000004 XThreadF8000094 (A) Stack: 70260000-70270000
+K> F8000094 XThread::Execute thid 10 (handle=F8000094, 'XThread897C (F8000094)', native=0000897C)
+i> F8000078 Added handle:F8000098 for class xe::kernel::XObject
+i> F8000004 Added handle:F800009C for class xe::kernel::XObject
+i> F8000004 Added handle:F80000A0 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000A4 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000A8 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000AC for class xe::kernel::XObject
+i> F8000004 Added handle:F80000B0 for class xe::kernel::XObject
+i> F8000004 XThreadF80000B0 (B) Stack: 70290000-702A0000
+K> F80000B0 XThread::Execute thid 11 (handle=F80000B0, 'XThread165C (F80000B0)', native=0000165C)
+i> F8000004 Added handle:F80000B4 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000B8 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000BC for class xe::kernel::XObject
+i> F8000004 Added handle:F80000C0 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\Game)
+F> F8000004 StfsContainerDevice::ResolvePath()
+F> F8000004 StfsContainerDevice::ResolvePath(\Game)
+i> F8000004 xeRtlNtStatusToDosError C0000022 => 5
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(01BA(XamInputGetUserVibrationLevel)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 442 (0x1BA) in 'xam' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0282(XInputdFFGetDeviceInfo)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 642 (0x282) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0283(XInputdFFSetEffect)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 643 (0x283) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0284(XInputdFFUpdateEffect)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 644 (0x284) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0285(XInputdFFEffectOperation)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 645 (0x285) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0286(XInputdFFDeviceControl)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 646 (0x286) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0287(XInputdFFSetDeviceGain)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 647 (0x287) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0288(XInputdFFCancelIo)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 648 (0x288) in 'xboxkrnl' not found!
+w> F8000004 ERROR: fn export referenced GetProcAddressByOrdinal(0289(XInputdFFSetRumble)) is not implemented
+w> F8000004 ERROR: XexGetProcedureAddress ordinal 649 (0x289) in 'xboxkrnl' not found!
+i> F8000004 Added handle:F80000C4 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000C8 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 Added handle:F80000CC for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\loc)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XStaticEnumerator<struct xe::kernel::xam::XCONTENT_DATA>
+F> F8000004 StfsContainerDevice::ResolvePath(\loc)
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\cz)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\de)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\es)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\fr)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\hu)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\it)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ja)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ko)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\pl)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ru)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\sc)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\tc)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+i> F8000004 xeRtlNtStatusToDosError 80000006 => 12
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\cz\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\cz)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\de\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\de)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\es\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\es)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\fr\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\fr)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\hu\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\hu)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\it\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\it)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ja\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ja)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ko\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ko)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\pl\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\pl)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ru\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ru)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\sc\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\sc)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\tc\strings)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\tc)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\cz\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\de\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\es\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\fr\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\hu\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\it\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ja\fonts)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ja)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ko\fonts)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ko)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\pl\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\ru\fonts)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\sc\fonts)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\sc)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\tc\fonts)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\tc)
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 Removed handle:F80000D0 for class xe::kernel::XFile
+i> F8000004 Added handle:F80000D0 for class xe::kernel::XObject
+i> F8000004 XThreadF80000D0 (C) Stack: 702C0000-702D0000
+i> F8000004 Added handle:F80000D4 for class xe::kernel::XObject
+i> F8000004 XThreadF80000D4 (D) Stack: 702F0000-70300000
+K> F80000D0 XThread::Execute thid 12 (handle=F80000D0, 'XThreadD87C (F80000D0)', native=0000D87C)
+K> F80000D4 XThread::Execute thid 13 (handle=F80000D4, 'XThreadE384 (F80000D4)', native=0000E384)
+i> F80000D0 Added handle:F80000D8 for class xe::kernel::XObject
+i> F80000D4 Added handle:F80000DC for class xe::kernel::XObject
+i> F8000004 Added handle:F80000E0 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000E4 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000E8 for class xe::kernel::XObject
+i> F8000004 Added handle:F80000EC for class xe::kernel::XObject
+i> F8000004 Added handle:F80000F0 for class xe::kernel::XObject
+i> F8000004 XThreadF80000F0 (E) Stack: 70320000-70360000
+K> F80000F0 XThread::Execute thid 14 (handle=F80000F0, 'XThreadD230 (F80000F0)', native=0000D230)
+i> F80000F0 Added handle:F80000F4 for class xe::kernel::XObject
+i> 01000010 Added handle:F80000F8 for class xe::kernel::XObject
+i> 01000010 Added handle:F80000FC for class xe::kernel::XObject
+i> F8000004 Added handle:F8000100 for class xe::kernel::XObject
+i> F8000004 XThreadF8000100 (F) Stack: 70380000-70390000
+K> F8000100 XThread::Execute thid 15 (handle=F8000100, 'XThreadD41C (F8000100)', native=0000D41C)
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\game\audio)
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000104 for class xe::kernel::XFile
+i> F8000004 Added handle:F8000104 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000108 for class xe::kernel::XObject
+i> F8000004 Added handle:F800010C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000110 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings\PGR4GameStrings.loc)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings\PGR4UIStrings.loc)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings\PGR4OnlineStrings.loc)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings\PGR4UIStrings_DLC.loc)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings\musicpack1.loc)
+F> F8000004 StfsContainerDevice::ResolvePath(\loc\en\strings)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\ui\data)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\ui\data)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\UI\data)
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000114 for class xe::kernel::XFile
+i> F8000004 Added handle:F8000114 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\ui)
+i> F8000004 Added handle:F8000118 for class xe::kernel::XObject
+i> F8000004 Added handle:F800011C for class xe::kernel::XObject
+i> F8000004 Added handle:F8000120 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000124 for class xe::kernel::XObject
+i> F8000004 XThreadF8000124 (10) Stack: 703B0000-703C0000
+K> F8000124 XThread::Execute thid 16 (handle=F8000124, 'XThreadD288 (F8000124)', native=0000D288)
+i> F8000124 Added handle:F8000128 for class xe::kernel::XObject
+i> F8000004 Added handle:0000012C for class xe::kernel::XObject
+i> F8000004 Added handle:00000130 for class xe::kernel::XObject
+i> F8000004 Added handle:00000134 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\ui\textures)
+i> F8000004 Added handle:F8000138 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000138 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath(\ui\data)
+i> F8000004 Added handle:F8000138 for class xe::kernel::XObject
+i> F8000004 Removed handle:F8000138 for class xe::kernel::XFile
+i> F8000004 Added handle:F8000138 for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath(\Vince)
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+i> F8000004 Added handle:F800013C for class xe::kernel::XObject
+F> F8000004 StfsContainerDevice::ResolvePath()
+i> F8000004 xeRtlNtStatusToDosError C000000F => 2
+i> F8000004 Added handle:F8000140 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000144 for class xe::kernel::XObject
+i> F8000004 XThreadF8000144 (11) Stack: 703E0000-70420000
+K> F8000144 XThread::Execute thid 17 (handle=F8000144, 'XThreadD140 (F8000144)', native=0000D140)
+F> F8000004 StfsContainerDevice::ResolvePath(\Movies)
+i> F8000004 Added handle:F8000148 for class xe::kernel::XObject
+i> F8000004 Added handle:F800014C for class xe::kernel::XObject
+i> F8000004 XThreadF800014C (12) Stack: 70440000-70450000
+i> F8000004 Added handle:F8000150 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000154 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000158 for class xe::kernel::XObject
+i> F8000004 Added handle:F800015C for class xe::kernel::XObject
+i> F8000004 XThreadF800015C (13) Stack: 70470000-70480000
+i> F8000004 Added handle:F8000160 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000164 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000168 for class xe::kernel::XObject
+K> F800014C XThread::Execute thid 18 (handle=F800014C, 'XThreadA5F0 (F800014C)', native=0000A5F0)
+K> F800015C XThread::Execute thid 19 (handle=F800015C, 'XThread0B18 (F800015C)', native=00000B18)
+i> 01000004 Selecting rep movs vastcpy.
+i> F8000004 Removed handle:F8000160 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800015C for class xe::kernel::XThread
+i> F8000004 Removed handle:F8000164 for class xe::kernel::XEvent
+i> F8000004 Removed handle:F8000150 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800014C for class xe::kernel::XThread
+i> F8000004 Removed handle:F8000154 for class xe::kernel::XEvent
+i> F8000004 Removed handle:F8000168 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000158 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000148 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\Movies)
+i> F8000004 Added handle:F8000148 for class xe::kernel::XObject
+i> F8000004 Added handle:F800014C for class xe::kernel::XObject
+i> F8000004 XThreadF800014C (14) Stack: 70440000-70450000
+i> F8000004 Added handle:F8000150 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000154 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000158 for class xe::kernel::XObject
+i> F8000004 Added handle:F800015C for class xe::kernel::XObject
+K> F800014C XThread::Execute thid 20 (handle=F800014C, 'XThread884C (F800014C)', native=0000884C)
+i> F8000004 XThreadF800015C (15) Stack: 70470000-70480000
+i> F8000004 Added handle:F8000160 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000164 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000168 for class xe::kernel::XObject
+K> F800015C XThread::Execute thid 21 (handle=F800015C, 'XThreadD6CC (F800015C)', native=0000D6CC)
+i> F8000004 Removed handle:F8000160 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800015C for class xe::kernel::XThread
+i> F8000004 Removed handle:F8000164 for class xe::kernel::XEvent
+i> F8000004 Removed handle:F8000150 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F800014C for class xe::kernel::XThread
+i> F8000004 Removed handle:F8000154 for class xe::kernel::XEvent
+i> F8000004 Removed handle:F8000168 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000158 for class xe::kernel::XMutant
+i> F8000004 Removed handle:F8000148 for class xe::kernel::XFile
+F> F8000004 StfsContainerDevice::ResolvePath(\Movies)
+i> F8000004 Added handle:F8000148 for class xe::kernel::XObject
+i> F8000004 Added handle:F800014C for class xe::kernel::XObject
+i> F8000004 XThreadF800014C (16) Stack: 70440000-70450000
+i> F8000004 Added handle:F8000150 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000154 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000158 for class xe::kernel::XObject
+i> F8000004 Added handle:F800015C for class xe::kernel::XObject
+K> F800014C XThread::Execute thid 22 (handle=F800014C, 'XThreadD3F0 (F800014C)', native=0000D3F0)
+i> F8000004 XThreadF800015C (17) Stack: 70470000-70480000
+i> F8000004 Added handle:F8000160 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000164 for class xe::kernel::XObject
+i> F8000004 Added handle:F8000168 for class xe::kernel::XObject
+K> F800015C XThread::Execute thid 23 (handle=F800015C, 'XThreadAEF8 (F800015C)', native=0000AEF8)

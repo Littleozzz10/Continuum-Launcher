@@ -1,0 +1,95 @@
+OzzzFramework Save Data File
+ver beta1
+----------------------------
+name=launcherOptions
+type=chk
+data=
+
+  name=masterVolume
+  type=dec
+  data=0.4
+
+  name=menuTheme
+  type=num
+  data=0
+
+  name=cwSettings
+  type=num
+  data=1
+
+  name=
+  type=chk
+  data=endchunk
+
+name=graphicsSettings
+type=chk
+data=
+
+  name=resX
+  type=num
+  data=1728
+
+  name=resY
+  type=num
+  data=972
+
+  name=fullscreen
+  type=tof
+  data=False
+
+  name=vsync
+  type=tof
+  data=True
+
+  name=showRings
+  type=tof
+  data=True
+
+  name=
+  type=chk
+  data=endchunk
+
+name=xeniaSettings
+type=chk
+data=
+
+  name=logLevel
+  type=num
+  data=2
+
+  name=runFullscreen
+  type=tof
+  data=False
+
+  name=consolidate
+  type=tof
+  data=True
+
+  name=headless
+  type=tof
+  data=False
+
+  name=
+  type=chk
+  data=endchunk
+
+name=extraSettings
+type=chk
+data=
+
+  name=militaryTime
+  type=tof
+  data=False
+
+  name=inverseDate
+  type=tof
+  data=False
+
+  name=checkDrivesOnManage
+  type=tof
+  data=True
+
+  name=
+  type=chk
+  data=endchunk
+

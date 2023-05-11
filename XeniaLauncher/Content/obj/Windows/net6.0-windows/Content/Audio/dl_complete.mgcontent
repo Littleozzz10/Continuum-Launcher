@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/alexj/source/repos/XeniaLauncher/XeniaLauncher/Content/Audio/dl_complete.wav</SourceFile>
+  <SourceTime>2023-01-22T08:19:12.7133098-06:00</SourceTime>
+  <DestFile>C:/Users/alexj/source/repos/XeniaLauncher/XeniaLauncher/Content/bin/Windows/Content/Audio/dl_complete.xnb</DestFile>
+  <DestTime>2023-03-18T19:52:48.1944807-05:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2022-07-26T06:44:56-05:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T06:44:56-05:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

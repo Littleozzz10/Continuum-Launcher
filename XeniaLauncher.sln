@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XeniaLauncher", "XeniaLauncher\XeniaLauncher.csproj", "{AC9FACC7-5B4E-4227-8089-53A7916C0905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLCompanion", "XLCompanion\XLCompanion.csproj", "{A01FD187-F7C4-4FC4-822A-052DA11B1127}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC9FACC7-5B4E-4227-8089-53A7916C0905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9FACC7-5B4E-4227-8089-53A7916C0905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9FACC7-5B4E-4227-8089-53A7916C0905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9FACC7-5B4E-4227-8089-53A7916C0905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A01FD187-F7C4-4FC4-822A-052DA11B1127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A01FD187-F7C4-4FC4-822A-052DA11B1127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A01FD187-F7C4-4FC4-822A-052DA11B1127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A01FD187-F7C4-4FC4-822A-052DA11B1127}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D50DEFE5-A94E-47FF-90FB-A08D0EFA143B}
+	EndGlobalSection
+EndGlobal
