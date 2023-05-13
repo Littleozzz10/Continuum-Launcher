@@ -97,8 +97,8 @@ namespace XeniaLauncher
             firstLoad = true;
             configPath = "Content\\XLConfig.txt";
             Window.Title = "Continuum Launcher";
-            ver = "1.0";
-            compileDate = "May 10, 2023";
+            ver = "1.0.1";
+            compileDate = "May 12, 2023";
         }
 
         protected override void Initialize()
