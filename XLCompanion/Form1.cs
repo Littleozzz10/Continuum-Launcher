@@ -108,7 +108,7 @@ namespace XLCompanion
                 }
                 else
                 {
-                    MessageBox.Show("Invalid file. Make sure the file is a valid Xenia Launcher Config file (Not a Xenia config file)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("Invalid file. Make sure the file is a valid Continuum Launcher Config file (Not a Xenia config file)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
         }
@@ -291,7 +291,14 @@ namespace XLCompanion
             maxPlayersBox.Text = "" + data[selectedIndex].maxPlayers;
             kinectBox.Text = "" + data[selectedIndex].kinect.ToString();
             artPathBox.Text = data[selectedIndex].artPath;
-            coverPreviewBox.Image = Image.FromFile(artPathBox.Text);
+            try
+            {
+                coverPreviewBox.Image = Image.FromFile(artPathBox.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
             gameFoldersBox.Items.Clear();
             int i = 0;

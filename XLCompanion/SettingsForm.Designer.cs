@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.generalGroup = new System.Windows.Forms.GroupBox();
+            this.mountCacheCheck = new System.Windows.Forms.CheckBox();
             this.licenseBox = new System.Windows.Forms.ComboBox();
             this.canaryBox = new System.Windows.Forms.CheckBox();
             this.graphicsGroup = new System.Windows.Forms.GroupBox();
@@ -40,7 +41,6 @@
             this.verticalBox = new System.Windows.Forms.ComboBox();
             this.horizontalScaleLabel = new System.Windows.Forms.Label();
             this.horizontalBox = new System.Windows.Forms.ComboBox();
-            this.mountCacheCheck = new System.Windows.Forms.CheckBox();
             this.closeButton = new System.Windows.Forms.Button();
             this.executablePathBox = new System.Windows.Forms.TextBox();
             this.executablePathLabel = new System.Windows.Forms.Label();
@@ -59,10 +59,10 @@
             this.canaryCompatLabel = new System.Windows.Forms.Label();
             this.xeniaCompatLabel = new System.Windows.Forms.Label();
             this.iconGroup = new System.Windows.Forms.GroupBox();
-            this.iconPathBox = new System.Windows.Forms.TextBox();
-            this.iconLabel = new System.Windows.Forms.Label();
-            this.iconBox = new System.Windows.Forms.PictureBox();
             this.iconBrowseButton = new System.Windows.Forms.Button();
+            this.iconLabel = new System.Windows.Forms.Label();
+            this.iconPathBox = new System.Windows.Forms.TextBox();
+            this.iconBox = new System.Windows.Forms.PictureBox();
             this.openIconDialog = new System.Windows.Forms.OpenFileDialog();
             this.generalGroup.SuspendLayout();
             this.graphicsGroup.SuspendLayout();
@@ -85,6 +85,17 @@
             this.generalGroup.TabIndex = 0;
             this.generalGroup.TabStop = false;
             this.generalGroup.Text = "General Settings";
+            // 
+            // mountCacheCheck
+            // 
+            this.mountCacheCheck.AutoSize = true;
+            this.mountCacheCheck.Location = new System.Drawing.Point(133, 34);
+            this.mountCacheCheck.Margin = new System.Windows.Forms.Padding(2);
+            this.mountCacheCheck.Name = "mountCacheCheck";
+            this.mountCacheCheck.Size = new System.Drawing.Size(90, 17);
+            this.mountCacheCheck.TabIndex = 8;
+            this.mountCacheCheck.Text = "Mount Cache";
+            this.mountCacheCheck.UseVisualStyleBackColor = true;
             // 
             // licenseBox
             // 
@@ -219,17 +230,6 @@
             this.horizontalBox.Name = "horizontalBox";
             this.horizontalBox.Size = new System.Drawing.Size(76, 21);
             this.horizontalBox.TabIndex = 0;
-            // 
-            // mountCacheCheck
-            // 
-            this.mountCacheCheck.AutoSize = true;
-            this.mountCacheCheck.Location = new System.Drawing.Point(133, 34);
-            this.mountCacheCheck.Margin = new System.Windows.Forms.Padding(2);
-            this.mountCacheCheck.Name = "mountCacheCheck";
-            this.mountCacheCheck.Size = new System.Drawing.Size(90, 17);
-            this.mountCacheCheck.TabIndex = 8;
-            this.mountCacheCheck.Text = "Mount Cache";
-            this.mountCacheCheck.UseVisualStyleBackColor = true;
             // 
             // closeButton
             // 
@@ -431,32 +431,6 @@
             this.iconGroup.TabStop = false;
             this.iconGroup.Text = "Icon Settings";
             // 
-            // iconPathBox
-            // 
-            this.iconPathBox.Location = new System.Drawing.Point(7, 50);
-            this.iconPathBox.Name = "iconPathBox";
-            this.iconPathBox.Size = new System.Drawing.Size(150, 20);
-            this.iconPathBox.TabIndex = 3;
-            this.iconPathBox.TextChanged += new System.EventHandler(this.iconPathBox_TextChanged);
-            // 
-            // iconLabel
-            // 
-            this.iconLabel.AutoSize = true;
-            this.iconLabel.Location = new System.Drawing.Point(6, 33);
-            this.iconLabel.Name = "iconLabel";
-            this.iconLabel.Size = new System.Drawing.Size(56, 13);
-            this.iconLabel.TabIndex = 4;
-            this.iconLabel.Text = "Icon Path:";
-            // 
-            // iconBox
-            // 
-            this.iconBox.Location = new System.Drawing.Point(163, 8);
-            this.iconBox.Name = "iconBox";
-            this.iconBox.Size = new System.Drawing.Size(64, 64);
-            this.iconBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.iconBox.TabIndex = 2;
-            this.iconBox.TabStop = false;
-            // 
             // iconBrowseButton
             // 
             this.iconBrowseButton.Image = global::XLCompanion.Properties.Resources.FolderBrowserDialogControl;
@@ -467,6 +441,32 @@
             this.iconBrowseButton.TabIndex = 29;
             this.iconBrowseButton.UseVisualStyleBackColor = true;
             this.iconBrowseButton.Click += new System.EventHandler(this.iconBrowseButton_Click);
+            // 
+            // iconLabel
+            // 
+            this.iconLabel.AutoSize = true;
+            this.iconLabel.Location = new System.Drawing.Point(6, 33);
+            this.iconLabel.Name = "iconLabel";
+            this.iconLabel.Size = new System.Drawing.Size(56, 13);
+            this.iconLabel.TabIndex = 4;
+            this.iconLabel.Text = "Icon Path:";
+            // 
+            // iconPathBox
+            // 
+            this.iconPathBox.Location = new System.Drawing.Point(7, 50);
+            this.iconPathBox.Name = "iconPathBox";
+            this.iconPathBox.Size = new System.Drawing.Size(150, 20);
+            this.iconPathBox.TabIndex = 3;
+            this.iconPathBox.TextChanged += new System.EventHandler(this.iconPathBox_TextChanged);
+            // 
+            // iconBox
+            // 
+            this.iconBox.Location = new System.Drawing.Point(163, 8);
+            this.iconBox.Name = "iconBox";
+            this.iconBox.Size = new System.Drawing.Size(64, 64);
+            this.iconBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.iconBox.TabIndex = 2;
+            this.iconBox.TabStop = false;
             // 
             // openIconDialog
             // 
@@ -488,6 +488,8 @@
             this.MaximumSize = new System.Drawing.Size(502, 349);
             this.MinimumSize = new System.Drawing.Size(502, 349);
             this.Name = "SettingsForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Xenia Settings";
             this.generalGroup.ResumeLayout(false);
             this.generalGroup.PerformLayout();

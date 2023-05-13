@@ -165,7 +165,7 @@ namespace XeniaLauncher
             checkDrivesOnManage = true;
 
             // Making new config settings file if not already present
-            SoundEffect.MasterVolume = 0.8f;
+            SoundEffect.MasterVolume = 0.7f;
             ResetTheme(Theme.Original, false);
             cwSettings = CWSettings.Untested;
             xeniaFullscreen = false;

@@ -102,117 +102,120 @@ namespace XeniaLauncher
                 {
                     game.dataStrings.dataStringList.Add(data.gameTitle);
                     // Game data
-                    DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
-                    float size = 0;
-                    foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
+                    if (File.Exists(data.gamePath))
                     {
-                        size += file.Length;
-                    }
-                    game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), game.icons[data.gameTitle]));
-                    // Saves and Xenia data
-                    if (Directory.Exists("XData"))
-                    {
-                        if (Directory.Exists("XData\\Xenia"))
+                        DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
+                        float size = 0;
+                        foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
                         {
-                            foreach (string dir in Directory.GetDirectories("XData\\Xenia"))
+                            size += file.Length;
+                        }
+                        game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), game.icons[data.gameTitle]));
+                        // Saves and Xenia data
+                        if (Directory.Exists("XData"))
+                        {
+                            if (Directory.Exists("XData\\Xenia"))
                             {
-                                if (dir.Split("\\").Last() == data.gameTitle)
+                                foreach (string dir in Directory.GetDirectories("XData\\Xenia"))
                                 {
-                                    // Xenia data
-                                    float dataSize = 0;
-                                    if (File.Exists(dir + "\\xenia.exe"))
+                                    if (dir.Split("\\").Last() == data.gameTitle)
                                     {
-                                        dataSize += new FileInfo(dir + "\\xenia.exe").Length;
-                                    }
-                                    if (File.Exists(dir + "\\xenia.log"))
-                                    {
-                                        dataSize += new FileInfo(dir + "\\xenia.log").Length;
-                                    }
-                                    if (File.Exists(dir + "\\xenia.config.toml"))
-                                    {
-                                        dataSize += new FileInfo(dir + "\\xenia.config.toml").Length;
-                                    }
-                                    if (dataSize > 0)
-                                    {
-                                        game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logo));
-                                    }
-                                    size += dataSize;
-                                    // Save data
-                                    if (Directory.Exists(dir + "\\content"))
-                                    {
-                                        float saveSize = 0;
-                                        foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
+                                        // Xenia data
+                                        float dataSize = 0;
+                                        if (File.Exists(dir + "\\xenia.exe"))
                                         {
-                                            FileInfo file = new FileInfo(filename);
-                                            saveSize += file.Length;
+                                            dataSize += new FileInfo(dir + "\\xenia.exe").Length;
                                         }
-                                        if (saveSize > 0)
+                                        if (File.Exists(dir + "\\xenia.log"))
                                         {
-                                            game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                            dataSize += new FileInfo(dir + "\\xenia.log").Length;
+                                        }
+                                        if (File.Exists(dir + "\\xenia.config.toml"))
+                                        {
+                                            dataSize += new FileInfo(dir + "\\xenia.config.toml").Length;
+                                        }
+                                        if (dataSize > 0)
+                                        {
+                                            game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logo));
+                                        }
+                                        size += dataSize;
+                                        // Save data
+                                        if (Directory.Exists(dir + "\\content"))
+                                        {
+                                            float saveSize = 0;
+                                            foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
+                                            {
+                                                FileInfo file = new FileInfo(filename);
+                                                saveSize += file.Length;
+                                            }
+                                            if (saveSize > 0)
+                                            {
+                                                game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            if (Directory.Exists("XData\\Canary"))
+                            {
+                                foreach (string dir in Directory.GetDirectories("XData\\Canary"))
+                                {
+                                    if (dir.Split("\\").Last() == data.gameTitle)
+                                    {
+                                        // Xenia data
+                                        float dataSize = 0;
+                                        if (File.Exists(dir + "\\xenia_canary.exe"))
+                                        {
+                                            dataSize += new FileInfo(dir + "\\xenia_canary.exe").Length;
+                                        }
+                                        if (File.Exists(dir + "\\xenia.log"))
+                                        {
+                                            dataSize += new FileInfo(dir + "\\xenia.log").Length;
+                                        }
+                                        if (File.Exists(dir + "\\xenia-canary.config.toml"))
+                                        {
+                                            dataSize += new FileInfo(dir + "\\xenia-canary.config.toml").Length;
+                                        }
+                                        if (dataSize > 0)
+                                        {
+                                            game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logoCanary));
+                                        }
+                                        size += dataSize;
+                                        // Save data
+                                        if (Directory.Exists(dir + "\\content"))
+                                        {
+                                            float saveSize = 0;
+                                            foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
+                                            {
+                                                FileInfo file = new FileInfo(filename);
+                                                saveSize += file.Length;
+                                            }
+                                            if (saveSize > 0)
+                                            {
+                                                game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
-                        if (Directory.Exists("XData\\Canary"))
+                        totalSize += size;
+                        // Art data
+                        float tempArtSize = 0;
+                        if (File.Exists(data.artPath))
                         {
-                            foreach (string dir in Directory.GetDirectories("XData\\Canary"))
-                            {
-                                if (dir.Split("\\").Last() == data.gameTitle)
-                                {
-                                    // Xenia data
-                                    float dataSize = 0;
-                                    if (File.Exists(dir + "\\xenia_canary.exe"))
-                                    {
-                                        dataSize += new FileInfo(dir + "\\xenia_canary.exe").Length;
-                                    }
-                                    if (File.Exists(dir + "\\xenia.log"))
-                                    {
-                                        dataSize += new FileInfo(dir + "\\xenia.log").Length;
-                                    }
-                                    if (File.Exists(dir + "\\xenia-canary.config.toml"))
-                                    {
-                                        dataSize += new FileInfo(dir + "\\xenia-canary.config.toml").Length;
-                                    }
-                                    if (dataSize > 0)
-                                    {
-                                        game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logoCanary));
-                                    }
-                                    size += dataSize;
-                                    // Save data
-                                    if (Directory.Exists(dir + "\\content"))
-                                    {
-                                        float saveSize = 0;
-                                        foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
-                                        {
-                                            FileInfo file = new FileInfo(filename);
-                                            saveSize += file.Length;
-                                        }
-                                        if (saveSize > 0)
-                                        {
-                                            game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
-                                        }
-                                    }
-                                }
-                            }
+                            tempArtSize += new FileInfo(data.artPath).Length;
                         }
+                        if (File.Exists(data.iconPath))
+                        {
+                            tempArtSize += new FileInfo(data.iconPath).Length;
+                        }
+                        game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), game.mainLogo));
+                        artSize += tempArtSize;
+                        game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
+                        game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
+                        index++;
                     }
-                    totalSize += size;
-                    // Art data
-                    float tempArtSize = 0;
-                    if (File.Exists(data.artPath))
-                    {
-                        tempArtSize += new FileInfo(data.artPath).Length;
-                    }
-                    if (File.Exists(data.iconPath))
-                    {
-                        tempArtSize += new FileInfo(data.iconPath).Length;
-                    }
-                    game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), game.mainLogo));
-                    artSize += tempArtSize;
-                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
-                    game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
-                    index++;
                 }
                 game.dataStrings.dataStringList.Add("Continuum Launcher");
                 game.dataStrings.dataSizeList.Add("Unknown");
