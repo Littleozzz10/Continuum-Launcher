@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XeniaLauncher;
 
 namespace XLCompanion
 {
@@ -16,7 +17,7 @@ namespace XLCompanion
             InitializeComponent();
             //this.Text = String.Format("About {0}", AssemblyTitle);
             //this.labelProductName.Text = AssemblyProduct;
-            //this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelVersion.Text = "Version " + Shared.VERSION + " (Compiled " + Shared.COMPILED + ")";
             //this.labelCopyright.Text = AssemblyCopyright;
             //this.labelCompanyName.Text = AssemblyCompany;
             //this.textBoxDescription.Text = AssemblyDescription;
@@ -101,5 +102,10 @@ namespace XLCompanion
             }
         }
         #endregion
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

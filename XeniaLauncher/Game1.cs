@@ -97,8 +97,8 @@ namespace XeniaLauncher
             firstLoad = true;
             configPath = "Content\\XLConfig.txt";
             Window.Title = "Continuum Launcher";
-            ver = "1.0.1";
-            compileDate = "May 12, 2023";
+            ver = Shared.VERSION;
+            compileDate = Shared.COMPILED;
         }
 
         protected override void Initialize()
@@ -1135,7 +1135,7 @@ namespace XeniaLauncher
                 if (state == State.Main && IsActive)
                 {
                     state = State.Menu;
-                    menuWindow = new Window(this, new Rectangle(560, 185, 800, 750), "Menu", new Menu(), new StdInputEvent(4), new GenericStart(), State.Main);
+                    menuWindow = new Window(this, new Rectangle(560, 185, 800, 750), "Menu", new Menu(), new StdInputEvent(5), new GenericStart(), State.Main);
                     menuWindow.AddButton(new Rectangle(610, 335, 700, 100));
                     menuWindow.AddButton(new Rectangle(610, 445, 700, 100));
                     menuWindow.AddButton(new Rectangle(610, 555, 700, 100));

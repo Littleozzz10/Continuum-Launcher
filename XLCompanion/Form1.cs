@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace XLCompanion
 {
-    using SaveDataChunk = SaveData.SaveDataChunk;
-    using SaveDataObject = SaveData.SaveDataObject;
-    using DataType = SaveData.DataType;
+    using SaveData = XeniaLauncher.Shared.SaveData;
+    using GameData = XeniaLauncher.Shared.GameData;
+    using SaveDataChunk = XeniaLauncher.Shared.SaveData.SaveDataChunk;
+    using SaveDataObject = XeniaLauncher.Shared.SaveData.SaveDataObject;
+    using DataType = XeniaLauncher.Shared.SaveData.DataType;
     public partial class Form1 : Form
     {
-        public List<GameData> data;
+        public List<XeniaLauncher.Shared.GameData> data;
         public List<string> folders;
         public string configPath;
         public int createConfigClicks, selectedIndex;
@@ -31,7 +33,7 @@ namespace XLCompanion
             gamesGroupBox.Enabled = false;
             editGameGroup.Enabled = false;
             deleteFolderButton.Enabled = false;
-            data = new List<GameData>();
+            data = new List<XeniaLauncher.Shared.GameData>();
             folders = new List<string>();
         }
 
@@ -297,6 +299,7 @@ namespace XLCompanion
             }
             catch (Exception ex)
             {
+                coverPreviewBox.Image = null;
                 Console.WriteLine(ex);
             }
 

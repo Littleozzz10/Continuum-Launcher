@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace XLCompanion
 {
+    using GameData = XeniaLauncher.Shared.GameData;
     public partial class SettingsForm : Form
     {
         GameData data;

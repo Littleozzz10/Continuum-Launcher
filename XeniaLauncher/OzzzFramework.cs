@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using static XeniaLauncher.OzzzFramework;
 
 namespace XeniaLauncher
 {
