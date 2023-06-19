@@ -21,6 +21,7 @@ using Key = XeniaLauncher.OzzzFramework.KeyboardInput.Key;
 using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
+using GameData = XeniaLauncher.Shared.GameData;
 
 namespace XeniaLauncher
 {

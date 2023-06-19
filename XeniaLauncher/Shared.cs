@@ -12,8 +12,8 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.0.2 Beta";
-        public static readonly string COMPILED = "June 15, 2023";
+        public static readonly string VERSION = "1.0.2 Beta 2";
+        public static readonly string COMPILED = "June 19, 2023";
         public class SaveData
         {
             /// <summary>
@@ -620,7 +620,10 @@ namespace XeniaLauncher
                 folderChunk.parentChunk = chunk;
                 for (int i = 0; i < folders.Count; i++)
                 {
-                    folderChunk.AddData("folder" + i, folders[i], DataType.String);
+                    if (folders[i] != "All Games")
+                    {
+                        folderChunk.AddData("folder" + i, folders[i], DataType.String);
+                    }
                 }
                 chunk.AddChunk("xex");
                 SaveDataChunk exeChunk = chunk.GetLastChunk();

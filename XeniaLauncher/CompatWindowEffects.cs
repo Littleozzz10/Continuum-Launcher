@@ -21,10 +21,11 @@ using Key = XeniaLauncher.OzzzFramework.KeyboardInput.Key;
 using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
-using SaveData = XeniaLauncher.OzzzFramework.SaveData;
-using SaveDataObject = XeniaLauncher.OzzzFramework.SaveData.SaveDataObject;
-using SaveDataChunk = XeniaLauncher.OzzzFramework.SaveData.SaveDataChunk;
-using DataType = XeniaLauncher.OzzzFramework.SaveData.DataType;
+using SaveData = XeniaLauncher.Shared.SaveData;
+using SaveDataObject = XeniaLauncher.Shared.SaveData.SaveDataObject;
+using SaveDataChunk = XeniaLauncher.Shared.SaveData.SaveDataChunk;
+using DataType = XeniaLauncher.Shared.SaveData.DataType;
+using GameData = XeniaLauncher.Shared.GameData;
 
 namespace XeniaLauncher
 {

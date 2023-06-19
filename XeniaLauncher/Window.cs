@@ -24,6 +24,9 @@ using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
 
 namespace XeniaLauncher
 {
+    /// <summary>
+    /// Class for making a Window
+    /// </summary>
     public class Window : ObjectSprite
     {
         public Game1 game;
@@ -40,7 +43,8 @@ namespace XeniaLauncher
         public IButtonIndexChangeEffects changeEffects;
         public int buttonIndex, stringIndex;
         public bool useFade, skipMainStateTransition, firstFrame;
-        public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
+        public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : this(game, rect, title, buttonEffects, inputEvents, startEffects, returnState, true) { }
+        public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
         {
             this.game = game;
             sprites = new List<TextSprite>();
@@ -60,12 +64,19 @@ namespace XeniaLauncher
             buttonIndex = 0;
             whiteGradient.ValueUpdate(0);
             whiteGradient.Update();
-            game.selectSound.Play();
+
+            if (playSelectSound)
+            {
+                game.selectSound.Play();
+            }
 
             titleSprite = new TextSprite(game.bold, title, 0.65f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
             titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
             titleSprite.pos.Y = pos.Y + 40;
         }
+        /// <summary>
+        /// Resets the Window's Gradients, for transitioning purposes
+        /// </summary>
         public void ResetGradients()
         {
             fadeGradient = new Gradient(Color.FromNonPremultiplied(0, 0, 0, 0), 20);
@@ -91,11 +102,19 @@ namespace XeniaLauncher
                 sprites[i].Centerize(buttons[i].GetCenterPoint());
             }
         }
+        /// <summary>
+        /// Adds a button to the Window, at a location of (0, 0)
+        /// </summary>
+        /// <param name="rect"></param>
         public void AddButton(Rectangle rect)
         {
             buttons.Add(new ObjectSprite(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0)));
             sprites.Add(new TextSprite(game.font, "", 0.5f, Vector2.Zero, Color.White));
         }
+        /// <summary>
+        /// Adds text to a button, in order (Ex: The third call to AddText() will add text to the third button)
+        /// </summary>
+        /// <param name="text"></param>
         public void AddText(string text)
         {
             strings.Add(text);
@@ -106,6 +125,9 @@ namespace XeniaLauncher
             }
             ResetTextPositions();
         }
+        /// <summary>
+        /// Updates the Window. Should be called once every frame, if the Window is to be updated
+        /// </summary>
         public void Update()
         {
             UpdatePos();
@@ -140,7 +162,6 @@ namespace XeniaLauncher
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || KeyboardInput.keys["Space"].IsFirstDown() || mouseClick) && game.IsActive && !firstFrame)
             {
                 buttonEffects.ActivateButton(game, this, buttons[buttonIndex], stringIndex);
-                game.buttonSwitchSound.Play();
             }
             // Exiting the window (B button, Backspace key, Right click)
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || KeyboardInput.keys["Backspace"].IsFirstDown() || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)

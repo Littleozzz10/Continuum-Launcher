@@ -92,6 +92,10 @@ namespace XLCompanion
                                 folderListBox.Items.Add(folder);
                             }
                         }
+                        if (folderListBox.Items.Count > 0)
+                        {
+                            deleteFolderButton.Enabled = true;
+                        }
                     }
                     data = data.OrderBy(o => o.gameTitle).ToList();
                     foreach (GameData game in data)
@@ -244,7 +248,7 @@ namespace XLCompanion
 
         private void deleteFolderButton_Click(object sender, EventArgs e)
         {
-            if (folderListBox.CheckedItems.Count > 0)
+            if (folderListBox.CheckedItems.Count > 0 && MessageBox.Show("Are you sure you want to delete this folder? This cannot be undone", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
                 string folder = folderListBox.CheckedItems[0].ToString();
                 folderListBox.Items.Remove(folder);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -26,6 +27,88 @@ namespace XeniaLauncher
 {
     public class GameLaunch : IWindowEffects
     {
+        /// <summary>
+        /// Attemps to launch Xenia, throwing an error message if it can't
+        /// </summary>
+        public static void SafeLaunchXenia(Game1 game)
+        {
+            SafeLaunchXenia(game, "");
+        }
+        public static void SafeLaunchXenia(Game1 game, string path)
+        {
+            if (File.Exists(game.xeniaPath))
+            {
+                if (String.IsNullOrEmpty(path))
+                {
+                    game.LaunchXenia();
+                }
+                else
+                {
+                    game.LaunchXenia(path);
+                }
+            }
+            else
+            {
+                game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
+            }
+        }
+        /// <summary>
+        /// Attemps to launch Canary, throwing an error message if it can't
+        /// </summary>
+        public static void SafeLaunchCanary(Game1 game)
+        {
+            SafeLaunchCanary(game, "");
+        }
+        public static void SafeLaunchCanary(Game1 game, string path)
+        {
+            if (File.Exists(game.xeniaPath))
+            {
+                if (String.IsNullOrEmpty(path))
+                {
+                    game.LaunchCanary();
+                }
+                else
+                {
+                    game.LaunchCanary(path);
+                }
+            }
+            else
+            {
+                game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
+            }
+        }
+        /// <summary>
+        /// Attemps to launch Xenia or Canary, depending on the config, throwing an error message if it can't
+        /// </summary>
+        public static void SafeQuickstart(Game1 game)
+        {
+            SafeQuickstart(game, "");
+        }
+        public static void SafeQuickstart(Game1 game, string path)
+        {
+            if ((game.gameData[game.index].preferCanary && File.Exists(game.canaryPath)) || (!game.gameData[game.index].preferCanary && File.Exists(game.xeniaPath)))
+            {
+                if (String.IsNullOrEmpty(path))
+                {
+                    game.DefaultQuickstart();
+                }
+                else
+                {
+                    game.DefaultQuickstart(path);
+                }
+            }
+            else
+            {
+                if (game.gameData[game.index].preferCanary)
+                {
+                    game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
+                }
+                else
+                {
+                    game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
+                }
+            }
+        }
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
             if (buttonIndex == 3)
@@ -38,18 +121,7 @@ namespace XeniaLauncher
             }
             else if (game.gameData[game.index].xexNames.Count == 0)
             {
-                if (buttonIndex == 0)
-                {
-                    game.LaunchXenia();
-                }
-                else if (buttonIndex == 1)
-                {
-                    game.LaunchCanary();
-                }
-                else if (buttonIndex == 2)
-                {
-                    game.DefaultQuickstart();
-                }
+                SafeQuickstart(game);
             }
             else
             {

@@ -53,6 +53,10 @@ namespace XLCompanion
             {
                 executableBox.Items.Add(xex);
             }
+            if (executableBox.Items.Count == 0)
+            {
+                deleteExecutableButton.Enabled = false;
+            }
 
             switch (data.xeniaCompat)
             {
@@ -231,6 +235,7 @@ namespace XLCompanion
                     data.xexNames.Add(executableNameBox.Text);
                     data.xexPaths.Add(executablePathBox.Text);
                     executableBox.Items.Add(executableNameBox.Text);
+                    deleteExecutableButton.Enabled = true;
                 }
             }
         }

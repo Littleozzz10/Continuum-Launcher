@@ -24,10 +24,11 @@ using Key = XeniaLauncher.OzzzFramework.KeyboardInput.Key;
 using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
-using SaveData = XeniaLauncher.OzzzFramework.SaveData;
-using SaveDataObject = XeniaLauncher.OzzzFramework.SaveData.SaveDataObject;
-using SaveDataChunk = XeniaLauncher.OzzzFramework.SaveData.SaveDataChunk;
+using SaveData = XeniaLauncher.Shared.SaveData;
+using SaveDataObject = XeniaLauncher.Shared.SaveData.SaveDataObject;
+using SaveDataChunk = XeniaLauncher.Shared.SaveData.SaveDataChunk;
 using SequenceFade = XeniaLauncher.OzzzFramework.SequenceFade;
+using GameData = XeniaLauncher.Shared.GameData;
 
 namespace XeniaLauncher
 {
@@ -58,7 +59,7 @@ namespace XeniaLauncher
         public SequenceFade bottomInfo;
         public DataEntry toDelete;
         public string xeniaPath, canaryPath, configPath, ver, compileDate;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay;
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage;
         public enum State
         {
@@ -103,8 +104,6 @@ namespace XeniaLauncher
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             Ozzz.Initialize(new Vector2((float)GraphicsDevice.Viewport.Width / 1920, (float)GraphicsDevice.Viewport.Height / 1080), 60);
             GamepadInput.AddIndex(PlayerIndex.One);
 
@@ -161,6 +160,7 @@ namespace XeniaLauncher
             rings = new List<Ring>();
             ringFrames = 30;
             ringDuration = 240;
+            compatWindowDelay = 30;
             showRings = true;
             checkDrivesOnManage = true;
 
@@ -184,6 +184,10 @@ namespace XeniaLauncher
             base.Initialize();
         }
 
+        /// <summary>
+        /// Saves the config file
+        /// </summary>
+        /// <returns>Whether or not the config file was successfully saved</returns>
         public bool SaveConfig()
         {
             try
@@ -226,6 +230,9 @@ namespace XeniaLauncher
             }
             return false;
         }
+        /// <summary>
+        /// Reads in the config file and sets variables from it
+        /// </summary>
         public void ReadConfig()
         {
             // Reading in settings
@@ -266,6 +273,9 @@ namespace XeniaLauncher
                 checkDrivesOnManage = true;
             }
         }
+        /// <summary>
+        /// Coverts a data size to a larger unit of storage measurement in needed, and adds a suffix to the end of the string
+        /// </summary>
         public string ConvertDataSize(string size)
         {
             double num = Convert.ToDouble(size);
@@ -297,6 +307,11 @@ namespace XeniaLauncher
             return size;
         }
 
+        /// <summary>
+        /// Resets the theme, used for changing to a new theme
+        /// </summary>
+        /// <param name="newTheme">The new theme to change to</param>
+        /// <param name="forceWindowReset">If true, forces all open Window to reconstruct (This resets and applies the theme to the Window)</param>
         public void ResetTheme(Theme newTheme, bool forceWindowReset)
         {
             theme = newTheme;
@@ -394,11 +409,17 @@ namespace XeniaLauncher
             }
         }
 
+        /// <summary>
+        /// Returns a color with the alpha set to 0
+        /// </summary>
         public Color GetTransparentColor(Color color)
         {
             return Color.FromNonPremultiplied(color.R, color.G, color.B, 0);
         }
 
+        /// <summary>
+        /// Internally used to adjust displayed games, resetting positions and artwork after the AnimationPaths have finished playing
+        /// </summary>
         public void ResetGameIcons()
         {
             List<int> indexes = new List<int>();
@@ -485,6 +506,9 @@ namespace XeniaLauncher
                 topBorder.UpdatePos();
             }
         }
+        /// <summary>
+        /// Sets up the Launcher to use a new folder
+        /// </summary>
         public void FolderReset()
         {
             if (folders.Count >= 2)
@@ -511,6 +535,9 @@ namespace XeniaLauncher
                 }
             }
         }
+        /// <summary>
+        /// Updates all of the Gradients used for transitioning between game selection and other Windows
+        /// </summary>
         public void UpdateGradients()
         {
             mainFadeGradient.Update();
@@ -530,6 +557,10 @@ namespace XeniaLauncher
         {
             BeginMainTransition(false);
         }
+        /// <summary>
+        /// Begins the Main Transition from game selection to game launching, and vice versa
+        /// </summary>
+        /// <param name="skipTransition"></param>
         public void BeginMainTransition(bool skipTransition)
         {
             mainFadeGradient.ValueUpdate(1);
@@ -561,6 +592,9 @@ namespace XeniaLauncher
                 ring.fade.ValueUpdate(0);
             }
         }
+        /// <summary>
+        /// Used to calculate total drives and size
+        /// </summary>
         public void SetDriveSpaceText()
         {
             float tempY = 0;
@@ -588,6 +622,9 @@ namespace XeniaLauncher
             drivesText.UpdatePos();
             updateFreeSpace = false;
         }
+        /// <summary>
+        /// Sets compatibility textures for the game launching menu
+        /// </summary>
         public void SetCompatTextures()
         {
             if (gameData[index].xeniaCompat == GameData.XeniaCompat.Unknown || gameData[index].xeniaCompat == GameData.XeniaCompat.Broken)
@@ -648,6 +685,10 @@ namespace XeniaLauncher
                 canaryCompat.textures[0] = compatBars["perfect"];
             }
         }
+        /// <summary>
+        /// Returns the parameter string to attach to the command that launches Xenia
+        /// </summary>
+        /// <returns></returns>
         public string GetParamString()
         {
             string param = "";
@@ -718,7 +759,7 @@ namespace XeniaLauncher
             }
             Process.Start(startInfo);
 
-            OpenCompatWindow(false, 10);
+            OpenCompatWindow(false, compatWindowDelay);
         }
         public void LaunchXenia()
         {
@@ -757,7 +798,7 @@ namespace XeniaLauncher
             }
             Process.Start(startInfo);
 
-            OpenCompatWindow(true, 10);
+            OpenCompatWindow(true, compatWindowDelay);
         }
         public void LaunchCanary()
         {
@@ -795,7 +836,7 @@ namespace XeniaLauncher
                     startInfo.FileName = canaryPath;
                 }
                 Process.Start(startInfo);
-                OpenCompatWindow(true, 10);
+                OpenCompatWindow(true, compatWindowDelay);
             }
             else
             {
@@ -827,13 +868,18 @@ namespace XeniaLauncher
                 }
                 Process.Start(startInfo);
 
-                OpenCompatWindow(false, 10);
+                OpenCompatWindow(false, compatWindowDelay);
             }
         }
         public void DefaultQuickstart()
         {
             DefaultQuickstart(gameData[index].gamePath);
         }
+        /// <summary>
+        /// Opens the compatibility window after Xenia has been launched
+        /// </summary>
+        /// <param name="canary">Whether or not Canary was launched instead of Xenia (Master)</param>
+        /// <param name="delay">The number of frames to wait before opening the window (Used to ensure that the window doesn't pop back up before Xenia has been launched)</param>
         public void OpenCompatWindow(bool canary, int delay)
         {
             OpenCompatWindow(canary, delay, false);
@@ -842,7 +888,7 @@ namespace XeniaLauncher
         {
             if (cwSettings == CWSettings.All || (cwSettings == CWSettings.Untested && ((canary && gameData[index].canaryCompat == GameData.XeniaCompat.Unknown) || !canary && gameData[index].xeniaCompat == GameData.XeniaCompat.Unknown)) || forceOpen)
             {
-                compatWindow = new Window(this, new Rectangle(360, 40, 1200, 1000), "Update Xenia Compatibility", new CompatWindowEffects(), new CompatInput(), new GenericStart(), state);
+                compatWindow = new Window(this, new Rectangle(360, 40, 1200, 1000), "Update Xenia Compatibility", new CompatWindowEffects(), new CompatInput(), new GenericStart(), state, false);
                 compatWindow.changeEffects = new CompatIndexChange(this, compatWindow);
                 compatWindow.AddButton(new Rectangle(410, 530, 545, 100));
                 compatWindow.AddButton(new Rectangle(965, 530, 545, 100));
@@ -954,6 +1000,9 @@ namespace XeniaLauncher
             return _graphics.SynchronizeWithVerticalRetrace;
         }
 
+        /// <summary>
+        /// Loads all of the Launcher's content (Textures, Fonts, data, etc)
+        /// </summary>
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -1125,6 +1174,9 @@ namespace XeniaLauncher
             ReadConfig();
         }
 
+        /// <summary>
+        /// This Update() method is called once every frame
+        /// </summary>
         protected override void Update(GameTime gameTime)
         {
             GamepadInput.Update();

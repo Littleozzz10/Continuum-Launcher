@@ -24,39 +24,42 @@ namespace XeniaLauncher
     {
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
+            // First button is the normal game
             if (buttonIndex == 0)
             {
                 if (game.launchWindow.buttonIndex == 0)
                 {
-                    game.LaunchXenia();
+                    GameLaunch.SafeLaunchXenia(game);
                 }
                 else if (game.launchWindow.buttonIndex == 1)
                 {
-                    game.LaunchCanary();
+                    GameLaunch.SafeLaunchCanary(game);
                 }
                 else if (game.launchWindow.buttonIndex == 2)
                 {
-                    game.DefaultQuickstart();
+                    GameLaunch.SafeQuickstart(game);
                 }
             }
+            // Last button is the exit button
             else if (buttonIndex == source.strings.Count - 1)
             {
                 game.state = Game1.State.Select;
                 game.backSound.Play();
             }
+            // Any other button in between is an XEX button
             else
             {
                 if (game.launchWindow.buttonIndex == 0)
                 {
-                    game.LaunchXenia(game.gameData[game.index].xexPaths[buttonIndex - 1]);
+                    GameLaunch.SafeLaunchXenia(game, game.gameData[game.index].xexPaths[buttonIndex - 1]);
                 }
                 else if (game.launchWindow.buttonIndex == 1)
                 {
-                    game.LaunchCanary(game.gameData[game.index].xexPaths[buttonIndex - 1]);
+                    GameLaunch.SafeLaunchCanary(game, game.gameData[game.index].xexPaths[buttonIndex - 1]);
                 }
                 else if (game.launchWindow.buttonIndex == 2)
                 {
-                    game.DefaultQuickstart(game.gameData[game.index].xexPaths[buttonIndex - 1]);
+                    GameLaunch.SafeQuickstart(game, game.gameData[game.index].xexPaths[buttonIndex - 1]);
                 }
             }
         }
