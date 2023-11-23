@@ -12,8 +12,8 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.0.2 Beta 2";
-        public static readonly string COMPILED = "June 19, 2023";
+        public static readonly string VERSION = "1.0.3 Beta 1";
+        public static readonly string COMPILED = "November 23, 2023";
         public class SaveData
         {
             /// <summary>

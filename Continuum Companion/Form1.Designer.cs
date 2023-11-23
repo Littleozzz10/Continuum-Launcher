@@ -60,8 +60,6 @@
             this.coverPreviewBox = new System.Windows.Forms.PictureBox();
             this.artworkPathLabel = new System.Windows.Forms.Label();
             this.artPathBox = new System.Windows.Forms.TextBox();
-            this.kinectBox = new System.Windows.Forms.ComboBox();
-            this.kinectLabel = new System.Windows.Forms.Label();
             this.maxPlayersLabel = new System.Windows.Forms.Label();
             this.maxPlayersBox = new System.Windows.Forms.ComboBox();
             this.minPlayerLabel = new System.Windows.Forms.Label();
@@ -97,25 +95,25 @@
             this.folderGroupBox.Controls.Add(this.deleteFolderButton);
             this.folderGroupBox.Controls.Add(this.folderListBox);
             this.folderGroupBox.Controls.Add(this.createFolderButton);
-            this.folderGroupBox.Location = new System.Drawing.Point(12, 158);
+            this.folderGroupBox.Location = new System.Drawing.Point(12, 160);
             this.folderGroupBox.Name = "folderGroupBox";
-            this.folderGroupBox.Size = new System.Drawing.Size(462, 168);
+            this.folderGroupBox.Size = new System.Drawing.Size(462, 180);
             this.folderGroupBox.TabIndex = 0;
             this.folderGroupBox.TabStop = false;
-            this.folderGroupBox.Text = "Manage Folders";
+            this.folderGroupBox.Text = "Manage Categories";
             // 
             // folderNameLabel
             // 
             this.folderNameLabel.AutoSize = true;
             this.folderNameLabel.Location = new System.Drawing.Point(6, 134);
             this.folderNameLabel.Name = "folderNameLabel";
-            this.folderNameLabel.Size = new System.Drawing.Size(139, 20);
+            this.folderNameLabel.Size = new System.Drawing.Size(158, 20);
             this.folderNameLabel.TabIndex = 8;
-            this.folderNameLabel.Text = "New Folder Name:";
+            this.folderNameLabel.Text = "New Category Name:";
             // 
             // folderNameBox
             // 
-            this.folderNameBox.Location = new System.Drawing.Point(147, 131);
+            this.folderNameBox.Location = new System.Drawing.Point(170, 133);
             this.folderNameBox.Name = "folderNameBox";
             this.folderNameBox.Size = new System.Drawing.Size(274, 26);
             this.folderNameBox.TabIndex = 8;
@@ -123,12 +121,12 @@
             // 
             // deleteFolderButton
             // 
-            this.deleteFolderButton.Location = new System.Drawing.Point(322, 71);
+            this.deleteFolderButton.Location = new System.Drawing.Point(304, 78);
             this.deleteFolderButton.Name = "deleteFolderButton";
-            this.deleteFolderButton.Size = new System.Drawing.Size(134, 35);
+            this.deleteFolderButton.Size = new System.Drawing.Size(152, 35);
             this.deleteFolderButton.TabIndex = 5;
-            this.deleteFolderButton.Text = "Delete Folder";
-            this.toolTip.SetToolTip(this.deleteFolderButton, "Deletes a folder");
+            this.deleteFolderButton.Text = "Delete Category";
+            this.toolTip.SetToolTip(this.deleteFolderButton, "Deletes a category");
             this.deleteFolderButton.UseVisualStyleBackColor = true;
             this.deleteFolderButton.Click += new System.EventHandler(this.deleteFolderButton_Click);
             // 
@@ -144,12 +142,12 @@
             // 
             // createFolderButton
             // 
-            this.createFolderButton.Location = new System.Drawing.Point(322, 28);
+            this.createFolderButton.Location = new System.Drawing.Point(304, 35);
             this.createFolderButton.Name = "createFolderButton";
-            this.createFolderButton.Size = new System.Drawing.Size(134, 35);
+            this.createFolderButton.Size = new System.Drawing.Size(152, 35);
             this.createFolderButton.TabIndex = 4;
-            this.createFolderButton.Text = "Create Folder";
-            this.toolTip.SetToolTip(this.createFolderButton, "Creates a new folder");
+            this.createFolderButton.Text = "Create Category";
+            this.toolTip.SetToolTip(this.createFolderButton, "Creates a new category");
             this.createFolderButton.UseVisualStyleBackColor = true;
             this.createFolderButton.Click += new System.EventHandler(this.createFolderButton_Click);
             // 
@@ -159,9 +157,9 @@
             this.gamesGroupBox.Controls.Add(this.addGameButton);
             this.gamesGroupBox.Controls.Add(this.selectGameLabel);
             this.gamesGroupBox.Controls.Add(this.gameListBox);
-            this.gamesGroupBox.Location = new System.Drawing.Point(12, 332);
+            this.gamesGroupBox.Location = new System.Drawing.Point(12, 337);
             this.gamesGroupBox.Name = "gamesGroupBox";
-            this.gamesGroupBox.Size = new System.Drawing.Size(462, 134);
+            this.gamesGroupBox.Size = new System.Drawing.Size(462, 129);
             this.gamesGroupBox.TabIndex = 1;
             this.gamesGroupBox.TabStop = false;
             this.gamesGroupBox.Text = "Imported Games";
@@ -216,9 +214,9 @@
             this.configSettingsGroup.Controls.Add(this.canaryLabel);
             this.configSettingsGroup.Controls.Add(this.xeniaLabel);
             this.configSettingsGroup.Controls.Add(this.xeniaFilepathBox);
-            this.configSettingsGroup.Location = new System.Drawing.Point(18, 12);
+            this.configSettingsGroup.Location = new System.Drawing.Point(12, 12);
             this.configSettingsGroup.Name = "configSettingsGroup";
-            this.configSettingsGroup.Size = new System.Drawing.Size(456, 142);
+            this.configSettingsGroup.Size = new System.Drawing.Size(462, 142);
             this.configSettingsGroup.TabIndex = 2;
             this.configSettingsGroup.TabStop = false;
             this.configSettingsGroup.Text = "Configuration Settings";
@@ -259,7 +257,7 @@
             // 
             // canaryFilepathBox
             // 
-            this.canaryFilepathBox.Location = new System.Drawing.Point(141, 105);
+            this.canaryFilepathBox.Location = new System.Drawing.Point(141, 110);
             this.canaryFilepathBox.Name = "canaryFilepathBox";
             this.canaryFilepathBox.Size = new System.Drawing.Size(274, 26);
             this.canaryFilepathBox.TabIndex = 3;
@@ -268,7 +266,7 @@
             // canaryLabel
             // 
             this.canaryLabel.AutoSize = true;
-            this.canaryLabel.Location = new System.Drawing.Point(10, 108);
+            this.canaryLabel.Location = new System.Drawing.Point(8, 113);
             this.canaryLabel.Name = "canaryLabel";
             this.canaryLabel.Size = new System.Drawing.Size(124, 20);
             this.canaryLabel.TabIndex = 2;
@@ -304,8 +302,6 @@
             this.editGameGroup.Controls.Add(this.coverPreviewBox);
             this.editGameGroup.Controls.Add(this.artworkPathLabel);
             this.editGameGroup.Controls.Add(this.artPathBox);
-            this.editGameGroup.Controls.Add(this.kinectBox);
-            this.editGameGroup.Controls.Add(this.kinectLabel);
             this.editGameGroup.Controls.Add(this.maxPlayersLabel);
             this.editGameGroup.Controls.Add(this.maxPlayersBox);
             this.editGameGroup.Controls.Add(this.minPlayerLabel);
@@ -331,12 +327,12 @@
             // 
             // importButton
             // 
-            this.importButton.Location = new System.Drawing.Point(310, 240);
+            this.importButton.Location = new System.Drawing.Point(7, 413);
             this.importButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(130, 35);
+            this.importButton.Size = new System.Drawing.Size(240, 35);
             this.importButton.TabIndex = 29;
-            this.importButton.Text = "Import...";
+            this.importButton.Text = "Import from STFS...";
             this.toolTip.SetToolTip(this.importButton, "Import game data from a GoD file");
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
@@ -344,7 +340,7 @@
             // artworkBrowseButton
             // 
             this.artworkBrowseButton.Image = global::XLCompanion.Properties.Resources.FolderBrowserDialogControl;
-            this.artworkBrowseButton.Location = new System.Drawing.Point(422, 278);
+            this.artworkBrowseButton.Location = new System.Drawing.Point(421, 241);
             this.artworkBrowseButton.Name = "artworkBrowseButton";
             this.artworkBrowseButton.Size = new System.Drawing.Size(34, 31);
             this.artworkBrowseButton.TabIndex = 28;
@@ -365,11 +361,11 @@
             // 
             // xeniaOptionsButton
             // 
-            this.xeniaOptionsButton.Location = new System.Drawing.Point(224, 411);
+            this.xeniaOptionsButton.Location = new System.Drawing.Point(254, 413);
             this.xeniaOptionsButton.Name = "xeniaOptionsButton";
-            this.xeniaOptionsButton.Size = new System.Drawing.Size(110, 35);
+            this.xeniaOptionsButton.Size = new System.Drawing.Size(201, 35);
             this.xeniaOptionsButton.TabIndex = 8;
-            this.xeniaOptionsButton.Text = "More...";
+            this.xeniaOptionsButton.Text = "More Xenia Settings...";
             this.toolTip.SetToolTip(this.xeniaOptionsButton, "Show more options for game configuration");
             this.xeniaOptionsButton.UseVisualStyleBackColor = true;
             this.xeniaOptionsButton.Click += new System.EventHandler(this.xeniaOptionsButton_Click);
@@ -377,17 +373,17 @@
             // gameFoldersLabel
             // 
             this.gameFoldersLabel.AutoSize = true;
-            this.gameFoldersLabel.Location = new System.Drawing.Point(14, 318);
+            this.gameFoldersLabel.Location = new System.Drawing.Point(13, 281);
             this.gameFoldersLabel.Name = "gameFoldersLabel";
-            this.gameFoldersLabel.Size = new System.Drawing.Size(66, 20);
+            this.gameFoldersLabel.Size = new System.Drawing.Size(90, 20);
             this.gameFoldersLabel.TabIndex = 26;
-            this.gameFoldersLabel.Text = "Folders:";
+            this.gameFoldersLabel.Text = "Categories:";
             // 
             // gameFoldersBox
             // 
             this.gameFoldersBox.CheckOnClick = true;
             this.gameFoldersBox.FormattingEnabled = true;
-            this.gameFoldersBox.Location = new System.Drawing.Point(6, 351);
+            this.gameFoldersBox.Location = new System.Drawing.Point(5, 314);
             this.gameFoldersBox.Name = "gameFoldersBox";
             this.gameFoldersBox.Size = new System.Drawing.Size(211, 96);
             this.gameFoldersBox.Sorted = true;
@@ -397,7 +393,7 @@
             // coverPreviewLabel
             // 
             this.coverPreviewLabel.AutoSize = true;
-            this.coverPreviewLabel.Location = new System.Drawing.Point(224, 362);
+            this.coverPreviewLabel.Location = new System.Drawing.Point(223, 325);
             this.coverPreviewLabel.Name = "coverPreviewLabel";
             this.coverPreviewLabel.Size = new System.Drawing.Size(112, 20);
             this.coverPreviewLabel.TabIndex = 25;
@@ -405,7 +401,7 @@
             // 
             // coverPreviewBox
             // 
-            this.coverPreviewBox.Location = new System.Drawing.Point(363, 311);
+            this.coverPreviewBox.Location = new System.Drawing.Point(362, 274);
             this.coverPreviewBox.Name = "coverPreviewBox";
             this.coverPreviewBox.Size = new System.Drawing.Size(93, 137);
             this.coverPreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -415,44 +411,21 @@
             // artworkPathLabel
             // 
             this.artworkPathLabel.AutoSize = true;
-            this.artworkPathLabel.Location = new System.Drawing.Point(14, 282);
+            this.artworkPathLabel.Location = new System.Drawing.Point(13, 245);
             this.artworkPathLabel.Name = "artworkPathLabel";
-            this.artworkPathLabel.Size = new System.Drawing.Size(104, 20);
+            this.artworkPathLabel.Size = new System.Drawing.Size(91, 20);
             this.artworkPathLabel.TabIndex = 22;
-            this.artworkPathLabel.Text = "Artwork Path:";
+            this.artworkPathLabel.Text = "Cover Path:";
             // 
             // artPathBox
             // 
-            this.artPathBox.Location = new System.Drawing.Point(123, 278);
+            this.artPathBox.Location = new System.Drawing.Point(122, 241);
             this.artPathBox.Name = "artPathBox";
             this.artPathBox.Size = new System.Drawing.Size(294, 26);
             this.artPathBox.TabIndex = 23;
             this.toolTip.SetToolTip(this.artPathBox, "The absolute filepath to the image that the Launcher will use as the game\'s cover" +
         " art");
             this.artPathBox.TextChanged += new System.EventHandler(this.artPathBox_TextChanged);
-            // 
-            // kinectBox
-            // 
-            this.kinectBox.FormattingEnabled = true;
-            this.kinectBox.Items.AddRange(new object[] {
-            "None",
-            "Supported",
-            "Required"});
-            this.kinectBox.Location = new System.Drawing.Point(136, 245);
-            this.kinectBox.Name = "kinectBox";
-            this.kinectBox.Size = new System.Drawing.Size(151, 28);
-            this.kinectBox.TabIndex = 20;
-            this.toolTip.SetToolTip(this.kinectBox, "The level of Kinect support that the game has");
-            this.kinectBox.SelectedIndexChanged += new System.EventHandler(this.kinectBox_SelectedIndexChanged);
-            // 
-            // kinectLabel
-            // 
-            this.kinectLabel.AutoSize = true;
-            this.kinectLabel.Location = new System.Drawing.Point(14, 248);
-            this.kinectLabel.Name = "kinectLabel";
-            this.kinectLabel.Size = new System.Drawing.Size(118, 20);
-            this.kinectLabel.TabIndex = 19;
-            this.kinectLabel.Text = "Kinect Support:";
             // 
             // maxPlayersLabel
             // 
@@ -691,8 +664,6 @@
         private System.Windows.Forms.ComboBox maxPlayersBox;
         private System.Windows.Forms.Label minPlayerLabel;
         private System.Windows.Forms.ComboBox minPlayersBox;
-        private System.Windows.Forms.ComboBox kinectBox;
-        private System.Windows.Forms.Label kinectLabel;
         private System.Windows.Forms.Label coverPreviewLabel;
         private System.Windows.Forms.PictureBox coverPreviewBox;
         private System.Windows.Forms.Label artworkPathLabel;

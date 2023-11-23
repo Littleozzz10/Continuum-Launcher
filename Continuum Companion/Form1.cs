@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace XLCompanion
 {
@@ -21,6 +22,7 @@ namespace XLCompanion
         public List<string> folders;
         public string configPath;
         public int createConfigClicks, selectedIndex;
+        public static string DEFAULT_CONFIG_FILEPATH = "XLConfig.txt";
         public Form1()
         {
             InitializeComponent();
@@ -35,18 +37,75 @@ namespace XLCompanion
             deleteFolderButton.Enabled = false;
             data = new List<XeniaLauncher.Shared.GameData>();
             folders = new List<string>();
+
+            // Checking if an XLConfig.txt file is where it defaults to
+            if (!(File.Exists(DEFAULT_CONFIG_FILEPATH)))
+            {
+                CreateConfigFile(DEFAULT_CONFIG_FILEPATH);
+            }
+            ReadConfigFile(DEFAULT_CONFIG_FILEPATH);
+
         }
 
         public void CreateNewConfig()
         {
             if (createConfigDialog.ShowDialog() == DialogResult.OK)
             {
-                SaveData save = new SaveData(createConfigDialog.FileName);
-                save.AddSaveObject(new SaveDataObject("xenia", xeniaFilepathBox.Text, DataType.String));
-                save.AddSaveObject(new SaveDataObject("canary", canaryFilepathBox.Text, DataType.String));
-                save.AddSaveChunk(new SaveDataChunk("games"));
-                save.savedData.data.Last().GetChunk().AddChunk(new GameData().Save());
-                save.SaveToFile();
+                CreateConfigFile(createConfigDialog.FileName);
+            }
+        }
+        private void CreateConfigFile(string filepath)
+        {
+            SaveData save = new SaveData(filepath);
+            save.AddSaveObject(new SaveDataObject("xenia", xeniaFilepathBox.Text, DataType.String));
+            save.AddSaveObject(new SaveDataObject("canary", canaryFilepathBox.Text, DataType.String));
+            save.AddSaveChunk(new SaveDataChunk("games"));
+            save.savedData.data.Last().GetChunk().AddChunk(new GameData().Save());
+            save.SaveToFile();
+        }
+
+        private void ReadConfigFile(string filepath)
+        {
+            SaveData read = new SaveData(filepath);
+            configPath = filepath;
+            if (read.ReadFile())
+            {
+                data.Clear();
+                gameListBox.Items.Clear();
+                xeniaFilepathBox.Text = read.savedData.FindData("xenia").data;
+                canaryFilepathBox.Text = read.savedData.FindData("canary").data;
+                SaveDataChunk games = read.savedData.FindData("games").GetChunk();
+                foreach (SaveDataChunk game in games.saveDataObjects)
+                {
+                    GameData gameData = new GameData();
+                    gameData.Read(game);
+                    data.Add(gameData);
+                    foreach (string folder in gameData.folders)
+                    {
+                        if (!folderListBox.Items.Contains(folder))
+                        {
+                            folderListBox.Items.Add(folder);
+                        }
+                    }
+                    if (folderListBox.Items.Count > 0)
+                    {
+                        deleteFolderButton.Enabled = true;
+                    }
+                }
+                data = data.OrderBy(o => o.gameTitle).ToList();
+                foreach (GameData game in data)
+                {
+                    gameListBox.Items.Add(game.gameTitle);
+                }
+                xeniaFilepathBox.Enabled = true;
+                canaryFilepathBox.Enabled = true;
+                xeniaLabel.Enabled = true;
+                canaryLabel.Enabled = true;
+                saveConfigButton.Enabled = true;
+                folderGroupBox.Enabled = true;
+                gamesGroupBox.Enabled = true;
+                editGameGroup.Enabled = false;
+                gameListBox.Text = "";
             }
         }
 
@@ -71,51 +130,11 @@ namespace XLCompanion
             canaryLabel.Enabled = true;
             if (openConfigDialog.ShowDialog() == DialogResult.OK)
             {
-                SaveData read = new SaveData(openConfigDialog.FileName);
-                configPath = openConfigDialog.FileName;
-                if (read.ReadFile())
-                {
-                    data.Clear();
-                    gameListBox.Items.Clear();
-                    xeniaFilepathBox.Text = read.savedData.FindData("xenia").data;
-                    canaryFilepathBox.Text = read.savedData.FindData("canary").data;
-                    SaveDataChunk games = read.savedData.FindData("games").GetChunk();
-                    foreach (SaveDataChunk game in games.saveDataObjects)
-                    {
-                        GameData gameData = new GameData();
-                        gameData.Read(game);
-                        data.Add(gameData);
-                        foreach (string folder in gameData.folders)
-                        {
-                            if (!folderListBox.Items.Contains(folder))
-                            {
-                                folderListBox.Items.Add(folder);
-                            }
-                        }
-                        if (folderListBox.Items.Count > 0)
-                        {
-                            deleteFolderButton.Enabled = true;
-                        }
-                    }
-                    data = data.OrderBy(o => o.gameTitle).ToList();
-                    foreach (GameData game in data)
-                    {
-                        gameListBox.Items.Add(game.gameTitle);
-                    }
-                    xeniaFilepathBox.Enabled = true;
-                    canaryFilepathBox.Enabled = true;
-                    xeniaLabel.Enabled = true;
-                    canaryLabel.Enabled = true;
-                    saveConfigButton.Enabled = true;
-                    folderGroupBox.Enabled = true;
-                    gamesGroupBox.Enabled = true;
-                    editGameGroup.Enabled = false;
-                    gameListBox.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("Invalid file. Make sure the file is a valid Continuum Launcher Config file (Not a Xenia config file)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                }
+                ReadConfigFile(openConfigDialog.FileName);
+            }
+            else
+            {
+                MessageBox.Show("Invalid file. Make sure the file is a valid Continuum Launcher Config file (Not a Xenia config file)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
@@ -181,22 +200,6 @@ namespace XLCompanion
         private void maxPlayersBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             data[selectedIndex].maxPlayers = Convert.ToInt32(maxPlayersBox.Text);
-        }
-
-        private void kinectBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (kinectBox.SelectedIndex == 0)
-            {
-                data[selectedIndex].kinect = GameData.KinectCompat.None;
-            }
-            else if (kinectBox.SelectedIndex == 1)
-            {
-                data[selectedIndex].kinect = GameData.KinectCompat.Supported;
-            }
-            else if (kinectBox.SelectedIndex == 2)
-            {
-                data[selectedIndex].kinect = GameData.KinectCompat.Required;
-            }
         }
 
         private void artPathBox_TextChanged(object sender, EventArgs e)
@@ -295,7 +298,6 @@ namespace XLCompanion
             releasePicker.Text = "" + data[selectedIndex].month + "/" + data[selectedIndex].day + "/" + data[selectedIndex].year;
             minPlayersBox.Text = "" + data[selectedIndex].minPlayers;
             maxPlayersBox.Text = "" + data[selectedIndex].maxPlayers;
-            kinectBox.Text = "" + data[selectedIndex].kinect.ToString();
             artPathBox.Text = data[selectedIndex].artPath;
             try
             {

@@ -41,9 +41,10 @@
             // 
             // iconBox
             // 
-            this.iconBox.Location = new System.Drawing.Point(86, 3);
+            this.iconBox.Location = new System.Drawing.Point(129, 5);
+            this.iconBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconBox.Name = "iconBox";
-            this.iconBox.Size = new System.Drawing.Size(64, 64);
+            this.iconBox.Size = new System.Drawing.Size(96, 98);
             this.iconBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.iconBox.TabIndex = 1;
             this.iconBox.TabStop = false;
@@ -53,9 +54,10 @@
             this.iconCheck.AutoSize = true;
             this.iconCheck.Checked = true;
             this.iconCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.iconCheck.Location = new System.Drawing.Point(12, 30);
+            this.iconCheck.Location = new System.Drawing.Point(18, 46);
+            this.iconCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconCheck.Name = "iconCheck";
-            this.iconCheck.Size = new System.Drawing.Size(50, 17);
+            this.iconCheck.Size = new System.Drawing.Size(70, 24);
             this.iconCheck.TabIndex = 2;
             this.iconCheck.Text = "Icon:";
             this.iconCheck.UseVisualStyleBackColor = true;
@@ -65,9 +67,10 @@
             this.titleCheck.AutoSize = true;
             this.titleCheck.Checked = true;
             this.titleCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.titleCheck.Location = new System.Drawing.Point(12, 83);
+            this.titleCheck.Location = new System.Drawing.Point(18, 128);
+            this.titleCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleCheck.Name = "titleCheck";
-            this.titleCheck.Size = new System.Drawing.Size(57, 17);
+            this.titleCheck.Size = new System.Drawing.Size(81, 24);
             this.titleCheck.TabIndex = 3;
             this.titleCheck.Text = "Name:";
             this.titleCheck.UseVisualStyleBackColor = true;
@@ -77,32 +80,36 @@
             this.titleIdCheck.AutoSize = true;
             this.titleIdCheck.Checked = true;
             this.titleIdCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.titleIdCheck.Location = new System.Drawing.Point(12, 109);
+            this.titleIdCheck.Location = new System.Drawing.Point(18, 168);
+            this.titleIdCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleIdCheck.Name = "titleIdCheck";
-            this.titleIdCheck.Size = new System.Drawing.Size(63, 17);
+            this.titleIdCheck.Size = new System.Drawing.Size(89, 24);
             this.titleIdCheck.TabIndex = 4;
             this.titleIdCheck.Text = "Title ID:";
             this.titleIdCheck.UseVisualStyleBackColor = true;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(86, 81);
+            this.nameBox.Location = new System.Drawing.Point(129, 125);
+            this.nameBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(203, 20);
+            this.nameBox.Size = new System.Drawing.Size(302, 26);
             this.nameBox.TabIndex = 5;
             // 
             // titleIdBox
             // 
-            this.titleIdBox.Location = new System.Drawing.Point(86, 106);
+            this.titleIdBox.Location = new System.Drawing.Point(129, 163);
+            this.titleIdBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleIdBox.Name = "titleIdBox";
-            this.titleIdBox.Size = new System.Drawing.Size(83, 20);
+            this.titleIdBox.Size = new System.Drawing.Size(122, 26);
             this.titleIdBox.TabIndex = 6;
             // 
             // importButton
             // 
-            this.importButton.Location = new System.Drawing.Point(202, 107);
+            this.importButton.Location = new System.Drawing.Point(303, 165);
+            this.importButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(122, 23);
+            this.importButton.Size = new System.Drawing.Size(183, 35);
             this.importButton.TabIndex = 7;
             this.importButton.Text = "Import Selected";
             this.importButton.UseVisualStyleBackColor = true;
@@ -114,9 +121,9 @@
             // 
             // ImportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 138);
+            this.ClientSize = new System.Drawing.Size(495, 211);
             this.Controls.Add(this.importButton);
             this.Controls.Add(this.titleIdBox);
             this.Controls.Add(this.nameBox);
@@ -124,9 +131,12 @@
             this.Controls.Add(this.titleCheck);
             this.Controls.Add(this.iconCheck);
             this.Controls.Add(this.iconBox);
-            this.MaximumSize = new System.Drawing.Size(352, 177);
-            this.MinimumSize = new System.Drawing.Size(352, 177);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(517, 267);
+            this.MinimumSize = new System.Drawing.Size(517, 267);
             this.Name = "ImportForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Import From STFS/SVOD";
             ((System.ComponentModel.ISupportInitialize)(this.iconBox)).EndInit();
             this.ResumeLayout(false);
