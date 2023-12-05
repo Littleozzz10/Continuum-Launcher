@@ -38,12 +38,14 @@ namespace XLCompanion
             data = new List<XeniaLauncher.Shared.GameData>();
             folders = new List<string>();
 
-            // Checking if an XLConfig.txt file is where it defaults to
-            if (!(File.Exists(DEFAULT_CONFIG_FILEPATH)))
+            // Autoloads XLConfig.txt
+            string[] files = Directory.GetFiles(Directory.GetCurrentDirectory());
+            string path = new StreamReader("autoload.txt").ReadLine();
+            if (!(File.Exists(path)))
             {
-                CreateConfigFile(DEFAULT_CONFIG_FILEPATH);
+                CreateConfigFile(path);
             }
-            ReadConfigFile(DEFAULT_CONFIG_FILEPATH);
+            ReadConfigFile(path);
 
         }
 

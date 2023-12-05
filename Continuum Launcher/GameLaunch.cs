@@ -102,10 +102,12 @@ namespace XeniaLauncher
                 if (game.gameData[game.index].preferCanary)
                 {
                     game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
+                    game.state = Game1.State.Message;
                 }
                 else
                 {
                     game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
+                    game.state = Game1.State.Message;
                 }
             }
         }
@@ -121,7 +123,18 @@ namespace XeniaLauncher
             }
             else if (game.gameData[game.index].xexNames.Count == 0)
             {
-                SafeQuickstart(game);
+                if (buttonIndex == 0)
+                {
+                    SafeLaunchXenia(game);
+                }
+                else if (buttonIndex == 1)
+                {
+                    SafeLaunchCanary(game);
+                }
+                else if (buttonIndex == 2)
+                {
+                    SafeQuickstart(game);
+                }
             }
             else
             {

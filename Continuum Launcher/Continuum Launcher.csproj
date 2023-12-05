@@ -15,6 +15,9 @@
     <Company>Littleozzz10</Company>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\Continuum Companion\STFS.cs" Link="STFS.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="continuum_icon.ico" />
   </ItemGroup>
   <ItemGroup>

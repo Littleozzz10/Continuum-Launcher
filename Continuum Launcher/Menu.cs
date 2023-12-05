@@ -23,6 +23,10 @@ using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
 using GameData = XeniaLauncher.Shared.GameData;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using XLCompanion;
+using System.Drawing;
 
 namespace XeniaLauncher
 {
@@ -107,13 +111,89 @@ namespace XeniaLauncher
                         // Game data
                         if (File.Exists(data.gamePath))
                         {
-                            DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
                             float size = 0;
-                            foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
+                            DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
+                            // Checking which data retrieval mode to use
+                            if (Shared.contentTypes.Keys.Contains(directoryInfo.Name))
                             {
-                                size += file.Length;
+                                FileInfo gameFile = new FileInfo(data.gamePath);
+                                // Game directory first, so that it's on top of the list
+                                DirectoryInfo directory = new DirectoryInfo(gameFile.DirectoryName);
+                                foreach (FileInfo file in directory.GetFiles("*", SearchOption.TopDirectoryOnly))
+                                {
+                                    STFS stfs = new STFS(file.FullName);
+                                    float localSize = file.Length;
+                                    if (Directory.Exists(directory.FullName  + "\\" +  file.Name + ".data"))
+                                    {
+                                        DirectoryInfo dataDirectory = new DirectoryInfo(directory.FullName + "\\" + file.Name + ".data");
+                                        foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                        {
+                                            localSize += dataFile.Length;
+                                        }
+                                    }
+                                    size += localSize;
+                                    // Reading icon
+                                    Texture2D localTexture = game.icons[data.gameTitle];
+                                    MemoryStream memory = new MemoryStream();
+                                    stfs.icon.Save(memory, stfs.icon.RawFormat);
+                                    try
+                                    {
+                                        localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
+                                    }
+                                    catch { }
+                                    // Fixing title name for bad garbage
+                                    string newTitle = stfs.data.titleName;
+                                    while (newTitle[0] != stfs.data.displayName[0] && newTitle[1] != stfs.data.displayName[1])
+                                    {
+                                        newTitle = newTitle.Substring(1);
+                                    }
+                                    // Adding data
+                                    game.dataFiles[index].Add(new DataEntry(newTitle, Shared.contentTypes[directoryInfo.Name], game.ConvertDataSize("" + localSize), game.icons[data.gameTitle]));
+                                }
+                                // Other directories (DLC, Title Updates, Saves, etc)
+                                DirectoryInfo parent = directoryInfo.Parent;
+                                foreach (DirectoryInfo dir in parent.GetDirectories("*", SearchOption.TopDirectoryOnly))
+                                {
+                                    if (Shared.contentTypes.Keys.Contains(dir.Name) && dir.Name != gameFile.Directory.Name)
+                                    {
+                                        foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
+                                        {
+                                            STFS stfs = new STFS(file.FullName);
+                                            float localSize = file.Length;
+                                            if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
+                                            {
+                                                DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
+                                                foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                                {
+                                                    localSize += dataFile.Length;
+                                                }
+                                            }
+                                            size += localSize;
+                                            // Reading icon
+                                            Texture2D localTexture = game.icons[data.gameTitle];
+                                            MemoryStream memory = new MemoryStream();
+                                            stfs.icon.Save(memory, stfs.icon.RawFormat);
+                                            try
+                                            {
+                                                localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
+                                            }
+                                            catch { }
+                                            // Adding data
+                                            game.dataFiles[index].Add(new DataEntry(stfs.data.titleName, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                        }
+                                    }
+
+                                }
                             }
-                            game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), game.icons[data.gameTitle]));
+                            else
+                            {
+                                DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
+                                foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
+                                {
+                                    size += file.Length;
+                                }
+                                game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), game.icons[data.gameTitle]));
+                            }
                             // Saves and Xenia data
                             if (Directory.Exists("XData"))
                             {
@@ -272,9 +352,10 @@ namespace XeniaLauncher
 
                     game.state = Game1.State.Data;
                 }
-                catch
+                catch (Exception e)
                 {
-                    game.message = new MessageWindow(game, "Error", "Unknown error while searching for game files", Game1.State.Menu);
+                    //game.message = new MessageWindow(game, "Error", "Unknown error while searching for game files", Game1.State.Menu);
+                    game.message = new MessageWindow(game, "Error", e.ToString().Split("\n")[0], Game1.State.Menu);
                     game.state = Game1.State.Message;
                 }
                 

@@ -848,7 +848,7 @@ namespace XeniaLauncher
                 type = "TextSprite";
             }
 
-            private static string GetASCII(string str)
+            public static string GetASCII(string str)
             {
                 try
                 {

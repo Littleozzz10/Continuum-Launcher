@@ -12,7 +12,7 @@ namespace XeniaLauncher
         {
             if (buttonIndex != 0)
             {
-                if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle != "Resources")
+                if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle != "Resources" && game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle.Contains("Xenia"))
                 {
                     game.toDelete = game.dataFiles[game.selectedDataIndex][buttonIndex];
                     game.message = new MessageWindow(game, "Delete File", "Are you sure you want to delete " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Data, MessageWindow.MessagePrompts.YesNo);

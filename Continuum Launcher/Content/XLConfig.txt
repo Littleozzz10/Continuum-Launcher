@@ -1,13 +1,13 @@
-﻿OzzzFramework Save Data File
+OzzzFramework Save Data File
 ver beta1
 ----------------------------
 name=xenia
 type=str
-data=
+data=C:\Users\alexj\Downloads\xenia_master (1)\xenia.exe
 
 name=canary
 type=str
-data=
+data=C:\Users\alexj\Downloads\xenia_canary (2)\xenia_canary.exe
 
 name=games
 type=chk
@@ -20,6 +20,14 @@ data=
     name=folders
     type=chk
     data=
+
+      name=folder0
+      type=str
+      data=XBLA
+
+      name=folder1
+      type=str
+      data=Only on Xbox 360
 
       name=
       type=chk
@@ -35,31 +43,31 @@ data=
 
     name=gameTitle
     type=str
-    data=No Title
+    data=Aegis Wing
 
     name=developer
     type=str
-    data=No Developer
+    data=Carbonated Games
 
     name=publisher
     type=str
-    data=No Publisher
+    data=Microsoft Game Studios
 
     name=titleId
     type=str
-    data=00000000
+    data=5841083C
 
     name=gamePath
     type=str
-    data=NULL
+    data=T:\360 Stuff\Content\0000000000000000\Aegis Wing\000D0000\22A577908CBB1AA2BC3B0D138F5D636EC6563CA158
 
     name=artPath
     type=str
-    data=NULL
+    data=T:\360 Stuff\360 Covers\AW.jpg
 
     name=iconPath
     type=str
-    data=NULL
+    data=T:\360 Stuff\360 Icons\5841083C.png
 
     name=fileSize
     type=num
@@ -67,15 +75,15 @@ data=
 
     name=year
     type=num
-    data=2005
+    data=2007
 
     name=month
     type=num
-    data=11
+    data=5
 
     name=day
     type=num
-    data=22
+    data=16
 
     name=timesLaunched
     type=num
@@ -83,11 +91,11 @@ data=
 
     name=minPlayers
     type=num
-    data=0
+    data=1
 
     name=maxPlayers
     type=num
-    data=0
+    data=4
 
     name=resX
     type=num
@@ -99,7 +107,547 @@ data=
 
     name=preferCanary
     type=tof
+    data=True
+
+    name=hasCoverArt
+    type=tof
     data=False
+
+    name=cpuReadback
+    type=tof
+    data=False
+
+    name=vsync
+    type=tof
+    data=True
+
+    name=mountCache
+    type=tof
+    data=False
+
+    name=kinect
+    type=str
+    data=None
+
+    name=license
+    type=str
+    data=First
+
+    name=renderer
+    type=str
+    data=Any
+
+    name=xeniaCompat
+    type=str
+    data=Unknown
+
+    name=canaryCompat
+    type=str
+    data=Unknown
+
+    name=
+    type=chk
+    data=endchunk
+
+  name=GameData
+  type=chk
+  data=
+
+    name=folders
+    type=chk
+    data=
+
+      name=folder0
+      type=str
+      data=Standard Games
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=xex
+    type=chk
+    data=
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=gameTitle
+    type=str
+    data=Assassin's Creed
+
+    name=developer
+    type=str
+    data=Ubisoft Montreal
+
+    name=publisher
+    type=str
+    data=Ubisoft
+
+    name=titleId
+    type=str
+    data=555307D4
+
+    name=gamePath
+    type=str
+    data=T:\360 Stuff\Content\0000000000000000\Assassin's Creed\00004000\D5B0560D78910C3F0853352C15C1FA47
+
+    name=artPath
+    type=str
+    data=T:\360 Stuff\360 Covers\AC.jpg
+
+    name=iconPath
+    type=str
+    data=T:\360 Stuff\360 Icons\555307D4.png
+
+    name=fileSize
+    type=num
+    data=0
+
+    name=year
+    type=num
+    data=2007
+
+    name=month
+    type=num
+    data=11
+
+    name=day
+    type=num
+    data=13
+
+    name=timesLaunched
+    type=num
+    data=0
+
+    name=minPlayers
+    type=num
+    data=1
+
+    name=maxPlayers
+    type=num
+    data=1
+
+    name=resX
+    type=num
+    data=1
+
+    name=resY
+    type=num
+    data=1
+
+    name=preferCanary
+    type=tof
+    data=True
+
+    name=hasCoverArt
+    type=tof
+    data=False
+
+    name=cpuReadback
+    type=tof
+    data=False
+
+    name=vsync
+    type=tof
+    data=True
+
+    name=mountCache
+    type=tof
+    data=False
+
+    name=kinect
+    type=str
+    data=None
+
+    name=license
+    type=str
+    data=None
+
+    name=renderer
+    type=str
+    data=Any
+
+    name=xeniaCompat
+    type=str
+    data=Unknown
+
+    name=canaryCompat
+    type=str
+    data=Unknown
+
+    name=
+    type=chk
+    data=endchunk
+
+  name=GameData
+  type=chk
+  data=
+
+    name=folders
+    type=chk
+    data=
+
+      name=folder0
+      type=str
+      data=Only on Xbox 360
+
+      name=folder1
+      type=str
+      data=Standard Games
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=xex
+    type=chk
+    data=
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=gameTitle
+    type=str
+    data=Forza Motorsport 3
+
+    name=developer
+    type=str
+    data=Turn 10 Studios
+
+    name=publisher
+    type=str
+    data=Microsoft Game Studios
+
+    name=titleId
+    type=str
+    data=4D53084D
+
+    name=gamePath
+    type=str
+    data=T:\360 Stuff\Content\0000000000000000\Forza Motorsport 3\00004000\F1988B8537DF63AEEDB112660CC8C158
+
+    name=artPath
+    type=str
+    data=T:\360 Stuff\360 Covers\FM3.jpg
+
+    name=iconPath
+    type=str
+    data=T:\360 Stuff\360 Icons\4D53084D.png
+
+    name=fileSize
+    type=num
+    data=0
+
+    name=year
+    type=num
+    data=2009
+
+    name=month
+    type=num
+    data=10
+
+    name=day
+    type=num
+    data=23
+
+    name=timesLaunched
+    type=num
+    data=0
+
+    name=minPlayers
+    type=num
+    data=1
+
+    name=maxPlayers
+    type=num
+    data=2
+
+    name=resX
+    type=num
+    data=1
+
+    name=resY
+    type=num
+    data=1
+
+    name=preferCanary
+    type=tof
+    data=True
+
+    name=hasCoverArt
+    type=tof
+    data=False
+
+    name=cpuReadback
+    type=tof
+    data=False
+
+    name=vsync
+    type=tof
+    data=True
+
+    name=mountCache
+    type=tof
+    data=True
+
+    name=kinect
+    type=str
+    data=None
+
+    name=license
+    type=str
+    data=None
+
+    name=renderer
+    type=str
+    data=Any
+
+    name=xeniaCompat
+    type=str
+    data=Unknown
+
+    name=canaryCompat
+    type=str
+    data=Unknown
+
+    name=
+    type=chk
+    data=endchunk
+
+  name=GameData
+  type=chk
+  data=
+
+    name=folders
+    type=chk
+    data=
+
+      name=folder0
+      type=str
+      data=Only on Xbox 360
+
+      name=folder1
+      type=str
+      data=Standard Games
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=xex
+    type=chk
+    data=
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=gameTitle
+    type=str
+    data=Forza Motorsport 4
+
+    name=developer
+    type=str
+    data=Turn 10 Studios
+
+    name=publisher
+    type=str
+    data=Microsoft Studios
+
+    name=titleId
+    type=str
+    data=4D530910
+
+    name=gamePath
+    type=str
+    data=T:\360 Stuff\Content\0000000000000000\Forza Motorsport 4\00004000\4229FE0D2F8231AE8338F89326FF1101
+
+    name=artPath
+    type=str
+    data=T:\360 Stuff\360 Covers\FM4.jpg
+
+    name=iconPath
+    type=str
+    data=T:\360 Stuff\360 Icons\4D530910.png
+
+    name=fileSize
+    type=num
+    data=0
+
+    name=year
+    type=num
+    data=2011
+
+    name=month
+    type=num
+    data=10
+
+    name=day
+    type=num
+    data=11
+
+    name=timesLaunched
+    type=num
+    data=0
+
+    name=minPlayers
+    type=num
+    data=1
+
+    name=maxPlayers
+    type=num
+    data=2
+
+    name=resX
+    type=num
+    data=1
+
+    name=resY
+    type=num
+    data=1
+
+    name=preferCanary
+    type=tof
+    data=True
+
+    name=hasCoverArt
+    type=tof
+    data=False
+
+    name=cpuReadback
+    type=tof
+    data=False
+
+    name=vsync
+    type=tof
+    data=True
+
+    name=mountCache
+    type=tof
+    data=True
+
+    name=kinect
+    type=str
+    data=None
+
+    name=license
+    type=str
+    data=None
+
+    name=renderer
+    type=str
+    data=Any
+
+    name=xeniaCompat
+    type=str
+    data=Unknown
+
+    name=canaryCompat
+    type=str
+    data=Unknown
+
+    name=
+    type=chk
+    data=endchunk
+
+  name=GameData
+  type=chk
+  data=
+
+    name=folders
+    type=chk
+    data=
+
+      name=folder0
+      type=str
+      data=Only on Xbox 360
+
+      name=folder1
+      type=str
+      data=Standard Games
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=xex
+    type=chk
+    data=
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=gameTitle
+    type=str
+    data=Halo 3
+
+    name=developer
+    type=str
+    data=Bungie
+
+    name=publisher
+    type=str
+    data=Microsoft Game Studios
+
+    name=titleId
+    type=str
+    data=4D5307E6
+
+    name=gamePath
+    type=str
+    data=T:\360 Stuff\Content\0000000000000000\Halo 3\00004000\8CEB1ABA7AC20BDAF62EEA16699E0227
+
+    name=artPath
+    type=str
+    data=T:\360 Stuff\360 Covers\H3.jpg
+
+    name=iconPath
+    type=str
+    data=T:\360 Stuff\360 Icons\4D5307E6.png
+
+    name=fileSize
+    type=num
+    data=0
+
+    name=year
+    type=num
+    data=2007
+
+    name=month
+    type=num
+    data=9
+
+    name=day
+    type=num
+    data=25
+
+    name=timesLaunched
+    type=num
+    data=0
+
+    name=minPlayers
+    type=num
+    data=1
+
+    name=maxPlayers
+    type=num
+    data=4
+
+    name=resX
+    type=num
+    data=1
+
+    name=resY
+    type=num
+    data=1
+
+    name=preferCanary
+    type=tof
+    data=True
 
     name=hasCoverArt
     type=tof

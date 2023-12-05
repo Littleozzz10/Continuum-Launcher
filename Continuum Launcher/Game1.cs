@@ -59,8 +59,8 @@ namespace XeniaLauncher
         public SequenceFade bottomInfo;
         public DataEntry toDelete;
         public string xeniaPath, canaryPath, configPath, ver, compileDate;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay;
-        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay;
+        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck;
         public enum State
         {
             Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete
@@ -161,8 +161,10 @@ namespace XeniaLauncher
             ringFrames = 30;
             ringDuration = 240;
             compatWindowDelay = 30;
+            fullscreenDelay = -1;
             showRings = true;
             checkDrivesOnManage = true;
+            lastActiveCheck = true;
 
             // Making new config settings file if not already present
             SoundEffect.MasterVolume = 0.7f;
@@ -1206,6 +1208,16 @@ namespace XeniaLauncher
                 }
             }
 
+            if (fullscreenDelay > 0)
+            {
+                fullscreenDelay--;
+                if (fullscreenDelay == 0)
+                {
+                    _graphics.IsFullScreen = true;
+                    _graphics.ApplyChanges();
+                }
+            }
+
             // Missing/Corrupt Settings file notification
             if (triggerMissingWindow)
             {
@@ -1525,10 +1537,26 @@ namespace XeniaLauncher
             else if (state == State.Compat && IsActive && compatWaitFrames <= 0)
             {
                 compatWindow.Update();
+                if (!lastActiveCheck)
+                {
+                    if (GetFullscreen())
+                    {
+                        if (_graphics.IsFullScreen)
+                        {
+                            _graphics.IsFullScreen = false;
+                            _graphics.ApplyChanges();
+                            fullscreenDelay = 30;
+                        }
+                    }
+                }
             }
             else if (state == State.Manage)
             {
                 manageWindow.Update();
+                if (Convert.ToInt32(manageWindow.tags[0]) != manageWindow.stringIndex)
+                {
+                    DataWindowEffects.UpdateText(this, manageWindow, dataWindow.stringIndex);
+                }
             }
             else if (state == State.Credits)
             {
@@ -1814,6 +1842,7 @@ namespace XeniaLauncher
             }
 
             firstLoad = false;
+            lastActiveCheck = IsActive;
             base.Update(gameTime);
         }
 

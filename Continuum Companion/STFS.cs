@@ -28,7 +28,7 @@ namespace XLCompanion
             public int blockCacheElementCount, workerThreadProcessor, workerThreadPriority, features, dataBlockCount, dataBlockOffset;
             public byte[] hash;
             // other random variables
-            public string displayName, desc;
+            public string titleName, displayName, desc;
             // Processes the data from the volume descriptor
             public void ProcessDescriptor()
             {
@@ -105,6 +105,10 @@ namespace XLCompanion
                 // Reading title id
                 titleID = Decode(4, ConvertType.Integer, HexState.AsHex, "Failed to decode title id", "Decoded title id in");
 
+                SkipDecode(167);
+                temp = Decode(80, ConvertType.String, HexState.FromHex, "Failed to decode display name", "Decoded display name in");
+                data.titleName = temp.Trim();
+
                 // Everything getting skipped here is currently not needed for Continuum, but it may
                 // be useful in the future somehow, so I'm leaving the code here commented out
 
@@ -176,7 +180,8 @@ namespace XLCompanion
                 pubNameLabel.Text = pubNameLabel.Text + Decode(80, ConvertType.String, HexState.FromHex, "Failed to decode publisher name", "Decoded publisher name in");
                 */
 
-                SkipDecode(4861);
+                //SkipDecode(4861);
+                SkipDecode(4614);
 
                 // Reading title name
                 data.displayName = Decode(176, ConvertType.String, HexState.FromHex, "Failed to decode title name", "Decoded title name in");
