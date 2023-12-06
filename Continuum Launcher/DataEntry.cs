@@ -27,6 +27,7 @@ namespace XeniaLauncher
     public class DataEntry
     {
         public string name, subTitle, size;
+        public float fileSize;
         public Texture2D icon;
         public DataEntry(string name, string subTitle, string size, Texture2D icon)
         {

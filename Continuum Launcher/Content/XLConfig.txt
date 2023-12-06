@@ -291,6 +291,138 @@ data=
 
       name=folder0
       type=str
+      data=XBLA
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=xex
+    type=chk
+    data=
+
+      name=
+      type=chk
+      data=endchunk
+
+    name=gameTitle
+    type=str
+    data=Bejeweled 2
+
+    name=developer
+    type=str
+    data=PopCap Games
+
+    name=publisher
+    type=str
+    data=Oberon Media
+
+    name=titleId
+    type=str
+    data=584107D2
+
+    name=gamePath
+    type=str
+    data=T:\360 Stuff\Content\0000000000000000\Bejeweled 2\000D0000\C708ECA18922ADDC4737061D8E6FCFA865426D5258
+
+    name=artPath
+    type=str
+    data=T:\360 Stuff\360 Covers\B2.jpg
+
+    name=iconPath
+    type=str
+    data=T:\360 Stuff\360 Icons\584107D2.png
+
+    name=fileSize
+    type=num
+    data=0
+
+    name=year
+    type=num
+    data=2005
+
+    name=month
+    type=num
+    data=11
+
+    name=day
+    type=num
+    data=22
+
+    name=timesLaunched
+    type=num
+    data=0
+
+    name=minPlayers
+    type=num
+    data=1
+
+    name=maxPlayers
+    type=num
+    data=1
+
+    name=resX
+    type=num
+    data=2
+
+    name=resY
+    type=num
+    data=2
+
+    name=preferCanary
+    type=tof
+    data=True
+
+    name=hasCoverArt
+    type=tof
+    data=False
+
+    name=cpuReadback
+    type=tof
+    data=False
+
+    name=vsync
+    type=tof
+    data=True
+
+    name=mountCache
+    type=tof
+    data=False
+
+    name=kinect
+    type=str
+    data=None
+
+    name=license
+    type=str
+    data=First
+
+    name=renderer
+    type=str
+    data=Any
+
+    name=xeniaCompat
+    type=str
+    data=Unknown
+
+    name=canaryCompat
+    type=str
+    data=Unknown
+
+    name=
+    type=chk
+    data=endchunk
+
+  name=GameData
+  type=chk
+  data=
+
+    name=folders
+    type=chk
+    data=
+
+      name=folder0
+      type=str
       data=Only on Xbox 360
 
       name=folder1

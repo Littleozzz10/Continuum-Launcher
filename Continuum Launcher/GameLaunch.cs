@@ -133,7 +133,23 @@ namespace XeniaLauncher
                 }
                 else if (buttonIndex == 2)
                 {
-                    SafeQuickstart(game);
+                    game.state = Game1.State.GameMenu;
+                    game.gameManageWindow = new Window(game, new Rectangle(560, 185, 800, 750), "Manage " + game.gameData[game.index].gameTitle, new ManageGame(), new StdInputEvent(5), new GenericStart(), Game1.State.Select);
+                    game.gameManageWindow.AddButton(new Rectangle(610, 335, 700, 100));
+                    game.gameManageWindow.AddButton(new Rectangle(610, 445, 700, 100));
+                    game.gameManageWindow.AddButton(new Rectangle(610, 555, 700, 100));
+                    game.gameManageWindow.AddButton(new Rectangle(610, 665, 700, 100));
+                    game.gameManageWindow.AddButton(new Rectangle(610, 775, 700, 100));
+                    game.gameManageWindow.AddText("Edit Launch Settings");
+                    game.gameManageWindow.AddText("Edit Game Info");
+                    game.gameManageWindow.AddText("Edit Filepaths");
+                    game.gameManageWindow.AddText("Edit Categories");
+                    game.gameManageWindow.AddText("Manage Executables");
+                    foreach (TextSprite sprite in game.gameManageWindow.sprites)
+                    {
+                        sprite.scale = 0.6f;
+                    }
+                    game.gameManageWindow.skipMainStateTransition = true;
                 }
             }
             else

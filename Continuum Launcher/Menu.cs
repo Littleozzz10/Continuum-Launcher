@@ -148,7 +148,8 @@ namespace XeniaLauncher
                                         newTitle = newTitle.Substring(1);
                                     }
                                     // Adding data
-                                    game.dataFiles[index].Add(new DataEntry(newTitle, Shared.contentTypes[directoryInfo.Name], game.ConvertDataSize("" + localSize), game.icons[data.gameTitle]));
+                                    game.dataFiles[index].Add(new DataEntry(newTitle, Shared.contentTypes[directoryInfo.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                    game.dataFiles[index].Last().fileSize = localSize;
                                 }
                                 // Other directories (DLC, Title Updates, Saves, etc)
                                 DirectoryInfo parent = directoryInfo.Parent;
@@ -156,34 +157,49 @@ namespace XeniaLauncher
                                 {
                                     if (Shared.contentTypes.Keys.Contains(dir.Name) && dir.Name != gameFile.Directory.Name)
                                     {
-                                        foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
+                                        // Handling files in a extract folder
+                                        if (dir.Name == "EXTRACT")
                                         {
-                                            STFS stfs = new STFS(file.FullName);
-                                            float localSize = file.Length;
-                                            if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
+                                            float localSize = 0;
+                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.AllDirectories))
                                             {
-                                                DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
-                                                foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
-                                                {
-                                                    localSize += dataFile.Length;
-                                                }
+                                                localSize += file.Length;
                                             }
                                             size += localSize;
-                                            // Reading icon
-                                            Texture2D localTexture = game.icons[data.gameTitle];
-                                            MemoryStream memory = new MemoryStream();
-                                            stfs.icon.Save(memory, stfs.icon.RawFormat);
-                                            try
+                                            game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), game.icons[data.gameTitle]));
+                                        }
+                                        else
+                                        {
+                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                                             {
-                                                localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
+                                                STFS stfs = new STFS(file.FullName);
+                                                float localSize = file.Length;
+                                                if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
+                                                {
+                                                    DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
+                                                    foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                                    {
+                                                        localSize += dataFile.Length;
+                                                    }
+                                                }
+                                                size += localSize;
+                                                // Reading icon
+                                                Texture2D localTexture = game.icons[data.gameTitle];
+                                                MemoryStream memory = new MemoryStream();
+                                                stfs.icon.Save(memory, stfs.icon.RawFormat);
+                                                try
+                                                {
+                                                    localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
+                                                }
+                                                catch { }
+                                                // Adding data
+                                                game.dataFiles[index].Add(new DataEntry(stfs.data.titleName, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                                game.dataFiles[index].Last().fileSize = localSize;
                                             }
-                                            catch { }
-                                            // Adding data
-                                            game.dataFiles[index].Add(new DataEntry(stfs.data.titleName, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
                                         }
                                     }
-
                                 }
+                                game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
                             }
                             else
                             {

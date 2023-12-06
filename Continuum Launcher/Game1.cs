@@ -29,6 +29,8 @@ using SaveDataObject = XeniaLauncher.Shared.SaveData.SaveDataObject;
 using SaveDataChunk = XeniaLauncher.Shared.SaveData.SaveDataChunk;
 using SequenceFade = XeniaLauncher.OzzzFramework.SequenceFade;
 using GameData = XeniaLauncher.Shared.GameData;
+using SharpDX.MediaFoundation;
+using SharpFont;
 
 namespace XeniaLauncher
 {
@@ -37,12 +39,12 @@ namespace XeniaLauncher
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Texture2D white, rectTex, logo, circ, calendar, player, logoCanary, mainLogo, topBorderTex, bottomBorderTex, compLogo;
+        public Texture2D white, rectTex, logo, circ, calendar, player, logoCanary, mainLogo, topBorderTex, bottomBorderTex, compLogo, topBorderNew, bottomBorderNew;
         public SpriteFont font, bold;
         public SoundEffect selectSound, backSound, launchSound, switchSound, buttonSwitchSound, sortSound, leftFolderSound, rightFolderSound;
-        public ObjectSprite xeniaCompatLogo, canaryCompatLogo, xeniaCompat, canaryCompat, topBorder, bottomBorder;
+        public ObjectSprite xeniaCompatLogo, canaryCompatLogo, xeniaCompat, canaryCompat, topBorder, bottomBorder, topBorderBack, bottomBorderBack;
         public TextSprite titleSprite, subTitleSprite, sortSprite, folderSprite, xeniaUntestedText, canaryUntestedText, timeText, dateText, contNumText, controllerText, freeSpaceText, drivesText, triviaSprite;
-        public Layer mainFadeLayer, bottomLayer;
+        public Layer mainFadeLayer, bottomLayer, backBorderLayer;
         public Gradient mainFadeGradient, darkGradient, blackGradient, selectGradient, whiteGradient, buttonGradient;
         public AnimationPath mainTransitionPath, folderPath, secondFolderPath, topBorderPath, bottomBorderPath;
         public List<Ring> rings;
@@ -51,9 +53,9 @@ namespace XeniaLauncher
         public Dictionary<string, Texture2D> arts, compatBars, themeThumbnails, icons;
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow;
         public MessageWindow message;
-        public Color backColor;
+        public Color backColor, backColorAlt;
         public SaveData configData;
         public DataManageStrings dataStrings;
         public SequenceFade bottomInfo;
@@ -63,7 +65,7 @@ namespace XeniaLauncher
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX
         }
         public State state;
         public enum Sort
@@ -321,21 +323,27 @@ namespace XeniaLauncher
             {
                 case Theme.Original:
                     backColor = Color.FromNonPremultiplied(133, 133, 133, 255);
+                    backColorAlt = Color.FromNonPremultiplied(70, 70, 70, 255);
                     break;
                 case Theme.Green:
                     backColor = Color.FromNonPremultiplied(60, 110, 9, 255);
+                    backColorAlt = Color.FromNonPremultiplied(40, 70, 6, 255);
                     break;
                 case Theme.Orange:
                     backColor = Color.FromNonPremultiplied(190, 80, 20, 255);
+                    backColorAlt = Color.FromNonPremultiplied(133, 56, 14, 255);
                     break;
                 case Theme.Blue:
                     backColor = Color.FromNonPremultiplied(60, 60, 210, 255);
+                    backColorAlt = Color.FromNonPremultiplied(110, 110, 110, 255);
                     break;
                 case Theme.Gray:
                     backColor = Color.FromNonPremultiplied(133, 133, 133, 255);
+                    backColorAlt = Color.FromNonPremultiplied(70, 70, 70, 255);
                     break;
                 case Theme.Purple:
                     backColor = Color.FromNonPremultiplied(40, 30, 40, 255);
+                    backColorAlt = Color.FromNonPremultiplied(45, 0, 45, 255);
                     break;
             }
 
@@ -506,6 +514,7 @@ namespace XeniaLauncher
                 bottomLayer.Update(false);
                 topBorder.pos.Y = -30;
                 topBorder.UpdatePos();
+                backBorderLayer.Update(false);
             }
         }
         /// <summary>
@@ -961,6 +970,28 @@ namespace XeniaLauncher
             }
         }
 
+        public void SaveGames()
+        {
+            try
+            {
+                SaveData save = new SaveData(configPath);
+                save.AddSaveObject(new SaveDataObject("xenia", xeniaPath, SaveData.DataType.String));
+                save.AddSaveObject(new SaveDataObject("canary", canaryPath, SaveData.DataType.String));
+                SaveDataChunk chunk = new SaveDataChunk("games");
+                foreach (GameData game in gameData)
+                {
+                    chunk.AddChunk(game.Save());
+                }
+                save.AddSaveChunk(chunk);
+                save.SaveToFile();
+            }
+            catch (Exception e)
+            {
+                message = new MessageWindow(this, "Unable to Save", e.ToString().Split("\n")[0], State.Menu);
+                state = State.Message;
+            }
+        }
+
         public void SetResolution(Vector2 resolution)
         {
             _graphics.PreferredBackBufferWidth = (int)resolution.X;
@@ -1021,6 +1052,7 @@ namespace XeniaLauncher
             topBorderTex = Content.Load<Texture2D>("Textures/xl_border_top");
             bottomBorderTex = Content.Load<Texture2D>("Textures/xl_border_bottom");
             compLogo = Content.Load<Texture2D>("Textures/continuum comp");
+            bottomBorderNew = Content.Load<Texture2D>("Textures/xl_border_bottom_new");
 
             font = Content.Load<SpriteFont>("Fonts/Font");
             bold = Content.Load<SpriteFont>("Fonts/Bold");
@@ -1142,7 +1174,7 @@ namespace XeniaLauncher
             drivesText = new TextSprite(font, "0 Drives Connected", 0.3f, new Vector2(1660, 980), Color.White);
             drivesText.visible = false;
             SetDriveSpaceText();
-            bottomBorder = new ObjectSprite(bottomBorderTex, new Rectangle(-5, 850, 1930, 171), Color.FromNonPremultiplied(255, 255, 255, 125));
+            bottomBorder = new ObjectSprite(bottomBorderTex, new Rectangle(-5, 850, 1930, 171), Color.FromNonPremultiplied(255, 255, 255, 255));
             Layer infoLayer = new Layer(white, new Rectangle());
             infoLayer.Add(contNumText);
             infoLayer.Add(controllerText);
@@ -1155,7 +1187,19 @@ namespace XeniaLauncher
             triviaSprite = new TextSprite(font, "", 0.5f, new Vector2(600, 1025), Color.White);
             triviaSprite.velocity = new Vector2(-3, 0);
             triviaSprite.skipLayerDraw = true;
+
+            backBorderLayer = new Layer(white, new Rectangle());
+            backBorderLayer.Add(new ObjectSprite(white, new Rectangle(0, 855, 155, 400), Color.White));
+            backBorderLayer.Add(new ObjectSprite(white, new Rectangle(155, 855, 355, 400), Color.White));
+            backBorderLayer.sprites[1].rotation = (float)Math.PI / 4.45f;
+            backBorderLayer.Add(new ObjectSprite(white, new Rectangle(1765, 855, 155, 400), Color.White));
+            backBorderLayer.Add(new ObjectSprite(white, new Rectangle(1765, 855, 355, 400), Color.White));
+            backBorderLayer.sprites[3].rotation = (float)Math.PI / 3.55f;
+            backBorderLayer.Add(new ObjectSprite(white, new Rectangle(0, 1020, 1920, 200), Color.White));
+
             bottomLayer = new Layer(white, new Rectangle(-5, 850, 1930, 230));
+            //bottomLayer.Add(backBorderLayer);
+            
             bottomLayer.Add(bottomBorder);
             bottomLayer.Add(timeText);
             bottomLayer.Add(dateText);
@@ -1309,7 +1353,7 @@ namespace XeniaLauncher
                 launchWindow.AddButton(canaryCompatLogo.rect);
                 launchWindow.AddText("Launch With Xenia");
                 launchWindow.AddText("Launch With Canary");
-                launchWindow.AddText("Default Quickstart");
+                launchWindow.AddText("Manage Game");
                 launchWindow.useFade = false;
 
                 SetCompatTextures();
@@ -1518,6 +1562,18 @@ namespace XeniaLauncher
             {
                 menuWindow.Update();
             }
+            else if (state == State.GameMenu)
+            {
+                gameManageWindow.Update();
+            }
+            else if (state == State.GameXeniaSettings)
+            {
+                gameXeniaSettingsWindow.Update();
+            }
+            else if (state == State.GameInfo)
+            {
+                gameInfoWindow.Update();
+            }
             else if (state == State.Options)
             {
                 optionsWindow.Update();
@@ -1680,6 +1736,11 @@ namespace XeniaLauncher
             canaryCompat.color = whiteGradient.GetColor();
             bottomBorder.UpdatePos();
             topBorder.UpdatePos();
+            backBorderLayer.UpdatePos();
+            foreach (Sprite sprite in backBorderLayer.sprites)
+            {
+                sprite.color = backColorAlt;
+            }
 
             // Updating rings
             for (int i = 0; i < rings.Count; i++)
@@ -1817,6 +1878,12 @@ namespace XeniaLauncher
             {
                 xexWindow = null;
                 compatWindow = null;
+                gameManageWindow = null;
+            }
+            else if (state == State.GameMenu)
+            {
+                gameXeniaSettingsWindow = null;
+                gameInfoWindow = null;
             }
             else if (state == State.Menu)
             {
@@ -1862,9 +1929,10 @@ namespace XeniaLauncher
                     }
                 }
             }
+            backBorderLayer.Draw(_spriteBatch);
             triviaSprite.Draw(_spriteBatch);
-            _spriteBatch.Draw(white, Ozzz.Scaling.ScaleRectangle(new Rectangle(0, 1020, 355, 60)), backColor);
-            _spriteBatch.Draw(white, Ozzz.Scaling.ScaleRectangle(new Rectangle(1570, 1020, 350, 60)), backColor);
+            _spriteBatch.Draw(white, Ozzz.Scaling.ScaleRectangle(new Rectangle(0, 1020, 355, 60)), backColorAlt);
+            _spriteBatch.Draw(white, Ozzz.Scaling.ScaleRectangle(new Rectangle(1570, 1020, 350, 60)), backColorAlt);
             if (showRings)
             {
                 foreach (Ring ring in rings)
@@ -1941,6 +2009,18 @@ namespace XeniaLauncher
             if (xexWindow != null)
             {
                 xexWindow.Draw(_spriteBatch);
+            }
+            if (gameManageWindow != null)
+            {
+                gameManageWindow.Draw(_spriteBatch);
+            }
+            if (gameXeniaSettingsWindow != null)
+            {
+                gameXeniaSettingsWindow.Draw(_spriteBatch);
+            }
+            if (gameInfoWindow != null)
+            {
+                gameInfoWindow.Draw(_spriteBatch);
             }
             if (menuWindow != null)
             {
