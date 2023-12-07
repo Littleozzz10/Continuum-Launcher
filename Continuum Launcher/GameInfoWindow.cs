@@ -35,7 +35,15 @@ namespace XeniaLauncher
     {
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
-            
+            if (buttonIndex == 0)
+            {
+                game.text = new TextInputWindow(game, "Edit Game Title", game.gameData[game.index].gameTitle, Game1.State.GameInfo);
+            }
+            if (buttonIndex == 9)
+            {
+                game.state = Game1.State.GameMenu;
+                game.backSound.Play();
+            }
         }
         public void SetupEffects(Game1 game, Window window)
         {

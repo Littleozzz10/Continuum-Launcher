@@ -13,7 +13,7 @@ namespace XeniaLauncher
     public static class Shared
     {
         public static readonly string VERSION = "1.1.0 Alpha 2";
-        public static readonly string COMPILED = "December 5, 2023";
+        public static readonly string COMPILED = "December 6, 2023";
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Saved Game"  },
             { "00000002", "Downloadable Content" },

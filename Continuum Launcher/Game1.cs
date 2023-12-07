@@ -55,6 +55,7 @@ namespace XeniaLauncher
         public List<List<DataEntry>> dataFiles;
         public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow;
         public MessageWindow message;
+        public TextInputWindow text;
         public Color backColor, backColorAlt;
         public SaveData configData;
         public DataManageStrings dataStrings;
@@ -65,7 +66,7 @@ namespace XeniaLauncher
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text
         }
         public State state;
         public enum Sort
@@ -121,12 +122,61 @@ namespace XeniaLauncher
             KeyboardInput.keys.Add("Up", new Key(Keys.Up));
             KeyboardInput.keys.Add("Down", new Key(Keys.Down));
             KeyboardInput.keys.Add("RShift", new Key(Keys.RightShift));
+            KeyboardInput.keys.Add("LShift", new Key(Keys.LeftShift));
             KeyboardInput.keys.Add("RCtrl", new Key(Keys.RightControl));
             KeyboardInput.keys.Add("LCtrl", new Key(Keys.LeftControl));
+            KeyboardInput.keys.Add("Caps", new Key(Keys.CapsLock));
             KeyboardInput.keys.Add("Enter", new Key(Keys.Enter));
             KeyboardInput.keys.Add("Space", new Key(Keys.Space));
             KeyboardInput.keys.Add("Backspace", new Key(Keys.Back));
+            KeyboardInput.keys.Add("Tab", new Key(Keys.Tab));
+            KeyboardInput.keys.Add("Escape", new Key(Keys.Escape));
+            KeyboardInput.keys.Add("1", new Key(Keys.D1));
+            KeyboardInput.keys.Add("2", new Key(Keys.D2));
+            KeyboardInput.keys.Add("3", new Key(Keys.D3));
+            KeyboardInput.keys.Add("4", new Key(Keys.D4));
+            KeyboardInput.keys.Add("5", new Key(Keys.D5));
+            KeyboardInput.keys.Add("6", new Key(Keys.D6));
+            KeyboardInput.keys.Add("7", new Key(Keys.D7));
+            KeyboardInput.keys.Add("8", new Key(Keys.D8));
+            KeyboardInput.keys.Add("9", new Key(Keys.D9));
+            KeyboardInput.keys.Add("0", new Key(Keys.D0));
+            KeyboardInput.keys.Add("-", new Key(Keys.OemMinus));
+            KeyboardInput.keys.Add("=", new Key(Keys.OemPlus));
+            KeyboardInput.keys.Add("Q", new Key(Keys.Q));
+            KeyboardInput.keys.Add("W", new Key(Keys.W));
+            KeyboardInput.keys.Add("E", new Key(Keys.E));
+            KeyboardInput.keys.Add("R", new Key(Keys.R));
+            KeyboardInput.keys.Add("T", new Key(Keys.T));
+            KeyboardInput.keys.Add("Y", new Key(Keys.Y));
+            KeyboardInput.keys.Add("U", new Key(Keys.U));
+            KeyboardInput.keys.Add("I", new Key(Keys.I));
+            KeyboardInput.keys.Add("O", new Key(Keys.O));
+            KeyboardInput.keys.Add("P", new Key(Keys.P));
+            KeyboardInput.keys.Add("[", new Key(Keys.OemOpenBrackets));
+            KeyboardInput.keys.Add("]", new Key(Keys.OemCloseBrackets));
+            KeyboardInput.keys.Add("\\", new Key(Keys.OemBackslash));
+            KeyboardInput.keys.Add("A", new Key(Keys.A));
+            KeyboardInput.keys.Add("S", new Key(Keys.S));
+            KeyboardInput.keys.Add("D", new Key(Keys.D));
+            KeyboardInput.keys.Add("F", new Key(Keys.F));
+            KeyboardInput.keys.Add("G", new Key(Keys.G));
+            KeyboardInput.keys.Add("H", new Key(Keys.H));
+            KeyboardInput.keys.Add("J", new Key(Keys.J));
+            KeyboardInput.keys.Add("K", new Key(Keys.K));
+            KeyboardInput.keys.Add("L", new Key(Keys.L));
+            KeyboardInput.keys.Add(";", new Key(Keys.OemSemicolon));
+            KeyboardInput.keys.Add("'", new Key(Keys.OemQuotes));
+            KeyboardInput.keys.Add("Z", new Key(Keys.Z));
+            KeyboardInput.keys.Add("X", new Key(Keys.X));
+            KeyboardInput.keys.Add("C", new Key(Keys.C));
             KeyboardInput.keys.Add("V", new Key(Keys.V));
+            KeyboardInput.keys.Add("B", new Key(Keys.B));
+            KeyboardInput.keys.Add("N", new Key(Keys.N));
+            KeyboardInput.keys.Add("M", new Key(Keys.M));
+            KeyboardInput.keys.Add(",", new Key(Keys.OemComma));
+            KeyboardInput.keys.Add(".", new Key(Keys.OemPeriod));
+            KeyboardInput.keys.Add("/", new Key(Keys.OemQuestion));
             MouseInput.posCapacity = 2;
 
             folders.Add("All Games");
@@ -1631,6 +1681,10 @@ namespace XeniaLauncher
             {
                 message.Update();
             }
+            else if (state == State.Text)
+            {
+                text.Update();
+            }
 
             // Updating text
             titleSprite.text = gameData[index].gameTitle;
@@ -1907,6 +1961,10 @@ namespace XeniaLauncher
             {
                 message = null;
             }
+            if (state != State.Text)
+            {
+                text = null;
+            }
 
             firstLoad = false;
             lastActiveCheck = IsActive;
@@ -2057,6 +2115,10 @@ namespace XeniaLauncher
             if (message != null)
             {
                 message.Draw(_spriteBatch);
+            }
+            if (text != null)
+            {
+                text.Draw(_spriteBatch);
             }
 
             _spriteBatch.End();
