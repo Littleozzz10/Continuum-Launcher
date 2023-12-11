@@ -2046,7 +2046,14 @@ namespace XeniaLauncher
                     pos += Scaling.ScaleVector2(offset);
                     for (int i = 0; i < sprites.Count; i++)
                     {
-                        sprites[i].pos += offset;
+                        if (sprites[i].type == "Layer")
+                        {
+                            sprites[i].ToLayer().Move(offset);
+                        }
+                        else
+                        {
+                            sprites[i].pos += offset;
+                        }
                     }
                 }
                 /// <summary>

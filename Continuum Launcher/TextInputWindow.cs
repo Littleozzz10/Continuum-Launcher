@@ -22,11 +22,42 @@ using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
 using System.Security.Cryptography;
+using System.Windows;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace XeniaLauncher
 {
+
     public class TextInputWindow : Window
     {
+        // Retrieved from https://stackoverflow.com/questions/73227944/getting-clipboard-text-using-net-6-and-c-sharp
+        internal static void RunAsSTAThread(Action goForIt)
+        {
+            AutoResetEvent @event = new AutoResetEvent(false);
+            Thread thread = new Thread(
+                () =>
+                {
+                    goForIt();
+                    @event.Set();
+                });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            @event.WaitOne();
+        }
+        internal static string GetTextFromClipboard()
+        {
+            string clipText = "";
+
+            RunAsSTAThread(
+           () =>
+           {
+               clipText = Clipboard.GetText();
+           });
+
+            return clipText;
+        }
+        // End retrieved code
         public static readonly List<string> keys = new List<string>{ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/" };
         public static readonly List<string> shiftKeys = new List<string> { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "{", "}", "|", ":", "\"", "<", ">", "?" };
         public bool shift, caps, shiftLock, ctrl, ctrlLock;
@@ -34,9 +65,6 @@ namespace XeniaLauncher
         {
             extraSprites.Add(new ObjectSprite(game.white, new Rectangle(90, 200, 1740, 80), Color.White));
             extraSprites.Add(new TextSprite(game.font, message, 0.5f, new Vector2(110, 0), Color.FromNonPremultiplied(0, 0, 0, 255)));
-            float oldX = extraSprites[1].pos.X;
-            extraSprites[1].Centerize(new Vector2(110, 240));
-            extraSprites[1].pos.X = oldX;
             extraSprites[1].tags.Add("black");
 
             // Key Buttons
@@ -88,6 +116,10 @@ namespace XeniaLauncher
         public new void Update()
         {
             base.Update();
+
+            float oldX = extraSprites[1].pos.X;
+            extraSprites[1].Centerize(new Vector2(110, 240));
+            extraSprites[1].pos.X = oldX;
 
             //bool updateButtonText = false;
             if (KeyboardInput.keys["LShift"].IsDown() || KeyboardInput.keys["RShift"].IsDown())
@@ -168,24 +200,43 @@ namespace XeniaLauncher
                 }
             }
 
-            for (int i = 0; i < 46; i++)
+            if ((ctrl || ctrlLock) && !KeyboardInput.keys["Backspace"].IsFirstDown())
             {
-                if (KeyboardInput.keys[keys[i]].IsFirstDown())
+                // Pasting
+                if (KeyboardInput.keys["V"].IsFirstDown())
                 {
-                    game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[i], i);
+                    string t = GetTextFromClipboard();
+                    t = t.Replace("\"", "");
+                    game.text.extraSprites[1].ToTextSprite().text += t;
+                }
+                if (KeyboardInput.keys["Enter"].IsFirstDown())
+                {
+                    game.text.extraSprites[1].ToTextSprite().text = game.text.extraSprites[1].ToTextSprite().text.Substring(0, game.text.extraSprites[1].ToTextSprite().text.Length - 1);
+                    game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[48], 48);
                 }
             }
-            if (KeyboardInput.keys["Space"].IsFirstDown())
+            else
             {
-                game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[46], 46);
-            }
-            if (KeyboardInput.keys["Backspace"].IsFirstDown())
-            {
-                game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[47], 47);
-            }
-            if (KeyboardInput.keys["Tab"].IsFirstDown())
-            {
-                game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[51], 51);
+                // Managing text input
+                for (int i = 0; i < 46; i++)
+                {
+                    if (KeyboardInput.keys[keys[i]].IsFirstDown())
+                    {
+                        game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[i], i);
+                    }
+                }
+                if (KeyboardInput.keys["Space"].IsFirstDown())
+                {
+                    game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[46], 46);
+                }
+                if (KeyboardInput.keys["Backspace"].IsFirstDown())
+                {
+                    game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[47], 47);
+                }
+                if (KeyboardInput.keys["Tab"].IsFirstDown())
+                {
+                    game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[51], 51);
+                }
             }
 
             stringIndex = buttonIndex;
@@ -225,6 +276,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 48)
             {
+                game.textWindowInput = source.extraSprites[1].ToTextSprite().text;
                 game.state = source.returnState;
                 game.backSound.Play();
             }

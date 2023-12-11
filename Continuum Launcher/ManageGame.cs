@@ -107,11 +107,59 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 2)
             {
-                
+                game.state = Game1.State.GameFilepaths;
+                game.gameFilepathsWindow = new Window(game, new Rectangle(560, 170, 800, 740), "Filepaths for " + game.gameData[game.index].gameTitle, new GameFilepaths(), new StdInputEvent(4), new GenericStart(), Game1.State.GameMenu);
+
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 320, 700, 100));
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 430, 700, 100));
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 540, 700, 100));
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 760, 700, 100));
+                game.gameFilepathsWindow.AddText("Edit Game Filepath");
+                game.gameFilepathsWindow.AddText("Edit Cover Art Filepath");
+                game.gameFilepathsWindow.AddText("Edit Icon Filepath");
+                game.gameFilepathsWindow.AddText("Back to Manage Window");
             }
             else if (buttonIndex == 3)
             {
-                
+                game.state = Game1.State.GameCategories;
+                game.gameCategoriesWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Categories", new GameCategories(), new StdInputEvent(7), new GenericStart(), Game1.State.GameMenu);
+
+                game.gameCategoriesWindow.AddButton(new Rectangle(410, 320, 90, 90));
+                game.gameCategoriesWindow.AddButton(new Rectangle(1420, 320, 90, 90));
+                game.gameCategoriesWindow.AddButton(new Rectangle(495, 520, 450, 100));
+                game.gameCategoriesWindow.AddButton(new Rectangle(980, 520, 450, 100));
+                game.gameCategoriesWindow.AddButton(new Rectangle(495, 640, 450, 100));
+                game.gameCategoriesWindow.AddButton(new Rectangle(980, 640, 450, 100));
+                game.gameCategoriesWindow.AddButton(new Rectangle(610, 760, 700, 100));
+                game.gameCategoriesWindow.AddText("<");
+                game.gameCategoriesWindow.AddText(">");
+                game.gameCategoriesWindow.AddText("Add Game to Cat.");
+                game.gameCategoriesWindow.AddText("Create Category");
+                game.gameCategoriesWindow.AddText("Rename Category");
+                game.gameCategoriesWindow.AddText("Delete Category");
+                game.gameCategoriesWindow.AddText("Back to Manage Window");
+                game.gameCategoriesWindow.buttonEffects.SetupEffects(game, game.gameCategoriesWindow);
+            }
+            else if (buttonIndex == 4)
+            {
+                game.state = Game1.State.GameXEX;
+                game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", new GameXEX(), new StdInputEvent(7), new GenericStart(), Game1.State.GameMenu);
+
+                game.gameXEXWindow.AddButton(new Rectangle(410, 320, 90, 90));
+                game.gameXEXWindow.AddButton(new Rectangle(1420, 320, 90, 90));
+                game.gameXEXWindow.AddButton(new Rectangle(495, 520, 450, 100));
+                game.gameXEXWindow.AddButton(new Rectangle(980, 520, 450, 100));
+                game.gameXEXWindow.AddButton(new Rectangle(495, 640, 450, 100));
+                game.gameXEXWindow.AddButton(new Rectangle(980, 640, 450, 100));
+                game.gameXEXWindow.AddButton(new Rectangle(610, 760, 700, 100));
+                game.gameXEXWindow.AddText("<");
+                game.gameXEXWindow.AddText(">");
+                game.gameXEXWindow.AddText("Add New XEX");
+                game.gameXEXWindow.AddText("Rename XEX");
+                game.gameXEXWindow.AddText("Change XEX Path");
+                game.gameXEXWindow.AddText("Delete XEX");
+                game.gameXEXWindow.AddText("Back to Manage Window");
+                game.gameXEXWindow.buttonEffects.SetupEffects(game, game.gameXEXWindow);
             }
             else if (buttonIndex == 4)
             {

@@ -39,7 +39,63 @@ namespace XeniaLauncher
             {
                 game.text = new TextInputWindow(game, "Edit Game Title", game.gameData[game.index].gameTitle, Game1.State.GameInfo);
             }
-            if (buttonIndex == 9)
+            else if (buttonIndex == 1)
+            {
+                game.text = new TextInputWindow(game, "Edit Game Developer", game.gameData[game.index].developer, Game1.State.GameInfo);
+            }
+            else if (buttonIndex == 2)
+            {
+                game.text = new TextInputWindow(game, "Edit Game Publisher", game.gameData[game.index].publisher, Game1.State.GameInfo);
+            }
+            else if (buttonIndex == 3)
+            {
+                game.text = new TextInputWindow(game, "Edit Title ID", game.gameData[game.index].titleId, Game1.State.GameInfo);
+            }
+            else if (buttonIndex == 4)
+            {
+                game.text = new TextInputWindow(game, "Edit Release Date (yr-mt-dy)", game.gameData[game.index].year + "-" + game.gameData[game.index].month + "-" + game.gameData[game.index].day, Game1.State.GameInfo);
+            }
+            else if (buttonIndex == 5)
+            {
+                game.gameData[game.index].minPlayers--;
+                if (game.gameData[game.index].minPlayers < 0)
+                {
+                    game.gameData[game.index].minPlayers = 4;
+                }
+                game.SaveGames();
+                AdjustMinPlayers(game, source);
+            }
+            else if (buttonIndex == 6)
+            {
+                game.gameData[game.index].minPlayers++;
+                if (game.gameData[game.index].minPlayers > 4)
+                {
+                    game.gameData[game.index].minPlayers = 0;
+                }
+                game.SaveGames();
+                AdjustMinPlayers(game, source);
+            }
+            else if (buttonIndex == 7)
+            {
+                game.gameData[game.index].maxPlayers--;
+                if (game.gameData[game.index].maxPlayers < 0)
+                {
+                    game.gameData[game.index].maxPlayers = 4;
+                }
+                game.SaveGames();
+                AdjustMaxPlayers(game, source);
+            }
+            else if (buttonIndex == 8)
+            {
+                game.gameData[game.index].maxPlayers++;
+                if (game.gameData[game.index].maxPlayers > 4)
+                {
+                    game.gameData[game.index].maxPlayers = 0;
+                }
+                game.SaveGames();
+                AdjustMaxPlayers(game, source);
+            }
+            else if (buttonIndex == 9)
             {
                 game.state = Game1.State.GameMenu;
                 game.backSound.Play();
@@ -56,102 +112,18 @@ namespace XeniaLauncher
                 sprite.scale = 0.6f;
                 sprite.color = Color.FromNonPremultiplied(255, 255, 255, 0);
             }
+            AdjustMinPlayers(game, window);
+            AdjustMaxPlayers(game, window);
         }
-        private void AdjustLicense(Game1 game, Window source)
+        private void AdjustMinPlayers(Game1 game, Window source)
         {
-            int license = 0;
-            if (game.gameData[game.index].license == GameData.LicenseMask.First)
-            {
-                license = 1;
-            }
-            else if (game.gameData[game.index].license == GameData.LicenseMask.All)
-            {
-                license = -1;
-            }
-            source.extraSprites[0].ToTextSprite().text = "License Mask: " + license;
-            source.extraSprites[0].Centerize(new Vector2(615, 380));
+            source.extraSprites[0].ToTextSprite().text = "Min Players: " + game.gameData[game.index].minPlayers;
+            source.extraSprites[0].Centerize(new Vector2(1305, 480));
         }
-        private void AdjustCanary(Game1 game, Window source)
+        private void AdjustMaxPlayers(Game1 game, Window source)
         {
-            string canary = "No";
-            if (game.gameData[game.index].preferCanary)
-            {
-                canary = "Yes";
-            }
-            source.extraSprites[1].ToTextSprite().text = "Prefer Canary: " + canary;
-            source.extraSprites[1].Centerize(new Vector2(615, 480));
-        }
-        private void AdjustMountCache(Game1 game, Window source)
-        {
-            string cache = "Off";
-            if (game.gameData[game.index].mountCache)
-            {
-                cache = "On";
-            }
-            source.extraSprites[2].ToTextSprite().text = "Mount Cache: " + cache;
-            source.extraSprites[2].Centerize(new Vector2(615, 580));
-        }
-        private void AdjustReadback(Game1 game, Window source)
-        {
-            string readback = "Off";
-            if (game.gameData[game.index].cpuReadback)
-            {
-                readback = "On";
-            }
-            source.extraSprites[3].ToTextSprite().text = "CPU Readback: " + readback;
-            source.extraSprites[3].Centerize(new Vector2(615, 680));
-        }
-        private void AdjustHRes(Game1 game, Window source)
-        {
-            string res = "1280 (1x)";
-            if (game.gameData[game.index].resX == 2)
-            {
-                res = "2560 (2x)";
-            }
-            else if (game.gameData[game.index].resX == 3)
-            {
-                res = "3840 (3x)";
-            }
-            source.extraSprites[4].ToTextSprite().text = "Hor. Scale: " + res;
-            source.extraSprites[4].Centerize(new Vector2(1305, 380));
-        }
-        private void AdjustVRes(Game1 game, Window source)
-        {
-            string res = "720 (1x)";
-            if (game.gameData[game.index].resY == 2)
-            {
-                res = "1440 (2x)";
-            }
-            else if (game.gameData[game.index].resY == 3)
-            {
-                res = "2160 (3x)";
-            }
-            source.extraSprites[5].ToTextSprite().text = "Ver. Scale: " + res;
-            source.extraSprites[5].Centerize(new Vector2(1305, 480));
-        }
-        private void AdjustVSync(Game1 game, Window source)
-        {
-            string vsync = "Off";
-            if (game.gameData[game.index].vsync)
-            {
-                vsync = "On";
-            }
-            source.extraSprites[6].ToTextSprite().text = "V-Sync: " + vsync;
-            source.extraSprites[6].Centerize(new Vector2(1305, 580));
-        }
-        private void AdjustRenderer(Game1 game, Window source)
-        {
-            string res = "Any";
-            if (game.gameData[game.index].renderer == GameData.Renderer.Direct3D12)
-            {
-                res = "Direct3D12";
-            }
-            else if (game.gameData[game.index].renderer == GameData.Renderer.Vulkan)
-            {
-                res = "Vulkan";
-            }
-            source.extraSprites[7].ToTextSprite().text = "Renderer: " + res;
-            source.extraSprites[7].Centerize(new Vector2(1305, 680));
+            source.extraSprites[1].ToTextSprite().text = "Max Players: " + game.gameData[game.index].maxPlayers;
+            source.extraSprites[1].Centerize(new Vector2(1305, 580));
         }
     }
 }

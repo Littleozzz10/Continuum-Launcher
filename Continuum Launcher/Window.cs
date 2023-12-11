@@ -72,8 +72,6 @@ namespace XeniaLauncher
             }
 
             titleSprite = new TextSprite(game.bold, title, 0.65f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
-            titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
-            titleSprite.pos.Y = pos.Y + 40;
         }
         /// <summary>
         /// Resets the Window's Gradients, for transitioning purposes
@@ -136,6 +134,8 @@ namespace XeniaLauncher
             {
                 startEffects.Start(game, this);
             }
+            titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
+            titleSprite.pos.Y = pos.Y + 40;
 
             // Mouse input
             bool mouseClick = false;
