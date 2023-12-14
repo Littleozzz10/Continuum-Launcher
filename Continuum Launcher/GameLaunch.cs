@@ -125,21 +125,7 @@ namespace XeniaLauncher
             {
                 game.state = Game1.State.GameMenu;
                 game.gameManageWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Manage " + game.gameData[game.index].gameTitle, new ManageGame(), new StdInputEvent(5), new GenericStart(), Game1.State.Select);
-                game.gameManageWindow.AddButton(new Rectangle(610, 320, 700, 100));
-                game.gameManageWindow.AddButton(new Rectangle(610, 430, 700, 100));
-                game.gameManageWindow.AddButton(new Rectangle(610, 540, 700, 100));
-                game.gameManageWindow.AddButton(new Rectangle(610, 650, 700, 100));
-                game.gameManageWindow.AddButton(new Rectangle(610, 760, 700, 100));
-                game.gameManageWindow.AddText("Edit Launch Settings");
-                game.gameManageWindow.AddText("Edit Game Info");
-                game.gameManageWindow.AddText("Edit Filepaths");
-                game.gameManageWindow.AddText("Manage Categories");
-                game.gameManageWindow.AddText("Manage Executables");
-                foreach (TextSprite sprite in game.gameManageWindow.sprites)
-                {
-                    sprite.scale = 0.6f;
-                }
-                game.gameManageWindow.skipMainStateTransition = true;
+                game.gameManageWindow.buttonEffects.SetupEffects(game, source);
             }
             else if (game.gameData[game.index].xexNames.Count == 0)
             {

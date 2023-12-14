@@ -118,6 +118,7 @@ namespace XeniaLauncher
                 game.gameFilepathsWindow.AddText("Edit Cover Art Filepath");
                 game.gameFilepathsWindow.AddText("Edit Icon Filepath");
                 game.gameFilepathsWindow.AddText("Back to Manage Window");
+                game.gameFilepathsWindow.buttonEffects.SetupEffects(game, game.gameFilepathsWindow);
             }
             else if (buttonIndex == 3)
             {
@@ -161,14 +162,30 @@ namespace XeniaLauncher
                 game.gameXEXWindow.AddText("Back to Manage Window");
                 game.gameXEXWindow.buttonEffects.SetupEffects(game, game.gameXEXWindow);
             }
-            else if (buttonIndex == 4)
-            {
-                game.Exit();
-            }
         }
         public void SetupEffects(Game1 game, Window window)
         {
+            game.gameManageWindow.AddButton(new Rectangle(610, 320, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 430, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 540, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 650, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 760, 700, 100));
+            game.gameManageWindow.AddText("Edit Launch Settings");
+            game.gameManageWindow.AddText("Edit Game Info");
+            game.gameManageWindow.AddText("Edit Filepaths");
+            game.gameManageWindow.AddText("Manage Categories");
+            game.gameManageWindow.AddText("Manage Executables");
+            foreach (TextSprite sprite in game.gameManageWindow.sprites)
+            {
+                sprite.scale = 0.6f;
+            }
+            game.gameManageWindow.skipMainStateTransition = true;
 
+            if (game.gameManageWindow.titleSprite.GetSize().X + 60 > game.gameManageWindow.rect.Width)
+            {
+                game.gameManageWindow.rect.Width = (int)(game.gameManageWindow.titleSprite.GetSize().X + 60);
+                game.gameManageWindow.pos.X = 960 - game.gameManageWindow.rect.Width / 2;
+            }
         }
     }
 }

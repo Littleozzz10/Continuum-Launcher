@@ -30,34 +30,29 @@ using System.Drawing;
 
 namespace XeniaLauncher
 {
-    public class GameFilepaths : IWindowEffects
+    public class NewGame : IWindowEffects
     {
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
             if (buttonIndex == 0)
             {
-                game.text = new TextInputWindow(game, "Edit Game Filepath", game.gameData[game.index].gamePath, Game1.State.GameFilepaths);
+                game.text = new TextInputWindow(game, "New Game Title", "", Game1.State.NewGame);
             }
             else if (buttonIndex == 1)
             {
-                game.text = new TextInputWindow(game, "Edit Cover Art Filepath", game.gameData[game.index].artPath, Game1.State.GameFilepaths);
+                game.text = new TextInputWindow(game, "STFS Filepath for New Game", "", Game1.State.NewGame);
             }
             else if (buttonIndex == 2)
             {
-                game.text = new TextInputWindow(game, "Edit Icon Filepath", game.gameData[game.index].iconPath, Game1.State.GameFilepaths);
-            }
-            else if (buttonIndex == 3)
-            {
-                game.state = Game1.State.GameMenu;
+                game.state = Game1.State.Menu;
                 game.backSound.Play();
             }
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            if (game.gameFilepathsWindow.titleSprite.GetSize().X + 60 > game.gameFilepathsWindow.rect.Width)
+            foreach (TextSprite sprite in game.newGameWindow.sprites)
             {
-                game.gameFilepathsWindow.rect.Width = (int)(game.gameFilepathsWindow.titleSprite.GetSize().X + 60);
-                game.gameFilepathsWindow.pos.X = 960 - game.gameFilepathsWindow.rect.Width / 2;
+                sprite.scale = 0.55f;
             }
         }
     }

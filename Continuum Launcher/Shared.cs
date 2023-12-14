@@ -12,8 +12,8 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.1.0 Alpha 3";
-        public static readonly string COMPILED = "December 10, 2023";
+        public static readonly string VERSION = "1.1.0 Alpha 4";
+        public static readonly string COMPILED = "December 13, 2023";
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Saved Game"  },
             { "00000002", "Downloadable Content" },
@@ -26,12 +26,12 @@ namespace XeniaLauncher
             { "00020000", "Gamer Picture" },
             { "00030000", "Xbox 360 Theme" },
             { "00050000", "Xbox 360 Cache File" },
-            { "00060000", "Xbox Saved Gamed" },
+            { "00060000", "Xbox Saved Game" },
             { "00080000", "Game Demo" },
             { "00090000", "Video" },
             { "000A0000", "Game Title" },
-            { "000B0000", "Installer" },
-            { "000C0000", "Game Trailer" },
+            { "000B0000", "Title Update" },
+            { "000C0000", "Video" },
             { "000D0000", "Xbox Live Arcade Title" },
             { "000E0000", "XNA Content" },
             { "000F0000", "License Store" },

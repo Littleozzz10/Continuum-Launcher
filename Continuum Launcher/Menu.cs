@@ -27,6 +27,7 @@ using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using XLCompanion;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace XeniaLauncher
 {
@@ -39,8 +40,20 @@ namespace XeniaLauncher
                 game.state = Game1.State.Main;
                 game.backSound.Play();
             }
-            // Options window
             else if (buttonIndex == 1)
+            {
+                game.newGameWindow = new Window(game, new Rectangle(560, 275, 800, 530), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
+                game.state = Game1.State.NewGame;
+                game.newGameWindow.AddButton(new Rectangle(610, 420, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 530, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 640, 700, 100));
+                game.newGameWindow.AddText("Manual Import");
+                game.newGameWindow.AddText("Import From STFS");
+                game.newGameWindow.AddText("Back to Menu");
+                game.newGameWindow.buttonEffects.SetupEffects(game, source);
+            }
+            // Options window
+            else if (buttonIndex == 2)
             {
                 game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), "Launcher Options", new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu);
                 // Volume buttons
@@ -76,7 +89,8 @@ namespace XeniaLauncher
 
                 game.state = Game1.State.Options;
             }
-            else if (buttonIndex == 2)
+            // Manage Data
+            else if (buttonIndex == 3)
             {
                 if (game.checkDrivesOnManage)
                 {
@@ -167,6 +181,7 @@ namespace XeniaLauncher
                                             }
                                             size += localSize;
                                             game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), game.icons[data.gameTitle]));
+                                            game.dataFiles[index].Last().fileSize = localSize;
                                         }
                                         else
                                         {
@@ -193,13 +208,16 @@ namespace XeniaLauncher
                                                 }
                                                 catch { }
                                                 // Adding data
+                                                if (dir.Name == "00000001")
+                                                {
+                                                    stfs.data.titleName = stfs.data.titleName.Substring(5);
+                                                }
                                                 game.dataFiles[index].Add(new DataEntry(stfs.data.titleName, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
                                                 game.dataFiles[index].Last().fileSize = localSize;
                                             }
                                         }
                                     }
                                 }
-                                game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
                             }
                             else
                             {
@@ -217,7 +235,11 @@ namespace XeniaLauncher
                                 {
                                     foreach (string dir in Directory.GetDirectories("XData\\Xenia"))
                                     {
-                                        if (dir.Split("\\").Last() == data.gameTitle)
+                                        string title = data.gameTitle;
+                                        string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                                        Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+                                        string newTitle = r.Replace(title, "");
+                                        if (dir.Split("\\").Last() == newTitle)
                                         {
                                             // Xenia data
                                             float dataSize = 0;
@@ -236,6 +258,7 @@ namespace XeniaLauncher
                                             if (dataSize > 0)
                                             {
                                                 game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logo));
+                                                game.dataFiles[index].Last().fileSize = dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
@@ -250,6 +273,7 @@ namespace XeniaLauncher
                                                 if (saveSize > 0)
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
                                             }
                                         }
@@ -259,7 +283,11 @@ namespace XeniaLauncher
                                 {
                                     foreach (string dir in Directory.GetDirectories("XData\\Canary"))
                                     {
-                                        if (dir.Split("\\").Last() == data.gameTitle)
+                                        string title = data.gameTitle;
+                                        string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                                        Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+                                        string newTitle = r.Replace(title, "");
+                                        if (dir.Split("\\").Last() == newTitle)
                                         {
                                             // Xenia data
                                             float dataSize = 0;
@@ -278,6 +306,7 @@ namespace XeniaLauncher
                                             if (dataSize > 0)
                                             {
                                                 game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logoCanary));
+                                                game.dataFiles[index].Last().fileSize = dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
@@ -292,6 +321,7 @@ namespace XeniaLauncher
                                                 if (saveSize > 0)
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
                                             }
                                         }
@@ -310,7 +340,9 @@ namespace XeniaLauncher
                                 tempArtSize += new FileInfo(data.iconPath).Length;
                             }
                             game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), game.mainLogo));
+                            game.dataFiles[index].Last().fileSize = tempArtSize;
                             artSize += tempArtSize;
+                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
                             index++;
@@ -376,7 +408,8 @@ namespace XeniaLauncher
                 }
                 
             }
-            else if (buttonIndex == 3)
+            // About/Credits
+            else if (buttonIndex == 4)
             {
                 game.creditsWindow = new Window(game, new Rectangle(150, 50, 1620, 980), "About Continuum Launcher", new MessageButtonEffects(), new SingleButtonEvent(), new GenericStart(), Game1.State.Menu);
                 game.creditsWindow.AddButton(new Rectangle(460, 900, 1000, 100));
@@ -399,7 +432,8 @@ namespace XeniaLauncher
 
                 game.state = Game1.State.Credits;
             }
-            else if (buttonIndex == 4)
+            // Exit
+            else if (buttonIndex == 5)
             {
                 game.Exit();
             }

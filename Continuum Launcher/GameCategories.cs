@@ -71,9 +71,8 @@ namespace XeniaLauncher
                     {
                         game.gameData[game.index].folders.Add(game.folders[folderIndex]);
                     }
-                    game.folderIndex = 0;
+                    AdjustButtonName(game, source);
                     game.SaveGames();
-                    game.FolderReset();
                     game.forceInit = true;
                 }
             }
