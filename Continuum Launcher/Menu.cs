@@ -135,7 +135,6 @@ namespace XeniaLauncher
                                 DirectoryInfo directory = new DirectoryInfo(gameFile.DirectoryName);
                                 foreach (FileInfo file in directory.GetFiles("*", SearchOption.TopDirectoryOnly))
                                 {
-                                    STFS stfs = new STFS(file.FullName);
                                     float localSize = file.Length;
                                     if (Directory.Exists(directory.FullName  + "\\" +  file.Name + ".data"))
                                     {
@@ -146,23 +145,9 @@ namespace XeniaLauncher
                                         }
                                     }
                                     size += localSize;
-                                    // Reading icon
-                                    Texture2D localTexture = game.icons[data.gameTitle];
-                                    MemoryStream memory = new MemoryStream();
-                                    stfs.icon.Save(memory, stfs.icon.RawFormat);
-                                    try
-                                    {
-                                        localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
-                                    }
-                                    catch { }
-                                    // Fixing title name for bad garbage
-                                    string newTitle = stfs.data.titleName;
-                                    while (newTitle[0] != stfs.data.displayName[0] && newTitle[1] != stfs.data.displayName[1])
-                                    {
-                                        newTitle = newTitle.Substring(1);
-                                    }
+                                    string newTitle = data.gameTitle;
                                     // Adding data
-                                    game.dataFiles[index].Add(new DataEntry(newTitle, Shared.contentTypes[directoryInfo.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                    game.dataFiles[index].Add(new DataEntry(newTitle, Shared.contentTypes[directoryInfo.Name], game.ConvertDataSize("" + localSize), game.white));
                                     game.dataFiles[index].Last().fileSize = localSize;
                                 }
                                 // Other directories (DLC, Title Updates, Saves, etc)
@@ -187,7 +172,6 @@ namespace XeniaLauncher
                                         {
                                             foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                                             {
-                                                STFS stfs = new STFS(file.FullName);
                                                 float localSize = file.Length;
                                                 if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
                                                 {
@@ -198,21 +182,8 @@ namespace XeniaLauncher
                                                     }
                                                 }
                                                 size += localSize;
-                                                // Reading icon
-                                                Texture2D localTexture = game.icons[data.gameTitle];
-                                                MemoryStream memory = new MemoryStream();
-                                                stfs.icon.Save(memory, stfs.icon.RawFormat);
-                                                try
-                                                {
-                                                    localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
-                                                }
-                                                catch { }
                                                 // Adding data
-                                                if (dir.Name == "00000001")
-                                                {
-                                                    stfs.data.titleName = stfs.data.titleName.Substring(5);
-                                                }
-                                                game.dataFiles[index].Add(new DataEntry(stfs.data.titleName, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                                game.dataFiles[index].Add(new DataEntry("Blam!", Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), game.white));
                                                 game.dataFiles[index].Last().fileSize = localSize;
                                             }
                                         }
@@ -272,7 +243,7 @@ namespace XeniaLauncher
                                                 }
                                                 if (saveSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
                                             }
@@ -320,7 +291,7 @@ namespace XeniaLauncher
                                                 }
                                                 if (saveSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
                                             }
