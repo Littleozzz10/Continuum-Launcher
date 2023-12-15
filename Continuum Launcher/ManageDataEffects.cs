@@ -36,11 +36,25 @@ namespace XeniaLauncher
     {
         public void ActivateButton(Game1 game, Window source, OzzzFramework.ObjectSprite origin, int buttonIndex)
         {
-            if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Localized Xenia Data")
+            if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Localized Xenia Data" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Installed Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Game Save")
             {
                 game.toDelete = game.dataFiles[game.selectedDataIndex][buttonIndex];
-                game.message = new MessageWindow(game, "Delete File", "Are you sure you want to delete " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Data, MessageWindow.MessagePrompts.YesNo);
+                game.message = new MessageWindow(game, "Delete File", "Are you sure you want to delete " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Manage, MessageWindow.MessagePrompts.YesNo);
                 game.state = Game1.State.Message;
+            }
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Downloadable Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Title Update")
+            {
+                if (!String.IsNullOrEmpty(game.extractPath))
+                {
+                    game.toImport = game.dataFiles[game.selectedDataIndex][buttonIndex];
+                    game.message = new MessageWindow(game, "Import DLC", "Do you want to import " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Manage, MessageWindow.MessagePrompts.YesNo);
+                    game.state = Game1.State.Message;
+                }
+                else
+                {
+                    game.message = new MessageWindow(game, "Import DLC", "Error: extraction tool not found or bad extract path", Game1.State.Data);
+                    game.state = Game1.State.Message;
+                }
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Resources")
             {
@@ -65,7 +79,7 @@ namespace XeniaLauncher
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;
@@ -92,7 +106,7 @@ namespace XeniaLauncher
                                 localSize += file.Length;
                             }
                             size += localSize;
-                            game.dataFiles[buttonIndex].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), game.icons[data.gameTitle]));
+                            game.dataFiles[buttonIndex].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
                             game.dataFiles[buttonIndex].Last().fileSize = localSize;
                         }
                         // Handling all other folders
@@ -142,34 +156,34 @@ namespace XeniaLauncher
                                 {
                                     newTitle = newTitle.Substring(5); // Yes, this is spaghetti garbage
                                 }
-                                game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), localTexture));
+                                game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
                                 game.dataFiles[buttonIndex].Last().fileSize = localSize;
                             }
                         }
                     }
                 }
                 // Sorting content files
-                game.dataFiles[buttonIndex] = game.dataFiles[buttonIndex].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
-            }
+                game.dataFiles[buttonIndex] = game.dataFiles[buttonIndex].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); 
 
-            // Final window setup
-            for (int i = 0; i < game.dataFiles[buttonIndex].Count; i++)
-            {
-                if (i < 6)
+                // Final window setup
+                for (int i = 0; i < game.dataFiles[buttonIndex].Count; i++)
                 {
-                    game.manageWindow.AddButton(new Rectangle(20, 150 + i * 130, 1880, 120));
-                    game.manageWindow.extraSprites.Add(new TextSprite(game.font, game.dataFiles[buttonIndex][i].name, 0.6f, new Vector2(140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    TextSprite sizeText = new TextSprite(game.font, game.dataFiles[buttonIndex][i].size, 0.6f, new Vector2(1140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0));
-                    sizeText.JustifyRight(new Vector2(1820, 175 + i * 130));
-                    game.manageWindow.extraSprites.Add(sizeText);
-                    TextSprite subTitleSprite = new TextSprite(game.font, game.dataFiles[buttonIndex][i].subTitle, 0.4f, new Vector2(140, 220 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0));
-                    subTitleSprite.tags.Add("gray");
-                    game.manageWindow.extraSprites.Add(subTitleSprite);
-                    game.manageWindow.extraSprites.Add(new ObjectSprite(game.dataFiles[buttonIndex][i].icon, new Rectangle(32, 162 + i * 130, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    if (i < 6)
+                    {
+                        game.manageWindow.AddButton(new Rectangle(20, 150 + i * 130, 1880, 120));
+                        game.manageWindow.extraSprites.Add(new TextSprite(game.font, game.dataFiles[buttonIndex][i].name, 0.6f, new Vector2(140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                        TextSprite sizeText = new TextSprite(game.font, game.dataFiles[buttonIndex][i].size, 0.6f, new Vector2(1140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0));
+                        sizeText.JustifyRight(new Vector2(1820, 175 + i * 130));
+                        game.manageWindow.extraSprites.Add(sizeText);
+                        TextSprite subTitleSprite = new TextSprite(game.font, game.dataFiles[buttonIndex][i].subTitle, 0.4f, new Vector2(140, 220 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0));
+                        subTitleSprite.tags.Add("gray");
+                        game.manageWindow.extraSprites.Add(subTitleSprite);
+                        game.manageWindow.extraSprites.Add(new ObjectSprite(game.dataFiles[buttonIndex][i].icon, new Rectangle(32, 162 + i * 130, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    }
+                    game.manageWindow.AddText("" + i);
                 }
-                game.manageWindow.AddText("" + i);
+                game.manageWindow.tags.Add("0");
             }
-            game.manageWindow.tags.Add("0");
         }
     }
 }

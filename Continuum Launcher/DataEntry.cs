@@ -26,14 +26,15 @@ namespace XeniaLauncher
 {
     public class DataEntry
     {
-        public string name, subTitle, size;
+        public string name, subTitle, size, filepath;
         public float fileSize;
         public Texture2D icon;
-        public DataEntry(string name, string subTitle, string size, Texture2D icon)
+        public DataEntry(string name, string subTitle, string size, string filepath, Texture2D icon)
         {
             this.name = name;
             this.subTitle = subTitle;
             this.size = size;
+            this.filepath = filepath;
             this.icon = icon;
         }
     }
