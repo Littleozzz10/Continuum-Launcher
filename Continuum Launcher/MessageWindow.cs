@@ -28,7 +28,7 @@ namespace XeniaLauncher
     {
         public enum MessagePrompts
         {
-            OK, OKCancel, YesNo
+            OK, OKCancel, YesNo, GameXenia
         }
         public MessageWindow(Game1 game, string title, string message, Game1.State returnState) : this(game, title, message, returnState, MessagePrompts.OK)
         {
@@ -62,6 +62,14 @@ namespace XeniaLauncher
                 AddText("No");
                 AddButton(new Rectangle(680, 600, 250, 90));
                 AddText("Yes");
+                inputEvents = new StdInputEvent(2);
+            }
+            else if (prompt == MessagePrompts.GameXenia)
+            {
+                AddButton(new Rectangle(1010, 600, 290, 90));
+                AddText("Xenia Settings");
+                AddButton(new Rectangle(630, 600, 290, 90));
+                AddText("Game Settings");
                 inputEvents = new StdInputEvent(2);
             }
         }

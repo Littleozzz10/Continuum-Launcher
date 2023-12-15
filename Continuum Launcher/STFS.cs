@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace XLCompanion
+namespace XeniaLauncher
 {
     /// <summary>
     /// Old code from an old project of mine that I kind of abandoned.

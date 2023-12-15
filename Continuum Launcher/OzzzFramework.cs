@@ -848,11 +848,11 @@ namespace XeniaLauncher
                 type = "TextSprite";
             }
 
-            private static string GetASCII(string str)
+            public static string GetASCII(string str)
             {
                 try
                 {
-                    return Encoding.ASCII.GetString(Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(Encoding.ASCII.EncodingName, new EncoderReplacementFallback(string.Empty), new DecoderExceptionFallback()), Encoding.UTF8.GetBytes(str)));
+                    return Encoding.ASCII.GetString(Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(Encoding.ASCII.EncodingName, new EncoderReplacementFallback(string.Empty), new DecoderExceptionFallback()), Encoding.UTF8.GetBytes(str))).Replace("" + (char)0x0019, "");
                 }
                 catch
                 {
@@ -2046,7 +2046,14 @@ namespace XeniaLauncher
                     pos += Scaling.ScaleVector2(offset);
                     for (int i = 0; i < sprites.Count; i++)
                     {
-                        sprites[i].pos += offset;
+                        if (sprites[i].type == "Layer")
+                        {
+                            sprites[i].ToLayer().Move(offset);
+                        }
+                        else
+                        {
+                            sprites[i].pos += offset;
+                        }
                     }
                 }
                 /// <summary>

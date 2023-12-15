@@ -42,7 +42,7 @@ namespace XeniaLauncher
         public IStartEffects startEffects;
         public IButtonIndexChangeEffects changeEffects;
         public int buttonIndex, stringIndex;
-        public bool useFade, skipMainStateTransition, firstFrame;
+        public bool useFade, skipMainStateTransition, firstFrame, preferEscapeExit;
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : this(game, rect, title, buttonEffects, inputEvents, startEffects, returnState, true) { }
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
         {
@@ -57,6 +57,7 @@ namespace XeniaLauncher
             this.startEffects = startEffects;
             useFade = true;
             firstFrame = true;
+            preferEscapeExit = false;
 
             ResetGradients();
 
@@ -71,8 +72,6 @@ namespace XeniaLauncher
             }
 
             titleSprite = new TextSprite(game.bold, title, 0.65f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
-            titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
-            titleSprite.pos.Y = pos.Y + 40;
         }
         /// <summary>
         /// Resets the Window's Gradients, for transitioning purposes
@@ -135,6 +134,8 @@ namespace XeniaLauncher
             {
                 startEffects.Start(game, this);
             }
+            titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
+            titleSprite.pos.Y = pos.Y + 40;
 
             // Mouse input
             bool mouseClick = false;
@@ -159,12 +160,12 @@ namespace XeniaLauncher
                 }
             }
             // Executing an effect (A button, Enter key, Space key)
-            if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || KeyboardInput.keys["Space"].IsFirstDown() || mouseClick) && game.IsActive && !firstFrame)
+            if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || (KeyboardInput.keys["Space"].IsFirstDown() && !preferEscapeExit) || mouseClick) && game.IsActive && !firstFrame)
             {
                 buttonEffects.ActivateButton(game, this, buttons[buttonIndex], stringIndex);
             }
             // Exiting the window (B button, Backspace key, Right click)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || KeyboardInput.keys["Backspace"].IsFirstDown() || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Escape"].IsFirstDown() && preferEscapeExit)) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)
             {
                 bool fromMessage = game.state == Game1.State.Message;
                 game.state = returnState;
@@ -263,6 +264,10 @@ namespace XeniaLauncher
                 else if (sprite.HasTag("gray"))
                 {
                     sprite.color = Ozzz.Helper.DivideColor(whiteGradient.GetColor(), 2f);
+                }
+                else if (sprite.HasTag("black"))
+                {
+                    sprite.color = Ozzz.Helper.DivideColor(blackGradient.GetColor(), 2f);
                 }
             }
 

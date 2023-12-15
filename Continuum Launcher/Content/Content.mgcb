@@ -369,3 +369,23 @@
 /processorParam:TextureFormat=Color
 /build:Textures/xl_border_top.png
 
+#begin Textures/calendar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/calendar.png
+
+#begin Textures/user.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/user.png
+
+#begin Textures/white.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/white.png
+
+#begin Textures/xl_border_bottom_new.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/build:Textures/xl_border_bottom_new.png
+

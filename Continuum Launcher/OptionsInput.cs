@@ -10,7 +10,7 @@ namespace XeniaLauncher
     {
         public void UpButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex <= 0)
+            if (buttonIndex <= 1)
             {
                 buttonIndex = 8;
             }

@@ -23,6 +23,11 @@ using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
 using GameData = XeniaLauncher.Shared.GameData;
+using Color = Microsoft.Xna.Framework.Color;
+using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using XLCompanion;
+using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace XeniaLauncher
 {
@@ -35,8 +40,20 @@ namespace XeniaLauncher
                 game.state = Game1.State.Main;
                 game.backSound.Play();
             }
-            // Options window
             else if (buttonIndex == 1)
+            {
+                game.newGameWindow = new Window(game, new Rectangle(560, 275, 800, 530), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
+                game.state = Game1.State.NewGame;
+                game.newGameWindow.AddButton(new Rectangle(610, 420, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 530, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 640, 700, 100));
+                game.newGameWindow.AddText("Manual Import");
+                game.newGameWindow.AddText("Import From STFS");
+                game.newGameWindow.AddText("Back to Menu");
+                game.newGameWindow.buttonEffects.SetupEffects(game, source);
+            }
+            // Options window
+            else if (buttonIndex == 2)
             {
                 game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), "Launcher Options", new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu);
                 // Volume buttons
@@ -72,7 +89,8 @@ namespace XeniaLauncher
 
                 game.state = Game1.State.Options;
             }
-            else if (buttonIndex == 2)
+            // Manage Data
+            else if (buttonIndex == 3)
             {
                 if (game.checkDrivesOnManage)
                 {
@@ -109,11 +127,57 @@ namespace XeniaLauncher
                         {
                             DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
                             float size = 0;
-                            foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
+                            DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
+                            // Checking which data retrieval mode to use
+                            if (Shared.contentTypes.Keys.Contains(directoryInfo.Name))
                             {
-                                size += file.Length;
+                                DirectoryInfo parent = directoryInfo.Parent;
+                                foreach (DirectoryInfo dir in parent.GetDirectories("*", SearchOption.TopDirectoryOnly))
+                                {
+                                    if (Shared.contentTypes.Keys.Contains(dir.Name))
+                                    {
+                                        // Handling files in a extract folder
+                                        if (dir.Name == "EXTRACT")
+                                        {
+                                            float localSize = 0;
+                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.AllDirectories))
+                                            {
+                                                localSize += file.Length;
+                                            }
+                                            size += localSize;
+                                            game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
+                                            game.dataFiles[index].Last().fileSize = localSize;
+                                        }
+                                        else
+                                        {
+                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
+                                            {
+                                                float localSize = file.Length;
+                                                if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
+                                                {
+                                                    DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
+                                                    foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                                    {
+                                                        localSize += dataFile.Length;
+                                                    }
+                                                }
+                                                size += localSize;
+                                                // Adding data
+                                                game.dataFiles[index].Add(new DataEntry("Blam!", Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, game.white));
+                                                game.dataFiles[index].Last().fileSize = localSize;
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                            game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), game.icons[data.gameTitle]));
+                            else
+                            {
+                                foreach (FileInfo file in directory.GetFiles("*", SearchOption.AllDirectories))
+                                {
+                                    size += file.Length;
+                                }
+                                game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), null, game.icons[data.gameTitle]));
+                            }
                             // Saves and Xenia data
                             if (Directory.Exists("XData"))
                             {
@@ -121,7 +185,11 @@ namespace XeniaLauncher
                                 {
                                     foreach (string dir in Directory.GetDirectories("XData\\Xenia"))
                                     {
-                                        if (dir.Split("\\").Last() == data.gameTitle)
+                                        string title = data.gameTitle;
+                                        string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                                        Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+                                        string newTitle = r.Replace(title, "");
+                                        if (dir.Split("\\").Last() == newTitle)
                                         {
                                             // Xenia data
                                             float dataSize = 0;
@@ -139,21 +207,23 @@ namespace XeniaLauncher
                                             }
                                             if (dataSize > 0)
                                             {
-                                                game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logo));
+                                                game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logo));
+                                                game.dataFiles[index].Last().fileSize = dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
-                                            if (Directory.Exists(dir + "\\content"))
+                                            if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\profile"))
                                             {
                                                 float saveSize = 0;
-                                                foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
+                                                foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\profile", "", SearchOption.AllDirectories))
                                                 {
                                                     FileInfo file = new FileInfo(filename);
                                                     saveSize += file.Length;
                                                 }
                                                 if (saveSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Xenia)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Add(new DataEntry("Save Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
                                             }
                                         }
@@ -163,7 +233,11 @@ namespace XeniaLauncher
                                 {
                                     foreach (string dir in Directory.GetDirectories("XData\\Canary"))
                                     {
-                                        if (dir.Split("\\").Last() == data.gameTitle)
+                                        string title = data.gameTitle;
+                                        string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+                                        Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+                                        string newTitle = r.Replace(title, "");
+                                        if (dir.Split("\\").Last() == newTitle)
                                         {
                                             // Xenia data
                                             float dataSize = 0;
@@ -181,22 +255,57 @@ namespace XeniaLauncher
                                             }
                                             if (dataSize > 0)
                                             {
-                                                game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), game.logoCanary));
+                                                game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logoCanary));
+                                                game.dataFiles[index].Last().fileSize = dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
-                                            if (Directory.Exists(dir + "\\content"))
+                                            if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\profile"))
                                             {
                                                 float saveSize = 0;
-                                                foreach (string filename in Directory.GetFiles(dir + "\\content", "", SearchOption.AllDirectories))
+                                                foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\profile", "", SearchOption.AllDirectories))
                                                 {
                                                     FileInfo file = new FileInfo(filename);
                                                     saveSize += file.Length;
                                                 }
                                                 if (saveSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry(data.gameTitle + " Save Data (Canary)", "Saved Game", game.ConvertDataSize("" + saveSize), game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
                                                 }
+                                                size += saveSize;
+                                            }
+                                            // Imported DLC
+                                            if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\00000002"))
+                                            {
+                                                float saveSize = 0;
+                                                foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\00000002", "", SearchOption.AllDirectories))
+                                                {
+                                                    FileInfo file = new FileInfo(filename);
+                                                    saveSize += file.Length;
+                                                }
+                                                if (saveSize > 0)
+                                                {
+                                                    game.dataFiles[index].Add(new DataEntry("Installed DLC", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
+                                                }
+                                                size += saveSize;
+                                            }
+                                            // Imported Title Updates
+                                            if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\000B0000"))
+                                            {
+                                                float saveSize = 0;
+                                                foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\000B0000", "", SearchOption.AllDirectories))
+                                                {
+                                                    FileInfo file = new FileInfo(filename);
+                                                    saveSize += file.Length;
+                                                }
+                                                if (saveSize > 0)
+                                                {
+                                                    game.dataFiles[index].Add(new DataEntry("Installed Title Update", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = saveSize;
+                                                }
+                                                size += saveSize;
                                             }
                                         }
                                     }
@@ -213,8 +322,10 @@ namespace XeniaLauncher
                             {
                                 tempArtSize += new FileInfo(data.iconPath).Length;
                             }
-                            game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), game.mainLogo));
+                            game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), null, game.mainLogo));
+                            game.dataFiles[index].Last().fileSize = tempArtSize;
                             artSize += tempArtSize;
+                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
                             index++;
@@ -272,14 +383,16 @@ namespace XeniaLauncher
 
                     game.state = Game1.State.Data;
                 }
-                catch
+                catch (Exception e)
                 {
-                    game.message = new MessageWindow(game, "Error", "Unknown error while searching for game files", Game1.State.Menu);
+                    //game.message = new MessageWindow(game, "Error", "Unknown error while searching for game files", Game1.State.Menu);
+                    game.message = new MessageWindow(game, "Error", e.ToString().Split("\n")[0], Game1.State.Menu);
                     game.state = Game1.State.Message;
                 }
                 
             }
-            else if (buttonIndex == 3)
+            // About/Credits
+            else if (buttonIndex == 4)
             {
                 game.creditsWindow = new Window(game, new Rectangle(150, 50, 1620, 980), "About Continuum Launcher", new MessageButtonEffects(), new SingleButtonEvent(), new GenericStart(), Game1.State.Menu);
                 game.creditsWindow.AddButton(new Rectangle(460, 900, 1000, 100));
@@ -287,7 +400,7 @@ namespace XeniaLauncher
 
                 game.creditsWindow.extraSprites.Add(new ObjectSprite(game.mainLogo, new Rectangle(0, 0, 175, 175), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 300));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Continuum Launcher created by Littleozzz10", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Continuum Launcher created by William Jones (a.k.a. Littleozzz10)", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 460));
                 game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xbox 360 sounds and Convection font made by Microsoft", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 540));
@@ -302,7 +415,8 @@ namespace XeniaLauncher
 
                 game.state = Game1.State.Credits;
             }
-            else if (buttonIndex == 4)
+            // Exit
+            else if (buttonIndex == 5)
             {
                 game.Exit();
             }
