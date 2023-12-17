@@ -28,6 +28,7 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using XLCompanion;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.Data;
 
 namespace XeniaLauncher
 {
@@ -116,6 +117,7 @@ namespace XeniaLauncher
                 }
                 float totalSize = 0;
                 float artSize = 0;
+                float tempDataSize = 0;
                 int index = 0;
                 try
                 {
@@ -209,6 +211,7 @@ namespace XeniaLauncher
                                             {
                                                 game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logo));
                                                 game.dataFiles[index].Last().fileSize = dataSize;
+                                                tempDataSize += dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
@@ -224,6 +227,7 @@ namespace XeniaLauncher
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry("Save Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
+                                                    tempDataSize += saveSize;
                                                 }
                                             }
                                         }
@@ -257,6 +261,7 @@ namespace XeniaLauncher
                                             {
                                                 game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logoCanary));
                                                 game.dataFiles[index].Last().fileSize = dataSize;
+                                                tempDataSize += dataSize;
                                             }
                                             size += dataSize;
                                             // Save data
@@ -272,6 +277,7 @@ namespace XeniaLauncher
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
+                                                    tempDataSize += saveSize;
                                                 }
                                                 size += saveSize;
                                             }
@@ -288,6 +294,7 @@ namespace XeniaLauncher
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry("Installed DLC", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
+                                                    tempDataSize += saveSize;
                                                 }
                                                 size += saveSize;
                                             }
@@ -304,6 +311,7 @@ namespace XeniaLauncher
                                                 {
                                                     game.dataFiles[index].Add(new DataEntry("Installed Title Update", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
+                                                    tempDataSize += saveSize;
                                                 }
                                                 size += saveSize;
                                             }
@@ -334,11 +342,11 @@ namespace XeniaLauncher
                     game.dataStrings.dataStringList.Add("Continuum Launcher");
                     game.dataStrings.dataSizeList.Add("Unknown");
                     game.dataStrings.dataIdList.Add("Internal");
-                    game.dataStrings.dataStringList.Add("Continuum Companion");
-                    game.dataStrings.dataSizeList.Add("Unknown");
-                    game.dataStrings.dataIdList.Add("Internal");
                     game.dataStrings.dataStringList.Add("Artwork and Icons");
                     game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + artSize));
+                    game.dataStrings.dataIdList.Add("Internal");
+                    game.dataStrings.dataStringList.Add("Xenia Content and Temporary Data");
+                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + tempDataSize));
                     game.dataStrings.dataIdList.Add("Internal");
                     game.dataStrings.dataStringList.Add("All Games and Data");
                     game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + totalSize));

@@ -91,7 +91,7 @@ namespace XeniaLauncher
                 float size = 0;
                 DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
                 DirectoryInfo parent = directoryInfo.Parent;
-                // Getting all directories inside the game's content folder (00004000, 0000D000, 00000002, etc)
+                // Getting all directories inside the game's content folder (00004000, 000D0000, 00000002, etc)
                 foreach (DirectoryInfo dir in parent.GetDirectories("*", SearchOption.TopDirectoryOnly))
                 {
                     // Making sure the directory matches with an X360 content type ID
@@ -144,9 +144,9 @@ namespace XeniaLauncher
                                 // Handling garbage data at the start of the title name (Yes, there is a problem with the STFS code that causes this
                                 //   but the problem has not yet been identified)
                                 string newTitle = stfs.data.titleName;
-                                if (dir.Name == "00004000" || dir.Name == "00007000" || dir.Name == "0000D000") // Disc Game, GoD, and XBLA Title, respectively
+                                if (dir.Name == "00004000" || dir.Name == "00007000" || dir.Name == "000D0000") // Disc Game, GoD, and XBLA Title, respectively
                                 {
-                                    while (newTitle[0] != stfs.data.displayName[0] && newTitle[1] != stfs.data.displayName[1])
+                                    while (newTitle[0] != stfs.data.displayName[0])
                                     {
                                         newTitle = newTitle.Substring(1);
                                     }

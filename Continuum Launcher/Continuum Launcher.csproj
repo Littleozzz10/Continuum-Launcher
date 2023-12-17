@@ -9,7 +9,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>continuum_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
     <Product>Continuum Launcher</Product>
     <Authors>Littleozzz10</Authors>
     <Company>Littleozzz10</Company>
@@ -21,10 +21,16 @@
     <WarningLevel>7</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="..\Continuum Companion\STFS.cs" Link="STFS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="continuum_icon.ico" />
+    <EmbeddedResource Include="Icon.ico">
+	  <LogicalName>Icon.ico</LogicalName>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
@@ -36,6 +42,12 @@
     <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Framework.WindowsUniversal" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.bmp">
+	  <LogicalName>Icon.bmp</LogicalName>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Update="Content\Trivia.txt">

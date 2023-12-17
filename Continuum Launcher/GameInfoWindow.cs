@@ -126,4 +126,127 @@ namespace XeniaLauncher
             source.extraSprites[1].Centerize(new Vector2(1305, 580));
         }
     }
+    public class GameInfoInput : IButtonInputEvent
+    {
+        public void UpButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 0 || buttonIndex == 4)
+            {
+                buttonIndex = 9;
+            }
+            else if (buttonIndex <= 5)
+            {
+                buttonIndex--;
+            }
+            else if (buttonIndex == 9)
+            {
+                buttonIndex = 3;
+            }
+            else
+            {
+                buttonIndex -= 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void DownButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 3 || buttonIndex == 7 || buttonIndex == 8)
+            {
+                buttonIndex = 9;
+            }
+            else if (buttonIndex == 3)
+            {
+                buttonIndex = 0;
+            }
+            else if (buttonIndex < 5)
+            {
+                buttonIndex++;
+            }
+            else if (buttonIndex == 9)
+            {
+                buttonIndex = 0;
+            }
+            else
+            {
+                buttonIndex += 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void LeftButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 9)
+            {
+                buttonIndex = 3;
+            }
+            else if (buttonIndex == 0)
+            {
+                buttonIndex = 4;
+            }
+            else if (buttonIndex == 1)
+            {
+                buttonIndex = 6;
+            }
+            else if (buttonIndex <= 3)
+            {
+                buttonIndex = 8;
+            }
+            else if (buttonIndex == 4)
+            {
+                buttonIndex = 0;
+            }
+            else if (buttonIndex == 6 || buttonIndex == 8)
+            {
+                buttonIndex--;
+            }
+            else if (buttonIndex == 5)
+            {
+                buttonIndex = 1;
+            }
+            else if (buttonIndex == 7)
+            {
+                buttonIndex = 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void RightButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 9)
+            {
+                buttonIndex = 8;
+            }
+            else if (buttonIndex <= 1)
+            {
+                buttonIndex += 4;
+            }
+            else if (buttonIndex <= 3)
+            {
+                buttonIndex = 7;
+            }
+            else if (buttonIndex == 4)
+            {
+                buttonIndex = 0;
+            }
+            else if (buttonIndex == 5 || buttonIndex == 7)
+            {
+                buttonIndex++;
+            }
+            else if (buttonIndex == 6)
+            {
+                buttonIndex = 1;
+            }
+            else if (buttonIndex == 8)
+            {
+                buttonIndex = 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+    }
 }

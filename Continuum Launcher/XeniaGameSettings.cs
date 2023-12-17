@@ -262,4 +262,83 @@ namespace XeniaLauncher
             source.extraSprites[7].Centerize(new Vector2(1305, 680));
         }
     }
+    public class XeniaGameInput : IButtonInputEvent
+    {
+        public void UpButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex <= 1 || buttonIndex == 8 || buttonIndex == 9)
+            {
+                buttonIndex = 16;
+            }
+            else
+            {
+                buttonIndex -= 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void DownButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 6 || buttonIndex == 7 || buttonIndex == 14 || buttonIndex == 15)
+            {
+                buttonIndex = 16;
+            }
+            else if (buttonIndex == 16)
+            {
+                buttonIndex = 0;
+            }
+            else
+            {
+                buttonIndex += 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void LeftButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex < 8 && buttonIndex % 2 == 0)
+            {
+                buttonIndex += 9;
+            }
+            else if (buttonIndex < 8 || (buttonIndex >= 8 && buttonIndex % 2 == 1))
+            {
+                buttonIndex--;
+            }
+            else if (buttonIndex == 16)
+            {
+                buttonIndex = 6;
+            }
+            else
+            {
+                buttonIndex -= 7;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void RightButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex < 8 && buttonIndex % 2 == 1)
+            {
+                buttonIndex += 7;
+            }
+            else if (buttonIndex < 8 || (buttonIndex >= 8 && buttonIndex % 2 == 0))
+            {
+                buttonIndex++;
+            }
+            else if (buttonIndex == 16)
+            {
+                buttonIndex = 15;
+            }
+            else
+            {
+                buttonIndex -= 9;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+    }
 }

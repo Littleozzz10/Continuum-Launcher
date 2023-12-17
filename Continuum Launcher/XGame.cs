@@ -36,18 +36,7 @@ namespace XeniaLauncher
             }
             else if (dataCount == 2)
             {
-                if (index == 2)
-                {
-                    index = 0;
-                }
-                else if (index == -1)
-                {
-                    index = 1;
-                }
-                else if (index == -2)
-                {
-                    index = 0;
-                }
+                index = Math.Abs(index) % 2;
             }
             else
             {

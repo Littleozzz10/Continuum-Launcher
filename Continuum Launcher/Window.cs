@@ -137,6 +137,12 @@ namespace XeniaLauncher
             titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
             titleSprite.pos.Y = pos.Y + 40;
 
+            if (titleSprite.GetSize().X + 60 > rect.Width)
+            {
+                rect.Width = (int)(titleSprite.GetSize().X + 60);
+                pos.X = 960 - rect.Width / 2;
+            }
+
             // Mouse input
             bool mouseClick = false;
             for (int i = 0; i < buttons.Count && game.IsActive; i++)
@@ -162,10 +168,11 @@ namespace XeniaLauncher
             // Executing an effect (A button, Enter key, Space key)
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || (KeyboardInput.keys["Space"].IsFirstDown() && !preferEscapeExit) || mouseClick) && game.IsActive && !firstFrame)
             {
+                game.buttonSwitchSound.Play();
                 buttonEffects.ActivateButton(game, this, buttons[buttonIndex], stringIndex);
             }
             // Exiting the window (B button, Backspace key, Right click)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Escape"].IsFirstDown() && preferEscapeExit)) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.Back, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Escape"].IsFirstDown())) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)
             {
                 bool fromMessage = game.state == Game1.State.Message;
                 game.state = returnState;
