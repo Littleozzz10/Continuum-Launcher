@@ -37,7 +37,7 @@ namespace XeniaLauncher
             if (buttonIndex == 0)
             {
                 game.state = Game1.State.GameXeniaSettings;
-                game.gameXeniaSettingsWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Xenia Settings for " + game.gameData[game.index].gameTitle, new XeniaGameSettings(), new StdInputEvent(17), new GenericStart(), Game1.State.GameMenu);
+                game.gameXeniaSettingsWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Xenia Settings for " + game.gameData[game.index].gameTitle, new XeniaGameSettings(), new XeniaGameInput(), new GenericStart(), Game1.State.GameMenu);
                 // First set
                 game.gameXeniaSettingsWindow.AddButton(new Rectangle(280, 335, 90, 90));
                 game.gameXeniaSettingsWindow.AddButton(new Rectangle(860, 335, 90, 90));
@@ -80,13 +80,13 @@ namespace XeniaLauncher
             else if (buttonIndex == 1)
             {
                 game.state = Game1.State.GameInfo;
-                game.gameInfoWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Info for " + game.gameData[game.index].gameTitle, new GameInfoWindow(), new StdInputEvent(5), new GenericStart(), Game1.State.GameMenu);
+                game.gameInfoWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Info for " + game.gameData[game.index].gameTitle, new GameInfoWindow(), new GameInfoInput(), new GenericStart(), Game1.State.GameMenu);
 
-                game.gameInfoWindow.AddButton(new Rectangle(280, 335, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(280, 435, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(280, 535, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(280, 635, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(970, 335, 650, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(290, 335, 650, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(290, 435, 650, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(290, 535, 650, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(290, 635, 650, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(970, 335, 660, 90));
                 game.gameInfoWindow.AddButton(new Rectangle(970, 435, 90, 90));
                 game.gameInfoWindow.AddButton(new Rectangle(1540, 435, 90, 90));
                 game.gameInfoWindow.AddButton(new Rectangle(970, 535, 90, 90));
@@ -123,7 +123,7 @@ namespace XeniaLauncher
             else if (buttonIndex == 3)
             {
                 game.state = Game1.State.GameCategories;
-                game.gameCategoriesWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Categories", new GameCategories(), new StdInputEvent(7), new GenericStart(), Game1.State.GameMenu);
+                game.gameCategoriesWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Categories", new GameCategories(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
 
                 game.gameCategoriesWindow.AddButton(new Rectangle(410, 320, 90, 90));
                 game.gameCategoriesWindow.AddButton(new Rectangle(1420, 320, 90, 90));
@@ -144,7 +144,7 @@ namespace XeniaLauncher
             else if (buttonIndex == 4)
             {
                 game.state = Game1.State.GameXEX;
-                game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", new GameXEX(), new StdInputEvent(7), new GenericStart(), Game1.State.GameMenu);
+                game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", new GameXEX(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
 
                 game.gameXEXWindow.AddButton(new Rectangle(410, 320, 90, 90));
                 game.gameXEXWindow.AddButton(new Rectangle(1420, 320, 90, 90));

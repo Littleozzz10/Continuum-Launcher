@@ -135,4 +135,81 @@ namespace XeniaLauncher
             }
         }
     }
+    public class GameCategoriesInput : IButtonInputEvent
+    {
+        public void UpButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex <= 1)
+            {
+                buttonIndex = 6;
+            }
+            else
+            {
+                buttonIndex -= 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void DownButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 6)
+            {
+                buttonIndex = 0;
+            }
+            else if (buttonIndex == 5)
+            {
+                buttonIndex = 6;
+            }
+            else
+            {
+                buttonIndex += 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void LeftButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex != 6)
+            {
+                if (buttonIndex % 2 == 1)
+                {
+                    buttonIndex++;
+                }
+                else
+                {
+                    buttonIndex--;
+                }
+            }
+            else
+            {
+                buttonIndex = 4;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void RightButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex != 6)
+            {
+                if (buttonIndex % 2 == 0)
+                {
+                    buttonIndex++;
+                }
+                else
+                {
+                    buttonIndex--;
+                }
+            }
+            else
+            {
+                buttonIndex = 5;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+    }
 }
