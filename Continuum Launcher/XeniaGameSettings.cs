@@ -58,7 +58,7 @@ namespace XeniaLauncher
             else if (buttonIndex == 2 || buttonIndex == 3)
             {
                 game.gameData[game.index].preferCanary = !game.gameData[game.index].preferCanary;
-                AdjustCanary(game, source);
+                AdjustCanary(game, source, false);
                 game.SaveGames();
             }
             else if (buttonIndex == 4 || buttonIndex == 5)
@@ -157,7 +157,7 @@ namespace XeniaLauncher
                 sprite.color = Color.FromNonPremultiplied(255, 255, 255, 0);
             }
             AdjustLicense(game, window);
-            AdjustCanary(game, window);
+            AdjustCanary(game, window, true);
             AdjustMountCache(game, window);
             AdjustReadback(game, window);
             AdjustHRes(game, window);
@@ -179,14 +179,20 @@ namespace XeniaLauncher
             source.extraSprites[0].ToTextSprite().text = "License Mask: " + license;
             source.extraSprites[0].Centerize(new Vector2(615, 380));
         }
-        private void AdjustCanary(Game1 game, Window source)
+        private void AdjustCanary(Game1 game, Window source, bool first)
         {
             string canary = "No";
             if (game.gameData[game.index].preferCanary)
             {
                 canary = "Yes";
+                if (!first)
+                {
+                    game.message = new MessageWindow(game, "Note", "This setting disables part of Continuum's launch process. When enabled, Xenia executables must be manually copied to the XData folder", Game1.State.GameXeniaSettings);
+                    game.state = Game1.State.Message;
+                }
             }
-            source.extraSprites[1].ToTextSprite().text = "Prefer Canary: " + canary;
+            source.extraSprites[1].ToTextSprite().text = "Allow Custom Builds: " + canary;
+            source.extraSprites[1].ToTextSprite().scale = 0.5f;
             source.extraSprites[1].Centerize(new Vector2(615, 480));
         }
         private void AdjustMountCache(Game1 game, Window source)

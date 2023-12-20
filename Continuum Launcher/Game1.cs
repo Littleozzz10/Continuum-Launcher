@@ -886,7 +886,10 @@ namespace XeniaLauncher
             {
                 try
                 {
-                    File.Copy(xeniaPath, "XData\\Xenia\\" + newTitle + "\\xenia.exe");
+                    if (!gameData[index].preferCanary)
+                    {
+                        File.Copy(xeniaPath, "XData\\Xenia\\" + newTitle + "\\xenia.exe");
+                    }
                 }
                 catch { }
                 try
@@ -900,9 +903,16 @@ namespace XeniaLauncher
             {
                 startInfo.FileName = xeniaPath;
             }
-            Process.Start(startInfo);
-
-            OpenCompatWindow(false, compatWindowDelay);
+            try
+            {
+                Process.Start(startInfo);
+                OpenCompatWindow(false, compatWindowDelay);
+            }
+            catch
+            {
+                message = new MessageWindow(this, "Error", "Unable to launch Xenia", state);
+                state = State.Message;
+            }
         }
         public void LaunchXenia()
         {
@@ -923,7 +933,10 @@ namespace XeniaLauncher
             {
                 try
                 {
-                    File.Copy(canaryPath, "XData\\Canary\\" + newTitle + "\\xenia_canary.exe");
+                    if (!gameData[index].preferCanary)
+                    {
+                        File.Copy(canaryPath, "XData\\Canary\\" + newTitle + "\\xenia_canary.exe");
+                    }
                 }
                 catch { }
                 try
@@ -937,80 +950,20 @@ namespace XeniaLauncher
             {
                 startInfo.FileName = canaryPath;
             }
-            Process.Start(startInfo);
-
-            OpenCompatWindow(true, compatWindowDelay);
+            try
+            {
+                Process.Start(startInfo);
+                OpenCompatWindow(false, compatWindowDelay);
+            }
+            catch
+            {
+                message = new MessageWindow(this, "Error", "Unable to launch Canary", state);
+                state = State.Message;
+            }
         }
         public void LaunchCanary()
         {
             LaunchCanary(gameData[index].gamePath);
-        }
-        public void DefaultQuickstart(string path)
-        {
-            launchSound.Play();
-            if (gameData[index].preferCanary)
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.Arguments = "\"" + path + "\"";
-                string title = gameData[index].gameTitle;
-                string newTitle = GetFilepathString(title);
-                startInfo.WorkingDirectory = "XData\\Canary\\" + newTitle;
-                Directory.CreateDirectory("XData\\Canary\\" + newTitle);
-                if (consolidateFiles)
-                {
-                    try
-                    {
-                        File.Copy(canaryPath, "XData\\Canary\\" + newTitle + "\\xenia_canary.exe");
-                    }
-                    catch { }
-                    try
-                    {
-                        File.Create("XData\\Canary\\" + newTitle + "\\portable.txt");
-                    }
-                    catch { }
-                    startInfo.FileName = "XData\\Canary\\" + newTitle + "\\xenia_canary.exe";
-                }
-                else
-                {
-                    startInfo.FileName = canaryPath;
-                }
-                Process.Start(startInfo);
-                OpenCompatWindow(true, compatWindowDelay);
-            }
-            else
-            {
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.Arguments = "\"" + path + "\"";
-                string title = gameData[index].gameTitle;
-                string newTitle = GetFilepathString(title);
-                startInfo.WorkingDirectory = "XData\\Xenia\\" + newTitle;
-                Directory.CreateDirectory("XData\\Xenia\\" + newTitle);
-                if (consolidateFiles)
-                {
-                    try
-                    {
-                        File.Copy(xeniaPath, "XData\\Xenia\\" + newTitle + "\\xenia.exe");
-                    }
-                    catch { }
-                    try
-                    {
-                        File.Create("XData\\Xenia\\" + newTitle + "\\portable.txt");
-                    }
-                    catch { }
-                    startInfo.FileName = "XData\\Xenia\\" + newTitle + "\\xenia.exe";
-                }
-                else
-                {
-                    startInfo.FileName = xeniaPath;
-                }
-                Process.Start(startInfo);
-
-                OpenCompatWindow(false, compatWindowDelay);
-            }
-        }
-        public void DefaultQuickstart()
-        {
-            DefaultQuickstart(gameData[index].gamePath);
         }
         public void EditGame()
         {
@@ -1667,87 +1620,95 @@ namespace XeniaLauncher
             if (messageYes && toDelete != null)
             {
                 string fileTitle = GetFilepathString(masterData[selectedDataIndex].gameTitle);
-                if (toDelete.name.Contains("Xenia {Temporary Copy}"))
+                try
                 {
-                    if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.exe"))
+                    if (toDelete.name.Contains("Xenia {Temporary Copy}"))
                     {
-                        File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.exe");
-                    }
-                    if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.log"))
-                    {
-                        File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.log");
-                    }
-                    if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.config.toml"))
-                    {
-                        File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.config.toml");
-                    }
-                }
-                else if (toDelete.name.Contains("Xenia Canary {Temporary Copy}"))
-                {
-                    if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia_canary.exe"))
-                    {
-                        File.Delete("XData\\Canary\\" + fileTitle + "\\xenia_canary.exe");
-                    }
-                    if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia.log"))
-                    {
-                        File.Delete("XData\\Canary\\" + fileTitle + "\\xenia.log");
-                    }
-                    if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia-canary.config.toml"))
-                    {
-                        File.Delete("XData\\Canary\\" + fileTitle + "\\xenia-canary.config.toml");
-                    }
-                }
-                else if (toDelete.name.Contains("Save Data (Xenia)"))
-                {
-                    if (Directory.Exists("XData\\Xenia\\" + fileTitle + "\\content"))
-                    {
-                        foreach (string filepath in Directory.GetFiles("XData\\Xenia\\" + fileTitle + "\\content", "", SearchOption.AllDirectories))
+                        if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.exe"))
                         {
-                            File.Delete(filepath);
+                            File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.exe");
                         }
-                        Directory.Delete("XData\\Xenia\\" + fileTitle + "\\content", true);
-                    }
-                }
-                else if (toDelete.name.Contains("Save Data (Canary)"))
-                {
-                    string dir = "XData\\Canary\\" + fileTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\profile";
-                    if (Directory.Exists(dir))
-                    {
-                        foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                        if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.log"))
                         {
-                            File.Delete(filepath);
+                            File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.log");
                         }
-                        Directory.Delete(dir, true);
-                    }
-                }
-                else if (toDelete.name.Contains("Installed DLC"))
-                {
-                    string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\00000002";
-                    dir = GetFilepathString(dir, true);
-                    if (Directory.Exists(dir))
-                    {
-                        foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                        if (File.Exists("XData\\Xenia\\" + fileTitle + "\\xenia.config.toml"))
                         {
-                            File.Delete(filepath);
+                            File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.config.toml");
                         }
-                        Directory.Delete(dir, true);
                     }
-                }
-                else if (toDelete.name.Contains("Installed Title Update"))
-                {
-                    string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\000B0000";
-                    dir = GetFilepathString(dir, true);
-                    if (Directory.Exists(dir))
+                    else if (toDelete.name.Contains("Xenia Canary {Temporary Copy}"))
                     {
-                        foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                        if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia_canary.exe"))
                         {
-                            File.Delete(filepath);
+                            File.Delete("XData\\Canary\\" + fileTitle + "\\xenia_canary.exe");
                         }
-                        Directory.Delete(dir, true);
+                        if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia.log"))
+                        {
+                            File.Delete("XData\\Canary\\" + fileTitle + "\\xenia.log");
+                        }
+                        if (File.Exists("XData\\Canary\\" + fileTitle + "\\xenia-canary.config.toml"))
+                        {
+                            File.Delete("XData\\Canary\\" + fileTitle + "\\xenia-canary.config.toml");
+                        }
                     }
+                    else if (toDelete.name.Contains("Save Data (Xenia)"))
+                    {
+                        if (Directory.Exists("XData\\Xenia\\" + fileTitle + "\\content"))
+                        {
+                            foreach (string filepath in Directory.GetFiles("XData\\Xenia\\" + fileTitle + "\\content", "", SearchOption.AllDirectories))
+                            {
+                                File.Delete(filepath);
+                            }
+                            Directory.Delete("XData\\Xenia\\" + fileTitle + "\\content", true);
+                        }
+                    }
+                    else if (toDelete.name.Contains("Save Data (Canary)"))
+                    {
+                        string dir = "XData\\Canary\\" + fileTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\profile";
+                        if (Directory.Exists(dir))
+                        {
+                            foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                            {
+                                File.Delete(filepath);
+                            }
+                            Directory.Delete(dir, true);
+                        }
+                    }
+                    else if (toDelete.name.Contains("Installed DLC"))
+                    {
+                        string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\00000002";
+                        dir = GetFilepathString(dir, true);
+                        if (Directory.Exists(dir))
+                        {
+                            foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                            {
+                                File.Delete(filepath);
+                            }
+                            Directory.Delete(dir, true);
+                        }
+                    }
+                    else if (toDelete.name.Contains("Installed Title Update"))
+                    {
+                        string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\000B0000";
+                        dir = GetFilepathString(dir, true);
+                        if (Directory.Exists(dir))
+                        {
+                            foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                            {
+                                File.Delete(filepath);
+                            }
+                            Directory.Delete(dir, true);
+                        }
+                    }
+                    message = new MessageWindow(this, "File Deleted", "The file was successfully deleted", State.Data);
+                    state = State.Message;
                 }
-                message = new MessageWindow(this, "File Deleted", "The file was successfully deleted", State.Data);
-                state = State.Message;
+                catch
+                {
+                    message = new MessageWindow(this, "Error", "Unable to delete file. It may currently be in use", State.Data);
+                    state = State.Message;
+                }
                 messageYes = false;
                 toDelete = null;
             }
@@ -1839,19 +1800,51 @@ namespace XeniaLauncher
                 {
                     if (gameInfoWindow.buttonIndex == 0 && gameData[index].gameTitle != textWindowInput)
                     {
-                        if (arts.ContainsKey(gameData[index].gameTitle))
+                        bool continueRename = true;
+                        try
                         {
-                            arts.Add(textWindowInput, arts[gameData[index].gameTitle]);
-                            arts.Remove(gameData[index].gameTitle);
+                            // Renaming the game's content folders
+                            if (Directory.Exists("XData\\Xenia\\" + gameData[index].gameTitle))
+                            {
+                                Directory.Move("XData\\Xenia\\" + gameData[index].gameTitle, "XData\\Xenia\\" + textWindowInput);
+                            }
+                            if (Directory.Exists("XData\\Canary\\" + gameData[index].gameTitle))
+                            {
+                                Directory.Move("XData\\Canary\\" + gameData[index].gameTitle, "XData\\Canary\\" + textWindowInput);
+                            }
                         }
-                        else
+                        catch
                         {
-                            arts.Add(textWindowInput, white);
+                            continueRename = false;
+                            message = new MessageWindow(this, "Error", "File IO Error: Unable to rename content folders", State.GameInfo);
+                            state = State.Message;
                         }
-                        gameData[index].gameTitle = textWindowInput;
-                        gameInfoWindow.titleSprite.text = "Info for " + textWindowInput;
-                        gameManageWindow.titleSprite.text = "Manage " + textWindowInput;
-                        SaveGames();
+                        // Continuing if folder renaming was successful
+                        if (continueRename)
+                        {
+                            if (arts.ContainsKey(gameData[index].gameTitle))
+                            {
+                                arts.Add(textWindowInput, arts[gameData[index].gameTitle]);
+                                arts.Remove(gameData[index].gameTitle);
+                            }
+                            else
+                            {
+                                arts.Add(textWindowInput, white);
+                            }
+                            if (icons.ContainsKey(gameData[index].gameTitle))
+                            {
+                                icons.Add(textWindowInput, icons[gameData[index].gameTitle]);
+                                icons.Remove(gameData[index].gameTitle);
+                            }
+                            else
+                            {
+                                icons.Add(textWindowInput, white);
+                            }
+                            gameData[index].gameTitle = textWindowInput;
+                            gameInfoWindow.titleSprite.text = "Info for " + textWindowInput;
+                            gameManageWindow.titleSprite.text = "Manage " + textWindowInput;
+                            SaveGames();
+                        }
                         textWindowInput = null;
                     }
                     else if (gameInfoWindow.buttonIndex == 1)

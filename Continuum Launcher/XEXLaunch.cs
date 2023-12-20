@@ -35,10 +35,6 @@ namespace XeniaLauncher
                 {
                     GameLaunch.SafeLaunchCanary(game);
                 }
-                else if (game.launchWindow.buttonIndex == 2)
-                {
-                    GameLaunch.SafeQuickstart(game);
-                }
             }
             // Last button is the exit button
             else if (buttonIndex == source.strings.Count - 1)
@@ -56,10 +52,6 @@ namespace XeniaLauncher
                 else if (game.launchWindow.buttonIndex == 1)
                 {
                     GameLaunch.SafeLaunchCanary(game, game.gameData[game.index].xexPaths[buttonIndex - 1]);
-                }
-                else if (game.launchWindow.buttonIndex == 2)
-                {
-                    GameLaunch.SafeQuickstart(game, game.gameData[game.index].xexPaths[buttonIndex - 1]);
                 }
             }
         }
