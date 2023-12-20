@@ -50,6 +50,7 @@ namespace XeniaLauncher
             else
             {
                 game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
+                game.state = Game1.State.Message;
             }
         }
         /// <summary>
@@ -75,40 +76,7 @@ namespace XeniaLauncher
             else
             {
                 game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
-            }
-        }
-        /// <summary>
-        /// Attemps to launch Xenia or Canary, depending on the config, throwing an error message if it can't
-        /// </summary>
-        public static void SafeQuickstart(Game1 game)
-        {
-            SafeQuickstart(game, "");
-        }
-        public static void SafeQuickstart(Game1 game, string path)
-        {
-            if ((game.gameData[game.index].preferCanary && File.Exists(game.canaryPath)) || (!game.gameData[game.index].preferCanary && File.Exists(game.xeniaPath)))
-            {
-                if (String.IsNullOrEmpty(path))
-                {
-                    game.DefaultQuickstart();
-                }
-                else
-                {
-                    game.DefaultQuickstart(path);
-                }
-            }
-            else
-            {
-                if (game.gameData[game.index].preferCanary)
-                {
-                    game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
-                    game.state = Game1.State.Message;
-                }
-                else
-                {
-                    game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
-                    game.state = Game1.State.Message;
-                }
+                game.state = Game1.State.Message;
             }
         }
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)

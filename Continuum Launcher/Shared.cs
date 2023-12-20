@@ -12,8 +12,8 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.1.0 Beta 2";
-        public static readonly string COMPILED = "December 17, 2023";
+        public static readonly string VERSION = "1.1.0 Beta 3";
+        public static readonly string COMPILED = "December 20, 2023";
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Saved Game"  },
             { "00000002", "Downloadable Content" },

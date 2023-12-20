@@ -87,7 +87,7 @@ namespace XeniaLauncher
                 }
 
                 // Getting the data of the selected game
-                GameData data = game.gameData[buttonIndex];
+                GameData data = game.masterData[buttonIndex];
                 float size = 0;
                 DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
                 DirectoryInfo parent = directoryInfo.Parent;
