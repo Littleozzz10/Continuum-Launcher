@@ -4,39 +4,65 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace XeniaLauncher
 {
-    /// <summary>
-    /// Static class that contains all classes and helper methods from the OzzzFramework.
-    /// </summary>
+    /// <summary>Static class that contains all classes and helper methods from the OzzzFramework.</summary>
+    /// <seealso cref="Helper"/>
+    /// <seealso cref="Scaling"/>
     public static class OzzzFramework
     {
-        /// <summary>
-        /// The global scale that all Framework components adhere to.
-        /// </summary>
+        /// <summary>The global scale that all Framework components adhere to.</summary>
+        /// <remarks>
+        /// At draw time, all Framework elements are scaled according to this value (So a value of 1, 1 would leave the resolution unchanged).
+        /// This means that changing the value of this variable will immedietely change the size and position of drawn OzzzFramework components,
+        /// so the window size should always be changed alongside this.
+        /// <note type="tip" title="Initialization">This variable is defined by a parameter in OzzzFramework.Initialize()</note>
+        /// </remarks>
+        /// <seealso cref="Scaling"/>
+        /// <seealso cref="Initialize(Vector2, float)"/>
         public static Vector2 scale;
-        /// <summary>
-        /// The most recent calculation of the frame delta.
-        /// </summary>
+        /// <summary>The most recent calculation of the frame delta from OzzzFramework.GetFrameDelta().</summary>
+        /// <note type="warning" title="Unfinished">This variable is part of an unfinished feature and may not work properly or at all.</note>
+        /// <note type="tip" title="Continuum Launcher Implementation">Note that Continuum Launcher does not use OzzzFramework's delta time functionality, due to its broken state.</note>
+        /// <seealso cref="CalculateFrameDelta(GameTime)"/>
+        /// <preliminary/>
         public static float frameDelta;
-        /// <summary>
-        /// The target frame rate that CalculateFrameDelta uses to base its calculations on.
-        /// </summary>
+        /// <summary>The target frame rate that CalculateFrameDelta uses to base its calculations on.</summary>
+        /// <note type="warning" title="Unfinished">This variable is part of an unfinished feature and may not work properly or at all.</note>
+        /// <note type="tip" title="Initialization">This variable is defined by a parameter in OzzzFramework.Initialize()</note>
+        /// <note type="tip" title="Continuum Launcher Implementation">Note that Continuum Launcher does not use OzzzFramework's delta time functionality, due to its broken state.</note>
+        /// <seealso cref="CalculateFrameDelta(GameTime)"/>
+        /// <seealso cref="Initialize(Vector2, float)"/>
+        /// <preliminary/>
         public static float targetFrameRate;
-        /// <summary>
-        /// The number of samples to use when calculating FPS. More samples means frame drops are less noticeable.
-        /// </summary>
+        /// <summary>The number of samples to record in memory when calculating FPS. More samples means sudden frame drops have less of an effect on calculated FPS.</summary>
+        /// <note type="warning" title="Unfinished">This variable is part of an unfinished feature and may not work properly or at all.</note>
+        /// <note type="tip" title="Initialization">This variable is reset to 1 in OzzzFramework.Initialize()</note>
+        /// <note type="tip" title="Continuum Launcher Implementation">Note that Continuum Launcher does not use OzzzFramework's delta time functionality, due to its broken state.</note>
+        /// <seealso cref="CalculateFrameDelta(GameTime)"/>
+        /// <seealso cref="Initialize(Vector2, float)"/>
+        /// <preliminary/>
         public static int frameSamples;
         private static Queue<float> frameTimes;
-        /// <summary>
-        /// Initializes the variables necessary for the Framework, including scaling.
-        /// </summary>
-        /// <param name="scale">The scale that all Framework components will adhere to. 
-        /// Any calculations done outside of the Framework should call the appropriate scaling methods to ensure compatibility with all resolutions.</param>
+        /// <summary>Initializes the variables necessary for the Framework, including scaling.</summary>
+        /// <remarks>
+        /// <note type="warning" title="Usage Requirement">This method must be called at the start of the program, ideally as close to program start as possible.
+        /// Otherwise, very few Framework features will function as intended or will trigger many errors.</note>
+        /// <note type="tip" title="Continuum Launcher Implementation">In Continuum Launcher, this method is called in Game1.Initialize().</note>
+        /// </remarks>
+        /// <param name="scale">The scale that all Framework components will adhere to. At draw time, all Framework elements are scaled according to this value (So 1, 1 would leave the resolution unchanged)</param>
+        /// <param name="targetFrameRate">The frame rate that the Framework should base frame rate calculations off of.</param>
+        /// <example><code language="c#" source="Code Examples\OzzzFramework\ozzz_init_example.cs" numberLines="true"></code></example>
+        /// <seealso cref="GamepadInput"/>
+        /// <seealso cref="KeyboardInput"/>
+        /// <seealso cref="MouseInput"/>
+        /// <seealso cref="CalculateFrameDelta(GameTime)"/>
+        /// <seealso cref="frameSamples"/>
         public static void Initialize(Vector2 scale, float targetFrameRate)
         {
             MouseInput.state = Mouse.GetState();
@@ -51,11 +77,20 @@ namespace XeniaLauncher
             frameTimes = new Queue<float>();
             frameSamples = 1;
         }
-        /// <summary>
-        /// Calculates and returns the frame delta (How long the last frame took to render compared to how long it should according to the target FPS)
-        /// </summary>
-        /// <param name="gameTime">The GameTime object parameter from the default Update method.</param>
-        /// <returns></returns>
+        /// <summary>Calculates, stores, and then returns the frame delta (How long the last frame took to render compared to how long it should according to the target FPS.</summary>
+        /// <remarks>
+        /// <note type="warning" title="Unfinished">This method is part of an unfinished feature and may not work properly or at all.</note>
+        /// <note type="tip" title="Usage Requirement">In order for delta time functionality to work, this function must be called at the start of every frame.</note>
+        /// <note type="tip" title="Continuum Launcher Implementation">Note that Continuum Launcher does not use OzzzFramework's delta time functionality, due to its broken state.</note>
+        /// </remarks>
+        /// <param name="gameTime">The GameTime object provided by the current instance of MonoGame.</param>
+        /// <returns>The calculated frame delta.</returns>
+        /// <seealso cref="GetFPS"/>
+        /// <seealso cref="Initialize(Vector2, float)"/>
+        /// <seealso cref="frameDelta"/>
+        /// <seealso cref="frameSamples"/>
+        /// <seealso cref="targetFrameRate"/>
+        /// <preliminary/>
         public static float CalculateFrameDelta(GameTime gameTime)
         {
             while (frameTimes.Count >= frameSamples)
@@ -73,9 +108,10 @@ namespace XeniaLauncher
             }
             return frameDelta;
         }
-        /// <summary>
-        /// Gets the FPS
-        /// </summary>
+        /// <summary>Gets the current FPS.</summary>
+        /// <remarks><note type="warning" title="Unfinished">Due to a quick with how MonoGame's GameTime.ElapsedGameTime works, this method's result is not entirely accurate.</note></remarks>
+        /// <returns>The calculated FPS.</returns>
+        /// <preliminary/>
         public static float GetFPS()
         {
             float times = 0;
@@ -88,16 +124,18 @@ namespace XeniaLauncher
             }
             return times / frameTimes.Count;
         }
-        /// <summary>
-        /// Static class to handle scaling.
-        /// </summary>
+        /// <summary>Static class to handle scaling.</summary>
+        /// <remarks>
+        /// Note that OzzzFramework components are automatically scaled at draw time, so no scaling has to be done elsewhere. 
+        /// The exception to this is the OzzzFramework.MouseInput class, which does not automatically scale the values it provides.
+        /// </remarks>
         public static class Scaling
         {
             /// <summary>
             /// Adjusts a byte based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static byte ScaleByteX(byte num)
             {
                 return (byte)(num * scale.X);
@@ -106,7 +144,7 @@ namespace XeniaLauncher
             /// Adjusts a byte based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static byte ScaleByteY(byte num)
             {
                 return (byte)(num * scale.Y);
@@ -115,7 +153,7 @@ namespace XeniaLauncher
             /// Adjusts a short based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static short ScaleShortX(short num)
             {
                 return (short)(num * scale.X);
@@ -124,7 +162,7 @@ namespace XeniaLauncher
             /// Adjusts a short based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static short ScaleShortY(short num)
             {
                 return (short)(num * scale.Y);
@@ -133,7 +171,7 @@ namespace XeniaLauncher
             /// Adjusts a ushort based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static ushort ScaleUShortX(ushort num)
             {
                 return (ushort)(num * scale.X);
@@ -142,7 +180,7 @@ namespace XeniaLauncher
             /// Adjusts a ushort based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static ushort ScaleUShortY(ushort num)
             {
                 return (ushort)(num * scale.Y);
@@ -151,7 +189,7 @@ namespace XeniaLauncher
             /// Adjusts an int based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static int ScaleIntX(int num)
             {
                 return (int)(num * scale.X);
@@ -160,7 +198,7 @@ namespace XeniaLauncher
             /// Adjusts an int based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static int ScaleIntY(int num)
             {
                 return (int)(num * scale.Y);
@@ -169,7 +207,7 @@ namespace XeniaLauncher
             /// Adjusts a uint based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static uint ScaleUIntX(uint num)
             {
                 return (uint)(num * scale.X);
@@ -178,7 +216,7 @@ namespace XeniaLauncher
             /// Adjusts a uint based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static uint ScaleUIntY(uint num)
             {
                 return (uint)(num * scale.Y);
@@ -187,7 +225,7 @@ namespace XeniaLauncher
             /// Adjusts a long based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static long ScaleLongX(long num)
             {
                 return (long)(num * scale.X);
@@ -196,7 +234,7 @@ namespace XeniaLauncher
             /// Adjusts a long based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static long ScaleLongY(long num)
             {
                 return (long)(num * scale.Y);
@@ -205,7 +243,7 @@ namespace XeniaLauncher
             /// Adjusts a ulong based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static ulong ScaleULongX(ulong num)
             {
                 return (ulong)(num * scale.X);
@@ -214,7 +252,7 @@ namespace XeniaLauncher
             /// Adjusts a ulong based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static ulong ScaleULongY(ulong num)
             {
                 return (ulong)(num * scale.Y);
@@ -223,7 +261,7 @@ namespace XeniaLauncher
             /// Adjusts a float based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static float ScaleFloatX(float num)
             {
                 return (float)(num * scale.X);
@@ -232,7 +270,7 @@ namespace XeniaLauncher
             /// Adjusts a float based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static float ScaleFloatY(float num)
             {
                 return (float)(num * scale.Y);
@@ -241,7 +279,7 @@ namespace XeniaLauncher
             /// Adjusts a double based on the Horizontal Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static double ScaleDoubleX(double num)
             {
                 return (double)(num * scale.X);
@@ -250,7 +288,7 @@ namespace XeniaLauncher
             /// Adjusts a double based on the Vertical Scale.
             /// </summary>
             /// <param name="num">The number to adjust.</param>
-            /// <returns>An adjusted number</returns>
+            /// <returns>An adjusted number.</returns>
             public static double ScaleDoubleY(double num)
             {
                 return (double)(num * scale.Y);
@@ -259,7 +297,7 @@ namespace XeniaLauncher
             /// Adjusts a Point based on the Scale.
             /// </summary>
             /// <param name="num">The Point to adjust</param>
-            /// <returns>An adjusted Point</returns>
+            /// <returns>An adjusted Point.</returns>
             public static Point ScalePoint(Point num)
             {
                 return new Point(ScaleIntX(num.X), ScaleIntY(num.Y));
@@ -268,7 +306,7 @@ namespace XeniaLauncher
             /// Adjusts a Vector2 based on the Scale.
             /// </summary>
             /// <param name="num">The Vector2 to adjust</param>
-            /// <returns>An adjusted Vector2</returns>
+            /// <returns>An adjusted Vector2.</returns>
             public static Vector2 ScaleVector2(Vector2 num)
             {
                 return num * scale;
@@ -277,7 +315,7 @@ namespace XeniaLauncher
             /// Adjusts a Rectangle based on the Scale.
             /// </summary>
             /// <param name="rect">The Rectangle to adjust</param>
-            /// <returns>An adjusted Vector2</returns>
+            /// <returns>An adjusted Rectangle.</returns>
             public static Rectangle ScaleRectangle(Rectangle rect)
             {
                 rect.X = ScaleIntX(rect.X);
@@ -289,6 +327,9 @@ namespace XeniaLauncher
             /// <summary>
             /// Returns a new Vector2 automatically scaled.
             /// </summary>
+            /// <param name="x">The unscaled x-position to adjust</param>
+            /// <param name="y">The unscaled y-position to adjust</param>
+            /// <returns>An adjusted Vector2 based on the provided parameters.</returns>
             public static Vector2 Vector2Scaled(float x, float y)
             {
                 return ScaleVector2(new Vector2(x, y));
@@ -296,6 +337,11 @@ namespace XeniaLauncher
             /// <summary>
             /// Returns a new Rectangle automatically scaled.
             /// </summary>
+            /// <param name="x">The unscaled x-position to adjust</param>
+            /// <param name="y">The unscaled y-position to adjust</param>
+            /// <param name="width">The unscaled width to adjust</param>
+            /// <param name="height">The unscaled height to adjust</param>
+            /// <returns>An adjusted Rectangle based on the provided parameters.</returns>
             public static Rectangle RectangleScaled(int x, int y, int width, int height)
             {
                 return ScaleRectangle(new Rectangle(x, y, width, height));
@@ -305,7 +351,7 @@ namespace XeniaLauncher
             /// </summary>
             /// <param name="rect">The Rectangle to resize.</param>
             /// <param name="size">The size to resize the Rectangle to. 1.0 is 100%.</param>
-            /// <returns>The resized Rectangle</returns>
+            /// <returns>The resized Rectangle.</returns>
             public static Rectangle ResizeRectangle(Rectangle rect, float size)
             {
                 Rectangle newRect = new Rectangle();
@@ -316,11 +362,11 @@ namespace XeniaLauncher
                 return newRect;
             }
             /// <summary>
-            /// Resizes a Rectangle according to the provided size. Also scales the Rectangle with the global framework scale.
+            /// Resizes a Rectangle according to the provided size. Also scales the Rectangle with the global Framework scale.
             /// </summary>
             /// <param name="rect">The Rectangle to resize.</param>
             /// <param name="size">The size to resize the Rectangle to. 1.0 is 100%.</param>
-            /// <returns>The resized Rectangle</returns>
+            /// <returns>The scaled, resized Rectangle</returns>
             public static Rectangle ResizeRectangleToScale(Rectangle rect, float size)
             {
                 Rectangle newRect = ResizeRectangle(rect, size);
@@ -333,6 +379,7 @@ namespace XeniaLauncher
             /// <param name="vec">The Vector2 to resize.</param>
             /// <param name="wh">The Width and Height to base resizing on.</param>
             /// <param name="size">The size to resize the Vector2 by. 1.0 is 100%.</param>
+            /// <returns>A resized Vector2.</returns>
             public static Vector2 ResizeVector2(Vector2 vec, Vector2 wh, float size)
             {
                 Vector2 newVec = new Vector2();
@@ -346,13 +393,11 @@ namespace XeniaLauncher
         /// </summary>
         public static class Helper
         {
-            /// <summary>
-            /// Creates an array of random numbers.
-            /// </summary>
+            /// <summary>Creates an array of random numbers.</summary>
             /// <param name="count">Number of random integers to populate the array with.</param>
             /// <param name="min">The smallest number allowed to be generated.</param>
             /// <param name="max">The largest number allowed to be generated.</param>
-            /// <returns>An int array of COUNT random integers within the specified MIN and MAX</returns>
+            /// <returns>An int array of 'count' random integers within the specified 'min' and 'max'.</returns>
             public static int[] RandomNumberArray(int count, int min, int max)
             {
                 int[] result = new int[count];
@@ -365,12 +410,19 @@ namespace XeniaLauncher
             }
             /// <summary>
             /// Creates a string with the elements of the given array. Does not contain brackets like a typical ToString() would. 
-            /// Deliminates with the deliminator parameter, does not automatically insert a space.
+            /// Deliminates with the deliminator parameter.
             /// </summary>
-            /// <typeparam name="T">Type is recommended to have a built-in ToString().</typeparam>
+            /// <remarks><para><note type="note" title="Initialization Note">This method does not depend on any other OzzzFramework components</note></para>
+            /// <para>Note the following things:</para><list type="bullet">
+            /// <item><description>Each item is is added to the string using it's ToString().</description></item>
+            /// <item><description>Spaces are not automatically added to the deliminator, they must be manually added.</description></item>
+            /// <item><description>The final item does not have a deliminator appended after it.</description></item>
+            /// </list></remarks>
+            /// <typeparam name="T">Type is recommended to have a proper ToString().</typeparam>
             /// <param name="array">The array to use.</param>
             /// <param name="deliminator">The string to deliminate each element by. Spaces are not automatically added, add space(s) if spacing is desired.</param>
             /// <returns>A string containing each element of the given array, deliminated by the given deliminator</returns>
+            /// <example><code language="c#" source="Code Examples\OzzzFramework\Helper\ozzz_help_arraystring.cs" numberLines="true"></code></example>
             public static string ArrayString<T>(T[] array, string deliminator)
             {
                 string str = "";
@@ -859,9 +911,29 @@ namespace XeniaLauncher
                     return "";
                 }
             }
+            public static string GetASCII(string str, SpriteFont font)
+            {
+                try
+                {
+                    string ascii =  Encoding.ASCII.GetString(Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(Encoding.ASCII.EncodingName, new EncoderReplacementFallback(string.Empty), new DecoderExceptionFallback()), Encoding.UTF8.GetBytes(str))).Replace("" + (char)0x0019, "");
+                    string toReturn = "";
+                    foreach (char c in ascii)
+                    {
+                        if (font.Characters.Contains(c))
+                        {
+                            toReturn = toReturn + c;
+                        }
+                    }
+                    return toReturn;
+                }
+                catch
+                {
+                    return "";
+                }
+            }
             public override Vector2 GetSize()
             {
-                return font.MeasureString(GetASCII(text)) * new Vector2(scale, scale);
+                return font.MeasureString(GetASCII(text, font)) * new Vector2(scale, scale);
             }
             /// <summary>
             /// Gets the Width and Height of the Sprite if the text was the given text.
@@ -870,7 +942,7 @@ namespace XeniaLauncher
             /// <returns></returns>
             public Vector2 GetSize(string text)
             {
-                return font.MeasureString(GetASCII(text)) * new Vector2(scale, scale);
+                return font.MeasureString(GetASCII(text, font)) * new Vector2(scale, scale);
             }
             public override Vector2 GetCenterPoint()
             {
@@ -900,7 +972,7 @@ namespace XeniaLauncher
             {
                 if (visible)
                 {
-                    sb.DrawString(font, GetASCII(text), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
+                    sb.DrawString(font, GetASCII(text, font), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
                 }
             }
             public override void Draw(SpriteBatch sb, bool noScale)
@@ -909,11 +981,11 @@ namespace XeniaLauncher
                 {
                     if (noScale)
                     {
-                        sb.DrawString(font, GetASCII(text), Scaling.ResizeVector2(pos, GetSize(), size), color, rotation, origin, scale * size, effects, layerDepth);
+                        sb.DrawString(font, GetASCII(text, font), Scaling.ResizeVector2(pos, GetSize(), size), color, rotation, origin, scale * size, effects, layerDepth);
                     }
                     else
                     {
-                        sb.DrawString(font, GetASCII(text), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
+                        sb.DrawString(font, GetASCII(text, font), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
                     }
                 }
             }

@@ -13,6 +13,9 @@
     <Product>Continuum Launcher</Product>
     <Authors>Littleozzz10</Authors>
     <Company>Littleozzz10</Company>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+    <FileVersion>$(VersionPrefix)</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>7</WarningLevel>

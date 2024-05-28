@@ -79,7 +79,7 @@ namespace XeniaLauncher
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;
