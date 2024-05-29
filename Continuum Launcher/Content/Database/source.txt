@@ -1,0 +1,7 @@
+This data was sourced from the MobyGames database, courtesy of MobyGames.
+Data provided by MobyGames.
+Obtained May 28, 2024
+
+Note that this data is based on NTSC region data, specifically for the United States. Release dates are also not wholly accurate, as it reflects the game's first release date on any platform, not just Xbox 360. If the date in the data does not match the year in the JSON file's name, Continuum will set the release date field to {YEAR-01-01}, with YEAR being the JSON's year.
+
+Data is provided as-is, and is in English only.

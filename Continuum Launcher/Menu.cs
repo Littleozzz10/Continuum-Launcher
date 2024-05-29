@@ -43,13 +43,15 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 1)
             {
-                game.newGameWindow = new Window(game, new Rectangle(560, 275, 800, 530), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
+                game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(4), new GenericStart(), Game1.State.Menu);
                 game.state = Game1.State.NewGame;
-                game.newGameWindow.AddButton(new Rectangle(610, 420, 700, 100));
-                game.newGameWindow.AddButton(new Rectangle(610, 530, 700, 100));
-                game.newGameWindow.AddButton(new Rectangle(610, 640, 700, 100));
-                game.newGameWindow.AddText("Manual Import");
-                game.newGameWindow.AddText("Import From STFS");
+                game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 585, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 695, 700, 100));
+                game.newGameWindow.AddText("Folder + Database Import");
+                game.newGameWindow.AddText("Manual Import (OLD)");
+                game.newGameWindow.AddText("Import From STFS (OLD)");
                 game.newGameWindow.AddText("Back to Menu");
                 game.newGameWindow.buttonEffects.SetupEffects(game, source);
             }
@@ -391,7 +393,7 @@ namespace XeniaLauncher
 
                     game.state = Game1.State.Data;
                 }
-                catch (Exception e)
+                catch (FileNotFoundException e)
                 {
                     //game.message = new MessageWindow(game, "Error", "Unknown error while searching for game files", Game1.State.Menu);
                     game.message = new MessageWindow(game, "Error", e.ToString().Split("\n")[0], Game1.State.Menu);
@@ -410,15 +412,15 @@ namespace XeniaLauncher
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 300));
                 game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Continuum Launcher created by William Jones (a.k.a. Littleozzz10)", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 460));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xbox 360 sounds and Convection font made by Microsoft", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xbox 360 sounds and Convection font made by Microsoft.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 540));
                 game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Disclaimer: Continuum Launcher has no affiliation with the Xenia Project.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 620));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xenia and Xenia Canary logos made by the Xenia Project", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xenia and Xenia Canary logos made by the Xenia Project.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 680));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Source code and additional support available on GitHub:", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 760));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Littleozzz10\\Continuum Launcher", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Game information data provided by MobyGames.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 750));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Available on GitHub: Littleozzz10\\Continuum Launcher", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 820));
 
                 game.state = Game1.State.Credits;

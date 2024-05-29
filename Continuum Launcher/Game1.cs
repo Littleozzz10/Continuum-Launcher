@@ -32,6 +32,8 @@ using GameData = XeniaLauncher.Shared.GameData;
 using SharpDX.MediaFoundation;
 using SharpFont;
 using XLCompanion;
+using STFS;
+using System.Reflection.Metadata;
 
 namespace XeniaLauncher
 {
@@ -52,6 +54,7 @@ namespace XeniaLauncher
         public List<XGame> gameIcons;
         public List<GameData> gameData, masterData;
         public Dictionary<string, Texture2D> arts, compatBars, themeThumbnails, icons;
+        public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
         public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow;
@@ -1165,6 +1168,49 @@ namespace XeniaLauncher
         }
 
         /// <summary>
+        /// Helper method for finding games' STFS files.
+        /// </summary>
+        /// <param name="contentType">Example: 00004000</param>
+        /// <param name="stfsFiles">Dictionary of STFS files</param>
+        /// <returns>The key for Dictionary stfsFiles that should be the main executable</returns>
+        public string FindSTFSGames(string dirName, string contentType, Dictionary<string, string> stfsFiles)
+        {
+            string main = "";
+            if (Directory.Exists(dirName + "\\" + contentType))
+            {
+                string[] filepaths = Directory.GetFiles(dirName + "\\" + contentType, "*", SearchOption.TopDirectoryOnly);
+                // Searching files
+                for (int i = 0; i < filepaths.Count(); i++)
+                {
+                    STFS24 stfs = null;
+                    try
+                    {
+                        stfs = new STFS24(filepaths[i]);
+                        XMetadata metadata = stfs.ReturnMetadata();
+                        if (STFS24.GetByteArrayAsHex(metadata.GetContentTypeAsBytes()) == contentType)
+                        {
+                            string title = TextSprite.GetASCII(metadata.GetDisplayName()[0], font);
+                            stfsFiles.Add(title, filepaths[i]);
+                            if (main == "" && ((metadata.GetDiscNumber() > 1 && metadata.GetDiscInSet() == 1) || metadata.GetDiscNumber() <= 1))
+                            {
+                                main = title;
+                            }
+                        }
+                        stfs.CloseStream();
+                    }
+                    catch (Exception e)
+                    {
+                        if (stfs != null)
+                        {
+                            stfs.CloseStream();
+                        }
+                    };
+                }
+            }
+            return main;
+        }
+
+        /// <summary>
         /// Loads all of the Launcher's content (Textures, Fonts, data, etc)
         /// </summary>
         protected override void LoadContent()
@@ -2080,6 +2126,10 @@ namespace XeniaLauncher
             }
             else if (state == State.NewGame)
             {
+                if (stfsFiles == null)
+                {
+                    stfsFiles = new Dictionary<string, string>();
+                }
                 newGameWindow.Update();
 
                 if (newGameProcess)
@@ -2092,6 +2142,58 @@ namespace XeniaLauncher
                 if (textWindowInput != null)
                 {
                     if (newGameWindow.buttonIndex == 0)
+                    {
+                        // New advanced import
+                        try
+                        {
+                            // Finding the directory
+                            tempFilepathSTFS = textWindowInput;
+                            DirectoryInfo dirInfo = new DirectoryInfo(tempFilepathSTFS);
+                            textWindowInput = null;
+                            if (dirInfo.Exists)
+                            {
+                                string mainGame = ""; // The name of the STFS file that will be the main executable
+
+                                // Searching for STFS files
+                                string[] contentTypes = ["00004000", "00007000", "000D0000", "00080000"];
+                                for (int i = 0; i < contentTypes.Length; i++)
+                                {
+                                    string newMain = FindSTFSGames(dirInfo.FullName, contentTypes[i], stfsFiles);
+                                    // Getting main game
+                                    if (mainGame == "")
+                                    {
+                                        mainGame = newMain;
+                                    }
+                                }
+
+                                // If a game was found
+                                if (mainGame != "")
+                                {
+                                    STFS24 newSTFS = new STFS24(stfsFiles[mainGame]);
+                                    tempTitleSTFS = mainGame;
+                                    tempIdSTFS = STFS24.GetByteArrayAsHex(newSTFS.ReturnMetadata().GetTitleID());
+                                    tempFilepathSTFS = stfsFiles[mainGame];
+                                    newSTFS.CloseStream();
+                                    // Icon code (My new STFS24 library doesn't support icon extraction yet)
+                                    STFS stfs = new STFS(stfsFiles[mainGame]);
+                                    tempIconSTFS = stfs.icon;
+                                    stfsFiles.Remove(mainGame);
+                                    message = new MessageWindow(this, "STFS Results", "Title: " + tempTitleSTFS + ", Title ID: " + tempIdSTFS, State.NewGame, MessageWindow.MessagePrompts.OKCancel);
+                                    state = State.Message;
+                                }
+                            }
+                            else // Directory doesn't exist
+                            {
+                                throw new Exception();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            message = new MessageWindow(this, "Error", "Invalid Directory\n" + e.ToString(), State.NewGame);
+                            state = State.Message;
+                        }
+                    }
+                    else if (newGameWindow.buttonIndex == 1)
                     {
                         if (String.IsNullOrEmpty(newXEX))
                         {
@@ -2112,7 +2214,7 @@ namespace XeniaLauncher
                             EditGame();
                         }
                     }
-                    else if (newGameWindow.buttonIndex == 1)
+                    else if (newGameWindow.buttonIndex == 0 || newGameWindow.buttonIndex == 2)
                     {
                         // Importing from STFS
                         try
@@ -2135,7 +2237,7 @@ namespace XeniaLauncher
                 }
                 if (messageYes)
                 {
-                    if (newGameWindow.buttonIndex == 1)
+                    if (newGameWindow.buttonIndex == 0)
                     {
                         // Saving icon
                         if (!Directory.Exists("IconData"))
@@ -2170,6 +2272,12 @@ namespace XeniaLauncher
                         masterData.Last().gamePath = tempFilepathSTFS;
                         masterData.Last().titleId = tempIdSTFS;
                         masterData.Last().iconPath = "IconData\\" + tempIdSTFS + ".png";
+                        masterData.Last().xexNames = stfsFiles.Keys.ToList();
+                        for (int i = 0; i < stfsFiles.Keys.Count; i++)
+                        {
+                            masterData.Last().xexPaths.Add(stfsFiles[masterData.Last().xexNames[i]]);
+                        }
+                        stfsFiles = null;
                         gameData.Add(masterData.Last());
                         SaveGames();
                         newGameProcess = true;
