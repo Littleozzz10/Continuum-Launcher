@@ -27,6 +27,8 @@ using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using XLCompanion;
 using System.Drawing;
+using Continuum_Launcher;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace XeniaLauncher
 {
@@ -79,6 +81,22 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 1)
             {
+                game.databaseGameInfo = new List<GameInfo>(); // Clearing out old data
+                foreach (GameInfo info in game.mobyData.Data)
+                {
+                    if (info.Variants != null && info.Variants[0].TitleID == game.gameData[game.index].titleId)
+                    {
+                        game.databaseGameInfo.Add(info);
+                    }
+                }
+                if (game.databaseGameInfo.Count == 0)
+                {
+                    game.message = new MessageWindow(game, "Aw, Shucks!", "No Title ID matches found in the database.", Game1.State.GameMenu);
+                    game.state = Game1.State.Message;
+                }
+            }
+            else if (buttonIndex == 2)
+            {
                 game.state = Game1.State.GameInfo;
                 game.gameInfoWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Info for " + game.gameData[game.index].gameTitle, new GameInfoWindow(), new GameInfoInput(), new GenericStart(), Game1.State.GameMenu);
 
@@ -105,7 +123,7 @@ namespace XeniaLauncher
                 game.gameInfoWindow.skipMainStateTransition = true;
                 game.gameInfoWindow.buttonEffects.SetupEffects(game, game.gameInfoWindow);
             }
-            else if (buttonIndex == 2)
+            else if (buttonIndex == 3)
             {
                 game.state = Game1.State.GameFilepaths;
                 game.gameFilepathsWindow = new Window(game, new Rectangle(560, 170, 800, 740), "Filepaths for " + game.gameData[game.index].gameTitle, new GameFilepaths(), new StdInputEvent(4), new GenericStart(), Game1.State.GameMenu);
@@ -120,7 +138,7 @@ namespace XeniaLauncher
                 game.gameFilepathsWindow.AddText("Back to Manage Window");
                 game.gameFilepathsWindow.buttonEffects.SetupEffects(game, game.gameFilepathsWindow);
             }
-            else if (buttonIndex == 3)
+            else if (buttonIndex == 4)
             {
                 game.state = Game1.State.GameCategories;
                 game.gameCategoriesWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Categories", new GameCategories(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
@@ -141,7 +159,7 @@ namespace XeniaLauncher
                 game.gameCategoriesWindow.AddText("Back to Manage Window");
                 game.gameCategoriesWindow.buttonEffects.SetupEffects(game, game.gameCategoriesWindow);
             }
-            else if (buttonIndex == 4)
+            else if (buttonIndex == 5)
             {
                 game.state = Game1.State.GameXEX;
                 game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", new GameXEX(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
@@ -165,14 +183,16 @@ namespace XeniaLauncher
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            game.gameManageWindow.AddButton(new Rectangle(610, 320, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 430, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 540, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 650, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 760, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 265, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 375, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 485, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 595, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 705, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 815, 700, 100));
             game.gameManageWindow.AddText("Edit Launch Settings");
+            game.gameManageWindow.AddText("Database Lookup");
             game.gameManageWindow.AddText("Edit Game Info");
-            game.gameManageWindow.AddText("Edit Filepaths");
+            game.gameManageWindow.AddText("Change Filepaths");
             game.gameManageWindow.AddText("Manage Categories");
             game.gameManageWindow.AddText("Manage Executables");
             foreach (TextSprite sprite in game.gameManageWindow.sprites)

@@ -34,6 +34,8 @@ using SharpFont;
 using XLCompanion;
 using STFS;
 using System.Reflection.Metadata;
+using Newtonsoft.Json;
+using Continuum_Launcher;
 
 namespace XeniaLauncher
 {
@@ -57,7 +59,7 @@ namespace XeniaLauncher
         public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow;
         public MessageWindow message;
         public TextInputWindow text;
         public Color backColor, backColorAlt;
@@ -65,13 +67,15 @@ namespace XeniaLauncher
         public DataManageStrings dataStrings;
         public SequenceFade bottomInfo;
         public DataEntry toDelete, toImport;
+        public MobyData mobyData;
+        public List<GameInfo> databaseGameInfo;
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex;
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult
         }
         public State state;
         public enum Sort
@@ -814,6 +818,30 @@ namespace XeniaLauncher
                 canaryCompat.textures[0] = compatBars["perfect"];
             }
         }
+
+        public void OpenDatabaseResult()
+        {
+            state = State.DatabaseResult;
+            databaseResultWindow = new Window(this, new Rectangle(360, 170, 1200, 740), "Database Result (" + databaseGameInfo[0].Variants[0].TitleID + ")", new DatabaseResult(), new DatabaseResultInput(), new GenericStart(), State.GameMenu);
+
+            databaseResultWindow.AddButton(new Rectangle(410, 370, 90, 90));
+            databaseResultWindow.AddButton(new Rectangle(1420, 370, 90, 90));
+            databaseResultWindow.AddButton(new Rectangle(410, 510, 90, 90));
+            databaseResultWindow.AddButton(new Rectangle(1420, 510, 90, 90));
+            databaseResultWindow.AddButton(new Rectangle(495, 640, 450, 100));
+            databaseResultWindow.AddButton(new Rectangle(980, 640, 450, 100));
+            databaseResultWindow.AddButton(new Rectangle(610, 760, 700, 100));
+            databaseResultWindow.AddButton(new Rectangle(610, 880, 700, 100));
+            databaseResultWindow.AddText("<");
+            databaseResultWindow.AddText(">");
+            databaseResultWindow.AddText("<");
+            databaseResultWindow.AddText(">");
+            databaseResultWindow.AddText("Edit Game Title");
+            databaseResultWindow.AddText("Edit Release Date");
+            databaseResultWindow.AddText("Accept Entry and Save");
+            databaseResultWindow.AddText("Discard Changes");
+            databaseResultWindow.buttonEffects.SetupEffects(this, databaseResultWindow);
+        }
         public string GetFilepathString(string path)
         {
             return GetFilepathString(path, false);
@@ -913,7 +941,7 @@ namespace XeniaLauncher
             }
             catch
             {
-                message = new MessageWindow(this, "Error", "Unable to launch Xenia", state);
+                message = new MessageWindow(this, "Launch Error", "Unable to launch Xenia", state);
                 state = State.Message;
             }
         }
@@ -960,7 +988,7 @@ namespace XeniaLauncher
             }
             catch
             {
-                message = new MessageWindow(this, "Error", "Unable to launch Canary", state);
+                message = new MessageWindow(this, "Launch Error", "Unable to launch Canary", state);
                 state = State.Message;
             }
         }
@@ -970,7 +998,7 @@ namespace XeniaLauncher
         }
         public void EditGame()
         {
-            gameManageWindow = new Window(this, new Rectangle(560, 170, 800, 750), "Manage " + gameData[index].gameTitle, new ManageGame(), new StdInputEvent(5), new GenericStart(), State.NewGame);
+            gameManageWindow = new Window(this, new Rectangle(560, 115, 800, 860), "Manage " + gameData[index].gameTitle, new ManageGame(), new StdInputEvent(6), new GenericStart(), State.NewGame);
             gameManageWindow.buttonEffects.SetupEffects(this, gameManageWindow);
             state = State.GameMenu;
         }
@@ -1165,6 +1193,70 @@ namespace XeniaLauncher
         public bool GetVSync()
         {
             return _graphics.SynchronizeWithVerticalRetrace;
+        }
+
+        /// <summary>
+        /// Loads in the MobyGames data from local JSON files
+        /// </summary>
+        public void LoadMobyData()
+        {
+            // Initializing global data
+            mobyData = new MobyData();
+            // Loading data
+            for (int i = 2005; i <= 2018; i++)
+            {
+                try
+                {
+                    StreamReader dataReader = new StreamReader("Content\\Database\\games" + i + ".json");
+                    string data = dataReader.ReadToEnd();
+                    MobyData yearData = JsonConvert.DeserializeObject<MobyData>(data);
+                    // Fixing release dates
+                    foreach (GameInfo info in yearData.Data)
+                    {
+                        info.Incorrect_Date = false;
+                        // Fixing missing data
+                        if (info.Release_Date.Length == 4)
+                        {
+                            info.Release_Date = info.Release_Date + "-01-01";
+                            info.Incorrect_Date = true;
+                        }
+                        else if (info.Release_Date.Length == 7)
+                        {
+                            info.Release_Date = info.Release_Date + "-01";
+                            info.Incorrect_Date = true;
+                        }
+                        // Fixing incorrect dates
+                        if (info.Release_Date.Substring(0, 4) != i.ToString())
+                        {
+                            info.Release_Date = "" + i + "-01-01";
+                            info.Incorrect_Date = true;
+                        }
+                    }
+                    // Adding data to global MobyData
+                    if (mobyData.Data == null)
+                    {
+                        mobyData.Data = yearData.Data;
+                    }
+                    else
+                    {
+                        mobyData.Data = (GameInfo[])mobyData.Data.Concat(yearData.Data).ToArray();
+                    }
+                }
+                catch (FileNotFoundException e)
+                {
+
+                }
+            }
+            // Adjusting release dates
+            foreach (GameInfo info in mobyData.Data)
+            {
+                DateTime date = new DateTime(Convert.ToInt32(info.Release_Date.Substring(0, 4)), Convert.ToInt32(info.Release_Date.Substring(5, 2)), Convert.ToInt32(info.Release_Date.Substring(8, 2)));
+                // Fixing releases before the Xbox 360's actual launch day
+                if (date.Year == 2005 && ((date.Month == 11 && date.Day < 22) || date.Month <= 10))
+                {
+                    info.Release_Date = "2005-11-22";
+                }
+            }
         }
 
         /// <summary>
@@ -1372,6 +1464,8 @@ namespace XeniaLauncher
             mainFadeLayer = new Layer(white, new Rectangle());
             mainFadeLayer.Add(titleSprite);
             mainFadeLayer.Add(subTitleSprite);
+
+            LoadMobyData();
 
             ReadConfig();
         }
@@ -1834,10 +1928,23 @@ namespace XeniaLauncher
             else if (state == State.GameMenu)
             {
                 gameManageWindow.Update();
+                // Checking for database searches
+                if (databaseGameInfo != null && databaseGameInfo.Count > 0)
+                {
+                    if (databaseGameInfo.Count == 1) // Skipping game selection
+                    {
+                        databaseResultIndex = 0;
+                        OpenDatabaseResult();
+                    }
+                }
             }
             else if (state == State.GameXeniaSettings)
             {
                 gameXeniaSettingsWindow.Update();
+            }
+            else if (state == State.DatabaseResult)
+            {
+                databaseResultWindow.Update();
             }
             else if (state == State.GameInfo)
             {
@@ -2600,6 +2707,8 @@ namespace XeniaLauncher
             else if (state == State.GameMenu)
             {
                 gameXeniaSettingsWindow = null;
+                databaseResultWindow = null;
+                databaseGameInfo = null;
                 gameInfoWindow = null;
                 gameFilepathsWindow = null;
                 gameCategoriesWindow = null;
@@ -2745,6 +2854,10 @@ namespace XeniaLauncher
             if (gameXeniaSettingsWindow != null)
             {
                 gameXeniaSettingsWindow.Draw(_spriteBatch);
+            }
+            if (databaseResultWindow  != null)
+            {
+                databaseResultWindow.Draw(_spriteBatch);
             }
             if (gameInfoWindow != null)
             {
