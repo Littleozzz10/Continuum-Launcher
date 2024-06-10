@@ -162,7 +162,7 @@ namespace XeniaLauncher
             else if (buttonIndex == 5)
             {
                 game.state = Game1.State.GameXEX;
-                game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", new GameXEX(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
+                game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", "Tip: Delete the main XEX to delete the game", new GameXEX(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu, true);
 
                 game.gameXEXWindow.AddButton(new Rectangle(410, 320, 90, 90));
                 game.gameXEXWindow.AddButton(new Rectangle(1420, 320, 90, 90));

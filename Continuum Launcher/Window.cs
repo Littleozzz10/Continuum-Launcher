@@ -31,7 +31,7 @@ namespace XeniaLauncher
     {
         public Game1 game;
         public Gradient fadeGradient, blackGradient, selectGradient, whiteGradient, buttonGradient;
-        public TextSprite titleSprite;
+        public TextSprite titleSprite, descSprite;
         public List<TextSprite> sprites;
         public List<ObjectSprite> buttons;
         public List<Sprite> extraSprites;
@@ -44,7 +44,8 @@ namespace XeniaLauncher
         public int buttonIndex, stringIndex;
         public bool useFade, skipMainStateTransition, firstFrame, preferEscapeExit;
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : this(game, rect, title, buttonEffects, inputEvents, startEffects, returnState, true) { }
-        public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
+        public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : this(game, rect, title, "", buttonEffects, inputEvents, startEffects, returnState, playSelectSound) { }
+        public Window(Game1 game, Rectangle rect, string title, string description, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
         {
             this.game = game;
             sprites = new List<TextSprite>();
@@ -72,6 +73,8 @@ namespace XeniaLauncher
             }
 
             titleSprite = new TextSprite(game.bold, title, 0.65f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
+            descSprite = new TextSprite(game.font, description, 0.4f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
+
         }
         /// <summary>
         /// Resets the Window's Gradients, for transitioning purposes
@@ -136,6 +139,8 @@ namespace XeniaLauncher
             }
             titleSprite.pos = titleSprite.Centerize(GetCenterPoint());
             titleSprite.pos.Y = pos.Y + 40;
+            descSprite.pos = descSprite.Centerize(GetCenterPoint());
+            descSprite.pos.Y = pos.Y + 105;
 
             if (titleSprite.GetSize().X + 60 > rect.Width)
             {
@@ -147,7 +152,7 @@ namespace XeniaLauncher
             bool mouseClick = false;
             for (int i = 0; i < buttons.Count && game.IsActive; i++)
             {
-                if (buttons[i].CheckMouse(false))
+                if (buttons[i].CheckMouse(false) && buttons[i].visible)
                 {
                     if ((buttonIndex != i && !firstFrame && MouseInput.positions[0] != MouseInput.positions[1]) || MouseInput.IsLeftFirstDown())
                     {
@@ -249,6 +254,7 @@ namespace XeniaLauncher
             }
             color = blackGradient.GetColor();
             titleSprite.color = whiteGradient.GetColor();
+            descSprite.color = Ozzz.Helper.DivideColor(whiteGradient.GetColor(), 2f);
             foreach (Sprite sprite in extraSprites)
             {
                 if (sprite.type == "ObjectSprite")
@@ -288,6 +294,7 @@ namespace XeniaLauncher
             }
             base.Draw(sb);
             titleSprite.Draw(sb);
+            descSprite.Draw(sb);
             foreach (ObjectSprite button in buttons)
             {
                 button.Draw(sb);

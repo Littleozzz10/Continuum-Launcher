@@ -58,7 +58,7 @@ namespace XeniaLauncher
             // Options window
             else if (buttonIndex == 2)
             {
-                game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), "Launcher Options", new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu);
+                game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), "Launcher Options", "Global Continuum Options", new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu, true);
                 // Volume buttons
                 game.optionsWindow.AddButton(new Rectangle(910, 305, 90, 90));
                 game.optionsWindow.AddText("<");

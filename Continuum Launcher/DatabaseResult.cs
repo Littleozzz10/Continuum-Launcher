@@ -81,11 +81,18 @@ namespace XeniaLauncher
             {
                 game.text = new TextInputWindow(game, "Edit Game Title", tempGameTitle, Game1.State.DatabaseResult);
             }
+            else if (buttonIndex == 5)
+            {
+                game.OpenDateEditWindow(Game1.State.ReleaseYear, Game1.State.DatabaseResult);
+            }
             else if (buttonIndex == 6)
             {
                 game.gameData[game.index].gameTitle = tempGameTitle;
                 game.gameData[game.index].developer = developers[devIndex];
                 game.gameData[game.index].publisher = publishers[pubIndex];
+                game.gameData[game.index].year = game.tempYear;
+                game.gameData[game.index].month = game.tempMonth;
+                game.gameData[game.index].day = game.tempDay;
                 game.SaveGames();
                 game.state = Game1.State.GameMenu;
                 game.selectSound.Play();
@@ -98,15 +105,24 @@ namespace XeniaLauncher
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
-            window.extraSprites.Add(new TextSprite(game.font, "Selected Developer:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
-            window.extraSprites[1].Centerize(new Vector2(960, 355));
-            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
-            window.extraSprites.Add(new TextSprite(game.font, "Selected Publisher:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
-            window.extraSprites[3].Centerize(new Vector2(960, 495));
             results = game.databaseGameInfo;
             resultIndex = game.databaseResultIndex;
             game.databaseResultIndex = -1;
+            game.tempYear = Convert.ToInt32(results[resultIndex].Release_Date.Substring(0, 4));
+            game.tempMonth = Convert.ToInt32(results[resultIndex].Release_Date.Substring(5, 2));
+            game.tempDay = Convert.ToInt32(results[resultIndex].Release_Date.Substring(8, 2));
+            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, "Selected Developer:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites[1].Centerize(new Vector2(960, 285));
+            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, "Selected Publisher:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites[3].Centerize(new Vector2(960, 425));
+            window.extraSprites.Add(new TextSprite(game.font, "STFS Name: " + game.gameData[game.index].gameTitle, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites[4].Centerize(new Vector2(720, 570));
+            window.extraSprites[4].tags.Add("gray");
+            window.extraSprites.Add(new TextSprite(game.font, "Database Release: " + game.tempMonth + "-" + game.tempDay + "-" + game.tempYear, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites[5].Centerize(new Vector2(1205, 570));
+            window.extraSprites[5].tags.Add("gray");
             developers = results[resultIndex].Developers.ToList();
             publishers = results[resultIndex].Publishers.ToList();
             tempGameTitle = results[resultIndex].Title;
@@ -116,12 +132,12 @@ namespace XeniaLauncher
         private void AdjustDeveloper(Game1 game, Window source)
         {
             source.extraSprites[0].ToTextSprite().text = developers[devIndex];
-            source.extraSprites[0].Centerize(new Vector2(960, 415));
+            source.extraSprites[0].Centerize(new Vector2(960, 345));
         }
         private void AdjustPublisher(Game1 game, Window source)
         {
             source.extraSprites[2].ToTextSprite().text = publishers[pubIndex];
-            source.extraSprites[2].Centerize(new Vector2(960, 555));
+            source.extraSprites[2].Centerize(new Vector2(960, 485));
         }
     }
     public class DatabaseResultInput : IButtonInputEvent
@@ -130,7 +146,11 @@ namespace XeniaLauncher
         {
             if (buttonIndex <= 1)
             {
-                buttonIndex = 6;
+                buttonIndex = 7;
+            }
+            else if (buttonIndex == 6 || buttonIndex == 7)
+            {
+                buttonIndex--;
             }
             else
             {
@@ -142,13 +162,13 @@ namespace XeniaLauncher
         }
         public void DownButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex == 6)
+            if (buttonIndex == 7)
             {
                 buttonIndex = 0;
             }
-            else if (buttonIndex == 5)
+            else if (buttonIndex == 5 || buttonIndex == 6)
             {
-                buttonIndex = 6;
+                buttonIndex++;
             }
             else
             {
@@ -160,15 +180,15 @@ namespace XeniaLauncher
         }
         public void LeftButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex != 6)
+            if (buttonIndex <= 5)
             {
                 if (buttonIndex % 2 == 1)
                 {
-                    buttonIndex++;
+                    buttonIndex--;
                 }
                 else
                 {
-                    buttonIndex--;
+                    buttonIndex++;
                 }
             }
             else
@@ -181,15 +201,15 @@ namespace XeniaLauncher
         }
         public void RightButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex != 6)
+            if (buttonIndex <= 5)
             {
-                if (buttonIndex % 2 == 0)
+                if (buttonIndex % 2 == 1)
                 {
-                    buttonIndex++;
+                    buttonIndex--;
                 }
                 else
                 {
-                    buttonIndex--;
+                    buttonIndex++;
                 }
             }
             else

@@ -129,7 +129,7 @@ namespace XeniaLauncher
                     AdjustCompat(game, source);
                     break;
                 case 6:
-                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Graphics Settings", new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options);
+                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Graphics Settings", "Continuum Graphics Options", new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
                     // Resolution buttons
                     game.graphicsWindow.AddButton(new Rectangle(910, 355, 90, 90));
                     game.graphicsWindow.AddText("<");
@@ -183,7 +183,7 @@ namespace XeniaLauncher
                     }
                     break;
                 case 7:
-                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Xenia Settings", new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options);
+                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Xenia Settings", "Options for all games", new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
                     // Resolution buttons
                     game.settingsWindow.AddButton(new Rectangle(910, 355, 90, 90));
                     game.settingsWindow.AddText("<");
