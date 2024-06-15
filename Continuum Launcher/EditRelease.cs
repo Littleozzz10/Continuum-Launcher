@@ -217,6 +217,25 @@ namespace XeniaLauncher
             }
         }
     }
+    public class EditMonthChangeEffects : IButtonIndexChangeEffects
+    {
+        public Window window;
+        public EditMonthChangeEffects(Window window)
+        {
+            this.window = window;
+        }
+        public void IndexChanged(int buttonIndex)
+        {
+            if (window.extraSprites.Count > 0)
+            {
+                if (buttonIndex >= 0 && buttonIndex <= 11)
+                {
+                    window.extraSprites[0].ToTextSprite().text = window.strings[buttonIndex] + "-" + window.game.tempYear;
+                    window.extraSprites[0].Centerize(new Vector2(960, 760));
+                }
+            }
+        }
+    }
     public class EditMonthInput : IButtonInputEvent
     {
         public void UpButton(Game1 game, Window source, int buttonIndex)
@@ -319,25 +338,6 @@ namespace XeniaLauncher
             return buttonIndex;
         }
     }
-    public class EditMonthChangeEffects : IButtonIndexChangeEffects
-    {
-        public Window window;
-        public EditMonthChangeEffects(Window window)
-        {
-            this.window = window;
-        }
-        public void IndexChanged(int buttonIndex)
-        {
-            if (window.extraSprites.Count > 0)
-            {
-                if (buttonIndex >= 0 && buttonIndex <= 11)
-                {
-                    window.extraSprites[0].ToTextSprite().text = window.strings[buttonIndex] + "-" + window.game.tempYear;
-                    window.extraSprites[0].Centerize(new Vector2(960, 760));
-                }
-            }
-        }
-    }
     // Day stuff
     public class EditDayEffects : IWindowEffects
     {
@@ -423,6 +423,120 @@ namespace XeniaLauncher
                     window.extraSprites[0].Centerize(new Vector2(960, 760));
                 }
             }
+        }
+    }
+    public class EditDayInput : IButtonInputEvent
+    {
+        public void UpButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex >= 0 && buttonIndex <= 3)
+            {
+                buttonIndex = 12;
+            }
+            else if (buttonIndex == 12)
+            {
+                buttonIndex = 8;
+            }
+            else
+            {
+                buttonIndex -= 4;
+            }
+            buttonIndex = ReadjustIndex(source, buttonIndex, 12, false);
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void DownButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex >= 16 && buttonIndex <= 23)
+            {
+                buttonIndex += 7;
+            }
+            else if (buttonIndex >= 24 && buttonIndex <= 30)
+            {
+                buttonIndex = 31;
+            }
+            else if (buttonIndex == 31)
+            {
+                buttonIndex = 0;
+            }
+            else
+            {
+                buttonIndex += 8;
+            }
+            buttonIndex = ReadjustIndex(source, buttonIndex, 12, true);
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void LeftButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 0 || buttonIndex == 8 || buttonIndex == 16)
+            {
+                buttonIndex += 7;
+            }
+            else if (buttonIndex == 24)
+            {
+                buttonIndex = 30;
+            }
+            else if (buttonIndex == 31)
+            {
+                buttonIndex = 24;
+            }
+            else
+            {
+                buttonIndex--;
+            }
+            buttonIndex = ReadjustIndex(source, buttonIndex, 31, false);
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void RightButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex == 7 || buttonIndex == 15 || buttonIndex == 23)
+            {
+                buttonIndex -= 7;
+            }
+            else if (buttonIndex == 30 || (buttonIndex == 29 && !source.buttons[30].visible) || (buttonIndex == 28 && !source.buttons[29].visible) || (buttonIndex == 27 && !source.buttons[28].visible))
+            {
+                buttonIndex = 24;
+            }
+            else if (buttonIndex == 31)
+            {
+                buttonIndex = 30;
+            }
+            else
+            {
+                buttonIndex++;
+            }
+            buttonIndex = ReadjustIndex(source, buttonIndex, 31, false);
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        private int ReadjustIndex(Window source, int buttonIndex, int maxIndex, bool increment)
+        {
+            while (!source.buttons[buttonIndex].visible)
+            {
+                if (increment)
+                {
+                    buttonIndex++;
+                    if (buttonIndex > maxIndex)
+                    {
+                        buttonIndex = 0;
+                    }
+                }
+                else
+                {
+                    buttonIndex--;
+                    if (buttonIndex < 0)
+                    {
+                        buttonIndex = maxIndex;
+                    }
+                }
+            }
+            return buttonIndex;
         }
     }
 }

@@ -39,16 +39,16 @@ namespace XeniaLauncher
             if (buttonIndex == 0)
             {
                 game.state = Game1.State.GameXeniaSettings;
-                game.gameXeniaSettingsWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Xenia Settings for " + game.gameData[game.index].gameTitle, new XeniaGameSettings(), new XeniaGameInput(), new GenericStart(), Game1.State.GameMenu);
+                game.gameXeniaSettingsWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Xenia Settings for " + game.gameData[game.index].gameTitle, "Note: These settings only apply to this game", new XeniaGameSettings(), new XeniaGameInput(), new GenericStart(), Game1.State.GameMenu, true);
                 // First set
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(280, 335, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(860, 335, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(280, 435, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(860, 435, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(280, 535, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(860, 535, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(280, 635, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(860, 635, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 375, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 375, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 475, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 475, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 575, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 575, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 675, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 675, 90, 90));
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
                 game.gameXeniaSettingsWindow.AddText("<");
@@ -58,15 +58,15 @@ namespace XeniaLauncher
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
                 // Second set
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(970, 335, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1540, 335, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(970, 435, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1540, 435, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(970, 535, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1540, 535, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(970, 635, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1540, 635, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(610, 755, 700, 100));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 375, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 375, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 475, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 475, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 575, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 575, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 675, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 675, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(605, 795, 700, 100));
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
                 game.gameXeniaSettingsWindow.AddText("<");
@@ -91,7 +91,14 @@ namespace XeniaLauncher
                 }
                 if (game.databaseGameInfo.Count == 0)
                 {
-                    game.message = new MessageWindow(game, "Aw, Shucks!", "No Title ID matches found in the database.", Game1.State.GameMenu);
+                    if (game.gameData[game.index].titleId == "0x00000000")
+                    {
+                        game.message = new MessageWindow(game, "Nothing to See Here...", "This game's Title ID is either null or 0x00000000. A game must have a valid Title ID to perform a database lookup.", Game1.State.GameMenu);
+                    }
+                    else
+                    {
+                        game.message = new MessageWindow(game, "Aw, Shucks!", "No Title ID matches found in the database.", Game1.State.GameMenu);
+                    }
                     game.state = Game1.State.Message;
                 }
             }

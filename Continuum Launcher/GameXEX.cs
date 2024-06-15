@@ -109,7 +109,7 @@ namespace XeniaLauncher
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites.Add(new TextSprite(game.font, "Game: " + game.gameData[game.index].gameTitle, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites[1].Centerize(new Vector2(960, 450));
             AdjustXEX(game, window);

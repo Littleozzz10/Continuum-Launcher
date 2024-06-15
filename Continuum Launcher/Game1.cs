@@ -59,7 +59,7 @@ namespace XeniaLauncher
         public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow;
         public MessageWindow message;
         public TextInputWindow text;
         public Color backColor, backColorAlt;
@@ -75,7 +75,7 @@ namespace XeniaLauncher
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker
         }
         public State state;
         public enum Sort
@@ -819,10 +819,10 @@ namespace XeniaLauncher
             }
         }
 
-        public void OpenDatabaseResult()
+        public void OpenDatabaseResult(State returnState)
         {
             state = State.DatabaseResult;
-            databaseResultWindow = new Window(this, new Rectangle(360, 100, 1200, 880), "Database Result (" + databaseGameInfo[0].Variants[0].TitleID + ")", "Database Name: " + databaseGameInfo[0].Title, new DatabaseResult(), new DatabaseResultInput(), new GenericStart(), State.GameMenu, true);
+            databaseResultWindow = new Window(this, new Rectangle(360, 100, 1200, 880), "Database Result (" + databaseGameInfo[0].Variants[0].TitleID + ")", "Database Name: " + databaseGameInfo[0].Title, new DatabaseResult(), new DatabaseResultInput(), new GenericStart(), returnState, true);
             databaseResultWindow.AddButton(new Rectangle(410, 300, 90, 90));
             databaseResultWindow.AddButton(new Rectangle(1420, 300, 90, 90));
             databaseResultWindow.AddButton(new Rectangle(410, 440, 90, 90));
@@ -841,6 +841,22 @@ namespace XeniaLauncher
             databaseResultWindow.AddText("Discard Changes");
             
             databaseResultWindow.buttonEffects.SetupEffects(this, databaseResultWindow);
+        }
+        public void OpenDatabasePicker()
+        {
+            state = State.DatabasePicker;
+            databaseResultIndex = 0;
+            databasePickerWindow = new Window(this, new Rectangle(210, 250, 1500, 580), "Database Picker (" + databaseGameInfo[0].Variants[0].TitleID + ")", "Multiple variants match this Title ID. Choose one to continue.", new DatabasePicker(), new DatabasePickerInput(), new GenericStart(), State.GameMenu, true);
+            databasePickerWindow.AddButton(new Rectangle(260, 450, 90, 90));
+            databasePickerWindow.AddButton(new Rectangle(1560, 450, 90, 90));
+            databasePickerWindow.AddButton(new Rectangle(495, 680, 450, 100));
+            databasePickerWindow.AddButton(new Rectangle(980, 680, 450, 100));
+            databasePickerWindow.AddText("<");
+            databasePickerWindow.AddText(">");
+            databasePickerWindow.AddText("Select Entry");
+            databasePickerWindow.AddText("Back to Menu");
+
+            databasePickerWindow.buttonEffects.SetupEffects(this, databasePickerWindow);
         }
         public string GetFilepathString(string path)
         {
@@ -1067,7 +1083,7 @@ namespace XeniaLauncher
             }
             else if (initialState == State.ReleaseDay)
             {
-                releaseWindow = new Window(this, new Rectangle(460, 140, 1000, 800), "Edit Release Date", "Select a Day", new EditDayEffects(), new StdInputEvent(16), new GenericStart(), returnState, true);
+                releaseWindow = new Window(this, new Rectangle(460, 140, 1000, 800), "Edit Release Date", "Select a Day", new EditDayEffects(), new EditDayInput(), new GenericStart(), returnState, true);
                 releaseWindow.changeEffects = new EditDayChangeEffects(releaseWindow);
                 // 01-08
                 releaseWindow.AddButton(new Rectangle(560, 320, 90, 90));
@@ -2053,13 +2069,21 @@ namespace XeniaLauncher
                     if (databaseGameInfo.Count == 1) // Skipping game selection
                     {
                         databaseResultIndex = 0;
-                        OpenDatabaseResult();
+                        OpenDatabaseResult(State.GameMenu);
+                    }
+                    else
+                    {
+                        OpenDatabasePicker();
                     }
                 }
             }
             else if (state == State.GameXeniaSettings)
             {
                 gameXeniaSettingsWindow.Update();
+            }
+            else if (state == State.DatabasePicker)
+            {
+                databasePickerWindow.Update();
             }
             else if (state == State.DatabaseResult)
             {
@@ -2831,6 +2855,7 @@ namespace XeniaLauncher
             {
                 gameXeniaSettingsWindow = null;
                 databaseResultWindow = null;
+                databasePickerWindow = null;
                 databaseGameInfo = null;
                 gameInfoWindow = null;
                 releaseWindow = null;
@@ -2841,6 +2866,21 @@ namespace XeniaLauncher
             else if (state == State.DatabaseResult)
             {
                 releaseWindow = null;
+            }
+            else if (state == State.DatabasePicker)
+            {
+                databaseResultWindow = null;
+            }
+            else if (state == State.GameInfo)
+            {
+                if (releaseWindow != null)
+                {
+                    gameData[index].year = tempYear;
+                    gameData[index].month = tempMonth;
+                    gameData[index].day = tempDay;
+                }
+                releaseWindow = null;
+                databasePickerWindow = null;
             }
             else if (state == State.Menu)
             {
@@ -2982,6 +3022,10 @@ namespace XeniaLauncher
             if (gameXeniaSettingsWindow != null)
             {
                 gameXeniaSettingsWindow.Draw(_spriteBatch);
+            }
+            if (databasePickerWindow != null)
+            {
+                databasePickerWindow.Draw(_spriteBatch);
             }
             if (databaseResultWindow  != null)
             {

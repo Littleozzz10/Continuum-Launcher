@@ -99,7 +99,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 7)
             {
-                game.state = Game1.State.GameMenu;
+                game.state = source.returnState;
                 game.backSound.Play();
             }
         }
@@ -107,24 +107,38 @@ namespace XeniaLauncher
         {
             results = game.databaseGameInfo;
             resultIndex = game.databaseResultIndex;
-            game.databaseResultIndex = -1;
             game.tempYear = Convert.ToInt32(results[resultIndex].Release_Date.Substring(0, 4));
             game.tempMonth = Convert.ToInt32(results[resultIndex].Release_Date.Substring(5, 2));
             game.tempDay = Convert.ToInt32(results[resultIndex].Release_Date.Substring(8, 2));
-            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            string date = "Database Release: " + game.tempMonth + "-" + game.tempDay + "-" + game.tempYear;
+            if ((bool)game.databaseGameInfo[game.databaseResultIndex].Incorrect_Date)
+            {
+                date = date + "*";
+            }
+            game.databaseResultIndex = -1;
+
+            window.extraSprites.Add(new TextSprite(game.font, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites.Add(new TextSprite(game.font, "Selected Developer:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites[1].Centerize(new Vector2(960, 285));
-            window.extraSprites.Add(new TextSprite(game.bold, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites.Add(new TextSprite(game.font, "Selected Publisher:", 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites[3].Centerize(new Vector2(960, 425));
             window.extraSprites.Add(new TextSprite(game.font, "STFS Name: " + game.gameData[game.index].gameTitle, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites[4].Centerize(new Vector2(720, 570));
             window.extraSprites[4].tags.Add("gray");
-            window.extraSprites.Add(new TextSprite(game.font, "Database Release: " + game.tempMonth + "-" + game.tempDay + "-" + game.tempYear, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, date, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
             window.extraSprites[5].Centerize(new Vector2(1205, 570));
             window.extraSprites[5].tags.Add("gray");
             developers = results[resultIndex].Developers.ToList();
+            if (developers.Count == 0)
+            {
+                developers.Add("Unknown Developer");
+            }
             publishers = results[resultIndex].Publishers.ToList();
+            if (publishers.Count == 0)
+            {
+                publishers.Add("Unknown Publisher");
+            }
             tempGameTitle = results[resultIndex].Title;
             AdjustDeveloper(game, window);
             AdjustPublisher(game, window);
@@ -215,6 +229,126 @@ namespace XeniaLauncher
             else
             {
                 buttonIndex = 5;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+    }
+
+    public class DatabasePicker : IWindowEffects
+    {
+        public int gameIndex;
+        public List<GameInfo> results;
+        public int resultIndex;
+        public List<string> games;
+        public string tempGameTitle;
+        public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
+        {
+            if (buttonIndex == 0)
+            {
+                gameIndex--;
+                if (gameIndex < 0)
+                {
+                    gameIndex = games.Count - 1;
+                }
+                AdjustGame(game, source);
+            }
+            else if (buttonIndex == 1)
+            {
+                gameIndex++;
+                if (gameIndex >= games.Count)
+                {
+                    gameIndex = 0;
+                }
+                AdjustGame(game, source);
+            }
+            else if (buttonIndex == 2)
+            {
+                game.databaseResultIndex = gameIndex;
+                game.OpenDatabaseResult(Game1.State.DatabasePicker);
+            }
+            else if (buttonIndex == 3)
+            {
+                game.state = Game1.State.GameMenu;
+                game.backSound.Play();
+            }
+        }
+        public void SetupEffects(Game1 game, Window window)
+        {
+            results = game.databaseGameInfo;
+            resultIndex = game.databaseResultIndex;
+            games = new List<string>();
+            foreach (GameInfo info in results)
+            {
+                games.Add(info.Title);
+            }
+            window.extraSprites.Add(new TextSprite(game.font, "", 0.6f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites.Add(new TextSprite(game.font, "STFS Name: " + game.gameData[game.index].gameTitle, 0.4f, new Vector2(), Color.FromNonPremultiplied(255, 255, 255, 0)));
+            window.extraSprites[1].Centerize(new Vector2(960, 600));
+            window.extraSprites[1].tags.Add("gray");
+            tempGameTitle = results[resultIndex].Title;
+            AdjustGame(game, window);
+        }
+        private void AdjustGame(Game1 game, Window source)
+        {
+            source.extraSprites[0].ToTextSprite().text = games[gameIndex];
+            source.extraSprites[0].Centerize(new Vector2(960, 495));
+        }
+    }
+    public class DatabasePickerInput : IButtonInputEvent
+    {
+        public void UpButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex <= 1)
+            {
+                buttonIndex += 2;
+            }
+            else
+            {
+                buttonIndex -= 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void DownButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex >= 2)
+            {
+                buttonIndex -= 2;
+            }
+            else
+            {
+                buttonIndex += 2;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void LeftButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex % 2 == 1)
+            {
+                buttonIndex--;
+            }
+            else
+            {
+                buttonIndex++;
+            }
+            game.buttonSwitchSound.Play();
+            source.buttonIndex = buttonIndex;
+            source.stringIndex = buttonIndex;
+        }
+        public void RightButton(Game1 game, Window source, int buttonIndex)
+        {
+            if (buttonIndex % 2 == 1)
+            {
+                buttonIndex--;
+            }
+            else
+            {
+                buttonIndex++;
             }
             game.buttonSwitchSound.Play();
             source.buttonIndex = buttonIndex;

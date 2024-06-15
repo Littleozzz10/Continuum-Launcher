@@ -404,7 +404,7 @@ namespace XeniaLauncher
             // About/Credits
             else if (buttonIndex == 4)
             {
-                game.creditsWindow = new Window(game, new Rectangle(150, 50, 1620, 980), "About Continuum Launcher", new MessageButtonEffects(), new SingleButtonEvent(), new GenericStart(), Game1.State.Menu);
+                game.creditsWindow = new Window(game, new Rectangle(150, 50, 1620, 980), "About Continuum Launcher", "Version " + Shared.VERSION + ", compiled on " + Shared.COMPILED, new MessageButtonEffects(), new SingleButtonEvent(), new GenericStart(), Game1.State.Menu, true);
                 game.creditsWindow.AddButton(new Rectangle(460, 900, 1000, 100));
                 game.creditsWindow.AddText("Back to Menu");
 

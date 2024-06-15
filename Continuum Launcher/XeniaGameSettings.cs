@@ -149,12 +149,12 @@ namespace XeniaLauncher
         {
             for (int i = 0; i < 8; i++)
             {
-                window.extraSprites.Add(new TextSprite(game.bold, ""));
+                window.extraSprites.Add(new TextSprite(game.font, ""));
             }
             foreach (TextSprite sprite in window.extraSprites)
             {
                 sprite.scale = 0.6f;
-                sprite.color = Color.FromNonPremultiplied(255, 255, 255, 0);
+                sprite.color = Color.FromNonPremultiplied(250, 255, 255, 0);
             }
             AdjustLicense(game, window);
             AdjustCanary(game, window, true);
@@ -177,7 +177,7 @@ namespace XeniaLauncher
                 license = -1;
             }
             source.extraSprites[0].ToTextSprite().text = "License Mask: " + license;
-            source.extraSprites[0].Centerize(new Vector2(615, 380));
+            source.extraSprites[0].Centerize(new Vector2(620, 420));
         }
         private void AdjustCanary(Game1 game, Window source, bool first)
         {
@@ -193,7 +193,7 @@ namespace XeniaLauncher
             }
             source.extraSprites[1].ToTextSprite().text = "Allow Custom Builds: " + canary;
             source.extraSprites[1].ToTextSprite().scale = 0.5f;
-            source.extraSprites[1].Centerize(new Vector2(615, 480));
+            source.extraSprites[1].Centerize(new Vector2(620, 520));
         }
         private void AdjustMountCache(Game1 game, Window source)
         {
@@ -203,7 +203,7 @@ namespace XeniaLauncher
                 cache = "On";
             }
             source.extraSprites[2].ToTextSprite().text = "Mount Cache: " + cache;
-            source.extraSprites[2].Centerize(new Vector2(615, 580));
+            source.extraSprites[2].Centerize(new Vector2(620, 620));
         }
         private void AdjustReadback(Game1 game, Window source)
         {
@@ -213,7 +213,7 @@ namespace XeniaLauncher
                 readback = "On";
             }
             source.extraSprites[3].ToTextSprite().text = "CPU Readback: " + readback;
-            source.extraSprites[3].Centerize(new Vector2(615, 680));
+            source.extraSprites[3].Centerize(new Vector2(620, 720));
         }
         private void AdjustHRes(Game1 game, Window source)
         {
@@ -227,7 +227,7 @@ namespace XeniaLauncher
                 res = "3840 (3x)";
             }
             source.extraSprites[4].ToTextSprite().text = "Hor. Scale: " + res;
-            source.extraSprites[4].Centerize(new Vector2(1305, 380));
+            source.extraSprites[4].Centerize(new Vector2(1310, 420));
         }
         private void AdjustVRes(Game1 game, Window source)
         {
@@ -241,7 +241,7 @@ namespace XeniaLauncher
                 res = "2160 (3x)";
             }
             source.extraSprites[5].ToTextSprite().text = "Ver. Scale: " + res;
-            source.extraSprites[5].Centerize(new Vector2(1305, 480));
+            source.extraSprites[5].Centerize(new Vector2(1310, 520));
         }
         private void AdjustVSync(Game1 game, Window source)
         {
@@ -251,7 +251,7 @@ namespace XeniaLauncher
                 vsync = "On";
             }
             source.extraSprites[6].ToTextSprite().text = "V-Sync: " + vsync;
-            source.extraSprites[6].Centerize(new Vector2(1305, 580));
+            source.extraSprites[6].Centerize(new Vector2(1310, 620));
         }
         private void AdjustRenderer(Game1 game, Window source)
         {
@@ -265,7 +265,7 @@ namespace XeniaLauncher
                 res = "Vulkan";
             }
             source.extraSprites[7].ToTextSprite().text = "Renderer: " + res;
-            source.extraSprites[7].Centerize(new Vector2(1305, 680));
+            source.extraSprites[7].Centerize(new Vector2(1310, 720));
         }
     }
     public class XeniaGameInput : IButtonInputEvent

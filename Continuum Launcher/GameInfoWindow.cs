@@ -53,7 +53,10 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 4)
             {
-                game.text = new TextInputWindow(game, "Edit Release Date (yr-mt-dy)", game.gameData[game.index].year + "-" + game.gameData[game.index].month + "-" + game.gameData[game.index].day, Game1.State.GameInfo);
+                game.tempYear = game.gameData[game.index].year;
+                game.tempMonth = game.gameData[game.index].month;
+                game.tempDay = game.gameData[game.index].day;
+                game.OpenDateEditWindow(Game1.State.ReleaseYear, Game1.State.GameInfo);
             }
             else if (buttonIndex == 5)
             {
@@ -105,7 +108,7 @@ namespace XeniaLauncher
         {
             for (int i = 0; i < 8; i++)
             {
-                window.extraSprites.Add(new TextSprite(game.bold, ""));
+                window.extraSprites.Add(new TextSprite(game.font, ""));
             }
             foreach (TextSprite sprite in window.extraSprites)
             {
