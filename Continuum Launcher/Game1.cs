@@ -70,7 +70,7 @@ namespace XeniaLauncher
         public MobyData mobyData;
         public List<GameInfo> databaseGameInfo;
         public System.Drawing.Image tempIconSTFS;
-        public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath;
+        public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath;
         public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay;
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess;
         public enum State
@@ -256,7 +256,7 @@ namespace XeniaLauncher
             showRings = true;
             checkDrivesOnManage = true;
             lastActiveCheck = true;
-            newGameProcess = false;
+            //newGameProcess = false;
             forceInit = false;
 
             textWindowInput = null;
@@ -561,16 +561,20 @@ namespace XeniaLauncher
             for (int i = 0; i < indexes.Count; i++)
             {
                 gameIcons[i].index = indexes[i];
-                if (!firstLoad && right && !firstReset)
+                if (!newGameProcess)
                 {
-                    gameIcons[i].index++;
-                }
-                else if (!firstLoad && !right && !firstReset)
-                {
-                    gameIcons[i].index--;
+                    if (!firstLoad && right && !firstReset)
+                    {
+                        gameIcons[i].index++;
+                    }
+                    else if (!firstLoad && !right && !firstReset)
+                    {
+                        gameIcons[i].index--;
+                    }
                 }
                 gameIcons[i].AdjustIndex(gameData.Count);
             }
+            newGameProcess = false;
             indexes = new List<int>();
             foreach (XGame game in gameIcons)
             {
@@ -1250,6 +1254,15 @@ namespace XeniaLauncher
             icons = new Dictionary<string, Texture2D>();
             foreach (GameData data in gameData)
             {
+                // New cover checking
+                if (data.artPath == "NULL")
+                {
+                    if (Directory.Exists(data.gamePath + "\\..\\..\\_covers") && File.Exists(data.gamePath + "\\..\\..\\_covers\\cover0.jpg"))
+                    {
+                        data.artPath = data.gamePath + "\\..\\..\\_covers\\cover0.jpg";
+                    }
+                }
+
                 if (File.Exists(data.artPath))
                 {
                     try
@@ -1328,6 +1341,50 @@ namespace XeniaLauncher
         public bool GetVSync()
         {
             return _graphics.SynchronizeWithVerticalRetrace;
+        }
+
+        /// <summary>
+        /// Adjusts the cover of the selected game, if multiple covers are available in the game's directory
+        /// </summary>
+        public void AdjustCover()
+        {
+            GameData data = gameData[index];
+            if (File.Exists(data.artPath))
+            {
+                string defaultCoverPath = data.gamePath + "\\..\\..\\_covers";
+                string[] split = data.artPath.Split("\\");
+                if (Directory.Exists(defaultCoverPath))
+                {
+                    string[] covers = Directory.GetFiles(defaultCoverPath);
+                    int coverIndex = -1;
+                    foreach (string cover in covers)
+                    {
+                        if (data.artPath == cover)
+                        {
+                            coverIndex = Convert.ToInt32(split.Last().Substring(5, 1));
+                        }
+                    }
+                    // Setting new cover, if possible
+                    if (coverIndex + 1 >= covers.Length)
+                    {
+                        coverIndex = 0;
+                    }
+                    else
+                    {
+                        coverIndex++;
+                    }
+                    // Making new cover path
+                    string newCoverPath = defaultCoverPath + "\\cover" + coverIndex + ".jpg";
+                    if (File.Exists(newCoverPath) && newCoverPath != data.artPath)
+                    {
+                        data.artPath = newCoverPath;
+                        LoadArts();
+                        newGameProcess = true;
+                        ResetGameIcons();
+                        sortSound.Play();
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -1866,6 +1923,11 @@ namespace XeniaLauncher
                 folderPath = new AnimationPath(folderSprite, new Vector2(1860, 60), 1f, 15);
                 secondFolderPath = new AnimationPath(folderSprite, new Vector2(-1, -1), 1f, 15);
             }
+            // Switching covers
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.X, true) || KeyboardInput.keys["C"].IsFirstDown()) && state == State.Main && IsActive)
+            {
+                AdjustCover();
+            }
 
             // Updating
             foreach (XGame game in gameIcons)
@@ -2349,6 +2411,7 @@ namespace XeniaLauncher
                             gameData.RemoveAt(index);
                             masterData.RemoveAt(masterIndex);
                             SaveGames();
+                            newGameProcess = true;
                             Initialize();
                             LoadArts();
                             index = 0;
@@ -2388,10 +2451,10 @@ namespace XeniaLauncher
 
                 if (newGameProcess)
                 {
-                    newGameProcess = false;
                     state = State.Main;
                     Initialize();
                     FolderReset();
+                    index = 0;
                 }
                 if (textWindowInput != null)
                 {
@@ -2402,6 +2465,7 @@ namespace XeniaLauncher
                         {
                             // Finding the directory
                             tempFilepathSTFS = textWindowInput;
+                            newGamePath = tempFilepathSTFS;
                             DirectoryInfo dirInfo = new DirectoryInfo(tempFilepathSTFS);
                             textWindowInput = null;
                             if (dirInfo.Exists)
@@ -2521,6 +2585,16 @@ namespace XeniaLauncher
                         {
                             tempTitleSTFS = tempTitleSTFS + " (" + duplicateNum + ")";
                         }
+                        // Grabbing a cover for the game
+                        if (Directory.Exists(newGamePath + "\\_covers"))
+                        {
+                            if (File.Exists(newGamePath + "\\_covers\\cover0.jpg"))
+                            {
+                                masterData.Last().artPath = newGamePath + "\\_covers\\cover0.jpg";
+                                arts[masterData.Last().gameTitle] = Texture2D.FromFile(_graphics.GraphicsDevice, masterData.Last().artPath);
+                                masterData.Last().hasCoverArt = true;
+                            }
+                        }
                         // Adding game to masterData
                         masterData.Last().gameTitle = tempTitleSTFS;
                         masterData.Last().gamePath = tempFilepathSTFS;
@@ -2574,7 +2648,12 @@ namespace XeniaLauncher
                 creditsWindow.Update();
                 if (KeyboardInput.keys["V"].IsFirstDown())
                 {
-                    message = new MessageWindow(this, "Version Info", "Continuum Launcher version " + ver + ", compiled " + compileDate, State.Credits);
+#if DEBUG
+                    string verType = "DEBUG";
+#else
+                    string verType = "RELEASE";
+#endif
+                    message = new MessageWindow(this, "Version Info", "Continuum Launcher version " + ver + ", compiled " + compileDate + ". " + verType, State.Credits);
                     state = State.Message;
                 }
             }
@@ -2958,7 +3037,7 @@ namespace XeniaLauncher
             bottomInfo.Draw(_spriteBatch);
             // Select menu
             _spriteBatch.Draw(white, new Rectangle(0, 0, Ozzz.Scaling.ScaleIntX(1920), Ozzz.Scaling.ScaleIntY(1080)), darkGradient.GetColor());
-            if ((state == State.Select || state == State.Launch || state == State.Compat || state == State.GameMenu || state == State.GameInfo || state == State.GameFilepaths || state == State.GameXeniaSettings || state == State.GameCategories || state == State.GameXEX) && showRings)
+            if ((state == State.Select || state == State.Launch || state == State.Compat || state == State.GameMenu || state == State.DatabasePicker || state == State.DatabaseResult || state == State.GameInfo || state == State.ReleaseYear || state == State.ReleaseMonth || state == State.ReleaseDay || state == State.GameFilepaths || state == State.GameXeniaSettings || state == State.GameCategories || state == State.GameXEX) && showRings)
             {
                 foreach (Ring ring in rings)
                 {

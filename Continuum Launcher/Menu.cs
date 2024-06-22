@@ -106,10 +106,10 @@ namespace XeniaLauncher
                 game.dataWindow.AddButton(new Rectangle(20, 540, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 670, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 800, 1880, 120));
-                foreach (GameData data in game.masterData)
-                {
-                    game.dataWindow.AddText("");
-                }
+                //foreach (GameData data in game.masterData)
+                //{
+                //    game.dataWindow.AddText("");
+                //}
 
                 game.dataStrings.Clear();
                 game.dataFiles.Clear();
@@ -121,14 +121,16 @@ namespace XeniaLauncher
                 float artSize = 0;
                 float tempDataSize = 0;
                 int index = 0;
+                List<string> missingList = new List<string>();
                 try
                 {
                     foreach (GameData data in game.masterData)
                     {
-                        game.dataStrings.dataStringList.Add(data.gameTitle);
                         // Game data
                         if (File.Exists(data.gamePath))
                         {
+                            game.dataWindow.AddText("");
+                            game.dataStrings.dataStringList.Add(data.gameTitle);
                             DirectoryInfo directory = new DirectoryInfo(new FileInfo(data.gamePath).DirectoryName);
                             float size = 0;
                             DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
@@ -324,11 +326,20 @@ namespace XeniaLauncher
                             totalSize += size;
                             // Art data
                             float tempArtSize = 0;
-                            if (File.Exists(data.artPath))
+                            string defaultCoverPath = data.gamePath + "\\..\\..\\_covers";
+                            if (Directory.Exists(defaultCoverPath)) // New cover art code
+                            {
+                                string[] covers = Directory.GetFiles(defaultCoverPath, "*.jpg", SearchOption.TopDirectoryOnly);
+                                foreach (string cover in covers)
+                                {
+                                    tempArtSize += new FileInfo(cover).Length;
+                                }
+                            }
+                            else if (File.Exists(data.artPath)) // Falling back on old code if needed
                             {
                                 tempArtSize += new FileInfo(data.artPath).Length;
                             }
-                            if (File.Exists(data.iconPath))
+                            if (File.Exists(data.iconPath)) // Icon
                             {
                                 tempArtSize += new FileInfo(data.iconPath).Length;
                             }
@@ -339,6 +350,10 @@ namespace XeniaLauncher
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
                             index++;
+                        }
+                        else
+                        {
+                            missingList.Add(data.gameTitle);
                         }
                     }
                     game.dataStrings.dataStringList.Add("Continuum Launcher");
@@ -392,6 +407,26 @@ namespace XeniaLauncher
                     }
 
                     game.state = Game1.State.Data;
+
+                    // Showing message if game files are missing
+                    if (missingList.Count > 0)
+                    {
+                        string message = "";
+                        if (missingList.Count == 1)
+                        {
+                            message = "A game could not be found: " + missingList[0];
+                        }
+                        else if (missingList.Count == 2)
+                        {
+                            message = "" + missingList.Count + " games could not be found, including " + missingList[0] + " and " + missingList[1];
+                        }
+                        else
+                        {
+                            message = "" + missingList.Count + " games could not be found, including " + missingList[0] + ", " + missingList[1] + " and " + (missingList.Count - 2) + " more";
+                        }
+                        game.message = new MessageWindow(game, "Perhaps the archives are incomplete...", message, Game1.State.Data);
+                        game.state = Game1.State.Message;
+                    }
                 }
                 catch (FileNotFoundException e)
                 {
