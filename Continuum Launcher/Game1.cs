@@ -54,19 +54,19 @@ namespace XeniaLauncher
         public AnimationPath mainTransitionPath, folderPath, secondFolderPath, topBorderPath, bottomBorderPath;
         public List<Ring> rings;
         public List<XGame> gameIcons;
-        public List<GameData> gameData, masterData;
+        public List<GameData> gameData, masterData, localData;
         public Dictionary<string, Texture2D> arts, compatBars, themeThumbnails, icons;
         public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow;
         public MessageWindow message;
         public TextInputWindow text;
         public Color backColor, backColorAlt;
         public SaveData configData;
         public DataManageStrings dataStrings;
         public SequenceFade bottomInfo;
-        public DataEntry toDelete, toImport;
+        public DataEntry toDelete, toImport, toExtract;
         public MobyData mobyData;
         public List<GameInfo> databaseGameInfo;
         public System.Drawing.Image tempIconSTFS;
@@ -75,7 +75,7 @@ namespace XeniaLauncher
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile
         }
         public State state;
         public enum Sort
@@ -121,6 +121,7 @@ namespace XeniaLauncher
 
             gameData = new List<GameData>();
             masterData = new List<GameData>();
+            localData = new List<GameData>();
             folders = new List<string>();
             trivia = new List<string>();
             dataStrings = new DataManageStrings();
@@ -2038,6 +2039,30 @@ namespace XeniaLauncher
                             Directory.Delete(dir, true);
                         }
                     }
+                    else if (toDelete.name.Contains("Extract"))
+                    {
+                        string[] split = masterData[selectedDataIndex].gamePath.Split("\\");
+                        string currentDir = "";
+                        for (int i = 0; i < split.Length - 2; i++)
+                        {
+                            currentDir += split[i] + "\\";
+                        }
+                        currentDir += "_EXTRACT";
+                        //currentDir = GetFilepathString(currentDir, true).Insert(1, ":");
+                        //currentDir += "\\" + contentId;
+                        //currentDir += "\\" + dataFiles[selectedDataIndex][manageWindow.stringIndex].name;
+                        //currentDir = GetFilepathString(currentDir, true).Insert(1, ":");
+
+                        string dir = currentDir;
+                        if (Directory.Exists(dir))
+                        {
+                            foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
+                            {
+                                File.Delete(filepath);
+                            }
+                            Directory.Delete(dir, true);
+                        }
+                    }
                     message = new MessageWindow(this, "File Deleted", "The file was successfully deleted", State.Data);
                     state = State.Message;
                 }
@@ -2115,6 +2140,91 @@ namespace XeniaLauncher
                 }
                 messageYes = false;
                 toImport = null;
+            }
+            // File extraction check
+            else if (messageYes && toExtract != null)
+            {
+                if (File.Exists(toExtract.filepath))
+                {
+                    // Making first folder (Content ID, such as 00000002 for DLC)
+                    string contentId = "";
+                    if (toExtract.subTitle == "Downloadable Content")
+                    {
+                        contentId = "00000002";
+                    }
+                    else if (toExtract.subTitle == "Title Update")
+                    {
+                        contentId = "000B0000";
+                    }
+                    else if (toExtract.subTitle == "Installed Xbox 360 Game")
+                    {
+                        contentId = "00004000";
+                    }
+                    else if (toExtract.subTitle == "Installed Game on Demand")
+                    {
+                        contentId = "00007000";
+                    }
+                    else if (toExtract.subTitle == "Video")
+                    {
+                        contentId = "000C0000";
+                    }
+                    else if (toExtract.subTitle == "Xbox Live Arcade Title")
+                    {
+                        contentId = "000D0000";
+                    }
+                    else if (toExtract.subTitle == "Gamer Picture")
+                    {
+                        contentId = "00020000";
+                    }
+                    else if (toExtract.subTitle == "Xbox 360 Theme")
+                    {
+                        contentId = "00030000";
+                    }
+                    // Ensuring a content folder is present
+                    string[] split = masterData[selectedDataIndex].gamePath.Split("\\");
+                    string currentDir = "";
+                    for (int i = 0; i < split.Length - 2; i++)
+                    {
+                        currentDir += split[i] + "\\";
+                    }
+                    currentDir += "_EXTRACT";
+                    currentDir = GetFilepathString(currentDir, true).Insert(1, ":");
+                    if (!Directory.Exists(currentDir))
+                    {
+                        Directory.CreateDirectory(currentDir);
+                    }
+                    currentDir += "\\" + contentId;
+                    if (!Directory.Exists(currentDir))
+                    {
+                        Directory.CreateDirectory(currentDir);
+                    }
+                    currentDir += "\\" + dataFiles[selectedDataIndex][manageWindow.stringIndex].name;
+                    currentDir = GetFilepathString(currentDir, true).Insert(1, ":");
+                    if (!Directory.Exists(currentDir))
+                    {
+                        Directory.CreateDirectory(currentDir);
+                    }
+                    // Deleting any existing data
+                    else
+                    {
+                        foreach (string filepath in Directory.GetFiles(currentDir))
+                        {
+                            File.Delete(filepath);
+                        }
+                    }
+                    // Extracting content to folder
+                    string args = "\"" + toExtract.filepath + "\" \"" + currentDir + "\"";
+                    ProcessStartInfo startInfo = new ProcessStartInfo(extractPath, args);
+                    startInfo.WorkingDirectory = Directory.GetCurrentDirectory();
+                    Process.Start(startInfo);
+                }
+                else
+                {
+                    message = new MessageWindow(this, "Error", "Extract filepath does not exist", State.Manage);
+                    state = State.Message;
+                }
+                messageYes = false;
+                toExtract = null;
             }
 
             // Updating windows
@@ -2643,6 +2753,10 @@ namespace XeniaLauncher
                     DataWindowEffects.UpdateText(this, manageWindow, dataWindow.stringIndex);
                 }
             }
+            else if (state == State.ManageFile)
+            {
+                fileManageWindow.Update();
+            }
             else if (state == State.Credits)
             {
                 creditsWindow.Update();
@@ -2983,6 +3097,11 @@ namespace XeniaLauncher
             else if (state == State.Data)
             {
                 manageWindow = null;
+                fileManageWindow = null;
+            }
+            else if (state == State.Manage)
+            {
+                fileManageWindow = null;
             }
             if (state != State.Message)
             {
@@ -3157,6 +3276,10 @@ namespace XeniaLauncher
             if (manageWindow != null)
             {
                 manageWindow.Draw(_spriteBatch);
+            }
+            if (fileManageWindow != null)
+            {
+                fileManageWindow.Draw(_spriteBatch);
             }
             if (message != null)
             {

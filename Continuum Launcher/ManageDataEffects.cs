@@ -34,38 +34,66 @@ namespace XeniaLauncher
 {
     public class ManageDataEffects : IWindowEffects
     {
-        public void ActivateButton(Game1 game, Window source, OzzzFramework.ObjectSprite origin, int buttonIndex)
+        public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
-            if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Localized Xenia Data" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Installed Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Game Save")
+            game.fileManageWindow = new Window(game, new Rectangle(1205, 180, 550, 700), "", new ManageFileEffects(), new StdInputEvent(4), new GenericStart(), Game1.State.Manage);
+            game.state = Game1.State.ManageFile;
+            // NOTE: Buttons are added in reverse order but text strings are not
+            if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Localized Xenia Data" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Installed Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xenia Game Save" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Extracted Content")
             {
-                game.toDelete = game.dataFiles[game.selectedDataIndex][buttonIndex];
-                game.message = new MessageWindow(game, "Delete File", "Are you sure you want to delete " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Manage, MessageWindow.MessagePrompts.YesNo);
-                game.state = Game1.State.Message;
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["delete"]);
+                game.fileManageWindow.inputEvents = new StdInputEvent(3);
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Downloadable Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Title Update")
             {
-                if (!String.IsNullOrEmpty(game.extractPath))
-                {
-                    game.toImport = game.dataFiles[game.selectedDataIndex][buttonIndex];
-                    game.message = new MessageWindow(game, "Import DLC", "Do you want to import " + game.dataFiles[game.selectedDataIndex][buttonIndex].name + "?", Game1.State.Manage, MessageWindow.MessagePrompts.YesNo);
-                    game.state = Game1.State.Message;
-                }
-                else
-                {
-                    game.message = new MessageWindow(game, "Import DLC", "Error: extraction tool not found or bad extract path", Game1.State.Data);
-                    game.state = Game1.State.Message;
-                }
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 480, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["install"]);
             }
-            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Resources")
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Video")
             {
-                game.message = new MessageWindow(game, "Error", "Unable to delete resources currently loaded into Continuum.", Game1.State.Manage);
-                game.state = Game1.State.Message;
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 480, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["video"]);
+                
+                
+            }
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme")
+            {
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
+                game.fileManageWindow.inputEvents = new StdInputEvent(3);
             }
             else
             {
-                game.message = new MessageWindow(game, "Error", "While Continuum is in a beta state, as a precaution, it cannot delete game files.", Game1.State.Manage);
-                game.state = Game1.State.Message;
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
+                game.fileManageWindow.inputEvents = new StdInputEvent(2);
             }
+            game.fileManageWindow.buttons.Reverse();
+            //game.fileManageWindow.strings.Reverse();
+            game.fileManageWindow.buttonEffects.SetupEffects(game, game.fileManageWindow);
         }
         public void SetupEffects(Game1 game, Window source)
         {
@@ -79,7 +107,7 @@ namespace XeniaLauncher
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;
@@ -87,7 +115,7 @@ namespace XeniaLauncher
                 }
 
                 // Getting the data of the selected game
-                GameData data = game.masterData[buttonIndex];
+                GameData data = game.localData[buttonIndex];
                 float size = 0;
                 DirectoryInfo directoryInfo = new DirectoryInfo(data.gamePath).Parent;
                 DirectoryInfo parent = directoryInfo.Parent;
@@ -180,8 +208,10 @@ namespace XeniaLauncher
                         game.manageWindow.extraSprites.Add(subTitleSprite);
                         game.manageWindow.extraSprites.Add(new ObjectSprite(game.dataFiles[buttonIndex][i].icon, new Rectangle(32, 162 + i * 130, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     }
-                    game.manageWindow.AddText("" + i);
+                    game.manageWindow.AddText("");
                 }
+                game.manageWindow.extraSprites.Add(new TextSprite(game.font, "1 of " + game.dataFiles[game.selectedDataIndex].Count, 0.6f, new Vector2(60, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
+                game.manageWindow.extraSprites.Add(new TextSprite(game.font, game.dataStrings.dataSizeList[game.selectedDataIndex] + " Total", 0.6f, new Vector2(1600, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
                 game.manageWindow.tags.Add("0");
             }
         }

@@ -85,4 +85,19 @@ namespace XeniaLauncher
             DownButton(game, source, buttonIndex);
         }
     }
+    public class DataWindowChangeEffects : IButtonIndexChangeEffects
+    {
+        public Game1 game;
+        public Window source;
+        public DataWindowChangeEffects(Game1 game, Window source)
+        {
+            this.game = game;
+            this.source = source;
+        }
+
+        public void IndexChanged(int buttonIndex)
+        {
+            source.extraSprites[source.extraSprites.Count - 2].ToTextSprite().text = "" + (source.stringIndex + 1) + " of " + source.strings.Count;
+        }
+    }
 }

@@ -12,8 +12,8 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.2.0 Alpha 5";
-        public static readonly string COMPILED = "June 22, 2024";
+        public static readonly string VERSION = "1.2.0 Alpha 6";
+        public static readonly string COMPILED = "June 23, 2024";
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Saved Game"  },
             { "00000002", "Downloadable Content" },
@@ -38,7 +38,15 @@ namespace XeniaLauncher
             { "00100000", "Movie" },
             { "00200000", "TV" },
             { "00300000", "Music Video" },
-            { "EXTRACT", "Extracted Content" }
+            { "_EXTRACT", "Extracted Content" }
+        };
+        public static readonly Dictionary<string, string> FileManageStrings = new Dictionary<string, string>() {
+            { "explorer", "Show in Explorer" },
+            { "metadata", "View Metadata" },
+            { "extract", "Extract STFS Container" },
+            { "install", "Install Content" },
+            { "delete", "Delete Content" },
+            { "video", "Play Video" }
         };
         public class SaveData
         {

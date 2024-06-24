@@ -34,10 +34,11 @@ namespace XeniaLauncher
         }
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
-            if (buttonIndex < game.masterData.Count)
+            if (buttonIndex < game.localData.Count)
             {
                 game.selectedDataIndex = buttonIndex;
-                game.manageWindow = new Window(game, game.dataWindow.rect, game.masterData[buttonIndex].gameTitle, new ManageDataEffects(), new StdInputEvent(Math.Min(game.dataFiles[buttonIndex].Count, 6)), new GenericStart(), Game1.State.Data);
+                game.manageWindow = new Window(game, game.dataWindow.rect, game.localData[buttonIndex].gameTitle, new ManageDataEffects(), new StdInputEvent(Math.Min(game.dataFiles[buttonIndex].Count, 6)), new GenericStart(), Game1.State.Data);
+                game.manageWindow.changeEffects = new DataWindowChangeEffects(game, game.manageWindow);
                 game.manageWindow.buttonEffects.SetupEffects(game, source);
                 game.state = Game1.State.Manage;
             }
@@ -50,7 +51,7 @@ namespace XeniaLauncher
             {
                 offset = 0;
             }
-            for (int i = 0; i < Math.Min(game.dataFiles[buttonIndex].Count, 6); i++)
+            for (int i = 0; i < Math.Min(game.dataFiles[buttonIndex].Count - 2, 6); i++)
             {
                 game.manageWindow.extraSprites[i * 4].ToTextSprite().text = game.dataFiles[buttonIndex][i + offset].name;
                 game.manageWindow.extraSprites[i * 4 + 1].ToTextSprite().text = game.dataFiles[buttonIndex][i + offset].size;

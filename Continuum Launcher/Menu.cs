@@ -100,19 +100,17 @@ namespace XeniaLauncher
                     game.SetDriveSpaceText();
                 }
                 game.dataWindow = new Window(game, new Rectangle(-200, 0, 2320, 1080), "Manage Data", new DataWindowEffects(), new DataWindowInput(), new GenericStart(), Game1.State.Menu);
+                game.dataWindow.changeEffects = new DataWindowChangeEffects(game, game.dataWindow);
                 game.dataWindow.AddButton(new Rectangle(20, 150, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 280, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 410, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 540, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 670, 1880, 120));
                 game.dataWindow.AddButton(new Rectangle(20, 800, 1880, 120));
-                //foreach (GameData data in game.masterData)
-                //{
-                //    game.dataWindow.AddText("");
-                //}
 
                 game.dataStrings.Clear();
                 game.dataFiles.Clear();
+                game.localData.Clear();
                 foreach (GameData data in game.masterData)
                 {
                     game.dataFiles.Add(new List<DataEntry>());
@@ -143,7 +141,7 @@ namespace XeniaLauncher
                                     if (Shared.contentTypes.Keys.Contains(dir.Name))
                                     {
                                         // Handling files in a extract folder
-                                        if (dir.Name == "EXTRACT")
+                                        if (dir.Name == "_EXTRACT")
                                         {
                                             float localSize = 0;
                                             foreach (FileInfo file in dir.GetFiles("*", SearchOption.AllDirectories))
@@ -151,7 +149,7 @@ namespace XeniaLauncher
                                                 localSize += file.Length;
                                             }
                                             size += localSize;
-                                            game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
+                                            game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
                                             game.dataFiles[index].Last().fileSize = localSize;
                                         }
                                         else
@@ -350,6 +348,8 @@ namespace XeniaLauncher
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
                             index++;
+
+                            game.localData.Add(data); // Adding data to separate list of data
                         }
                         else
                         {
@@ -399,6 +399,9 @@ namespace XeniaLauncher
                     game.dataWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(32, 552, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.dataWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(32, 682, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.dataWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(32, 812, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    // Bottom strings for counts
+                    game.dataWindow.extraSprites.Add(new TextSprite(game.font, "1 of " + game.localData.Count + 5, 0.6f, new Vector2(60, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
+                    game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.ConvertDataSize("" + totalSize) + " Total", 0.6f, new Vector2(1600, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
                     game.dataWindow.inputEvents.UpButton(game, game.dataWindow, 0);
                     game.dataWindow.inputEvents.DownButton(game, game.dataWindow, 5);
                     for (int i = 12; i < 18; i++)
