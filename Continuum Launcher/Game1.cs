@@ -62,7 +62,7 @@ namespace XeniaLauncher
         public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow;
         public MessageWindow message;
         public TextInputWindow text;
-        public Color backColor, backColorAlt;
+        public Color backColor, backColorAlt, fontColor, fontSelectColor, fontAltColor, fontAltLightColor, majorFontColor, sortColor, folderColor, timeDateColor, cornerStatsColor, triviaColor, topBorderColor, bottomBorderColor, ringMainColor, ringSelectColor;
         public SaveData configData;
         public DataManageStrings dataStrings;
         public SequenceFade bottomInfo;
@@ -72,7 +72,7 @@ namespace XeniaLauncher
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath;
         public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay;
-        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess;
+        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp;
         public enum State
         {
             Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile
@@ -85,7 +85,7 @@ namespace XeniaLauncher
         public Sort sort;
         public enum Theme
         {
-            Original, Green, Blue, Orange, Gray, Purple
+            Original, Green, Blue, Orange, Gray, Purple, Custom
         }
         public Theme theme;
         public enum CWSettings
@@ -223,6 +223,11 @@ namespace XeniaLauncher
             else
             {
                 extractPath = null;
+            }
+            SaveDataObject exp = read.savedData.FindData("enableExp");
+            if (exp != null)
+            {
+                enableExp = Convert.ToBoolean(exp.data);
             }
             SaveDataChunk games = read.savedData.FindData("games").GetChunk();
             foreach (SaveDataChunk game in games.saveDataObjects)
@@ -408,12 +413,46 @@ namespace XeniaLauncher
         }
 
         /// <summary>
+        /// Returns a Color based on the given string (Ex: "255 255 255 255")
+        /// </summary>
+        public Color ColorFromString(string str)
+        {
+            Color toReturn = Color.FromNonPremultiplied(0, 0, 0, 0);
+            string[] split = str.Split(" ");
+            if (split.Length >= 4)
+            {
+                toReturn.R = Convert.ToByte(split[0]);
+                toReturn.G = Convert.ToByte(split[1]);
+                toReturn.B = Convert.ToByte(split[2]);
+                toReturn.A = Convert.ToByte(split[3]);
+            }
+            return toReturn;
+        }
+
+        /// <summary>
         /// Resets the theme, used for changing to a new theme
         /// </summary>
         /// <param name="newTheme">The new theme to change to</param>
         /// <param name="forceWindowReset">If true, forces all open Window to reconstruct (This resets and applies the theme to the Window)</param>
         public void ResetTheme(Theme newTheme, bool forceWindowReset)
         {
+            StreamReader themeReader = null;
+            if (enableExp)
+            {
+                themeReader = new StreamReader("Content\\XLTheme.txt");
+            }
+            fontColor = Color.White;
+            fontSelectColor = Color.White;
+            fontAltColor = Color.White;
+            fontAltLightColor = Ozzz.Helper.DivideColor(Color.White, 2.0f);
+            majorFontColor = Color.White;
+            sortColor = Color.White;
+            folderColor = Color.White;
+            timeDateColor = Color.White;
+            cornerStatsColor = Color.White;
+            triviaColor = Color.White;
+            topBorderColor = Color.White;
+            bottomBorderColor = Color.White;
             theme = newTheme;
             switch (theme)
             {
@@ -441,18 +480,25 @@ namespace XeniaLauncher
                     backColor = Color.FromNonPremultiplied(40, 30, 40, 255);
                     backColorAlt = Color.FromNonPremultiplied(45, 0, 45, 255);
                     break;
+                case Theme.Custom:
+                    backColor = ColorFromString(themeReader.ReadLine());
+                    backColorAlt = ColorFromString(themeReader.ReadLine());
+                    majorFontColor = ColorFromString(themeReader.ReadLine());
+                    cornerStatsColor = ColorFromString(themeReader.ReadLine());
+                    break;
             }
 
-            mainFadeGradient = new Gradient(Color.White, 20);
+            mainFadeGradient = new Gradient(majorFontColor, 20);
             mainFadeGradient.colors.Add(Color.Gray);
             mainFadeGradient.ValueUpdate(0);
             darkGradient = new Gradient(GetTransparentColor(backColor), 20);
             blackGradient = new Gradient(GetTransparentColor(backColor), 20);
             buttonGradient = new Gradient(GetTransparentColor(backColor), 20);
             selectGradient = new Gradient(GetTransparentColor(backColor), 20);
-            if (bottomInfo != null && !firstLoad)
+            if (bottomInfo != null)
             {
-                bottomInfo.displayGradient.colors[0] = backColor;
+                bottomInfo.displayGradient.colors[0] = GetTransparentColor(cornerStatsColor);
+                bottomInfo.displayGradient.colors[1] = cornerStatsColor;
                 bottomInfo.Reset();
             }
 
@@ -498,13 +544,44 @@ namespace XeniaLauncher
                 buttonGradient.colors.Add(Color.FromNonPremultiplied(40, 10, 40, 255));
                 selectGradient.colors.Add(Color.FromNonPremultiplied(140, 0, 140, 255));
             }
+            else if (theme == Theme.Custom)
+            {
+                darkGradient.colors.Add(ColorFromString(themeReader.ReadLine()));
+                blackGradient.colors.Add(ColorFromString(themeReader.ReadLine()));
+                buttonGradient.colors.Add(ColorFromString(themeReader.ReadLine()));
+                selectGradient.colors.Add(ColorFromString(themeReader.ReadLine()));
+                fontColor = ColorFromString(themeReader.ReadLine());
+                fontSelectColor = ColorFromString(themeReader.ReadLine());
+                fontAltColor = ColorFromString(themeReader.ReadLine());
+                fontAltLightColor = ColorFromString(themeReader.ReadLine());
+                sortColor = ColorFromString(themeReader.ReadLine());
+                folderColor = ColorFromString(themeReader.ReadLine());
+                timeDateColor = ColorFromString(themeReader.ReadLine());
+                triviaColor = ColorFromString(themeReader.ReadLine());
+                topBorderColor = ColorFromString(themeReader.ReadLine());
+                bottomBorderColor = ColorFromString(themeReader.ReadLine());
+                ringMainColor = ColorFromString(themeReader.ReadLine());
+                ringSelectColor = ColorFromString(themeReader.ReadLine());
+            }
             darkGradient.ValueUpdate(0);
             blackGradient.ValueUpdate(0);
             buttonGradient.ValueUpdate(0);
             selectGradient.ValueUpdate(0);
             whiteGradient = new Gradient(GetTransparentColor(backColor), 20);
-            whiteGradient.colors.Add(Color.FromNonPremultiplied(255, 255, 255, 255));
+            if (theme == Theme.Custom)
+            {
+                whiteGradient.colors.Add(ColorFromString(themeReader.ReadLine()));
+            }
+            else
+            {
+                whiteGradient.colors.Add(Color.FromNonPremultiplied(255, 255, 255, 255));
+            }
             whiteGradient.ValueUpdate(0);
+
+            if (enableExp)
+            {
+                themeReader.Close();
+            }
 
             if (forceWindowReset)
             {
@@ -726,7 +803,7 @@ namespace XeniaLauncher
             {
                 int frames = ring.fade.frameCycle;
                 ring.fade = new Gradient(ring.fade.GetColor(), frames);
-                ring.fade.colors.Add(darkGradient.colors[0]);
+                ring.fade.colors.Add(backColor);
                 ring.fade.ValueUpdate(0);
             }
         }
@@ -1233,6 +1310,7 @@ namespace XeniaLauncher
                 SaveData save = new SaveData(configPath);
                 save.AddSaveObject(new SaveDataObject("xenia", xeniaPath, SaveData.DataType.String));
                 save.AddSaveObject(new SaveDataObject("canary", canaryPath, SaveData.DataType.String));
+                save.AddSaveObject(new SaveDataObject("enableExp", "" + enableExp, SaveData.DataType.Boolean));
                 SaveDataChunk chunk = new SaveDataChunk("games");
                 masterData = masterData.OrderBy(o => o.gameTitle).ToList();
                 foreach (GameData game in masterData)
@@ -1349,40 +1427,44 @@ namespace XeniaLauncher
         /// </summary>
         public void AdjustCover()
         {
-            GameData data = gameData[index];
-            if (File.Exists(data.artPath))
+            // Only enabled if experimental settings are active
+            if (enableExp)
             {
-                string defaultCoverPath = data.gamePath + "\\..\\..\\_covers";
-                string[] split = data.artPath.Split("\\");
-                if (Directory.Exists(defaultCoverPath))
+                GameData data = gameData[index];
+                if (File.Exists(data.artPath))
                 {
-                    string[] covers = Directory.GetFiles(defaultCoverPath);
-                    int coverIndex = -1;
-                    foreach (string cover in covers)
+                    string defaultCoverPath = data.gamePath + "\\..\\..\\_covers";
+                    string[] split = data.artPath.Split("\\");
+                    if (Directory.Exists(defaultCoverPath))
                     {
-                        if (data.artPath == cover)
+                        string[] covers = Directory.GetFiles(defaultCoverPath);
+                        int coverIndex = -1;
+                        foreach (string cover in covers)
                         {
-                            coverIndex = Convert.ToInt32(split.Last().Substring(5, 1));
+                            if (data.artPath == cover)
+                            {
+                                coverIndex = Convert.ToInt32(split.Last().Substring(5, 1));
+                            }
                         }
-                    }
-                    // Setting new cover, if possible
-                    if (coverIndex + 1 >= covers.Length)
-                    {
-                        coverIndex = 0;
-                    }
-                    else
-                    {
-                        coverIndex++;
-                    }
-                    // Making new cover path
-                    string newCoverPath = defaultCoverPath + "\\cover" + coverIndex + ".jpg";
-                    if (File.Exists(newCoverPath) && newCoverPath != data.artPath)
-                    {
-                        data.artPath = newCoverPath;
-                        LoadArts();
-                        newGameProcess = true;
-                        ResetGameIcons();
-                        sortSound.Play();
+                        // Setting new cover, if possible
+                        if (coverIndex + 1 >= covers.Length)
+                        {
+                            coverIndex = 0;
+                        }
+                        else
+                        {
+                            coverIndex++;
+                        }
+                        // Making new cover path
+                        string newCoverPath = defaultCoverPath + "\\cover" + coverIndex + ".jpg";
+                        if (File.Exists(newCoverPath) && newCoverPath != data.artPath)
+                        {
+                            data.artPath = newCoverPath;
+                            LoadArts();
+                            newGameProcess = true;
+                            ResetGameIcons();
+                            sortSound.Play();
+                        }
                     }
                 }
             }
@@ -1560,6 +1642,10 @@ namespace XeniaLauncher
             themeThumbnails.Add("blue", Content.Load<Texture2D>("Textures/Themes/theme-blue"));
             themeThumbnails.Add("gray", Content.Load<Texture2D>("Textures/Themes/theme-gray"));
             themeThumbnails.Add("purple", Content.Load<Texture2D>("Textures/Themes/theme-purple"));
+            if (enableExp)
+            {
+                themeThumbnails.Add("custom", white);
+            }
 
             LoadArts();
 
@@ -1624,7 +1710,7 @@ namespace XeniaLauncher
             Layer driveLayer = new Layer(white, new Rectangle());
             driveLayer.Add(freeSpaceText);
             driveLayer.Add(drivesText);
-            bottomInfo = new SequenceFade(infoLayer, Color.FromNonPremultiplied(255, 255, 255, 0), Color.White, 300, 150);
+            bottomInfo = new SequenceFade(infoLayer, GetTransparentColor(cornerStatsColor), cornerStatsColor, 300, 150);
             bottomInfo.currentIndex = 0;
             bottomInfo.AddLayer(driveLayer);
             triviaSprite = new TextSprite(font, "", 0.5f, new Vector2(600, 1025), Color.White);
@@ -2767,6 +2853,10 @@ namespace XeniaLauncher
 #else
                     string verType = "RELEASE";
 #endif
+                    if (enableExp)
+                    {
+                        verType += " + EXP";
+                    }
                     message = new MessageWindow(this, "Version Info", "Continuum Launcher version " + ver + ", compiled " + compileDate + ". " + verType, State.Credits);
                     state = State.Message;
                 }
@@ -2813,6 +2903,7 @@ namespace XeniaLauncher
                 sortSprite.text = "Sort: Publisher";
             }
             sortSprite.pos.X = 1840 - sortSprite.font.MeasureString(sortSprite.text).X * 0.8f;
+            sortSprite.color = sortColor;
 
             // Folder text animation
             if (folderPath.frames <= 0)
@@ -2838,14 +2929,16 @@ namespace XeniaLauncher
                     folderSprite.text = folders[folderIndex];
                     folderSprite.pos = folderSprite.GetCenterCoords();
                     folderSprite.pos.Y = 60;
+                    folderSprite.color = folderColor;
                 }
             }
             else
             {
                 folderPath.Update();
             }
-            xeniaUntestedText.color = whiteGradient.GetColor();
-            canaryUntestedText.color = whiteGradient.GetColor();
+            Color altColor = Ozzz.Helper.NewColorAlpha(fontAltColor, (int)whiteGradient.values[3]);
+            xeniaUntestedText.color = altColor;
+            canaryUntestedText.color = altColor;
 
             // Updating fades
             if (state == State.Select)
@@ -2902,7 +2995,8 @@ namespace XeniaLauncher
             {
                 sprite.color = backColorAlt;
             }
-            topBorder.color = Color.White;
+            topBorder.color = topBorderColor;
+            bottomBorder.color = bottomBorderColor;
 
             // Updating rings
             for (int i = 0; i < rings.Count; i++)
@@ -2938,6 +3032,7 @@ namespace XeniaLauncher
                 bottomInfo.Reset();
             }
             // Time
+            timeText.color = timeDateColor;
             if (timeText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
             {
                 militaryTime = !militaryTime;
@@ -2964,6 +3059,7 @@ namespace XeniaLauncher
             timeText.pos.Y = tempY;
             timeText.UpdatePos();
             // Date
+            dateText.color = timeDateColor;
             if (dateText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
             {
                 inverseDate = !inverseDate;
@@ -3029,6 +3125,7 @@ namespace XeniaLauncher
                 triviaSprite.text = nextTrivia;
                 triviaSprite.pos.X = 1600;
             }
+            triviaSprite.color = triviaColor;
 
             // Unloading windows
             if (state == State.Main)
@@ -3174,14 +3271,15 @@ namespace XeniaLauncher
             }
             bottomLayer.Draw(_spriteBatch);
             topBorderLayer.Draw(_spriteBatch);
-            _spriteBatch.DrawString(font, "Developer: " + gameData[index].developer, Ozzz.Scaling.ScaleVector2(new Vector2(200, 200)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
-            _spriteBatch.DrawString(font, "Publisher: " + gameData[index].publisher, Ozzz.Scaling.ScaleVector2(new Vector2(200, 240)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
-            _spriteBatch.Draw(calendar, Ozzz.Scaling.RectangleScaled(200, 290, 40, 40), whiteGradient.GetColor());
-            _spriteBatch.DrawString(font, "" + gameData[index].month + "/" + gameData[index].day + "/" + gameData[index].year, Ozzz.Scaling.ScaleVector2(new Vector2(250, 290)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            Color altColor = Ozzz.Helper.NewColorAlpha(fontAltColor, (int)whiteGradient.values[3]);
+            _spriteBatch.DrawString(font, "Developer: " + gameData[index].developer, Ozzz.Scaling.ScaleVector2(new Vector2(200, 200)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            _spriteBatch.DrawString(font, "Publisher: " + gameData[index].publisher, Ozzz.Scaling.ScaleVector2(new Vector2(200, 240)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            _spriteBatch.Draw(calendar, Ozzz.Scaling.RectangleScaled(200, 290, 40, 40), altColor);
+            _spriteBatch.DrawString(font, "" + gameData[index].month + "/" + gameData[index].day + "/" + gameData[index].year, Ozzz.Scaling.ScaleVector2(new Vector2(250, 290)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
             //_spriteBatch.DrawString(font, "Title ID: " + gameData[index].titleId, Ozzz.Scaling.ScaleVector2(new Vector2(200, 320)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
-            _spriteBatch.Draw(player, Ozzz.Scaling.RectangleScaled(200, 340, 40, 40), whiteGradient.GetColor());
-            _spriteBatch.DrawString(font, "" + gameData[index].minPlayers + "-" + gameData[index].maxPlayers, Ozzz.Scaling.ScaleVector2(new Vector2(250, 340)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
-            _spriteBatch.DrawString(bold, gameData[index].gameTitle, Ozzz.Scaling.ScaleVector2(new Vector2(30, 25)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(1f), SpriteEffects.None, 0f);
+            _spriteBatch.Draw(player, Ozzz.Scaling.RectangleScaled(200, 340, 40, 40), altColor);
+            _spriteBatch.DrawString(font, "" + gameData[index].minPlayers + "-" + gameData[index].maxPlayers, Ozzz.Scaling.ScaleVector2(new Vector2(250, 340)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            _spriteBatch.DrawString(bold, gameData[index].gameTitle, Ozzz.Scaling.ScaleVector2(new Vector2(30, 25)), Ozzz.Helper.NewColorAlpha(majorFontColor, (int)whiteGradient.values[3]), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(1f), SpriteEffects.None, 0f);
             gameIcons[2].Draw(_spriteBatch);
             xeniaCompatLogo.Draw(_spriteBatch);
             canaryCompatLogo.Draw(_spriteBatch);

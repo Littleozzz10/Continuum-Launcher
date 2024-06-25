@@ -242,41 +242,45 @@ namespace XeniaLauncher
                 if (i == buttonIndex)
                 {
                     buttons[i].color = selectGradient.GetColor();
+                    sprites[i].color = game.fontSelectColor;
                 }
                 else
                 {
                     buttons[i].color = buttonGradient.GetColor();
+                    sprites[i].color = game.fontColor;
                 }
             }
-            foreach (TextSprite sprite in sprites)
-            {
-                sprite.color = whiteGradient.GetColor();
-            }
+            //foreach (TextSprite sprite in sprites)
+            //{
+            //    sprite.color = whiteGradient.GetColor();
+            //}
             color = blackGradient.GetColor();
-            titleSprite.color = whiteGradient.GetColor();
-            descSprite.color = Ozzz.Helper.DivideColor(whiteGradient.GetColor(), 2f);
+            titleSprite.color = Ozzz.Helper.NewColorAlpha(game.fontAltColor, whiteGradient.GetColor().A);
+            descSprite.color = Ozzz.Helper.NewColorAlpha(game.fontAltLightColor, whiteGradient.GetColor().A);
             foreach (Sprite sprite in extraSprites)
             {
                 if (sprite.type == "ObjectSprite")
                 {
                     sprite.ToObjectSprite().UpdatePos();
+                    sprite.color = whiteGradient.GetColor();
                 }
                 else if (sprite.type == "TextSprite")
                 {
                     sprite.ToTextSprite().UpdatePos();
+                    sprite.color = Ozzz.Helper.NewColorAlpha(game.fontAltColor, (int)whiteGradient.values[3]);
                 }
                 else
                 {
                     sprite.UpdatePos();
                 }
-                sprite.color = whiteGradient.GetColor();
+                
                 if (sprite.HasTag("select"))
                 {
                     sprite.color = selectGradient.GetColor();
                 }
                 else if (sprite.HasTag("gray"))
                 {
-                    sprite.color = Ozzz.Helper.DivideColor(whiteGradient.GetColor(), 2f);
+                    sprite.color = Ozzz.Helper.NewColorAlpha(game.fontAltLightColor, (int)whiteGradient.values[3]);
                 }
                 else if (sprite.HasTag("black"))
                 {

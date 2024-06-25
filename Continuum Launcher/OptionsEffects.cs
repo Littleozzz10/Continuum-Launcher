@@ -38,6 +38,10 @@ namespace XeniaLauncher
             // Volume
             AdjustVolume(game, window);
             // Themes
+            if (game.enableExp)
+            {
+                themeKeys = new List<string>() { "original", "green", "orange", "blue", "gray", "purple", "custom" };
+            }
             for (int i = 0; i < themeKeys.Count; i++)
             {
                 if (themeKeys[i] == game.theme.ToString().ToLower())
@@ -258,6 +262,10 @@ namespace XeniaLauncher
             else if (themeKeys[themeIndex] == "purple")
             {
                 game.ResetTheme(Game1.Theme.Purple, true);
+            }
+            else if (themeKeys[themeIndex] == "custom")
+            {
+                game.ResetTheme(Game1.Theme.Custom, true);
             }
             game.SaveConfig();
         }

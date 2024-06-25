@@ -468,6 +468,13 @@ namespace XeniaLauncher
                 throw new NotImplementedException();
                 //return angle;
             }
+            /// <summary>
+            /// Returns the given Color with the alpha value set to 'alpha'
+            /// </summary>
+            public static Color NewColorAlpha(Color color, int alpha)
+            {
+                return Color.FromNonPremultiplied(color.R, color.G, color.B, alpha);
+            }
         }
         /// <summary>
         /// An abstract class used for polymorphic organization and inheritance purposes.
