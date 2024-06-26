@@ -43,11 +43,9 @@ namespace XeniaLauncher
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
                 game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
-                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["delete"]);
-                game.fileManageWindow.inputEvents = new StdInputEvent(3);
+                game.fileManageWindow.inputEvents = new StdInputEvent(2);
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Downloadable Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Title Update")
             {
@@ -70,8 +68,6 @@ namespace XeniaLauncher
                 game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["video"]);
-                
-                
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme")
             {
@@ -86,10 +82,8 @@ namespace XeniaLauncher
             else
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
-                game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
-                game.fileManageWindow.inputEvents = new StdInputEvent(2);
+                game.fileManageWindow.inputEvents = new SingleButtonEvent();
             }
             game.fileManageWindow.buttons.Reverse();
             //game.fileManageWindow.strings.Reverse();
