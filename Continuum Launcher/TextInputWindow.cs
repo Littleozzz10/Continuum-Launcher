@@ -211,7 +211,10 @@ namespace XeniaLauncher
                 }
                 if (KeyboardInput.keys["Enter"].IsFirstDown())
                 {
-                    game.text.extraSprites[1].ToTextSprite().text = game.text.extraSprites[1].ToTextSprite().text.Substring(0, game.text.extraSprites[1].ToTextSprite().text.Length - 1);
+                    if (game.text.extraSprites[1].ToTextSprite().text.Length > 0)
+                    {
+                        game.text.extraSprites[1].ToTextSprite().text = game.text.extraSprites[1].ToTextSprite().text.Substring(0, game.text.extraSprites[1].ToTextSprite().text.Length - 1);
+                    }
                     game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[48], 48);
                 }
             }

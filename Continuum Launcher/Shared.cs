@@ -12,12 +12,18 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.2.0 Alpha 8";
-        public static readonly string COMPILED = "June 25, 2024";
+        public enum DataFilter
+        {
+            All, Games, DLC, TempContent, Videos
+        }
+
+        public static readonly string VERSION = "1.2.0 Alpha 9";
+        public static readonly string COMPILED = "June 30, 2024";
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Saved Game"  },
             { "00000002", "Downloadable Content" },
             { "00001000", "Xbox 360 Title" },
+            { "00002000", "IPTV Pause Buffer" },
             { "00004000", "Installed Disc Game" },
             { "00005000", "Xbox Original Game" },
             { "00007000", "Installed Game on Demand" },
@@ -25,20 +31,88 @@ namespace XeniaLauncher
             { "00010000", "Profile" },
             { "00020000", "Gamer Picture" },
             { "00030000", "Xbox 360 Theme" },
-            { "00050000", "Xbox 360 Cache File" },
+            { "00040000", "Cache File" },
+            { "00050000", "Storage Download" },
             { "00060000", "Xbox Saved Game" },
+            { "00070000", "Download Progress" },
             { "00080000", "Game Demo" },
             { "00090000", "Video" },
             { "000A0000", "Game Title" },
             { "000B0000", "Title Update" },
-            { "000C0000", "Video" },
+            { "000C0000", "Game Trailer" },
             { "000D0000", "Xbox Live Arcade Title" },
             { "000E0000", "XNA Content" },
             { "000F0000", "License Store" },
             { "00100000", "Movie" },
             { "00200000", "TV" },
             { "00300000", "Music Video" },
+            { "00400000", "Game Video" },
+            { "00500000", "Podcast Video" },
+            { "00600000", "Viral Video" },
+            { "02000000", "Indie Game" },
             { "_EXTRACT", "Extracted Content" }
+        };
+        public static readonly Dictionary<DataFilter, List<string>> filteredContentTypes = new Dictionary<DataFilter, List<string>>() {
+            { DataFilter.All, new List<string>() {
+                "00000001",
+                "00000002",
+                "00001000",
+                "00002000",
+                "00004000",
+                "00005000",
+                "00007000",
+                "00009000",
+                "00010000",
+                "00020000",
+                "00030000",
+                "00040000",
+                "00050000",
+                "00060000",
+                "00070000",
+                "00080000",
+                "00090000",
+                "000A0000",
+                "000B0000",
+                "000C0000",
+                "000D0000",
+                "000E0000",
+                "000F0000",
+                "00100000",
+                "00200000",
+                "00300000",
+                "00400000",
+                "00500000",
+                "00600000",
+                "02000000",
+                "_EXTRACT"
+            } },
+            { DataFilter.Games, new List<string>() {
+                "00001000",
+                "00004000",
+                "00005000",
+                "00007000",
+                "00080000",
+                "000D0000",
+                "000E0000",
+                "02000000"
+            } },
+            { DataFilter.DLC, new List<string>() {
+                "00000002",
+                "000B0000"
+            } },
+            { DataFilter.TempContent, new List<string>() {
+                "_EXTRACT"
+            } },
+            { DataFilter.Videos, new List<string>() {
+                "00090000",
+                "000C0000",
+                "00100000",
+                "00200000",
+                "00300000",
+                "00400000",
+                "00500000",
+                "00600000"
+            } }
         };
         public static readonly Dictionary<string, string> FileManageStrings = new Dictionary<string, string>() {
             { "explorer", "Show in Explorer" },
@@ -584,7 +658,7 @@ namespace XeniaLauncher
             public List<string> folders, xexPaths, xexNames;
             public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath;
             public double fileSize;
-            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY;
+            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY, fileCount;
             public bool preferCanary, hasCoverArt, cpuReadback, vsync, mountCache;
 
             private static int nextID;
@@ -632,6 +706,7 @@ namespace XeniaLauncher
                 maxPlayers = 0;
                 resX = 1;
                 resY = 1;
+                fileCount = 0;
                 preferCanary = false;
                 hasCoverArt = false;
                 cpuReadback = false;

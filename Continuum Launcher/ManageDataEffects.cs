@@ -58,7 +58,7 @@ namespace XeniaLauncher
                 game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["install"]);
             }
-            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Video")
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Video" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Trailer")
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
                 game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
@@ -69,7 +69,7 @@ namespace XeniaLauncher
                 game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["video"]);
             }
-            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme")
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Demo")
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
                 game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
@@ -94,14 +94,14 @@ namespace XeniaLauncher
             int buttonIndex = source.stringIndex;
 
             // Reading STFS data
-            if (buttonIndex < game.gameData.Count)
+            if (buttonIndex < game.localData.Count)
             {
                 // Purging any data that's about to be read again
                 for (int i = 0; i < game.dataFiles[buttonIndex].Count; i++)
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content" && entry.subTitle != "Internal" && entry.subTitle != "Internal (Non-Indexed)" && entry.subTitle != "Internal (Xenia)" && entry.subTitle != "User Data Metric")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;
@@ -117,75 +117,59 @@ namespace XeniaLauncher
                 foreach (DirectoryInfo dir in parent.GetDirectories("*", SearchOption.TopDirectoryOnly))
                 {
                     // Making sure the directory matches with an X360 content type ID
-                    if (Shared.contentTypes.Keys.Contains(dir.Name))
+                    if (Shared.contentTypes.Keys.Contains(dir.Name) && Shared.filteredContentTypes[game.dataFilter].Contains(dir.Name))
                     {
-                        // Handling files in a extract folder
-                        if (dir.Name == "EXTRACT")
+                        // Looping through all X360 content files
+                        foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                         {
-                            float localSize = 0;
-                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.AllDirectories))
+                            STFS stfs = new STFS(file.FullName);
+                            // Getting the total size in bytes of the content file
+                            float localSize = file.Length;
+                            if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
                             {
-                                localSize += file.Length;
+                                // Taking any extra data files into account (For disc/GoD games)
+                                DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
+                                foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                {
+                                    localSize += dataFile.Length;
+                                }
                             }
                             size += localSize;
-                            game.dataFiles[buttonIndex].Add(new DataEntry("Extract", Shared.contentTypes["EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
-                            game.dataFiles[buttonIndex].Last().fileSize = localSize;
-                        }
-                        // Handling all other folders
-                        else
-                        {
-                            // Looping through all X360 content files
-                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
+                            // Reading icon from STFS file into memory (not saved to storage)
+                            Texture2D localTexture = game.icons[data.gameTitle];
+                            MemoryStream memory = new MemoryStream();
+                            stfs.icon.Save(memory, stfs.icon.RawFormat);
+                            try
                             {
-                                STFS stfs = new STFS(file.FullName);
-                                // Getting the total size in bytes of the content file
-                                float localSize = file.Length;
-                                if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
-                                {
-                                    // Taking any extra data files into account (For disc/GoD games)
-                                    DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
-                                    foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
-                                    {
-                                        localSize += dataFile.Length;
-                                    }
-                                }
-                                size += localSize;
-                                // Reading icon from STFS file into memory (not saved to storage)
-                                Texture2D localTexture = game.icons[data.gameTitle];
-                                MemoryStream memory = new MemoryStream();
-                                stfs.icon.Save(memory, stfs.icon.RawFormat);
-                                try
-                                {
-                                    localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
-                                }
-                                catch
-                                {
-                                    // Using the default blank texture as a backup
-                                    localTexture = game.white;
-                                }
-                                // Handling garbage data at the start of the title name (Yes, there is a problem with the STFS code that causes this
-                                //   but the problem has not yet been identified)
-                                string newTitle = stfs.data.titleName;
-                                if (dir.Name == "00004000" || dir.Name == "00007000" || dir.Name == "000D0000") // Disc Game, GoD, and XBLA Title, respectively
-                                {
-                                    while (newTitle[0] != stfs.data.displayName[0])
-                                    {
-                                        newTitle = newTitle.Substring(1);
-                                    }
-                                }
-                                // Adding data
-                                else if (dir.Name == "00000001") // 00000001: X360 saved game
-                                {
-                                    newTitle = newTitle.Substring(5); // Yes, this is spaghetti garbage
-                                }
-                                game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
-                                game.dataFiles[buttonIndex].Last().fileSize = localSize;
+                                localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
                             }
+                            catch
+                            {
+                                // Using the default blank texture as a backup
+                                localTexture = game.white;
+                            }
+                            // Handling garbage data at the start of the title name (Yes, there is a problem with the STFS code that causes this
+                            //   but the problem has not yet been identified)
+                            string newTitle = stfs.data.titleName;
+                            if (dir.Name == "00004000" || dir.Name == "00007000" || dir.Name == "000D0000") // Disc Game, GoD, and XBLA Title, respectively
+                            {
+                                while (newTitle[0] != stfs.data.displayName[0])
+                                {
+                                    newTitle = newTitle.Substring(1);
+                                }
+                            }
+                            // Adding data
+                            else if (dir.Name == "00000001") // 00000001: X360 saved game
+                            {
+                                newTitle = newTitle.Substring(5); // Yes, this is spaghetti garbage
+                            }
+                            game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
+                            game.dataFiles[buttonIndex].Last().fileSize = localSize;
                         }
                     }
                 }
                 // Sorting content files
-                game.dataFiles[buttonIndex] = game.dataFiles[buttonIndex].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); 
+                game.dataFiles[buttonIndex] = game.dataFiles[buttonIndex].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
 
                 // Final window setup
                 for (int i = 0; i < game.dataFiles[buttonIndex].Count; i++)

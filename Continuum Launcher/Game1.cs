@@ -59,7 +59,7 @@ namespace XeniaLauncher
         public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow, metadataWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow, metadataWindow, dataSortWindow, dataFilterWindow;
         public MessageWindow message;
         public TextInputWindow text;
         public Color backColor, backColorAlt, fontColor, fontSelectColor, fontAltColor, fontAltLightColor, majorFontColor, sortColor, folderColor, timeDateColor, cornerStatsColor, triviaColor, topBorderColor, bottomBorderColor, ringMainColor, ringSelectColor;
@@ -72,10 +72,10 @@ namespace XeniaLauncher
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath;
         public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay;
-        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata;
+        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData;
         public enum State
         {
-            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile, Metadata
+            Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile, Metadata, DataSort, DataFilter
         }
         public State state;
         public enum Sort
@@ -98,6 +98,12 @@ namespace XeniaLauncher
             Error, Warning, Info, Debug
         }
         public LogLevel logLevel;
+        public enum DataSort
+        {
+            NameAZ, NameZA, SizeHighLow, SizeLowHigh, FileCountHighLow, FileCountLowHigh
+        }
+        public DataSort dataSort;
+        public Shared.DataFilter dataFilter;
 
         public Game1()
         {
@@ -266,6 +272,8 @@ namespace XeniaLauncher
             forceInit = false;
             hideSecretMetadata = true;
 
+            dataSort = DataSort.NameAZ;
+
             textWindowInput = null;
             gameManageWindow = null;
             gameCategoriesWindow = null;
@@ -386,27 +394,27 @@ namespace XeniaLauncher
         {
             double num = Convert.ToDouble(size);
             // Bytes
-            if (num < 1024)
+            if (num < 1000)
             {
                 return "" + num + " B";
             }
             // Kilobytes
-            else if (num < (1024 * 1024))
+            else if (num < (1000 * 1000))
             {
                 return "" + Math.Round((num / 1024), 3 - ("" + (int)(num / 1024)).Length) + " KB";
             }
             // Megabytes
-            else if (num < (1024 * 1024 * 1024))
+            else if (num < (1000 * 1000 * 1000))
             {
                 return "" + Math.Round((num / 1024 / 1024), 3 - ("" + (int)(num / 1024 / 1024)).Length) + " MB";
             }
             // Gigabytes
-            else if (num < Math.Pow(1024, 4))
+            else if (num < Math.Pow(1000, 4))
             {
                 return "" + Math.Round((num / 1024 / 1024 / 1024), Math.Max(0, 3 - ("" + (int)(num / 1024 / 1024 / 1024)).Length)) + " GB";
             }
             // Terabytes
-            else if (num < Math.Pow(1024, 5))
+            else if (num < Math.Pow(1000, 5))
             {
                 return "" + Math.Round((num / 1024 / 1024 / 1024 / 1024), Math.Max(0, 3 - ("" + (int)(num / 1024 / 1024 / 1024 / 1024)).Length)) + " TB";
             }
@@ -2150,6 +2158,7 @@ namespace XeniaLauncher
                             Directory.Delete(dir, true);
                         }
                     }
+                    refreshData = true;
                     message = new MessageWindow(this, "File Deleted", "The file was successfully deleted", State.Data);
                     state = State.Message;
                 }
@@ -2252,6 +2261,10 @@ namespace XeniaLauncher
                         contentId = "00007000";
                     }
                     else if (toExtract.subTitle == "Video")
+                    {
+                        contentId = "00090000";
+                    }
+                    else if (toExtract.subTitle == "Game Trailer")
                     {
                         contentId = "000C0000";
                     }
@@ -2814,7 +2827,20 @@ namespace XeniaLauncher
             }
             else if (state == State.Data)
             {
+                if (refreshData)
+                {
+                    DataWindowEffects.RefreshData(this, dataWindow);
+                    refreshData = false;
+                }
                 dataWindow.Update();
+            }
+            else if (state == State.DataSort)
+            {
+                dataSortWindow.Update();
+            }
+            else if (state == State.DataFilter)
+            {
+                dataFilterWindow.Update();
             }
             else if (state == State.Compat && IsActive && compatWaitFrames <= 0)
             {
@@ -3180,6 +3206,7 @@ namespace XeniaLauncher
             else if (state == State.Menu)
             {
                 optionsWindow = null;
+                dataWindow = null;
                 creditsWindow = null;
                 newGameWindow = null;
             }
@@ -3200,6 +3227,8 @@ namespace XeniaLauncher
             {
                 manageWindow = null;
                 fileManageWindow = null;
+                dataSortWindow = null;
+                dataFilterWindow = null;
             }
             else if (state == State.Manage)
             {
@@ -3379,6 +3408,14 @@ namespace XeniaLauncher
             if (dataWindow != null)
             {
                 dataWindow.Draw(_spriteBatch);
+            }
+            if (dataSortWindow != null)
+            {
+                dataSortWindow.Draw(_spriteBatch);
+            }
+            if (dataFilterWindow != null)
+            {
+                dataFilterWindow.Draw(_spriteBatch);
             }
             if (manageWindow != null)
             {

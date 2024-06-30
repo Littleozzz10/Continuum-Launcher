@@ -120,6 +120,7 @@ namespace XeniaLauncher
                 float tempDataSize = 0;
                 int index = 0;
                 List<string> missingList = new List<string>();
+                Dictionary<string, int> linkedDataStrings = new Dictionary<string, int>();
                 try
                 {
                     foreach (GameData data in game.masterData)
@@ -144,31 +145,52 @@ namespace XeniaLauncher
                                         if (dir.Name == "_EXTRACT")
                                         {
                                             float localSize = 0;
-                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.AllDirectories))
+                                            foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                                             {
                                                 localSize += file.Length;
                                             }
                                             size += localSize;
-                                            game.dataFiles[index].Add(new DataEntry("Extract", Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
-                                            game.dataFiles[index].Last().fileSize = localSize;
+                                            if (localSize > 0)
+                                            {
+                                                game.dataFiles[index].Add(new DataEntry("Micellaneous Extracts", Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
+                                                game.dataFiles[index].Last().fileSize = localSize;
+                                            }
+                                            // Extracts in proper folder structure
+                                            foreach (DirectoryInfo extractDir in dir.GetDirectories())
+                                            {
+                                                if (Shared.filteredContentTypes[game.dataFilter].Contains(extractDir.Name))
+                                                {
+                                                    float extractSize = 0;
+                                                    foreach (FileInfo file in extractDir.GetFiles("*", SearchOption.AllDirectories))
+                                                    {
+                                                        extractSize += file.Length;
+                                                    }
+                                                    size += extractSize;
+                                                    game.dataFiles[index].Add(new DataEntry("Extracted " + Shared.contentTypes[extractDir.Name], Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + extractSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Last().fileSize = extractSize;
+                                                }
+                                            }
                                         }
                                         else
                                         {
                                             foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                                             {
-                                                float localSize = file.Length;
-                                                if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
+                                                if (Shared.filteredContentTypes[game.dataFilter].Contains(file.Directory.Name))
                                                 {
-                                                    DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
-                                                    foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                                    float localSize = file.Length;
+                                                    if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
                                                     {
-                                                        localSize += dataFile.Length;
+                                                        DirectoryInfo dataDirectory = new DirectoryInfo(dir.FullName + "\\" + file.Name + ".data");
+                                                        foreach (FileInfo dataFile in dataDirectory.GetFiles("*", SearchOption.AllDirectories))
+                                                        {
+                                                            localSize += dataFile.Length;
+                                                        }
                                                     }
+                                                    size += localSize;
+                                                    // Adding data
+                                                    game.dataFiles[index].Add(new DataEntry("Blam!", Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, game.white));
+                                                    game.dataFiles[index].Last().fileSize = localSize;
                                                 }
-                                                size += localSize;
-                                                // Adding data
-                                                game.dataFiles[index].Add(new DataEntry("Blam!", Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, game.white));
-                                                game.dataFiles[index].Last().fileSize = localSize;
                                             }
                                         }
                                     }
@@ -183,7 +205,7 @@ namespace XeniaLauncher
                                 game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), null, game.icons[data.gameTitle]));
                             }
                             // Saves and Xenia data
-                            if (Directory.Exists("XData"))
+                            if (Directory.Exists("XData") && game.dataFilter == Shared.DataFilter.All || game.dataFilter == Shared.DataFilter.TempContent)
                             {
                                 if (Directory.Exists("XData\\Xenia"))
                                 {
@@ -344,9 +366,26 @@ namespace XeniaLauncher
                             game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), null, game.mainLogo));
                             game.dataFiles[index].Last().fileSize = tempArtSize;
                             artSize += tempArtSize;
-                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
+                            switch (game.dataSort)
+                            {
+                                case Game1.DataSort.NameAZ:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.name).ToList(); break;
+                                case Game1.DataSort.NameZA:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.name).ToList(); break;
+                                case Game1.DataSort.SizeHighLow:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                                case Game1.DataSort.SizeLowHigh:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                                case Game1.DataSort.FileCountHighLow:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                                case Game1.DataSort.FileCountLowHigh:
+                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                            }
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
+                            linkedDataStrings.Add(data.gameTitle, game.dataStrings.dataSizeList.Count - 1);
+                            data.fileSize = size;
+                            data.fileCount = game.dataFiles[index].Count;
                             index++;
 
                             game.localData.Add(data); // Adding data to separate list of data
@@ -356,25 +395,167 @@ namespace XeniaLauncher
                             missingList.Add(data.gameTitle);
                         }
                     }
-                    game.dataStrings.dataStringList.Add("Continuum Launcher");
-                    game.dataStrings.dataSizeList.Add("Unknown");
-                    game.dataStrings.dataIdList.Add("Internal");
-                    game.dataStrings.dataStringList.Add("Artwork and Icons");
-                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + artSize));
-                    game.dataStrings.dataIdList.Add("Internal");
-                    game.dataStrings.dataStringList.Add("Xenia Content and Temporary Data");
-                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + tempDataSize));
-                    game.dataStrings.dataIdList.Add("Internal");
-                    game.dataStrings.dataStringList.Add("All Games and Data");
-                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + totalSize));
-                    game.dataStrings.dataIdList.Add("Internal");
-                    game.dataStrings.dataStringList.Add("All Launcher Data");
-                    game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + (totalSize + artSize)));
-                    game.dataStrings.dataIdList.Add("Internal");
-                    for (int i = 0; i < 5; i++)
+
+                    // Sorting games before adding the Launcher to the list
+                    switch (game.dataSort)
                     {
-                        game.dataWindow.strings.Add("");
+                        case Game1.DataSort.NameAZ:
+                            game.localData = game.localData.OrderBy(o => o.gameTitle).ToList(); break;
+                        case Game1.DataSort.NameZA:
+                            game.localData = game.localData.OrderByDescending(o => o.gameTitle).ToList(); break;
+                        case Game1.DataSort.SizeHighLow:
+                            game.localData = game.localData.OrderByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                        case Game1.DataSort.SizeLowHigh:
+                            game.localData = game.localData.OrderBy(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                        case Game1.DataSort.FileCountHighLow:
+                            game.localData = game.localData.OrderByDescending(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                        case Game1.DataSort.FileCountLowHigh:
+                            game.localData = game.localData.OrderBy(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
                     }
+                    DataManageStrings newStrings = new DataManageStrings();
+                    foreach (GameData gameData in game.localData)
+                    {
+                        newStrings.dataStringList.Add(game.dataStrings.dataStringList[linkedDataStrings[gameData.gameTitle]]);
+                        newStrings.dataSizeList.Add(game.dataStrings.dataSizeList[linkedDataStrings[gameData.gameTitle]]);
+                        newStrings.dataIdList.Add(game.dataStrings.dataIdList[linkedDataStrings[gameData.gameTitle]]);
+                    }
+                    game.dataStrings = newStrings;
+
+                    // New code to add Continuum Launcher as a 'game' instead of extra strings
+                    game.dataFiles.Add(new List<DataEntry>());
+                    GameData cont = new GameData();
+                    cont.gameTitle = "Continuum Launcher Data";
+                    game.localData.Add(cont);
+                    // Calculating size of main Launcher files
+                    float contSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\", "*", SearchOption.TopDirectoryOnly))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        contSize += file.Length;
+                    }
+                    float contAudioSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\Content\\Audio", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        contAudioSize += file.Length;
+                    }
+                    float contDatabaseSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\Content\\Database", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        contDatabaseSize += file.Length;
+                    }
+                    float contFontsSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\Content\\Fonts", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        contFontsSize += file.Length;
+                    }
+                    float contTextureSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\Content\\Textures", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        contTextureSize += file.Length;
+                    }
+                    float contRuntimeSize = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\runtimes", "*", SearchOption.AllDirectories))
+                    {
+                        if (!filepath.Contains("win-x64"))
+                        {
+                            FileInfo file = new FileInfo(filepath);
+                            contRuntimeSize += file.Length;
+                        }
+                    }
+                    float win64Size = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\runtimes\\win-x64", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        win64Size += file.Length;
+                    }
+                    float[] appsSize = { 0.0f, 0.0f, 0.0f, 0.0f };
+                    if (File.Exists(Environment.CurrentDirectory + "\\Apps\\Xenia\\xenia.exe"))
+                    {
+                        appsSize[0] = new FileInfo(Environment.CurrentDirectory + "\\Apps\\Xenia\\xenia.exe").Length;
+                    }
+                    if (File.Exists(Environment.CurrentDirectory + "\\Apps\\Canary\\xenia_canary.exe"))
+                    {
+                        appsSize[1] = new FileInfo(Environment.CurrentDirectory + "\\Apps\\Canary\\xenia_canary.exe").Length;
+                    }
+                    if (File.Exists(Environment.CurrentDirectory + "\\Apps\\Dump\\xenia-vfs-dump.exe"))
+                    {
+                        appsSize[2] = new FileInfo(Environment.CurrentDirectory + "\\Apps\\Dump\\xenia-vfs-dump.exe").Length;
+                    }
+                    appsSize[3] = appsSize[0] + appsSize[1] + appsSize[2];
+                    float contTotalSize = contSize + contAudioSize + contDatabaseSize + contFontsSize + contTextureSize + win64Size;
+                    // Adding Launcher files to file manager
+                    game.dataFiles[index].Add(new DataEntry("Continuum Launcher", "Internal", game.ConvertDataSize("" + contTotalSize), Environment.CurrentDirectory + "\\", game.mainLogo));
+                    game.dataFiles[index].Last().fileSize = contTotalSize;
+                    game.dataFiles[index].Add(new DataEntry("Xenia", "Internal (Xenia)", game.ConvertDataSize("" + appsSize[0]), Environment.CurrentDirectory + "\\Apps\\Xenia\\", game.logo));
+                    game.dataFiles[index].Last().fileSize = appsSize[0];
+                    game.dataFiles[index].Add(new DataEntry("Xenia Canary", "Internal (Xenia)", game.ConvertDataSize("" + appsSize[1]), Environment.CurrentDirectory + "\\Apps\\Canary\\", game.logoCanary));
+                    game.dataFiles[index].Last().fileSize = appsSize[1];
+                    game.dataFiles[index].Add(new DataEntry("Xenia VFS Dump Tool", "Internal (Xenia)", game.ConvertDataSize("" + appsSize[2]), Environment.CurrentDirectory + "\\Apps\\Dump\\", game.logo));
+                    game.dataFiles[index].Last().fileSize = appsSize[2];
+                    game.dataFiles[index].Add(new DataEntry("Optional Additional Compatibility Runtimes", "Internal", game.ConvertDataSize("" + contRuntimeSize), Environment.CurrentDirectory + "\\runtimes\\", game.mainLogo));
+                    game.dataFiles[index].Last().fileSize = contRuntimeSize;
+                    game.dataFiles[index].Add(new DataEntry("Total: Artwork and Icons", "User Data Metric", game.ConvertDataSize("" + artSize), Environment.CurrentDirectory + "\\IconData\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = -1;
+                    game.dataFiles[index].Add(new DataEntry("Total: Xenia Content and Temporary Data", "User Data Metric", game.ConvertDataSize("" + tempDataSize), Environment.CurrentDirectory + "\\XData\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = -2;
+                    game.dataFiles[index].Add(new DataEntry("Total: All Storage Use", "User Data Metric", game.ConvertDataSize("" + (contTotalSize + contRuntimeSize + win64Size + totalSize + artSize)), null, game.compLogo));
+                    game.dataFiles[index].Last().fileSize = -3;
+#if DEBUG
+                    game.dataFiles[index].Add(new DataEntry("XeniaLauncher: Debug Build Root Folder", "Internal (Non-Indexed)", game.ConvertDataSize("" + contSize), Environment.CurrentDirectory + "\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = contSize;
+                    game.dataFiles[index].Add(new DataEntry("Content: Compiled XNB Audio Files", "Internal (Non-Indexed)", game.ConvertDataSize("" + contAudioSize), Environment.CurrentDirectory + "\\Content\\Audio\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = contAudioSize;
+                    game.dataFiles[index].Add(new DataEntry("Content: X360 Game Database", "Internal (Non-Indexed)", game.ConvertDataSize("" + contDatabaseSize), Environment.CurrentDirectory + "\\Content\\Database\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = contDatabaseSize;
+                    game.dataFiles[index].Add(new DataEntry("Content: Compiled XNB Font Files & TTF Fonts", "Internal (Non-Indexed)", game.ConvertDataSize("" + contFontsSize), Environment.CurrentDirectory + "\\Content\\Fonts\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = contFontsSize;
+                    game.dataFiles[index].Add(new DataEntry("Content: Compiled XNB Textures", "Internal (Non-Indexed)", game.ConvertDataSize("" + contTextureSize), Environment.CurrentDirectory + "\\Content\\Textures\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = contTextureSize;
+                    game.dataFiles[index].Add(new DataEntry("Apps: Xenia + Canary + Dump", "Internal (Non-Indexed)", game.ConvertDataSize("" + appsSize[3]), Environment.CurrentDirectory + "\\Content\\Apps\\", game.logoCanary));
+                    game.dataFiles[index].Last().fileSize = appsSize[3];
+                    game.dataFiles[index].Add(new DataEntry("XeniaLauncher: Win-x64 Runtime", "Internal (Non-Indexed)", game.ConvertDataSize("" + win64Size), Environment.CurrentDirectory + "\\runtimes\\win-x64\\", game.compLogo));
+                    game.dataFiles[index].Last().fileSize = win64Size;
+#endif
+
+                    // Adding Launcher to games
+                    game.dataStrings.dataStringList.Add("Continuum Launcher");
+                    game.dataStrings.dataSizeList.Add(game.ConvertDataSize("" + (contTotalSize + win64Size + contRuntimeSize)));
+                    game.dataStrings.dataIdList.Add("Internal");
+                    //game.dataStrings.dataStringList.Add("Artwork and Icons");
+                    //game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + artSize));
+                    //game.dataStrings.dataIdList.Add("Internal");
+                    //game.dataStrings.dataStringList.Add("Xenia Content and Temporary Data");
+                    //game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + tempDataSize));
+                    //game.dataStrings.dataIdList.Add("Internal");
+                    //game.dataStrings.dataStringList.Add("All Games and Data");
+                    //game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + totalSize));
+                    //game.dataStrings.dataIdList.Add("Internal");
+                    //game.dataStrings.dataStringList.Add("All Launcher Data");
+                    //game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + (totalSize + artSize)));
+                    //game.dataStrings.dataIdList.Add("Internal");
+                    game.dataWindow.strings.Add("");
+
+                    // Extra buttons
+                    game.dataWindow.AddText("Sort Entries");
+                    game.dataWindow.AddText("Filter Entries");
+                    game.dataWindow.AddText("Refresh Data");
+                    game.dataWindow.AddText("Back to Menu");
+                    foreach (TextSprite sprite in game.dataWindow.sprites)
+                    {
+                        sprite.scale = 0.6f;
+                    }
+                    for (int i = 0; i < 4; i++)
+                    {
+                        game.dataStrings.dataStringList.Add("");
+                        game.dataStrings.dataSizeList.Add("");
+                        game.dataStrings.dataIdList.Add("");
+                    }
+
+                    // TextSprites for the window
                     game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.dataStrings.dataStringList[0], 0.6f, new Vector2(140, 160), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.dataStrings.dataStringList[1], 0.6f, new Vector2(140, 290), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.dataStrings.dataStringList[2], 0.6f, new Vector2(140, 420), Color.FromNonPremultiplied(0, 0, 0, 0)));
@@ -400,7 +581,7 @@ namespace XeniaLauncher
                     game.dataWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(32, 682, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.dataWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(32, 812, 96, 96), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     // Bottom strings for counts
-                    game.dataWindow.extraSprites.Add(new TextSprite(game.font, "1 of " + game.localData.Count + 5, 0.6f, new Vector2(60, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
+                    game.dataWindow.extraSprites.Add(new TextSprite(game.font, "1 of " + (game.localData.Count + 4), 0.6f, new Vector2(60, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
                     game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.ConvertDataSize("" + totalSize) + " Total", 0.6f, new Vector2(1600, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
                     game.dataWindow.inputEvents.UpButton(game, game.dataWindow, 0);
                     game.dataWindow.inputEvents.DownButton(game, game.dataWindow, 5);

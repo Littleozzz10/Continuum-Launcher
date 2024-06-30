@@ -29,7 +29,15 @@ namespace XeniaLauncher
                         source.extraSprites[i + 6].ToTextSprite().text = game.dataStrings.dataSizeList[source.stringIndex + i];
                         source.extraSprites[i + 6].JustifyRight(new Vector2(1820, 175 + i * 130));
                         source.extraSprites[i + 12].ToTextSprite().text = game.dataStrings.dataIdList[source.stringIndex + i];
-                        source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        if (source.extraSprites[i].ToTextSprite().text != "")
+                        {
+                            source.extraSprites[i + 18].visible = true;
+                            source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        }
+                        else
+                        {
+                            source.extraSprites[i + 18].visible = false;
+                        }
                     }
                 }
                 else
@@ -40,7 +48,15 @@ namespace XeniaLauncher
                         source.extraSprites[i + 6].ToTextSprite().text = game.dataStrings.dataSizeList[source.stringIndex - buttonCount + 1 + i];
                         source.extraSprites[i + 6].JustifyRight(new Vector2(1820, 175 + i * 130));
                         source.extraSprites[i + 12].ToTextSprite().text = game.dataStrings.dataIdList[source.stringIndex - buttonCount + 1 + i];
-                        source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        if (source.extraSprites[i].ToTextSprite().text != "")
+                        {
+                            source.extraSprites[i + 18].visible = true;
+                            source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        }
+                        else
+                        {
+                            source.extraSprites[i + 18].visible = false;
+                        }
                     }
                 }
             }
@@ -60,7 +76,15 @@ namespace XeniaLauncher
                         source.extraSprites[i + 6].ToTextSprite().text = game.dataStrings.dataSizeList[source.stringIndex - buttonCount + 1 + i];
                         source.extraSprites[i + 6].JustifyRight(new Vector2(1820, 175 + i * 130));
                         source.extraSprites[i + 12].ToTextSprite().text = game.dataStrings.dataIdList[source.stringIndex - buttonCount + 1 + i];
-                        source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        if (source.extraSprites[i].ToTextSprite().text != "")
+                        {
+                            source.extraSprites[i + 18].visible = true;
+                            source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        }
+                        else
+                        {
+                            source.extraSprites[i + 18].visible = false;
+                        }
                     }
                 }
                 else
@@ -71,7 +95,15 @@ namespace XeniaLauncher
                         source.extraSprites[i + 6].ToTextSprite().text = game.dataStrings.dataSizeList[source.stringIndex + i];
                         source.extraSprites[i + 6].JustifyRight(new Vector2(1820, 175 + i * 130));
                         source.extraSprites[i + 12].ToTextSprite().text = game.dataStrings.dataIdList[source.stringIndex + i];
-                        source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        if (source.extraSprites[i].ToTextSprite().text != "")
+                        {
+                            source.extraSprites[i + 18].visible = true;
+                            source.extraSprites[i + 18].ToObjectSprite().textures[0] = game.icons[source.extraSprites[i].ToTextSprite().text];
+                        }
+                        else
+                        {
+                            source.extraSprites[i + 18].visible = false;
+                        }
                     }
                 }
             }
