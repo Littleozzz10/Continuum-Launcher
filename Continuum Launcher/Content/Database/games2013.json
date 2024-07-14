@@ -275,7 +275,7 @@
       "Moby_Score": 8.29,
       "Moby_URL": "https://www.mobygames.com/game/59494/dmc-devil-may-cry/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Capcom Co., Ltd.", "Morphicon Limited", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Capcom Co., Ltd.", "Morphicon Limited" ],
       "Release_Date": "2013-01-15",
       "Title": "DmC: Devil May Cry",
       "Alternate_Name": "dmc devil may cry",
@@ -661,7 +661,7 @@
       "Moby_Score": 7.07,
       "Moby_URL": "https://www.mobygames.com/game/59679/dead-space-3/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Electronic Arts, Inc." ],
+      "Publishers": [ "Electronic Arts, Inc." ],
       "Release_Date": "2013-02-05",
       "Title": "Dead Space 3",
       "Alternate_Name": "dead space 3",
@@ -880,7 +880,7 @@
       "Moby_Score": 7.85,
       "Moby_URL": "https://www.mobygames.com/game/60443/metal-gear-rising-revengeance/",
       "Platforms": [ "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Konami Digital Entertainment, Inc." ],
+      "Publishers": [ "Konami Digital Entertainment, Inc." ],
       "Release_Date": "2013-02-19",
       "Title": "Metal Gear Rising: Revengeance",
       "Alternate_Name": "metal gear rising revengeance",
@@ -975,7 +975,7 @@
       "Moby_Score": 7.68,
       "Moby_URL": "https://www.mobygames.com/game/60626/crysis-3/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Electronic Arts, Inc.", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
       "Release_Date": "2013-02-19",
       "Title": "Crysis 3",
       "Alternate_Name": "crysis 3",
@@ -1188,7 +1188,7 @@
       "Moby_Score": 8.01,
       "Moby_URL": "https://www.mobygames.com/game/60034/tomb-raider/",
       "Platforms": [ "Linux", "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "Android", "Gloud" ],
-      "Publishers": [ "Feral Interactive Ltd.", "Square Enix Co., Ltd.", "Square Enix Limited", "Square Enix, Inc.", "NVIDIA Lightspeed Studios", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Feral Interactive Ltd.", "Square Enix Co., Ltd.", "Square Enix Limited", "Square Enix, Inc.", "NVIDIA Lightspeed Studios" ],
       "Release_Date": "2013-03-05",
       "Title": "Tomb Raider",
       "Alternate_Name": "tomb raider",
@@ -1463,29 +1463,6 @@
           "XEXCRC": "11F4DCB0",
           "MediaID": "079424BE",
           "Wave": "16"
-        }
-      ]
-    },
-    {
-      "Developers": [],
-      "Genres": [ "Compilation" ],
-      "ID": 109659,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/109659/gears-of-war-judgment/",
-      "Platforms": [ "Xbox 360" ],
-      "Publishers": [ "Microsoft Corporation" ],
-      "Release_Date": "2013-03-19",
-      "Title": "Gears of War: Judgment",
-      "Alternate_Name": "gears of war judgment",
-      "Variants": [
-        {
-          "GameName": "gears of war judgment",
-          "TitleID": "4D530A26",
-          "Serial": "MS-2598",
-          "Region": "RF",
-          "XEXCRC": "C6AA063E",
-          "MediaID": "3528321A",
-          "Wave": "XGD3"
         }
       ]
     },
@@ -1842,7 +1819,7 @@
       "Moby_Score": 8.22,
       "Moby_URL": "https://www.mobygames.com/game/60152/bioshock-infinite/",
       "Platforms": [ "Linux", "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
-      "Publishers": [ "2K Games, Inc.", "Virtual Programming Ltd.", "1C-SoftClub", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "2K Games, Inc.", "Virtual Programming Ltd.", "1C-SoftClub" ],
       "Release_Date": "2013-03-25",
       "Title": "BioShock Infinite",
       "Alternate_Name": "bioshock infinite",
@@ -2016,8 +1993,8 @@
       "Moby_Score": 7.97,
       "Moby_URL": "https://www.mobygames.com/game/51623/terraria/",
       "Platforms": [ "Linux", "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "iPhone", "Android", "iPad", "Nintendo 3DS", "PS Vita", "PlayStation 4", "Xbox One", "Nintendo Switch", "Wii U", "Windows Phone", "Stadia" ],
-      "Publishers": [ "505 Games S.R.L.", "505 Games S.p.A.", "Spike Chunsoft Co., Ltd.", "Re-Logic", "ak tronic Software & Services GmbH" ],
-      "Release_Date": "2011-05-16",
+      "Publishers": [ "505 Games S.R.L." ],
+      "Release_Date": "2013-03-27",
       "Title": "Terraria",
       "Alternate_Name": "terraria",
       "Variants": [
@@ -2222,7 +2199,7 @@
       "Variants": null
     },
     {
-      "Developers": [ "Big Timber Studio", "The Behemoth" ],
+      "Developers": [ "The Behemoth" ],
       "Genres": [ "Action", "Side view", "Platform", "Puzzle elements", "2D scrolling" ],
       "ID": 67916,
       "Moby_Score": 8.5,
@@ -2372,8 +2349,8 @@
       "Moby_Score": 7.56,
       "Moby_URL": "https://www.mobygames.com/game/60565/injustice-gods-among-us/",
       "Platforms": [ "Xbox 360", "PlayStation 3", "Wii U" ],
-      "Publishers": [ "Warner Bros. Interactive Entertainment Inc.", "ak tronic Software & Services GmbH" ],
-      "Release_Date": "2013-04-14",
+      "Publishers": [ "Warner Bros. Interactive Entertainment Inc." ],
+      "Release_Date": "2013-04-16",
       "Title": "Injustice: Gods Among Us",
       "Alternate_Name": "injustice gods among us",
       "Variants": [
@@ -2591,7 +2568,7 @@
       "Moby_Score": 5.16,
       "Moby_URL": "https://www.mobygames.com/game/60735/star-trek/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Namco Bandai Games America Inc.", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Namco Bandai Games America Inc." ],
       "Release_Date": "2013-04-23",
       "Title": "Star Trek",
       "Alternate_Name": "star trek",
@@ -2830,7 +2807,7 @@
       "Moby_Score": 7.8,
       "Moby_URL": "https://www.mobygames.com/game/60516/far-cry-3-blood-dragon/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Ubisoft Entertainment SA", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
       "Release_Date": "2013-04-30",
       "Title": "Far Cry 3: Blood Dragon",
       "Alternate_Name": "far cry 3 blood dragon",
@@ -3282,7 +3259,7 @@
       "Moby_Score": 7.63,
       "Moby_URL": "https://www.mobygames.com/game/60739/call-of-juarez-gunslinger/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Nintendo Switch", "Blacknut", "Xbox One" ],
-      "Publishers": [ "Ubisoft Entertainment SA", "ak tronic Software & Services GmbH", "Techland Publishing" ],
+      "Publishers": [ "Ubisoft Entertainment SA", "Techland Publishing" ],
       "Release_Date": "2013-05-21",
       "Title": "Call of Juarez: Gunslinger",
       "Alternate_Name": "call of juarez gunslinger",
@@ -3374,13 +3351,13 @@
       ]
     },
     {
-      "Developers": [ "Codemasters Software Company Limited, The" ],
+      "Developers": [ "Codemasters Software Company Limited" ],
       "Genres": [ "Racing / Driving", "Behind view", "Vehicle simulator", "Automobile", "Street racing", "Track racing" ],
       "ID": 60730,
       "Moby_Score": 7.99,
       "Moby_URL": "https://www.mobygames.com/game/60730/grid-2/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "PlayStation Now" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Codemasters Software Company Limited, The", "Feral Interactive Ltd." ],
+      "Publishers": [ "Codemasters Software Company Limited" ],
       "Release_Date": "2013-05-27",
       "Title": "GRID 2",
       "Alternate_Name": "grid 2",
@@ -3563,7 +3540,7 @@
       "Moby_Score": 7.29,
       "Moby_URL": "https://www.mobygames.com/game/60773/the-elder-scrolls-v-skyrim-legendary-edition/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Bethesda Softworks LLC" ],
+      "Publishers": [ "Bethesda Softworks LLC" ],
       "Release_Date": "2013-06-04",
       "Title": "The Elder Scrolls V: Skyrim - Legendary Edition",
       "Alternate_Name": "the elder scrolls v skyrim legendary edition",
@@ -5254,7 +5231,7 @@
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/61874/arcania-the-complete-tale/",
       "Platforms": [ "Xbox 360", "PlayStation 3", "PlayStation 4", "Windows" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Nordic Games GmbH" ],
+      "Publishers": [ "Nordic Games GmbH" ],
       "Release_Date": "2013-05-13",
       "Title": "Arcania: The Complete Tale",
       "Alternate_Name": "arcania the complete tale",
@@ -5313,7 +5290,7 @@
       "Moby_Score": 8.2,
       "Moby_URL": "https://www.mobygames.com/game/56120/diablo-iii/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Square Enix Co., Ltd.", "Blizzard Entertainment Inc." ],
+      "Publishers": [ "Square Enix Co., Ltd.", "Blizzard Entertainment Inc." ],
       "Release_Date": "2012-05-15",
       "Title": "Diablo III",
       "Alternate_Name": "diablo iii",
@@ -5336,7 +5313,7 @@
       "Moby_Score": 8.83,
       "Moby_URL": "https://www.mobygames.com/game/64620/rayman-legends/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PS Vita", "Wii U", "PlayStation 4", "Xbox One", "Nintendo Switch", "Stadia" ],
-      "Publishers": [ "Bihan Internet Technology", "ak tronic Software & Services GmbH", "Ubisoft Entertainment SA" ],
+      "Publishers": [ "Bihan Internet Technology", "Ubisoft Entertainment SA" ],
       "Release_Date": "2013-08-30",
       "Title": "Rayman Legends",
       "Alternate_Name": "rayman legends",
@@ -5565,7 +5542,7 @@
       "Moby_Score": 7.89,
       "Moby_URL": "https://www.mobygames.com/game/65199/nhl-14/",
       "Platforms": [ "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Electronic Arts, Inc." ],
+      "Publishers": [ "Electronic Arts, Inc." ],
       "Release_Date": "2013-09-10",
       "Title": "NHL 14",
       "Alternate_Name": "nhl 14",
@@ -5601,7 +5578,7 @@
       "Moby_Score": 7.35,
       "Moby_URL": "https://www.mobygames.com/game/65291/pes-2014-pro-evolution-soccer/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PSP", "Nintendo 3DS", "PlayStation 2" ],
-      "Publishers": [ "Konami Digital Entertainment Co.", "ak tronic Software & Services GmbH", "Konami Digital Entertainment, Inc.", "Konami Digital Entertainment GmbH" ],
+      "Publishers": [ "Konami Digital Entertainment Co.", "Konami Digital Entertainment, Inc.", "Konami Digital Entertainment GmbH" ],
       "Release_Date": "2013-09-15",
       "Title": "PES 2014: Pro Evolution Soccer",
       "Alternate_Name": "pro evolution soccer 2014",
@@ -5629,29 +5606,6 @@
       "Title": "Valkyrius",
       "Alternate_Name": null,
       "Variants": null
-    },
-    {
-      "Developers": [],
-      "Genres": [ "Extra content / game", "Physical extras", "Special edition" ],
-      "ID": 67519,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/67519/grand-theft-auto-v-special-edition/",
-      "Platforms": [ "PlayStation 3", "Xbox 360" ],
-      "Publishers": [ "Rockstar Games, Inc." ],
-      "Release_Date": "2013-09-17",
-      "Title": "Grand Theft Auto V (Special Edition)",
-      "Alternate_Name": "grand theft auto v",
-      "Variants": [
-        {
-          "GameName": "grand theft auto v",
-          "TitleID": "545408A7",
-          "Serial": "TT-2215",
-          "Region": "RF",
-          "XEXCRC": "E13F92F6",
-          "MediaID": "79E465C5",
-          "Wave": "XGD3"
-        }
-      ]
     },
     {
       "Developers": [ "Firebrand Games and Entertainment Ltd." ],
@@ -5817,7 +5771,7 @@
       "Moby_Score": 7.93,
       "Moby_URL": "https://www.mobygames.com/game/63821/fifa-14/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Electronic Arts, Inc." ],
+      "Publishers": [ "Electronic Arts, Inc." ],
       "Release_Date": "2013-09-24",
       "Title": "FIFA 14",
       "Alternate_Name": "fifa 14",
@@ -6095,7 +6049,7 @@
       "Moby_Score": 8.0,
       "Moby_URL": "https://www.mobygames.com/game/67037/dishonored-game-of-the-year-edition/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Windows Apps", "PlayStation 4", "Xbox One", "Xbox Cloud Gaming" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Bethesda Softworks LLC", "ZeniMax Europe Ltd." ],
+      "Publishers": [ "Bethesda Softworks LLC", "ZeniMax Europe Ltd." ],
       "Release_Date": "2013-10-08",
       "Title": "Dishonored: Game of the Year Edition",
       "Alternate_Name": "dishonored game of the year edition",
@@ -6112,7 +6066,7 @@
       ]
     },
     {
-      "Developers": [],
+      "Developers": [ "343 Industries, Inc." ],
       "Genres": [ "Compilation", "Digital extras", "Extra content / game", "Special edition" ],
       "ID": 112805,
       "Moby_Score": null,
@@ -6120,7 +6074,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2013-10-08",
-      "Title": "Halo 4: Game of the Year Edition",
+      "Title": "Halo 4 (Game of the Year Edition)",
       "Alternate_Name": "halo 4",
       "Variants": [
         {
@@ -6141,7 +6095,7 @@
       "Moby_Score": 7.39,
       "Moby_URL": "https://www.mobygames.com/game/64157/just-dance-2014/",
       "Platforms": [ "Xbox 360", "PlayStation 3", "Wii", "Wii U", "PlayStation 4", "Xbox One" ],
-      "Publishers": [ "Ubisoft, Inc.", "ak tronic Software & Services GmbH", "Ubisoft Entertainment SA" ],
+      "Publishers": [ "Ubisoft, Inc.", "Ubisoft Entertainment SA" ],
       "Release_Date": "2013-10-01",
       "Title": "Just Dance 2014",
       "Alternate_Name": "just dance 2014",
@@ -6203,6 +6157,30 @@
       "Publishers": [ "Rockstar Games, Inc." ],
       "Release_Date": "2013-09-17",
       "Title": "Grand Theft Auto V",
+      "Alternate_Name": "grand theft auto v",
+      "Variants": [
+        {
+          "GameName": "grand theft auto v",
+          "TitleID": "545408A7",
+          "Serial": "TT-2215",
+          "Region": "RF",
+          "XEXCRC": "E13F92F6",
+          "MediaID": "79E465C5",
+          "Wave": "XGD3"
+        }
+      ]
+    },
+
+    {
+      "Developers": [],
+      "Genres": [ "Extra content / game", "Physical extras", "Special edition" ],
+      "ID": 67519,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/67519/grand-theft-auto-v-special-edition/",
+      "Platforms": [ "PlayStation 3", "Xbox 360" ],
+      "Publishers": [ "Rockstar Games, Inc." ],
+      "Release_Date": "2013-09-17",
+      "Title": "Grand Theft Auto V (Special Edition)",
       "Alternate_Name": "grand theft auto v",
       "Variants": [
         {
@@ -6488,8 +6466,8 @@
       "Moby_Score": 7.61,
       "Moby_URL": "https://www.mobygames.com/game/63803/f1-2013/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Macintosh", "PlayStation Now" ],
-      "Publishers": [ "Feral Interactive Ltd.", "Codemasters Software Company Limited, The" ],
-      "Release_Date": "2013-10-04",
+      "Publishers": [ "Codemasters Software Company Limited" ],
+      "Release_Date": "2013-10-15",
       "Title": "F1 2013",
       "Alternate_Name": "f1 2013",
       "Variants": [
@@ -6835,7 +6813,7 @@
       "Moby_Score": 8.12,
       "Moby_URL": "https://www.mobygames.com/game/62416/lego-marvel-super-heroes/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One", "Nintendo Switch" ],
-      "Publishers": [ "Feral Interactive Ltd.", "ak tronic Software & Services GmbH", "Warner Bros. Interactive Entertainment Inc." ],
+      "Publishers": [ "Feral Interactive Ltd.", "Warner Bros. Interactive Entertainment Inc." ],
       "Release_Date": "2013-10-22",
       "Title": "LEGO Marvel Super Heroes",
       "Alternate_Name": "lego marvel super heroes",
@@ -7104,7 +7082,7 @@
       "Moby_Score": 8.33,
       "Moby_URL": "https://www.mobygames.com/game/62288/assassins-creed-iv-black-flag/",
       "Platforms": [ "Windows", "Xbox 360", "Wii U", "Xbox One", "Stadia" ],
-      "Publishers": [ "Ubisoft Entertainment SA", "ak tronic Software & Services GmbH" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
       "Release_Date": "2013-10-29",
       "Title": "Assassin's Creed IV: Black Flag",
       "Alternate_Name": "assassins creed iv black flag",
@@ -7288,7 +7266,7 @@
       "Moby_Score": 8.07,
       "Moby_URL": "https://www.mobygames.com/game/62835/battlefield-4/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PlayStation 4", "Xbox One" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Electronic Arts, Inc." ],
+      "Publishers": [ "Electronic Arts, Inc." ],
       "Release_Date": "2013-10-29",
       "Title": "Battlefield 4",
       "Alternate_Name": "battlefield 4",
@@ -7425,29 +7403,6 @@
     {
       "Developers": [],
       "Genres": [ "Compilation" ],
-      "ID": 65684,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/65684/battlefield-4/",
-      "Platforms": [ "Windows", "PlayStation 3", "Xbox 360" ],
-      "Publishers": [ "Electronic Arts, Inc." ],
-      "Release_Date": "2013-10-29",
-      "Title": "Battlefield 4",
-      "Alternate_Name": "battlefield 4",
-      "Variants": [
-        {
-          "GameName": "battlefield 4",
-          "TitleID": "454109BA",
-          "Serial": "EA-2490",
-          "Region": "PAL, NTSC/U",
-          "XEXCRC": "6526377B",
-          "MediaID": "5B5505FA",
-          "Wave": "XGD3"
-        }
-      ]
-    },
-    {
-      "Developers": [],
-      "Genres": [ "Compilation" ],
       "ID": 78198,
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/78198/how-to-survive-heat-wave-dlc-x3-pack/",
@@ -7518,35 +7473,12 @@
       ]
     },
     {
-      "Developers": [ "Neversoft Entertainment, Inc.", "Infinity Ward, Inc.", "Raven Software Corporation" ],
+      "Developers": [ "Infinity Ward, Inc.", "Neversoft Entertainment, Inc.", "Raven Software Corporation" ],
       "Genres": [ "Action", "1st-person", "Shooter", "Helicopter", "War", "Direct control", "North America", "South America" ],
       "ID": 62336,
       "Moby_Score": 7.17,
       "Moby_URL": "https://www.mobygames.com/game/62336/call-of-duty-ghosts/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One" ],
-      "Publishers": [ "Activision Publishing, Inc.", "ak tronic Software & Services GmbH", "Square Enix Co., Ltd." ],
-      "Release_Date": "2013-11-05",
-      "Title": "Call of Duty: Ghosts",
-      "Alternate_Name": "call of duty ghosts",
-      "Variants": [
-        {
-          "GameName": "call of duty ghosts",
-          "TitleID": "415608FC",
-          "Serial": "AV-2300",
-          "Region": "RF",
-          "XEXCRC": "3BF2331A",
-          "MediaID": "3CC5A411",
-          "Wave": "XGD3"
-        }
-      ]
-    },
-    {
-      "Developers": [],
-      "Genres": [ "Extra content / game", "Special edition" ],
-      "ID": 64165,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/64165/call-of-duty-ghosts/",
-      "Platforms": [ "Windows", "PlayStation 4", "Xbox 360", "PlayStation 3", "Xbox One" ],
       "Publishers": [ "Activision Publishing, Inc." ],
       "Release_Date": "2013-11-05",
       "Title": "Call of Duty: Ghosts",
@@ -7930,8 +7862,8 @@
       "Moby_Score": 7.32,
       "Moby_URL": "https://www.mobygames.com/game/62682/need-for-speed-rivals/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PlayStation 4", "Xbox One" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Electronic Arts, Inc." ],
-      "Release_Date": "2013-11-15",
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2013-11-19",
       "Title": "Need for Speed: Rivals",
       "Alternate_Name": "need for speed rivals",
       "Variants": [
@@ -8254,7 +8186,7 @@
       "Moby_Score": 7.69,
       "Moby_URL": "https://www.mobygames.com/game/50967/the-tomb-raider-trilogy/",
       "Platforms": [ "Windows", "PlayStation 3", "Xbox 360" ],
-      "Publishers": [ "ak tronic Software & Services GmbH", "Square Enix Limited" ],
+      "Publishers": [ "Square Enix Limited" ],
       "Release_Date": "2011-03-22",
       "Title": "The Tomb Raider Trilogy",
       "Alternate_Name": null,

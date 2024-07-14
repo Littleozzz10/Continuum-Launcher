@@ -40,7 +40,7 @@ namespace XeniaLauncher
     {
         public enum OptionTypes
         {
-            General, Image, STFS, SVOD, InstallSTFS, XeniaData, VideoSTFS, Extract
+            General, Image, STFS, SVOD, InstallSTFS, XeniaData, VideoSTFS, Extract, Config
         }
         public static string OptionTypeToString(OptionTypes type)
         {
@@ -62,6 +62,8 @@ namespace XeniaLauncher
                     return "STFS Video";
                 case OptionTypes.Extract:
                     return "Deletable Extract";
+                case OptionTypes.Config:
+                    return "Config Files";
             }
             return "Unknown";
         }
@@ -93,6 +95,8 @@ namespace XeniaLauncher
                     return OptionTypes.VideoSTFS;
                 case "Extracted Content":
                     return OptionTypes.Extract;
+                case "Configuration Data":
+                    return OptionTypes.Config;
             }
             return OptionTypes.General;
         }
@@ -390,6 +394,25 @@ namespace XeniaLauncher
                         startInfo.WorkingDirectory = currentDir;
                         Process.Start(startInfo);
                     }
+                    else
+                    {
+                        game.message = new MessageWindow(game, "We were on the verge of greatness! We were THIS close!", "Somehow, for reasons we don't understand, default.wmv is missing.", Game1.State.ManageFile);
+                        game.state = Game1.State.Message;
+                    }
+                }
+                else
+                {
+                    game.message = new MessageWindow(game, "Help me Ob- WAIT no that's trademarked probably", "The Video must be extracted before it can be played.", Game1.State.ManageFile);
+                    game.state = Game1.State.Message;
+                }
+            }
+            else if (source.strings[buttonIndex] == Shared.FileManageStrings["backup"])
+            {
+                if (game.dataFiles[game.selectedDataIndex][game.manageWindow.stringIndex].name.Contains("Config"))
+                {
+                    File.Copy("Content\\XLConfig.txt", "Content\\XLConfig - Backup (" + DateTime.Now.ToString().Replace("/", "-").Replace(":", "-") + ").txt");
+                    game.message = new MessageWindow(game, "Backup Complete", "User Config File backed up successfully", Game1.State.ManageFile);
+                    game.state = Game1.State.Message;
                 }
             }
         }

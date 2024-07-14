@@ -38,7 +38,6 @@ namespace XeniaLauncher
         public List<GameInfo> results;
         public int resultIndex;
         public List<string> developers, publishers;
-        public string tempGameTitle;
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
             if (buttonIndex == 0)
@@ -79,7 +78,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 4)
             {
-                game.text = new TextInputWindow(game, "Edit Game Title", tempGameTitle, Game1.State.DatabaseResult);
+                game.text = new TextInputWindow(game, "Edit Game Title", game.tempGameTitle, Game1.State.DatabaseResult);
             }
             else if (buttonIndex == 5)
             {
@@ -87,7 +86,8 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 6)
             {
-                game.gameData[game.index].gameTitle = tempGameTitle;
+                game.RenameGame();
+                game.gameManageWindow.titleSprite.text = "Manage " + game.tempGameTitle;
                 game.gameData[game.index].developer = developers[devIndex];
                 game.gameData[game.index].publisher = publishers[pubIndex];
                 game.gameData[game.index].year = game.tempYear;
@@ -139,7 +139,7 @@ namespace XeniaLauncher
             {
                 publishers.Add("Unknown Publisher");
             }
-            tempGameTitle = results[resultIndex].Title;
+            game.tempGameTitle = results[resultIndex].Title;
             AdjustDeveloper(game, window);
             AdjustPublisher(game, window);
         }

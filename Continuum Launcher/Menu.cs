@@ -366,21 +366,22 @@ namespace XeniaLauncher
                             game.dataFiles[index].Add(new DataEntry("Artwork and Icon", "Resources", game.ConvertDataSize("" + tempArtSize), null, game.mainLogo));
                             game.dataFiles[index].Last().fileSize = tempArtSize;
                             artSize += tempArtSize;
-                            switch (game.dataSort)
-                            {
-                                case Game1.DataSort.NameAZ:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.name).ToList(); break;
-                                case Game1.DataSort.NameZA:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.name).ToList(); break;
-                                case Game1.DataSort.SizeHighLow:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
-                                case Game1.DataSort.SizeLowHigh:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
-                                case Game1.DataSort.FileCountHighLow:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
-                                case Game1.DataSort.FileCountLowHigh:
-                                    game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
-                            }
+                            //switch (game.dataSort)
+                            //{
+                            //    case Game1.DataSort.NameAZ:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.name).ToList(); break;
+                            //    case Game1.DataSort.NameZA:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.name).ToList(); break;
+                            //    case Game1.DataSort.SizeHighLow:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                            //    case Game1.DataSort.SizeLowHigh:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderBy(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                            //    case Game1.DataSort.FileCountHighLow:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                            //    case Game1.DataSort.FileCountLowHigh:
+                            //        game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
+                            //}
+                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
                             game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
                             game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
                             linkedDataStrings.Add(data.gameTitle, game.dataStrings.dataSizeList.Count - 1);
@@ -400,26 +401,29 @@ namespace XeniaLauncher
                     switch (game.dataSort)
                     {
                         case Game1.DataSort.NameAZ:
-                            game.localData = game.localData.OrderBy(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderBy(o => o.alphaAs).ThenBy(o => o.gameTitle).ToList(); break;
                         case Game1.DataSort.NameZA:
-                            game.localData = game.localData.OrderByDescending(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderByDescending(o => o.alphaAs).ThenByDescending(o => o.gameTitle).ToList(); break;
                         case Game1.DataSort.SizeHighLow:
-                            game.localData = game.localData.OrderByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderByDescending(o => o.fileSize).ThenBy(o => o.alphaAs).ThenBy(o => o.gameTitle).ToList(); break;
                         case Game1.DataSort.SizeLowHigh:
-                            game.localData = game.localData.OrderBy(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderBy(o => o.fileSize).ThenBy(o => o.alphaAs).ThenBy(o => o.gameTitle).ToList(); break;
                         case Game1.DataSort.FileCountHighLow:
-                            game.localData = game.localData.OrderByDescending(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderByDescending(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.alphaAs).ThenBy(o => o.gameTitle).ToList(); break;
                         case Game1.DataSort.FileCountLowHigh:
-                            game.localData = game.localData.OrderBy(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.gameTitle).ToList(); break;
+                            game.localData = game.localData.OrderBy(o => o.fileCount).ThenByDescending(o => o.fileSize).ThenBy(o => o.alphaAs).ThenBy(o => o.gameTitle).ToList(); break;
                     }
                     DataManageStrings newStrings = new DataManageStrings();
+                    List<List<DataEntry>> newDataFiles = new List<List<DataEntry>>();
                     foreach (GameData gameData in game.localData)
                     {
                         newStrings.dataStringList.Add(game.dataStrings.dataStringList[linkedDataStrings[gameData.gameTitle]]);
                         newStrings.dataSizeList.Add(game.dataStrings.dataSizeList[linkedDataStrings[gameData.gameTitle]]);
                         newStrings.dataIdList.Add(game.dataStrings.dataIdList[linkedDataStrings[gameData.gameTitle]]);
+                        newDataFiles.Add(game.dataFiles[linkedDataStrings[gameData.gameTitle]]);
                     }
                     game.dataStrings = newStrings;
+                    game.dataFiles = newDataFiles;
 
                     // New code to add Continuum Launcher as a 'game' instead of extra strings
                     game.dataFiles.Add(new List<DataEntry>());
@@ -485,6 +489,11 @@ namespace XeniaLauncher
                     {
                         appsSize[2] = new FileInfo(Environment.CurrentDirectory + "\\Apps\\Dump\\xenia-vfs-dump.exe").Length;
                     }
+                    float configSize = 0;
+                    if (File.Exists(Environment.CurrentDirectory + "\\Content\\XLConfig.txt"))
+                    {
+                        configSize = new FileInfo(Environment.CurrentDirectory + "\\Content\\XLConfig.txt\\").Length;
+                    }
                     appsSize[3] = appsSize[0] + appsSize[1] + appsSize[2];
                     float contTotalSize = contSize + contAudioSize + contDatabaseSize + contFontsSize + contTextureSize + win64Size;
                     // Adding Launcher files to file manager
@@ -498,6 +507,8 @@ namespace XeniaLauncher
                     game.dataFiles[index].Last().fileSize = appsSize[2];
                     game.dataFiles[index].Add(new DataEntry("Optional Additional Compatibility Runtimes", "Internal", game.ConvertDataSize("" + contRuntimeSize), Environment.CurrentDirectory + "\\runtimes\\", game.mainLogo));
                     game.dataFiles[index].Last().fileSize = contRuntimeSize;
+                    game.dataFiles[index].Add(new DataEntry("User Config File", "Configuration Data", game.ConvertDataSize("" + configSize), Environment.CurrentDirectory + "\\Content\\", game.mainLogo));
+                    game.dataFiles[index].Last().fileSize = configSize;
                     game.dataFiles[index].Add(new DataEntry("Total: Artwork and Icons", "User Data Metric", game.ConvertDataSize("" + artSize), Environment.CurrentDirectory + "\\IconData\\", game.compLogo));
                     game.dataFiles[index].Last().fileSize = -1;
                     game.dataFiles[index].Add(new DataEntry("Total: Xenia Content and Temporary Data", "User Data Metric", game.ConvertDataSize("" + tempDataSize), Environment.CurrentDirectory + "\\XData\\", game.compLogo));

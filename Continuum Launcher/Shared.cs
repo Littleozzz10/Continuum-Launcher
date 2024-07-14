@@ -17,10 +17,11 @@ namespace XeniaLauncher
             All, Games, DLC, TempContent, Videos
         }
 
-        public static readonly string VERSION = "1.2.0 Alpha 9";
-        public static readonly string COMPILED = "June 30, 2024";
+        public static readonly string VERSION = "1.2.0 Alpha 10";
+        public static readonly string COMPILED = "July 14, 2024";
+        public static readonly int VERNUM = 2010;
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
-            { "00000001", "Saved Game"  },
+            { "00000001", "Xbox 360 Saved Game"  },
             { "00000002", "Downloadable Content" },
             { "00001000", "Xbox 360 Title" },
             { "00002000", "IPTV Pause Buffer" },
@@ -120,7 +121,8 @@ namespace XeniaLauncher
             { "extract", "Extract STFS Container" },
             { "install", "Install Content" },
             { "delete", "Delete Content" },
-            { "video", "Play Video" }
+            { "video", "Play Video" },
+            { "backup", "Create Backup" }
         };
         public class SaveData
         {
@@ -656,8 +658,9 @@ namespace XeniaLauncher
         public class GameData
         {
             public List<string> folders, xexPaths, xexNames;
-            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath;
+            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath, alphaAs;
             public double fileSize;
+            public long lastPlayed;
             public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY, fileCount;
             public bool preferCanary, hasCoverArt, cpuReadback, vsync, mountCache;
 
@@ -697,7 +700,9 @@ namespace XeniaLauncher
                 gamePath = "NULL";
                 artPath = "NULL";
                 iconPath = "NULL";
+                alphaAs = "No Title";
                 fileSize = 0;
+                lastPlayed = 0;
                 year = 2005;
                 month = 11;
                 day = 22;
@@ -748,7 +753,9 @@ namespace XeniaLauncher
                 chunk.AddData("gamePath", gamePath, DataType.String);
                 chunk.AddData("artPath", artPath, DataType.String);
                 chunk.AddData("iconPath", iconPath, DataType.String);
+                chunk.AddData("alphaAs", alphaAs, DataType.String);
                 chunk.AddData("fileSize", "" + fileSize, DataType.Number);
+                chunk.AddData("lastPlayed", "" + lastPlayed, DataType.Number);
                 chunk.AddData("year", "" + year, DataType.Number);
                 chunk.AddData("month", "" + month, DataType.Number);
                 chunk.AddData("day", "" + day, DataType.Number);
@@ -821,9 +828,17 @@ namespace XeniaLauncher
                     {
                         iconPath = obj.data;
                     }
+                    else if (obj.name == "alphaAs")
+                    {
+                        alphaAs = obj.data;
+                    }
                     else if (obj.name == "fileSize")
                     {
                         fileSize = Convert.ToDouble(obj.data);
+                    }
+                    else if (obj.name == "lastPlayed")
+                    {
+                        lastPlayed = Convert.ToInt64(obj.data);
                     }
                     else if (obj.name == "year")
                     {
@@ -991,6 +1006,11 @@ namespace XeniaLauncher
                         {
                             canaryCompat = XeniaCompat.Playable;
                         }
+                    }
+                    // Filling in Alpha As values for older config files (Pre-2010, aka before 1.2.0 Alpha 10)
+                    if (alphaAs == "No Title" && gameTitle != "No Title")
+                    {
+                        alphaAs = gameTitle;
                     }
                 }
             }

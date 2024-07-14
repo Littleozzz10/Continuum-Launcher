@@ -25,6 +25,7 @@ using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
 using GameData = XeniaLauncher.Shared.GameData;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using STFS;
 using XLCompanion;
 using SharpFont;
 using System.Reflection;
@@ -79,6 +80,14 @@ namespace XeniaLauncher
                 game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
                 game.fileManageWindow.inputEvents = new StdInputEvent(3);
             }
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Configuration Data")
+            {
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
+                game.fileManageWindow.AddText(Shared.FileManageStrings["backup"]);
+                game.fileManageWindow.inputEvents = new StdInputEvent(2);
+            }
             else
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
@@ -101,7 +110,7 @@ namespace XeniaLauncher
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content" && entry.subTitle != "Internal" && entry.subTitle != "Internal (Non-Indexed)" && entry.subTitle != "Internal (Xenia)" && entry.subTitle != "User Data Metric")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content" && entry.subTitle != "Internal" && entry.subTitle != "Internal (Non-Indexed)" && entry.subTitle != "Internal (Xenia)" && entry.subTitle != "User Data Metric" && entry.subTitle != "Configuration Data")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;
@@ -122,7 +131,7 @@ namespace XeniaLauncher
                         // Looping through all X360 content files
                         foreach (FileInfo file in dir.GetFiles("*", SearchOption.TopDirectoryOnly))
                         {
-                            STFS stfs = new STFS(file.FullName);
+                            STFS iconStfs = new STFS(file.FullName);
                             // Getting the total size in bytes of the content file
                             float localSize = file.Length;
                             if (Directory.Exists(dir.FullName + "\\" + file.Name + ".data"))
@@ -138,31 +147,22 @@ namespace XeniaLauncher
                             // Reading icon from STFS file into memory (not saved to storage)
                             Texture2D localTexture = game.icons[data.gameTitle];
                             MemoryStream memory = new MemoryStream();
-                            stfs.icon.Save(memory, stfs.icon.RawFormat);
+                            if (iconStfs.icon != null)
+                            {
+                                iconStfs.icon.Save(memory, iconStfs.icon.RawFormat);
+                            }
                             try
                             {
                                 localTexture = Texture2D.FromStream(game.GraphicsDevice, memory);
                             }
-                            catch
+                            catch (Exception e)
                             {
                                 // Using the default blank texture as a backup
                                 localTexture = game.white;
                             }
-                            // Handling garbage data at the start of the title name (Yes, there is a problem with the STFS code that causes this
-                            //   but the problem has not yet been identified)
-                            string newTitle = stfs.data.titleName;
-                            if (dir.Name == "00004000" || dir.Name == "00007000" || dir.Name == "000D0000") // Disc Game, GoD, and XBLA Title, respectively
-                            {
-                                while (newTitle[0] != stfs.data.displayName[0])
-                                {
-                                    newTitle = newTitle.Substring(1);
-                                }
-                            }
-                            // Adding data
-                            else if (dir.Name == "00000001") // 00000001: X360 saved game
-                            {
-                                newTitle = newTitle.Substring(5); // Yes, this is spaghetti garbage
-                            }
+                            STFS24 stfs = new STFS24(file.FullName);
+                            XMetadata stfsMeta = stfs.ReturnMetadata();
+                            string newTitle = stfsMeta.GetDisplayName()[0];
                             game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
                             game.dataFiles[buttonIndex].Last().fileSize = localSize;
                         }
