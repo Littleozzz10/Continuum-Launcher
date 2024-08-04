@@ -21,6 +21,8 @@ using Key = XeniaLauncher.OzzzFramework.KeyboardInput.Key;
 using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
+using DescriptionBox = XeniaLauncher.OzzzFramework.DescriptionBox;
+using DBSpawnPos = XeniaLauncher.OzzzFramework.DescriptionBox.SpawnPositions;
 using System.Globalization;
 using SharpDX.MediaFoundation;
 using CppNet;
@@ -73,11 +75,11 @@ namespace XeniaLauncher
             else if (buttonIndex == game.localData.Count + 1)
             {
                 game.dataFilterWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Filter Data", new DataFilterEffects(), new StdInputEvent(5), new GenericStart(), Game1.State.Data);
-                game.dataFilterWindow.AddButton(new Rectangle(610, 320, 700, 100));
-                game.dataFilterWindow.AddButton(new Rectangle(610, 430, 700, 100));
-                game.dataFilterWindow.AddButton(new Rectangle(610, 540, 700, 100));
-                game.dataFilterWindow.AddButton(new Rectangle(610, 650, 700, 100));
-                game.dataFilterWindow.AddButton(new Rectangle(610, 760, 700, 100));
+                game.dataFilterWindow.AddButton(new Rectangle(610, 320, 700, 100), "Includes all game data.", DBSpawnPos.CenterRightBottom, 0.4f);
+                game.dataFilterWindow.AddButton(new Rectangle(610, 430, 700, 100), "Includes:\n  - Games on Demand\n  - XBLA Titles\n  - Installed Disc Games", DBSpawnPos.CenterLeftBottom, 0.4f);
+                game.dataFilterWindow.AddButton(new Rectangle(610, 540, 700, 100), "Includes:\n  - Title Updates\n  - Downloadable Content", DBSpawnPos.CenterRightBottom, 0.4f);
+                game.dataFilterWindow.AddButton(new Rectangle(610, 650, 700, 100), "Includes:\n  - Xenia Copies\n  - Extracted Content\n  - Game Saves\n  - Installed Xenia Content", DBSpawnPos.CenterLeftTop, 0.4f);
+                game.dataFilterWindow.AddButton(new Rectangle(610, 760, 700, 100), "Includes:\n  - Game Trailers\n  - Videos", DBSpawnPos.CenterRightTop, 0.4f);
                 game.dataFilterWindow.AddText("All Data");
                 game.dataFilterWindow.AddText("Games Only");
                 game.dataFilterWindow.AddText("Installable Content");

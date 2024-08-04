@@ -29,6 +29,7 @@ using XLCompanion;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Data;
+using Continuum_Launcher;
 
 namespace XeniaLauncher
 {
@@ -45,11 +46,11 @@ namespace XeniaLauncher
             {
                 game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(4), new GenericStart(), Game1.State.Menu);
                 game.state = Game1.State.NewGame;
-                game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100));
-                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100));
-                game.newGameWindow.AddButton(new Rectangle(610, 585, 700, 100));
+                game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100), "Import a game with it's parent folder/directory.\n\nNOTE: The game must be in GoD format with a valid\nSTFS header, with the original Xbox 360 folder\nstructure. See Continuum Launcher's Wiki pages on\nGitHub for more information.\n\nThis import will auto-import title IDs, which can be\nused for Database Lookups.", Ozzz.DescriptionBox.SpawnPositions.BottomRightInfoDump, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Deprecated functionality. Do not use.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 585, 700, 100), "Deprecated functionality. Do not use.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
                 game.newGameWindow.AddButton(new Rectangle(610, 695, 700, 100));
-                game.newGameWindow.AddText("Folder + Database Import");
+                game.newGameWindow.AddText("STFS Folder Import");
                 game.newGameWindow.AddText("Manual Import (OLD)");
                 game.newGameWindow.AddText("Import From STFS (OLD)");
                 game.newGameWindow.AddText("Back to Menu");
@@ -70,14 +71,14 @@ namespace XeniaLauncher
                 game.optionsWindow.AddButton(new Rectangle(1310, 405, 90, 190));
                 game.optionsWindow.AddText(">");
                 // Compat prompt buttons
-                game.optionsWindow.AddButton(new Rectangle(910, 605, 90, 90));
+                game.optionsWindow.AddButton(new Rectangle(910, 605, 90, 90), "Changes when the Xenia compatibility opens after\nlaunching a game.\n  - All Games: Show the window after launching any game\n  - Untested Only: Show after launching Untested games\n  - Never Show: Never show the compatibility window", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.optionsWindow.AddText("<");
-                game.optionsWindow.AddButton(new Rectangle(1310, 605, 90, 90));
+                game.optionsWindow.AddButton(new Rectangle(1310, 605, 90, 90), "Changes when the Xenia compatibility opens after\nlaunching a game.\n  - All Games: Show the window after launching any game\n  - Untested Only: Show after launching Untested games\n  - Never Show: Never show the compatibility window", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.optionsWindow.AddText(">");
                 // Other option window buttons
-                game.optionsWindow.AddButton(new Rectangle(500, 715, 450, 100));
+                game.optionsWindow.AddButton(new Rectangle(500, 715, 450, 100), "Change graphics settings for Continuum.", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
                 game.optionsWindow.AddText("Graphics Settings");
-                game.optionsWindow.AddButton(new Rectangle(970, 715, 450, 100));
+                game.optionsWindow.AddButton(new Rectangle(970, 715, 450, 100), "Change Xenia settings for all games", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.optionsWindow.AddText("Xenia Settings");
 
                 game.optionsWindow.AddButton(new Rectangle(660, 840, 600, 100));
@@ -154,6 +155,7 @@ namespace XeniaLauncher
                                             {
                                                 game.dataFiles[index].Add(new DataEntry("Micellaneous Extracts", Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + localSize), null, game.icons[data.gameTitle]));
                                                 game.dataFiles[index].Last().fileSize = localSize;
+                                                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataPreCheckFileFound, "Micellaneous Extract files added", "fileSize", "" + localSize);
                                             }
                                             // Extracts in proper folder structure
                                             foreach (DirectoryInfo extractDir in dir.GetDirectories())
@@ -168,6 +170,7 @@ namespace XeniaLauncher
                                                     size += extractSize;
                                                     game.dataFiles[index].Add(new DataEntry("Extracted " + Shared.contentTypes[extractDir.Name], Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + extractSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = extractSize;
+                                                    Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataPreCheckFileFound, Shared.contentTypes[extractDir.Name] + "Extract files added", "fileSize", "" + extractSize);
                                                 }
                                             }
                                         }
@@ -203,6 +206,7 @@ namespace XeniaLauncher
                                     size += file.Length;
                                 }
                                 game.dataFiles[index].Add(new DataEntry(data.gameTitle, "Installed Xbox 360 Game", game.ConvertDataSize("" + size), null, game.icons[data.gameTitle]));
+
                             }
                             // Saves and Xenia data
                             if (Directory.Exists("XData") && game.dataFilter == Shared.DataFilter.All || game.dataFilter == Shared.DataFilter.TempContent)
@@ -236,6 +240,7 @@ namespace XeniaLauncher
                                                 game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logo));
                                                 game.dataFiles[index].Last().fileSize = dataSize;
                                                 tempDataSize += dataSize;
+                                                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Xenia data added", "dataSize", "" + dataSize);
                                             }
                                             size += dataSize;
                                             // Save data
@@ -252,6 +257,7 @@ namespace XeniaLauncher
                                                     game.dataFiles[index].Add(new DataEntry("Save Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                     tempDataSize += saveSize;
+                                                    Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Xenia save added", "saveSize", "" + saveSize);
                                                 }
                                             }
                                         }
@@ -286,6 +292,7 @@ namespace XeniaLauncher
                                                 game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logoCanary));
                                                 game.dataFiles[index].Last().fileSize = dataSize;
                                                 tempDataSize += dataSize;
+                                                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary data added", "dataSize", "" + dataSize);
                                             }
                                             size += dataSize;
                                             // Save data
@@ -302,6 +309,7 @@ namespace XeniaLauncher
                                                     game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                     tempDataSize += saveSize;
+                                                    Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary save added", "saveSize", "" + saveSize);
                                                 }
                                                 size += saveSize;
                                             }
@@ -319,6 +327,7 @@ namespace XeniaLauncher
                                                     game.dataFiles[index].Add(new DataEntry("Installed DLC", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                     tempDataSize += saveSize;
+                                                    Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary DLC added", "saveSize", "" + saveSize);
                                                 }
                                                 size += saveSize;
                                             }
@@ -336,6 +345,7 @@ namespace XeniaLauncher
                                                     game.dataFiles[index].Add(new DataEntry("Installed Title Update", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = saveSize;
                                                     tempDataSize += saveSize;
+                                                    Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary TU added", "saveSize", "" + saveSize);
                                                 }
                                                 size += saveSize;
                                             }
@@ -390,10 +400,16 @@ namespace XeniaLauncher
                             index++;
 
                             game.localData.Add(data); // Adding data to separate list of data
+                            Logging.Write(Logging.LogType.Standard, Logging.LogEvent.ManageDataGameAdded, "Game added to localData: " + data.gameTitle);
                         }
                         else
                         {
                             missingList.Add(data.gameTitle);
+                            Logging.Write(Logging.LogType.Important, Logging.LogEvent.MissingGame, "Game missing", new Dictionary<string, string>()
+                            {
+                                { "gameTitle", data.gameTitle },
+                                { "gamePath", data.gamePath }
+                            });
                         }
                     }
 
@@ -658,6 +674,7 @@ namespace XeniaLauncher
             // Exit
             else if (buttonIndex == 5)
             {
+                Logging.Close();
                 game.Exit();
             }
         }

@@ -30,6 +30,7 @@ using XLCompanion;
 using SharpFont;
 using System.Reflection;
 using SharpFont.PostScript;
+using Continuum_Launcher;
 
 namespace XeniaLauncher
 {
@@ -50,9 +51,9 @@ namespace XeniaLauncher
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Downloadable Content" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Title Update")
             {
-                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80), "Install this content for use in Xenia Canary.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80), "Extract this content into an _EXTRACT folder\nin this game's directory.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80), "Open the STFS Metadata Viewer.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.fileManageWindow.AddButton(new Rectangle(1235, 480, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
@@ -61,9 +62,9 @@ namespace XeniaLauncher
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Video" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Trailer")
             {
-                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80), "Play this video in Windows' default video player.\nMust first extract the STFS container.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80), "Extract this video into an _EXTRACT folder\nin this game's directory.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80), "Open the STFS Metadata Viewer.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.fileManageWindow.AddButton(new Rectangle(1235, 480, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
@@ -72,8 +73,8 @@ namespace XeniaLauncher
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Demo")
             {
-                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
-                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80), "Extract this content into an _EXTRACT folder\nin this game's directory.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80), "Open the STFS Metadata Viewer.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.fileManageWindow.AddButton(new Rectangle(1235, 570, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["metadata"]);
@@ -82,7 +83,7 @@ namespace XeniaLauncher
             }
             else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Configuration Data")
             {
-                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80));
+                game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80), "Create a backup of the user config file,\nwhich stores info for imported games.\n(\\Continuum Launcher\\Content\\XLConfig.txt)", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80));
                 game.fileManageWindow.AddText(Shared.FileManageStrings["explorer"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["backup"]);
@@ -96,6 +97,7 @@ namespace XeniaLauncher
             }
             game.fileManageWindow.buttons.Reverse();
             //game.fileManageWindow.strings.Reverse();
+            game.fileManageWindow.descriptionBoxes.Reverse();
             game.fileManageWindow.buttonEffects.SetupEffects(game, game.fileManageWindow);
         }
         public void SetupEffects(Game1 game, Window source)
@@ -159,12 +161,19 @@ namespace XeniaLauncher
                             {
                                 // Using the default blank texture as a backup
                                 localTexture = game.white;
+                                Logging.Write(Logging.LogType.Critical, Logging.LogEvent.Error, "Icon unable to save", "exception", e.ToString());
                             }
                             STFS24 stfs = new STFS24(file.FullName);
                             XMetadata stfsMeta = stfs.ReturnMetadata();
                             string newTitle = stfsMeta.GetDisplayName()[0];
                             game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
                             game.dataFiles[buttonIndex].Last().fileSize = localSize;
+                            Logging.Write(Logging.LogType.Standard, Logging.LogEvent.GameFileFound, "Game file found", new Dictionary<string, string>()
+                            {
+                                { "filepath", file.FullName },
+                                { "newTitle", newTitle },
+                                { "localSize", "" + localSize }
+                            });
                         }
                     }
                 }

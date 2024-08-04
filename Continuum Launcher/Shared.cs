@@ -17,9 +17,9 @@ namespace XeniaLauncher
             All, Games, DLC, TempContent, Videos
         }
 
-        public static readonly string VERSION = "1.2.0 Alpha 10";
-        public static readonly string COMPILED = "July 14, 2024";
-        public static readonly int VERNUM = 2010;
+        public static readonly string VERSION = "1.2.0 Alpha 11";
+        public static readonly string COMPILED = "August 4, 2024";
+        public static readonly int VERNUM = 2011;
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Xbox 360 Saved Game"  },
             { "00000002", "Downloadable Content" },

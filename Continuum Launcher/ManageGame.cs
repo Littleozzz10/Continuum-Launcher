@@ -41,14 +41,14 @@ namespace XeniaLauncher
                 game.state = Game1.State.GameXeniaSettings;
                 game.gameXeniaSettingsWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Xenia Settings for " + game.gameData[game.index].gameTitle, "Note: These settings only apply to this game", new XeniaGameSettings(), new XeniaGameInput(), new GenericStart(), Game1.State.GameMenu, true);
                 // First set
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 375, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 375, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 475, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 475, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 575, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 575, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 675, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 675, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 375, 90, 90), "For XBLA games, the license to use:\n  - (0) : No License, Trial Mode\n  - (1) : First License, Full Game Mode\n  - (-1) : All Licenses, (Can be buggy)", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 375, 90, 90), "For XBLA games, the license to use:\n  - (0) : No License, Trial Mode\n  - (1) : First License, Full Game Mode\n  - (-1) : All Licenses, (Can be buggy)", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 475, 90, 90), "When enabled, Continuum will not copy Xenia\nexecutables to the game save directory.\nThis means you must provide a Xenia/Xenia Canary\nexecutable yourself.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 475, 90, 90), "When enabled, Continuum will not copy Xenia\nexecutables to the game save directory.\nThis means you must provide a Xenia/Xenia Canary\nexecutable yourself.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 575, 90, 90), "Enables Xenia's cache mount for this game. Usually\nmore resource intensive. Some games require this,\nsuch as the Forza titles.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 575, 90, 90), "Enables Xenia's cache mount for this game. Usually\nmore resource intensive. Some games require this,\nsuch as the Forza titles.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(285, 675, 90, 90), "When on, Xenia will read back CPU shader memory\nexports during emulation. Highly resource intensive, but can\nimprove emulation quality. Some games require this to be\nenabled, but it can also adversely affect emulation in others.", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(865, 675, 90, 90), "When on, Xenia will read back CPU shader memory\nexports during emulation. Highly resource intensive, but can\nimprove emulation quality. Some games require this to be\nenabled, but it can also adversely affect emulation in others.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
                 game.gameXeniaSettingsWindow.AddText("<");
@@ -58,14 +58,14 @@ namespace XeniaLauncher
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
                 // Second set
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 375, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 375, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 475, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 475, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 575, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 575, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 675, 90, 90));
-                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 675, 90, 90));
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 375, 90, 90), "Adjusts Xenia's internal resolution scale on the\nX-axis. Does not change window size or monitor\nresolution. Reduces performance and may break\nsome games.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 375, 90, 90), "Adjusts Xenia's internal resolution scale on the\nX-axis. Does not change window size or monitor\nresolution. Reduces performance and may break\nsome games.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 475, 90, 90), "Adjusts Xenia's internal resolution scale on the\nY-axis. Does not change window size or monitor\nresolution. Reduces performance and may break\nsome games.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 475, 90, 90), "Adjusts Xenia's internal resolution scale on the\nY-axis. Does not change window size or monitor\nresolution. Reduces performance and may break\nsome games.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 575, 90, 90), "When enabled, V-Sync limits framerate to the monitor's\nrefresh rate. Enable to reduce screen tearing. Will not\nimprove framerate. Does not work with some games,\nsuch as the Halo titles.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 575, 90, 90), "When enabled, V-Sync limits framerate to the monitor's\nrefresh rate. Enable to reduce screen tearing. Will not\nimprove framerate. Does not work with some games,\nsuch as the Halo titles.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(975, 675, 90, 90), "The graphics renderer for Xenia to use:\n  - Any: Let Xenia choose the renderer (Likely D3D12)\n  - D3D12: Default, works best in most games\n  - Vulkan: Experimental, can sometimes work best", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
+                game.gameXeniaSettingsWindow.AddButton(new Rectangle(1545, 675, 90, 90), "The graphics renderer for Xenia to use:\n  - Any: Let Xenia choose the renderer (Likely D3D12)\n  - D3D12: Default, works best in most games\n  - Vulkan: Experimental, can sometimes work best", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.gameXeniaSettingsWindow.AddButton(new Rectangle(605, 795, 700, 100));
                 game.gameXeniaSettingsWindow.AddText("<");
                 game.gameXeniaSettingsWindow.AddText(">");
@@ -107,12 +107,12 @@ namespace XeniaLauncher
                 game.state = Game1.State.GameInfo;
                 game.gameInfoWindow = new Window(game, new Rectangle(260, 185, 1400, 750), "Info for " + game.gameData[game.index].gameTitle, new GameInfoWindow(), new GameInfoInput(), new GenericStart(), Game1.State.GameMenu);
 
-                game.gameInfoWindow.AddButton(new Rectangle(290, 335, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(290, 435, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(290, 535, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(290, 635, 650, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(970, 335, 660, 90));
-                game.gameInfoWindow.AddButton(new Rectangle(970, 435, 660, 90));
+                game.gameInfoWindow.AddButton(new Rectangle(290, 335, 650, 90), "Edit the game's display name.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.gameInfoWindow.AddButton(new Rectangle(290, 435, 650, 90), "Edit the game's developer.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.gameInfoWindow.AddButton(new Rectangle(290, 535, 650, 90), "Edit the game's publisher.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.gameInfoWindow.AddButton(new Rectangle(290, 635, 650, 90), "Edit the game's title ID. This is used for database\nlookups and storing save data.", Ozzz.DescriptionBox.SpawnPositions.CenterRightTop, 0.4f);
+                game.gameInfoWindow.AddButton(new Rectangle(970, 335, 660, 90), "Edit the game's alphabetization value. This name is not\ndisplayed, but is used when sorting alphabetically.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.gameInfoWindow.AddButton(new Rectangle(970, 435, 660, 90), "Edit the game's release date.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
                 game.gameInfoWindow.AddButton(new Rectangle(970, 535, 90, 90));
                 game.gameInfoWindow.AddButton(new Rectangle(1540, 535, 90, 90));
                 game.gameInfoWindow.AddButton(new Rectangle(970, 635, 90, 90));
@@ -137,9 +137,9 @@ namespace XeniaLauncher
                 game.state = Game1.State.GameFilepaths;
                 game.gameFilepathsWindow = new Window(game, new Rectangle(560, 170, 800, 740), "Filepaths for " + game.gameData[game.index].gameTitle, new GameFilepaths(), new StdInputEvent(4), new GenericStart(), Game1.State.GameMenu);
 
-                game.gameFilepathsWindow.AddButton(new Rectangle(610, 320, 700, 100));
-                game.gameFilepathsWindow.AddButton(new Rectangle(610, 430, 700, 100));
-                game.gameFilepathsWindow.AddButton(new Rectangle(610, 540, 700, 100));
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 320, 700, 100), "Edit the direct filepath to the game's\nfile, either in GoD or XEX format.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 430, 700, 100), "Edit the direct filepath to the game's\ncover art file, in JPG format.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.gameFilepathsWindow.AddButton(new Rectangle(610, 540, 700, 100), "Edit the direct filepath to the game's\nicon. This is usually done automatically\nin an STFS Folder Import.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
                 game.gameFilepathsWindow.AddButton(new Rectangle(610, 760, 700, 100));
                 game.gameFilepathsWindow.AddText("Edit Game Filepath");
                 game.gameFilepathsWindow.AddText("Edit Cover Art Filepath");
@@ -152,8 +152,8 @@ namespace XeniaLauncher
                 game.state = Game1.State.GameCategories;
                 game.gameCategoriesWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Categories", new GameCategories(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu);
 
-                game.gameCategoriesWindow.AddButton(new Rectangle(410, 320, 90, 90));
-                game.gameCategoriesWindow.AddButton(new Rectangle(1420, 320, 90, 90));
+                game.gameCategoriesWindow.AddButton(new Rectangle(410, 320, 90, 90), "Previous Category", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.gameCategoriesWindow.AddButton(new Rectangle(1420, 320, 90, 90), "Next Category", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
                 game.gameCategoriesWindow.AddButton(new Rectangle(495, 520, 450, 100));
                 game.gameCategoriesWindow.AddButton(new Rectangle(980, 520, 450, 100));
                 game.gameCategoriesWindow.AddButton(new Rectangle(495, 640, 450, 100));
@@ -173,8 +173,8 @@ namespace XeniaLauncher
                 game.state = Game1.State.GameXEX;
                 game.gameXEXWindow = new Window(game, new Rectangle(360, 170, 1200, 740), "Manage Executables", "Tip: Delete the main XEX to delete the game", new GameXEX(), new GameCategoriesInput(), new GenericStart(), Game1.State.GameMenu, true);
 
-                game.gameXEXWindow.AddButton(new Rectangle(410, 320, 90, 90));
-                game.gameXEXWindow.AddButton(new Rectangle(1420, 320, 90, 90));
+                game.gameXEXWindow.AddButton(new Rectangle(410, 320, 90, 90), "Previous Executable", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.gameXEXWindow.AddButton(new Rectangle(1420, 320, 90, 90), "Next Executable", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
                 game.gameXEXWindow.AddButton(new Rectangle(495, 520, 450, 100));
                 game.gameXEXWindow.AddButton(new Rectangle(980, 520, 450, 100));
                 game.gameXEXWindow.AddButton(new Rectangle(495, 640, 450, 100));
@@ -192,12 +192,12 @@ namespace XeniaLauncher
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            game.gameManageWindow.AddButton(new Rectangle(610, 265, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 375, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 485, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 595, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 705, 700, 100));
-            game.gameManageWindow.AddButton(new Rectangle(610, 815, 700, 100));
+            game.gameManageWindow.AddButton(new Rectangle(610, 265, 700, 100), "Edit options to pass to Xenia when\nlaunching this game.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+            game.gameManageWindow.AddButton(new Rectangle(610, 375, 700, 100), "Use Continuum's Xbox 360 game database\nto fill in this game's title, developer, and\npublisher. Requires a valid title ID.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+            game.gameManageWindow.AddButton(new Rectangle(610, 485, 700, 100), "Edit information about this game,\nlike it's title, developer, title ID,\nalphabetization, and more.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+            game.gameManageWindow.AddButton(new Rectangle(610, 595, 700, 100), "Edit the filepaths to the game, it's\ncover art, and it's icon.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftTop, 0.4f);
+            game.gameManageWindow.AddButton(new Rectangle(610, 705, 700, 100), "Edit the Categories this game is in,\nor add new Categories.", Ozzz.DescriptionBox.SpawnPositions.CenterRightTop, 0.4f);
+            game.gameManageWindow.AddButton(new Rectangle(610, 815, 700, 100), "Edit existing Executables for this game,\nor add new ones.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftTop, 0.4f);
             game.gameManageWindow.AddText("Edit Launch Settings");
             game.gameManageWindow.AddText("Database Lookup");
             game.gameManageWindow.AddText("Edit Game Info");

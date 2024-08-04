@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -873,6 +872,10 @@ namespace XeniaLauncher
             /// The text to display.
             /// </summary>
             public string text;
+            /// <summary>
+            /// When enabled, text will be split by the newline character when drawing.
+            /// </summary>
+            public bool splitDraw;
             /// <param name="font">The font to use to display the Sprite</param>
             /// <param name="text">The text to display</param>
             public TextSprite(SpriteFont font, string text) : base()
@@ -904,6 +907,7 @@ namespace XeniaLauncher
                 this.text = text;
                 this.pos = pos;
                 this.color = color;
+                splitDraw = false;
                 type = "TextSprite";
             }
 
@@ -977,10 +981,7 @@ namespace XeniaLauncher
             }
             public override void Draw(SpriteBatch sb)
             {
-                if (visible)
-                {
-                    sb.DrawString(font, GetASCII(text, font), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
-                }
+                Draw(sb, false);
             }
             public override void Draw(SpriteBatch sb, bool noScale)
             {
@@ -990,9 +991,20 @@ namespace XeniaLauncher
                     {
                         sb.DrawString(font, GetASCII(text, font), Scaling.ResizeVector2(pos, GetSize(), size), color, rotation, origin, scale * size, effects, layerDepth);
                     }
-                    else
+                    else if (!splitDraw)
                     {
                         sb.DrawString(font, GetASCII(text, font), Scaling.ScaleVector2(Scaling.ResizeVector2(pos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
+                    }
+                    else
+                    {
+                        string[] split = text.Split("\n");
+                        float height = font.MeasureString(text.Replace("\n", "")).Y * scale;
+                        Vector2 tempPos = pos;
+                        foreach (string s in split)
+                        {
+                            sb.DrawString(font, GetASCII(s, font), Scaling.ScaleVector2(Scaling.ResizeVector2(tempPos, GetSize(), size)), color, rotation, origin, Scaling.ScaleFloatX(scale * size), effects, layerDepth);
+                            tempPos.Y += height;
+                        }
                     }
                 }
             }
@@ -1551,10 +1563,6 @@ namespace XeniaLauncher
             /// </summary>
             public TextSprite textSprite;
             /// <summary>
-            /// The text to display in the Description Box.
-            /// </summary>
-            public string text;
-            /// <summary>
             /// How many frames to wait before showing the box.
             /// </summary>
             public float hoverDelay;
@@ -1579,16 +1587,41 @@ namespace XeniaLauncher
             /// </summary>
             public bool enabled;
             /// <summary>
+            /// Whether or not to draw the host Sprite. Disable by default.
+            /// </summary>
+            public bool drawHost;
+            /// <summary>
+            /// When enabled, automatically resizes the description box.
+            /// </summary>
+            public bool autoSize;
+            /// <summary>
+            /// When enabled, automatically managed transparency based on mouse position.
+            /// </summary>
+            public bool checkMouse;
+            /// <summary>
+            /// Whether or not the mouse was checked last frame for transparency.
+            /// </summary>
+            public bool mouseCheckedLastFrame;
+            /// <summary>
             /// Where the Description Box will appear.
             /// </summary>
             public enum SpawnPositions
             {
-                BelowRight, AboveRight, BelowLeft, AboveLeft
+                BelowRight, CenterRightTop, CenterRightBottom, AboveRight, BelowLeft, CenterLeftTop, CenterLeftBottom, AboveLeft, CenterTop, CenterBottom, BottomRightInfoDump
             }
             /// <summary>
             /// Where the Description Box will appear.
             /// </summary>
             public SpawnPositions spawnPos;
+            /// <param name="sprite">The host Sprite to bind the Description Box to.</param>
+            /// <param name="initialTexture">The initial texture for the box.</param>
+            /// <param name="color">The color for the box.</param>
+            /// <param name="hoverDelay">How many frames to wait before showing the box.</param>
+            /// <param name="transparencyIncrease">How much to increase the transparency of the Description Box every frame the mouse hovers over the host.</param>
+            public DescriptionBox(Sprite sprite, SpriteFont font, Texture2D initialTexture, Color color, float hoverDelay, byte transparencyIncrease) : this(sprite, font, initialTexture, new Vector2(), color, hoverDelay, transparencyIncrease)
+            {
+                autoSize = true;
+            }
             /// <param name="sprite">The host Sprite to bind the Description Box to.</param>
             /// <param name="initialTexture">The initial texture for the box.</param>
             /// <param name="size">The size the box.</param>
@@ -1605,33 +1638,108 @@ namespace XeniaLauncher
                 spawnPos = SpawnPositions.BelowRight;
                 textSprite = new TextSprite(font, "");
                 enabled = true;
+                drawHost = false;
+                UpdateSpawnPos();
+            }
+            /// <summary>
+            /// Triggers the DescriptionBox's transparency update.
+            /// </summary>
+            public void TriggerTransparencyUpdate()
+            {
+                delayTemp++;
+                if (delayTemp >= hoverDelay && transparency + transparencyIncrease <= 255)
+                {
+                    transparency += transparencyIncrease;
+                }
+                else if (delayTemp >= hoverDelay && transparency < 255)
+                {
+                    transparency = 255;
+                }
+                mouseCheckedLastFrame = true;
+            }
+            /// <summary>
+            /// Updates the DescriptionBox's position based on it's spawnPos value.
+            /// </summary>
+            public void UpdateSpawnPos()
+            {
+                if (spawnPos == SpawnPositions.BelowRight)
+                {
+                    rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y);
+                }
+                else if (spawnPos == SpawnPositions.CenterRightTop)
+                {
+                    rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y / 2 - rect.Height);
+                }
+                else if (spawnPos == SpawnPositions.CenterRightBottom)
+                {
+                    rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y / 2);
+                }
+                else if (spawnPos == SpawnPositions.AboveRight)
+                {
+                    rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X);
+                    rect.Y = (int)(hostSprite.pos.Y - rect.Height);
+                }
+                else if (spawnPos == SpawnPositions.BelowLeft)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y);
+                }
+                else if (spawnPos == SpawnPositions.CenterLeftTop)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y / 2 - rect.Height);
+                }
+                else if (spawnPos == SpawnPositions.CenterLeftBottom)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y / 2);
+                }
+                else if (spawnPos == SpawnPositions.AboveLeft)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width);
+                    rect.Y = (int)(hostSprite.pos.Y - rect.Height);
+                }
+                else if (spawnPos == SpawnPositions.BottomRightInfoDump)
+                {
+                    rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X * 0.8f);
+                    rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y);
+                }
+
+                // Resizing
+                if (autoSize)
+                {
+                    offset = (int)(70.0f * textSprite.scale);
+                    float textWidth = 0;
+                    string[] split = textSprite.text.Split("\n");
+                    foreach (string s in split)
+                    {
+                        textWidth = Math.Max(textWidth, textSprite.font.MeasureString(s).X * textSprite.scale);
+                    }
+                    rect.Width = (int)(textWidth + offset * 2);
+                    rect.Height = (int)(textSprite.GetSize().Y * split.Length + offset * 2.0f);
+                }
             }
             /// <summary>
             /// Updates the box, including displaying the box if the mouse has hovered over the box for long enough.
             /// </summary>
             public new void Update()
             {
-                //base.Update();
-                if (spawnPos == SpawnPositions.BelowRight)
+                if (!mouseCheckedLastFrame)
                 {
-                    rect.X = MouseInput.state.X;
-                    rect.Y = MouseInput.state.Y;
-                }
-                else if (spawnPos == SpawnPositions.AboveRight)
-                {
-                    rect.X = MouseInput.state.X;
-                    rect.Y = MouseInput.state.Y - rect.Height;
-                }
-                else if (spawnPos == SpawnPositions.BelowLeft)
-                {
-                    rect.X = MouseInput.state.X - rect.Width;
-                    rect.Y = MouseInput.state.Y;
+                    delayTemp = 0;
+                    transparency = 0;
                 }
                 else
                 {
-                    rect.X = MouseInput.state.X - rect.Width;
-                    rect.Y = MouseInput.state.Y - rect.Height;
+                    mouseCheckedLastFrame = false;
                 }
+
+                //base.Update();
+
+                UpdateSpawnPos();
                 foreach (Sprite sprite in sprites)
                 {
                     sprite.pos.X = rect.X + ((rect.Width - sprite.GenerateRect().Width) / 2);
@@ -1647,22 +1755,9 @@ namespace XeniaLauncher
                 }
                 textSprite.pos.X = rect.X + offset;
                 textSprite.pos.Y = rect.Y + offset;
-                if (hostSprite.CheckMouse(false))
+                if (checkMouse && hostSprite.CheckMouse(false))
                 {
-                    delayTemp++;
-                    if (delayTemp >= hoverDelay && transparency + transparencyIncrease <= 255)
-                    {
-                        transparency += transparencyIncrease;
-                    }
-                    else if (delayTemp >= hoverDelay && transparency < 255)
-                    {
-                        transparency = 255;
-                    }
-                }
-                else
-                {
-                    delayTemp = 0;
-                    transparency = 0;
+                    TriggerTransparencyUpdate();
                 }
                 color.A = transparency;
                 foreach (Sprite sprite in sprites)
@@ -1702,7 +1797,10 @@ namespace XeniaLauncher
             {
                 if (enabled)
                 {
-                    hostSprite.Draw(sb);
+                    if (drawHost)
+                    {
+                        hostSprite.Draw(sb);
+                    }
                     if (transparency == 0)
                     {
                         visible = false;
@@ -1710,9 +1808,9 @@ namespace XeniaLauncher
                     else
                     {
                         visible = true;
+                        base.Draw(sb, false);
+                        textSprite.Draw(sb, false);
                     }
-                    base.Draw(sb, true);
-                    textSprite.Draw(sb, true);
                 }
             }
         }

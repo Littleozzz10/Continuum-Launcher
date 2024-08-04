@@ -7,7 +7,6 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Ozzz = XeniaLauncher.OzzzFramework;
@@ -29,14 +28,17 @@ using SaveDataObject = XeniaLauncher.Shared.SaveData.SaveDataObject;
 using SaveDataChunk = XeniaLauncher.Shared.SaveData.SaveDataChunk;
 using SequenceFade = XeniaLauncher.OzzzFramework.SequenceFade;
 using GameData = XeniaLauncher.Shared.GameData;
+using DescriptionBox = XeniaLauncher.OzzzFramework.DescriptionBox;
+using DBSpawnPos = XeniaLauncher.OzzzFramework.DescriptionBox.SpawnPositions;
+using LogType = Continuum_Launcher.Logging.LogType;
+using Event = Continuum_Launcher.Logging.LogEvent;
 using SharpDX.MediaFoundation;
 using SharpFont;
 using XLCompanion;
 using STFS;
-using System.Reflection.Metadata;
 using Newtonsoft.Json;
 using Continuum_Launcher;
-using System.Configuration;
+using Assimp;
 
 namespace XeniaLauncher
 {
@@ -63,7 +65,7 @@ namespace XeniaLauncher
         public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow, metadataWindow, dataSortWindow, dataFilterWindow;
         public MessageWindow message;
         public TextInputWindow text;
-        public Color backColor, backColorAlt, fontColor, fontSelectColor, fontAltColor, fontAltLightColor, majorFontColor, sortColor, folderColor, timeDateColor, cornerStatsColor, triviaColor, topBorderColor, bottomBorderColor, ringMainColor, ringSelectColor;
+        public Color backColor, backColorAlt, fontColor, fontSelectColor, fontAltColor, fontAltLightColor, majorFontColor, sortColor, folderColor, timeDateColor, cornerStatsColor, triviaColor, topBorderColor, bottomBorderColor, ringMainColor, ringSelectColor, descColor;
         public SaveData configData;
         public DataManageStrings dataStrings;
         public SequenceFade bottomInfo;
@@ -73,7 +75,7 @@ namespace XeniaLauncher
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath, tempGameTitle;
         public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay;
-        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData;
+        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData, showResearchPrompt, windowClickExit, enterCloseTextInput, rightClickGames;
         public enum State
         {
             Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile, Metadata, DataSort, DataFilter
@@ -123,8 +125,11 @@ namespace XeniaLauncher
 
         protected override void Initialize()
         {
+            Logging.Initialize(this);
+
             Ozzz.Initialize(new Vector2((float)GraphicsDevice.Viewport.Width / 1920, (float)GraphicsDevice.Viewport.Height / 1080), 60);
             GamepadInput.AddIndex(PlayerIndex.One);
+            Logging.Write(LogType.Standard, Event.InitEvent, "OzzzFramework initialized");
 
             gameData = new List<GameData>();
             masterData = new List<GameData>();
@@ -133,6 +138,7 @@ namespace XeniaLauncher
             trivia = new List<string>();
             dataStrings = new DataManageStrings();
             dataFiles = new List<List<DataEntry>>();
+            Logging.Write(LogType.Standard, Event.InitEvent, "Data lists initalized");
 
             KeyboardInput.keys.Add("Right", new Key(Keys.Right));
             KeyboardInput.keys.Add("Left", new Key(Keys.Left));
@@ -195,10 +201,14 @@ namespace XeniaLauncher
             KeyboardInput.keys.Add(".", new Key(Keys.OemPeriod));
             KeyboardInput.keys.Add("/", new Key(Keys.OemQuestion));
             MouseInput.posCapacity = 2;
+            Logging.Write(LogType.Standard, Event.InitEvent, "Input systems initialized");
 
+            // Config file
             folders.Add("All Games");
             SaveData read = new SaveData(configPath);
             read.ReadFile();
+
+            // Xenia paths
             //xeniaPath = read.savedData.FindData("xenia").data;
             //if (!File.Exists(xeniaPath))
             //{
@@ -218,31 +228,130 @@ namespace XeniaLauncher
             if (File.Exists("Apps\\Xenia\\xenia.exe"))
             {
                 xeniaPath = "Apps\\Xenia\\xenia.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Xenia path found", "xeniaPath", xeniaPath);
             }
             if (File.Exists("Apps\\Canary\\xenia_canary.exe"))
             {
                 canaryPath = "Apps\\Canary\\xenia_canary.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Canary path found", "canaryPath", canaryPath);
             }
             if (File.Exists("Apps\\Dump\\xenia-vfs-dump.exe"))
             {
                 extractPath = "Apps\\Dump\\xenia-vfs-dump.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Dump path found", "extractPath", extractPath);
             }
             else
             {
                 extractPath = null;
             }
+
+            // Experimental config file
             SaveDataObject exp = read.savedData.FindData("enableExp");
             if (exp != null)
             {
                 enableExp = Convert.ToBoolean(exp.data);
+                Logging.Write(LogType.Critical, Event.InitEvent, "Experimental config file loaded");
             }
+
+            // Making new settings file if not already present
+            SoundEffect.MasterVolume = 0.7f;
+            ResetTheme(Theme.Original, false);
+            cwSettings = CWSettings.Untested;
+            xeniaFullscreen = false;
+            logLevel = LogLevel.Info;
+            consolidateFiles = true;
+            runHeadless = false;
+            if (!File.Exists("XLSettings.txt"))
+            {
+                Logging.Write(LogType.Critical, Event.Error, "Settings file missing, creating default");
+                configData = new SaveData("XLSettings.txt");
+                SaveConfig();
+                triggerMissingWindow = true;
+            }
+
+            // Settings file
+            ReadConfig();
+
+            // Game data
             SaveDataChunk games = read.savedData.FindData("games").GetChunk();
             foreach (SaveDataChunk game in games.saveDataObjects)
             {
                 GameData data = new GameData();
                 data.Read(game);
                 masterData.Add(data);
+                // Logging the game
+                if (Logging.logType == LogType.Important)
+                {
+                    Logging.Write(LogType.Important, Event.GameLoad, "Game loaded from config file", new Dictionary<string, string>()
+                    {
+                        { "gameTitle", data.gameTitle },
+                        { "gamePath", data.gamePath },
+                        { "titleID", data.titleId }
+                    });
+                }
+                else if (Logging.logType == LogType.Standard)
+                {
+                    Logging.Write(LogType.Important, Event.GameLoad, "Game loaded from config file", new Dictionary<string, string>()
+                    {
+                        { "gameTitle", data.gameTitle },
+                        { "gamePath", data.gamePath },
+                        { "titleID", data.titleId },
+                        { "artPath", data.artPath },
+                        { "iconPath", data.iconPath }
+                    });
+                }
+                else if (Logging.logType == LogType.Debug)
+                {
+                    Dictionary<string, string> config = new Dictionary<string, string>()
+                    {
+                        { "alphaAs", data.alphaAs },
+                        { "artPath", data.artPath },
+                        { "canaryCompat", data.canaryCompat.ToString() },
+                        { "cpuReadback", data.cpuReadback.ToString() },
+                        { "day", "" + data.day },
+                        { "developer", data.developer },
+                        { "fileCount", "" + data.fileCount },
+                        { "fileSize", "" + data.fileSize },
+                        { "gamePath", data.gamePath },
+                        { "gameTitle", data.gameTitle },
+                        { "hasCoverArt", data.hasCoverArt.ToString() },
+                        { "iconPath", data.iconPath },
+                        { "kinect", data.kinect.ToString() },
+                        { "lastPlayed", "" + data.lastPlayed },
+                        { "license", data.license.ToString() },
+                        { "maxPlayers", "" + data.maxPlayers },
+                        { "minPlayers", "" + data.minPlayers },
+                        { "month", "" + data.month },
+                        { "mountCache", data.mountCache.ToString() },
+                        { "preferCanary", data.preferCanary.ToString() },
+                        { "publisher", data.publisher },
+                        { "renderer", data.renderer.ToString() },
+                        { "resX", "" + data.resX },
+                        { "resY", "" + data.resY },
+                        { "timesLaunched", "" + data.timesLaunched },
+                        { "titleID", data.titleId },
+                        { "vsync", data.vsync.ToString() },
+                        { "xeniaCompat", data.xeniaCompat.ToString() },
+                        { "year", "" + data.year }
+                    };
+                    for (int i = 0; i < data.folders.Count; i++)
+                    {
+                        config.Add("folder" + i, data.folders[i]);
+                    }
+                    for (int i = 0; i < data.xexNames.Count; i++)
+                    {
+                        config.Add("xexName" + i, data.xexNames[i]);
+                    }
+                    for (int i = 0; i < data.xexPaths.Count; i++)
+                    {
+                        config.Add("xexPath" + i, data.xexPaths[i]);
+                    }
+                    Logging.Write(LogType.Important, Event.GameLoad, "Game loaded from config file", config);
+                }
             }
+            Logging.Write(LogType.Critical, Event.GameLoadComplete, "Config load complete, " + masterData.Count + " games found");
+
+            // Folders
             foreach (GameData data in masterData)
             {
                 data.folders.Add("All Games");
@@ -252,10 +361,13 @@ namespace XeniaLauncher
                     if (!folders.Contains(folder))
                     {
                         folders.Add(folder);
+                        Logging.Write(LogType.Standard, Event.FolderCreate, "New Folder created: " + folder, new Dictionary<string, string>() { { "originGameTitle", data.gameTitle } });
                     }
                 }
             }
             folders.Sort();
+            Logging.Write(LogType.Important, Event.InitEvent, "Folders loaded");
+
             gameData = gameData.OrderBy(o=>o.alphaAs).ThenBy(o=>o.gameTitle).ToList();
             arts = new Dictionary<string, Texture2D>();
             compatBars = new Dictionary<string, Texture2D>();
@@ -272,6 +384,10 @@ namespace XeniaLauncher
             //newGameProcess = false;
             forceInit = false;
             hideSecretMetadata = true;
+            showResearchPrompt = false;
+            windowClickExit = true;
+            enterCloseTextInput = true;
+            rightClickGames = true;
 
             dataSort = DataSort.NameAZ;
 
@@ -279,24 +395,11 @@ namespace XeniaLauncher
             gameManageWindow = null;
             gameCategoriesWindow = null;
 
-            // Making new config settings file if not already present
-            SoundEffect.MasterVolume = 0.7f;
-            ResetTheme(Theme.Original, false);
-            cwSettings = CWSettings.Untested;
-            xeniaFullscreen = false;
-            logLevel = LogLevel.Info;
-            consolidateFiles = true;
-            runHeadless = false;
-            if (!File.Exists("XLSettings.txt"))
-            {
-                configData = new SaveData("XLSettings.txt");
-                SaveConfig();
-                triggerMissingWindow = true;
-            }
-
             state = State.Main;
 
             base.Initialize();
+
+            Logging.Write(LogType.Critical, Event.Init, "Initialization complete");
         }
 
         /// <summary>
@@ -338,11 +441,13 @@ namespace XeniaLauncher
                 extraChunk.AddData("checkDrivesOnManage", "" + checkDrivesOnManage, SaveData.DataType.Boolean);
                 configData.AddSaveChunk(extraChunk);
                 configData.SaveToFile();
+                Logging.Write(LogType.Critical, Event.SettingsSave, "XLSettings saved");
                 return true;
             }
-            catch
+            catch (Exception e)
             {
-                message = new MessageWindow(this, "Error", "Unable to save to settings file", state);
+                Logging.Write(LogType.Critical, Event.Error, "Unable to save settings file", "exception", e.ToString());
+                message = new MessageWindow(this, "Error", "Unable to save settings file", state);
                 state = State.Message;
             }
             return false;
@@ -377,8 +482,33 @@ namespace XeniaLauncher
                 militaryTime = Convert.ToBoolean(configData.savedData.FindChunkedData("militaryTime", false).data);
                 inverseDate = Convert.ToBoolean(configData.savedData.FindChunkedData("inverseDate", false).data);
                 checkDrivesOnManage = Convert.ToBoolean(configData.savedData.FindChunkedData("checkDrivesOnManage", false).data);
+                // Logging
+                if (Logging.logType >= LogType.Standard)
+                {
+                    Logging.Write(LogType.Standard, Event.SettingsRead, "Settings loaded", new Dictionary<string, string>()
+                    {
+                        { "masterVolume", "" + SoundEffect.MasterVolume },
+                        { "theme", theme.ToString() },
+                        { "cwSettings", cwSettings.ToString() },
+                        { "resolutionWidth", "" + _graphics.PreferredBackBufferWidth },
+                        { "resolutionHeight", "" + _graphics.PreferredBackBufferHeight },
+                        { "fullscreen", "" + GetFullscreen() },
+                        { "showRings", showRings.ToString() },
+                        { "logLevel", logLevel.ToString() },
+                        { "xeniaFullscreen", xeniaFullscreen.ToString() },
+                        { "consolidateFiles", consolidateFiles.ToString() },
+                        { "runHeadless", runHeadless.ToString() },
+                        { "militaryTime", militaryTime.ToString() },
+                        { "inverseDate", inverseDate.ToString() },
+                        { "checkDrivesOnManage", checkDrivesOnManage.ToString() },
+                    });
+                }
+                else
+                {
+                    Logging.Write(LogType.Important, Event.SettingsRead, "Settings loaded");
+                }
             }
-            catch
+            catch (Exception e)
             {
                 SoundEffect.MasterVolume = 0.8f;
                 ResetTheme(Theme.Original, false);
@@ -388,6 +518,7 @@ namespace XeniaLauncher
                 consolidateFiles = true;
                 runHeadless = false;
                 checkDrivesOnManage = true;
+                Logging.Write(LogType.Critical, Event.Error, "Reverting to default settings", "exception", e.ToString());
             }
         }
         /// <summary>
@@ -395,6 +526,7 @@ namespace XeniaLauncher
         /// </summary>
         public string ConvertDataSize(string size)
         {
+            Logging.Write(LogType.Debug, Event.DataSizeConvert, "Data size conversion: " + size);
             double num = Convert.ToDouble(size);
             // Bytes
             if (num < 1000)
@@ -429,6 +561,7 @@ namespace XeniaLauncher
         /// </summary>
         public Color ColorFromString(string str)
         {
+            Logging.Write(LogType.Debug, Event.ColorFromString, "Color from string: " + str);
             Color toReturn = Color.FromNonPremultiplied(0, 0, 0, 0);
             string[] split = str.Split(" ");
             if (split.Length >= 4)
@@ -448,6 +581,7 @@ namespace XeniaLauncher
         /// <param name="forceWindowReset">If true, forces all open Window to reconstruct (This resets and applies the theme to the Window)</param>
         public void ResetTheme(Theme newTheme, bool forceWindowReset)
         {
+            Logging.Write(LogType.Debug, Event.ThemeReset, "Theme reset: " + newTheme.ToString(), new Dictionary<string, string>() { { "forceWindowReset", "" + forceWindowReset } });
             StreamReader themeReader = null;
             if (enableExp)
             {
@@ -465,6 +599,7 @@ namespace XeniaLauncher
             triviaColor = Color.White;
             topBorderColor = Color.White;
             bottomBorderColor = Color.White;
+            descColor = Color.White;
             theme = newTheme;
             switch (theme)
             {
@@ -574,6 +709,7 @@ namespace XeniaLauncher
                 bottomBorderColor = ColorFromString(themeReader.ReadLine());
                 ringMainColor = ColorFromString(themeReader.ReadLine());
                 ringSelectColor = ColorFromString(themeReader.ReadLine());
+                descColor = ColorFromString(themeReader.ReadLine());
             }
             darkGradient.ValueUpdate(0);
             blackGradient.ValueUpdate(0);
@@ -617,6 +753,7 @@ namespace XeniaLauncher
         /// </summary>
         public void ResetBorders()
         {
+            Logging.Write(LogType.Debug, Event.BorderReset, "Resetting Borders");
             topBorderLayer.sprites.Clear();
             topBorder = new ObjectSprite(topBorderTex, new Rectangle(141, -30, 1650, 91));
             topBorderLayer.Add(topBorder);
@@ -643,6 +780,7 @@ namespace XeniaLauncher
         /// </summary>
         public void ResetGameIcons()
         {
+            Logging.Write(LogType.Debug, Event.GameIconReset, "Resetting game icons");
             List<int> indexes = new List<int>();
             foreach (XGame game in gameIcons)
             {
@@ -738,6 +876,7 @@ namespace XeniaLauncher
         /// </summary>
         public void FolderReset()
         {
+            Logging.Write(LogType.Debug, Event.FolderReset, "Resetting Folders", new Dictionary<string, string>() { { "folderCount", "" + folders.Count } });
             if (folders.Count >= 2)
             {
                 gameData.Clear();
@@ -790,6 +929,7 @@ namespace XeniaLauncher
         /// <param name="skipTransition"></param>
         public void BeginMainTransition(bool skipTransition)
         {
+            Logging.Write(LogType.Debug, Event.MainTransition, "Beginning main transition");
             mainFadeGradient.ValueUpdate(1);
             mainFadeGradient.Update();
             darkGradient.ValueUpdate(1);
@@ -824,6 +964,7 @@ namespace XeniaLauncher
         /// </summary>
         public void SetDriveSpaceText()
         {
+            Logging.Write(LogType.Debug, Event.DriveSpaceTextSet, "Setting drive space text");
             float tempY = 0;
             DriveInfo[] drives = DriveInfo.GetDrives();
             double space = 0;
@@ -837,7 +978,10 @@ namespace XeniaLauncher
                     freeSpace += drive.TotalFreeSpace;
                     driveCount++;
                 }
-                catch { }
+                catch (Exception e)
+                {
+                    Logging.Write(LogType.Important, Event.Error, "Failed to set drive space text", "exception", e.ToString());
+                }
             }
             freeSpaceText.text = "" + ConvertDataSize("" + freeSpace) + "/" + ConvertDataSize("" + space);
             drivesText.text = "" + driveCount + " Drives Connected";
@@ -854,6 +998,7 @@ namespace XeniaLauncher
         /// </summary>
         public void SetCompatTextures()
         {
+            Logging.Write(LogType.Debug, Event.CompatTextureSet, "Setting compatibility settings");
             if (gameData[index].xeniaCompat == GameData.XeniaCompat.Unknown || gameData[index].xeniaCompat == GameData.XeniaCompat.Broken)
             {
                 xeniaCompat.textures[0] = compatBars["nothing"];
@@ -958,6 +1103,11 @@ namespace XeniaLauncher
         }
         public string GetFilepathString(string path, bool removeBackslash)
         {
+            Logging.Write(LogType.Debug, Event.FilepathStringCleanse, "Cleaning filepath string", new Dictionary<string, string>()
+            {
+                { "path", path },
+                { "removeBackslash", removeBackslash.ToString() }
+            });
             char[] invalidNameChars = Path.GetInvalidFileNameChars();
             char[] invalidPathChars = Path.GetInvalidPathChars();
             if (removeBackslash)
@@ -1010,6 +1160,7 @@ namespace XeniaLauncher
             param = param + " --log_level=" + (int)logLevel;
             param = param + " --fullscreen=" + xeniaFullscreen.ToString().ToLower();
             param = param + " --headless=" + runHeadless.ToString().ToLower();
+            Logging.Write(LogType.Critical, Event.XeniaParam, "Xenia param string: " + param);
             return param;
         }
         /// <summary>
@@ -1039,14 +1190,22 @@ namespace XeniaLauncher
                     if (!gameData[index].preferCanary)
                     {
                         File.Copy(xeniaPath, "XData\\Xenia\\" + newTitle + "\\xenia.exe");
+                        Logging.Write(LogType.Important, Event.Launch, "Copied Xenia executable", "dir", startInfo.WorkingDirectory);
                     }
                 }
-                catch { }
+                catch
+                {
+                    Logging.Write(LogType.Critical, Event.Error, "Falied to copy Xenia executable", "dir", startInfo.WorkingDirectory);
+                }
                 try
                 {
                     File.Create("XData\\Xenia\\" + newTitle + "\\portable.txt");
+                    Logging.Write(LogType.Standard, Event.Launch, "Created portable.txt", "path", startInfo.WorkingDirectory + "\\portable.txt");
                 }
-                catch { }
+                catch
+                {
+                    Logging.Write(LogType.Critical, Event.Error, "Failed to create portable.txt", "path", startInfo.WorkingDirectory + "\\portable.txt");
+                }
                 startInfo.FileName = "XData\\Xenia\\" + newTitle + "\\xenia.exe";
             }
             else
@@ -1058,9 +1217,16 @@ namespace XeniaLauncher
                 Process.Start(startInfo);
                 OpenCompatWindow(false, compatWindowDelay);
                 MarkGameAsPlayed();
+                Logging.Write(LogType.Critical, Event.Launch, "Launched Xenia", new Dictionary<string, string>()
+                {
+                    { "gameTitle", title },
+                    { "newTitle", newTitle },
+                    { "titleID", gameData[index].titleId }
+                });
             }
-            catch
+            catch (Exception e)
             {
+                Logging.Write(LogType.Critical, Event.Error, "Failed to launch Xenia", "dir", startInfo.WorkingDirectory);
                 message = new MessageWindow(this, "Launch Error", "Unable to launch Xenia", state);
                 state = State.Message;
             }
@@ -1087,14 +1253,22 @@ namespace XeniaLauncher
                     if (!gameData[index].preferCanary)
                     {
                         File.Copy(canaryPath, "XData\\Canary\\" + newTitle + "\\xenia_canary.exe");
+                        Logging.Write(LogType.Important, Event.Launch, "Copied Canary executable", "dir", startInfo.WorkingDirectory);
                     }
                 }
-                catch { }
+                catch
+                {
+                    Logging.Write(LogType.Critical, Event.Error, "Falied to copy Canary executable", "dir", startInfo.WorkingDirectory);
+                }
                 try
                 {
                     File.Create("XData\\Canary\\" + newTitle + "\\portable.txt");
+                    Logging.Write(LogType.Standard, Event.Launch, "Created portable.txt", "path", startInfo.WorkingDirectory + "\\portable.txt");
                 }
-                catch { }
+                catch
+                {
+                    Logging.Write(LogType.Critical, Event.Error, "Failed to create portable.txt", "path", startInfo.WorkingDirectory + "\\portable.txt");
+                }
                 startInfo.FileName = "XData\\Canary\\" + newTitle + "\\xenia_canary.exe";
             }
             else
@@ -1106,9 +1280,16 @@ namespace XeniaLauncher
                 Process.Start(startInfo);
                 OpenCompatWindow(true, compatWindowDelay);
                 MarkGameAsPlayed();
+                Logging.Write(LogType.Critical, Event.Launch, "Launched Canary", new Dictionary<string, string>()
+                {
+                    { "gameTitle", title },
+                    { "newTitle", newTitle },
+                    { "titleID", gameData[index].titleId }
+                });
             }
-            catch
+            catch (Exception e)
             {
+                Logging.Write(LogType.Critical, Event.Error, "Failed to launch Canary", "dir", startInfo.WorkingDirectory);
                 message = new MessageWindow(this, "Launch Error", "Unable to launch Canary", state);
                 state = State.Message;
             }
@@ -1237,6 +1418,7 @@ namespace XeniaLauncher
             }
             else
             {
+                Logging.Write(LogType.Critical, Event.HowInTheEverlastingHeckDidYouEvenGetThisErrorMessage, "Just... how?");
                 message = new MessageWindow(this, "Something went wrong", "Well, it looks like Littleozzz10 ****ed up. It's a really dumb thing, too, so please report with much laughter :(", state);
                 state = State.Message;
             }
@@ -1257,14 +1439,14 @@ namespace XeniaLauncher
             {
                 compatWindow = new Window(this, new Rectangle(360, 40, 1200, 1000), "Update Xenia Compatibility", new CompatWindowEffects(), new CompatInput(), new GenericStart(), state, false);
                 compatWindow.changeEffects = new CompatIndexChange(this, compatWindow);
-                compatWindow.AddButton(new Rectangle(410, 530, 545, 100));
-                compatWindow.AddButton(new Rectangle(965, 530, 545, 100));
-                compatWindow.AddButton(new Rectangle(410, 640, 545, 100));
-                compatWindow.AddButton(new Rectangle(965, 640, 545, 100));
-                compatWindow.AddButton(new Rectangle(410, 750, 545, 100));
-                compatWindow.AddButton(new Rectangle(965, 750, 545, 100));
-                compatWindow.AddButton(new Rectangle(410, 860, 545, 100));
-                compatWindow.AddButton(new Rectangle(965, 860, 545, 100));
+                compatWindow.AddButton(new Rectangle(410, 530, 545, 100), "The game does not launch at all,\nor Xenia hangs on a black screen.", DBSpawnPos.AboveRight, 0.4f);
+                compatWindow.AddButton(new Rectangle(965, 530, 545, 100), "The game launches and reaches opening logos,\nbut does not go beyond\na title screen.", DBSpawnPos.AboveLeft, 0.4f);
+                compatWindow.AddButton(new Rectangle(410, 640, 545, 100), "The game reaches menus and it is possible\nto navigate through them.", DBSpawnPos.AboveRight, 0.4f);
+                compatWindow.AddButton(new Rectangle(965, 640, 545, 100), "The game gets to some form of gameplay,\nbut isn't very playable. May also\nfrequently crash.", DBSpawnPos.AboveLeft, 0.4f);
+                compatWindow.AddButton(new Rectangle(410, 750, 545, 100), "The game may suffer from frequent framerate hitches,\nbad audio, missing textures, but can be played.", DBSpawnPos.AboveRight, 0.4f);
+                compatWindow.AddButton(new Rectangle(965, 750, 545, 100), "The game is quite playable, with few issues. Crashes\nmay happen but are very rare. The game should be\nmostly completable.", DBSpawnPos.AboveLeft, 0.4f);
+                compatWindow.AddButton(new Rectangle(410, 860, 545, 100), "The game has no issues at all, and can be completed.\nGameplay experience should match that of an Xbox 360,\nif not be superior.", DBSpawnPos.AboveRight, 0.4f);
+                compatWindow.AddButton(new Rectangle(965, 860, 545, 100), "Unknown compatibililty, game remains untested on this system.", DBSpawnPos.AboveLeft, 0.4f);
                 compatWindow.AddText("Doesn't Launch");
                 compatWindow.AddText("Starts, No Menu");
                 compatWindow.AddText("Gets to Menu");
@@ -1339,12 +1521,15 @@ namespace XeniaLauncher
                 foreach (GameData game in masterData)
                 {
                     chunk.AddChunk(game.Save());
+                    Logging.Write(LogType.Debug, Event.GameSave, "Game saved", "title", game.gameTitle);
                 }
                 save.AddSaveChunk(chunk);
                 save.SaveToFile();
+                Logging.Write(LogType.Important, Event.GameSaveComplete, "Config file saved");
             }
             catch (Exception e)
             {
+                Logging.Write(LogType.Critical, Event.Error, "Unable to save config file", "exception", e.ToString());
                 message = new MessageWindow(this, "Unable to Save", e.ToString().Split("\n")[0], State.Menu);
                 state = State.Message;
             }
@@ -1352,6 +1537,10 @@ namespace XeniaLauncher
 
         public void LoadArts()
         {
+            int missingArts = 0;
+            int missingIcons = 0;
+            int failedArts = 0;
+            int failedIcons = 0;
             arts = new Dictionary<string, Texture2D>();
             icons = new Dictionary<string, Texture2D>();
             foreach (GameData data in gameData)
@@ -1362,6 +1551,11 @@ namespace XeniaLauncher
                     if (Directory.Exists(data.gamePath + "\\..\\..\\_covers") && File.Exists(data.gamePath + "\\..\\..\\_covers\\cover0.jpg"))
                     {
                         data.artPath = data.gamePath + "\\..\\..\\_covers\\cover0.jpg";
+                        Logging.Write(LogType.Important, Event.NewCoverDetect, "cover0 found", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", data.gameTitle },
+                            { "artPath", data.artPath }
+                        });
                     }
                 }
 
@@ -1370,30 +1564,64 @@ namespace XeniaLauncher
                     try
                     {
                         arts.Add(data.gameTitle, Texture2D.FromFile(GraphicsDevice, data.artPath));
+                        Logging.Write(LogType.Important, Event.CoverLoaded, "Cover art loaded", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", data.gameTitle },
+                            { "artPath", data.artPath }
+                        });
                     }
                     catch
                     {
                         arts.Add(data.gameTitle, white);
+                        Logging.Write(LogType.Critical, Event.Error, "Artwork failed to load", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", data.gameTitle },
+                            { "artPath", data.artPath }
+                        });
+                        failedArts++;
                     }
                 }
                 else
                 {
                     arts.Add(data.gameTitle, white);
+                    Logging.Write(LogType.Important, Event.Error, "Art path does not exist", new Dictionary<string, string>()
+                    {
+                        { "gameTitle", data.gameTitle },
+                        { "artPath", data.artPath }
+                    });
+                    missingArts++;
                 }
                 if (File.Exists(data.iconPath))
                 {
                     try
                     {
                         icons.Add(data.gameTitle, Texture2D.FromFile(GraphicsDevice, data.iconPath));
+                        Logging.Write(LogType.Important, Event.IconLoaded, "Icon loaded", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", data.gameTitle },
+                            { "iconPath", data.iconPath }
+                        });
                     }
                     catch
                     {
                         icons.Add(data.gameTitle, white);
+                        Logging.Write(LogType.Critical, Event.Error, "Icon failed to load", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", data.gameTitle },
+                            { "iconPath", data.iconPath }
+                        });
+                        failedIcons++;
                     }
                 }
                 else
                 {
                     icons.Add(data.gameTitle, white);
+                    Logging.Write(LogType.Important, Event.Error, "Icon path does not exist", new Dictionary<string, string>()
+                    {
+                        { "gameTitle", data.gameTitle },
+                        { "iconPath", data.iconPath }
+                    });
+                    missingIcons++;
                 }
             }
             icons.Add("Continuum Launcher", mainLogo);
@@ -1402,12 +1630,24 @@ namespace XeniaLauncher
             icons.Add("Artwork and Icons", mainLogo);
             icons.Add("All Games and Data", mainLogo);
             icons.Add("All Launcher Data", mainLogo);
+            Logging.Write(LogType.Critical, Event.ArtLoadComplete, "Artwork loading complete", new Dictionary<string, string>()
+            {
+                { "missingArts", "" + missingArts },
+                { "missingIcons", "" + missingIcons },
+                { "failedArts", "" + failedArts },
+                { "failedIcons", "" + failedIcons }
+            });
         }
 
         public void RenameGame()
         {
             if (gameData[index].gameTitle != tempGameTitle)
             {
+                Logging.Write(LogType.Standard, Event.GameRename, "Renaming game", new Dictionary<string, string>()
+                {
+                    { "oldName", gameData[index].gameTitle },
+                    { "newName", tempGameTitle }
+                });
                 bool continueRename = true;
                 try
                 {
@@ -1420,12 +1660,14 @@ namespace XeniaLauncher
                     {
                         Directory.Move("XData\\Canary\\" + gameData[index].gameTitle, "XData\\Canary\\" + tempGameTitle);
                     }
+                    Logging.Write(LogType.Standard, Event.XeniaContentFolderRename, "Content folders renamed");
                 }
-                catch
+                catch (Exception e)
                 {
                     continueRename = false;
                     message = new MessageWindow(this, "Error", "File IO Error: Unable to rename content folders", State.GameInfo);
                     state = State.Message;
+                    Logging.Write(LogType.Critical, Event.Error, "Failed to rename Xenia content folders, aborting game rename", "exception", e.ToString());
                 }
                 // Continuing if folder renaming was successful
                 if (continueRename)
@@ -1452,9 +1694,15 @@ namespace XeniaLauncher
                     if (gameData[index].gameTitle == gameData[index].alphaAs)
                     {
                         gameData[index].alphaAs = tempGameTitle;
+                        Logging.Write(LogType.Debug, Event.AlphaAsFix, "Updated game's alphabetization");
                     }
                     gameData[index].gameTitle = tempGameTitle;
                     SaveGames();
+                    Logging.Write(LogType.Important, Event.GameRename, "Game rename successful", new Dictionary<string, string>()
+                    {
+                        { "oldName", gameData[index].gameTitle },
+                        { "newName", tempGameTitle }
+                    });
                 }
             }
         }
@@ -1473,6 +1721,11 @@ namespace XeniaLauncher
             _graphics.PreferredBackBufferHeight = (int)resolution.Y;
             _graphics.ApplyChanges();
             Ozzz.scale = resolution / new Vector2(1920, 1080);
+            Logging.Write(LogType.Important, Event.ResolutionSet, "Set resolution", new Dictionary<string, string>()
+            {
+                { "resolution", "(" + resolution.X + ", " + resolution.Y + ")" },
+                { "scale", "(" + Ozzz.scale.X + ", " + Ozzz.scale.Y + ")" }
+            });
         }
         public Vector2 GetResolution()
         {
@@ -1492,6 +1745,12 @@ namespace XeniaLauncher
             }
             _graphics.ApplyChanges();
             Ozzz.scale = new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight) / new Vector2(1920, 1080);
+            Logging.Write(LogType.Important, Event.ResolutionSet, "Fullscreen toggle", new Dictionary<string, string>()
+            {
+                { "isFullScreen", _graphics.IsFullScreen.ToString() },
+                { "resolution", "(" + _graphics.PreferredBackBufferWidth + ", " + _graphics.PreferredBackBufferHeight + ")" },
+                { "scale", "(" + Ozzz.scale.X + ", " + Ozzz.scale.Y + ")" }
+            });
             return _graphics.IsFullScreen;
         }
         public bool GetFullscreen()
@@ -1501,6 +1760,7 @@ namespace XeniaLauncher
         public bool ToggleVSync()
         {
             _graphics.SynchronizeWithVerticalRetrace = !_graphics.SynchronizeWithVerticalRetrace;
+            Logging.Write(LogType.Important, Event.VSyncToggle, "VSync toggle");
             return _graphics.SynchronizeWithVerticalRetrace;
         }
         public bool GetVSync()
@@ -1516,6 +1776,7 @@ namespace XeniaLauncher
             // Only enabled if experimental settings are active
             if (enableExp)
             {
+                Logging.Write(LogType.Standard, Event.CoverAdjust, "Adjusting cover");
                 GameData data = gameData[index];
                 if (File.Exists(data.artPath))
                 {
@@ -1580,17 +1841,20 @@ namespace XeniaLauncher
                         {
                             info.Release_Date = info.Release_Date + "-01-01";
                             info.Incorrect_Date = true;
+                            Logging.Write(LogType.Debug, Event.MobyDataReleaseFix, "Data only had a release year", "game", info.Title);
                         }
                         else if (info.Release_Date.Length == 7)
                         {
                             info.Release_Date = info.Release_Date + "-01";
                             info.Incorrect_Date = true;
+                            Logging.Write(LogType.Debug, Event.MobyDataReleaseFix, "Data only had a release year/month", "game", info.Title);
                         }
                         // Fixing incorrect dates
                         if (info.Release_Date.Substring(0, 4) != i.ToString())
                         {
                             info.Release_Date = "" + i + "-01-01";
                             info.Incorrect_Date = true;
+                            Logging.Write(LogType.Debug, Event.MobyDataReleaseFix, "Data has original release year, not 360 year", "game", info.Title);
                         }
                     }
                     // Adding data to global MobyData
@@ -1602,10 +1866,12 @@ namespace XeniaLauncher
                     {
                         mobyData.Data = (GameInfo[])mobyData.Data.Concat(yearData.Data).ToArray();
                     }
+                    // Logging
+                    Logging.Write(LogType.Standard, Event.MobyDataLoad, "games" + i + ".json loaded");
                 }
                 catch (FileNotFoundException e)
                 {
-
+                    Logging.Write(LogType.Critical, Event.Error, "Failed to load games" + i + ".json", "exception", e.ToString());
                 }
             }
             // Adjusting release dates
@@ -1617,7 +1883,9 @@ namespace XeniaLauncher
                 {
                     info.Release_Date = "2005-11-22";
                 }
+                Logging.Write(LogType.Debug, Event.MobyDataReleaseFix, "Data has release date before 360 launched", "game", info.Title);
             }
+            Logging.Write(LogType.Important, Event.MobyDataLoadComplete, "Database load complete");
         }
 
         /// <summary>
@@ -1628,6 +1896,11 @@ namespace XeniaLauncher
         /// <returns>The key for Dictionary stfsFiles that should be the main executable</returns>
         public string FindSTFSGames(string dirName, string contentType, Dictionary<string, string> stfsFiles)
         {
+            Logging.Write(LogType.Standard, Event.FindingSTFS, "Finding STFS game files", new Dictionary<string, string>()
+            {
+                { "dirName", dirName },
+                { "contentType", contentType }
+            });
             string main = "";
             if (Directory.Exists(dirName + "\\" + contentType))
             {
@@ -1644,9 +1917,11 @@ namespace XeniaLauncher
                         {
                             string title = TextSprite.GetASCII(metadata.GetDisplayName()[0], font);
                             stfsFiles.Add(title, filepaths[i]);
+                            Logging.Write(LogType.Debug, Event.AddingSTFS, "Found STFS file match", "stfsTitle", metadata.GetDisplayName()[0]);
                             if (main == "" && ((metadata.GetDiscNumber() > 1 && metadata.GetDiscInSet() == 1) || metadata.GetDiscNumber() <= 1 || filepaths.Count() == 1))
                             {
                                 main = title;
+                                Logging.Write(LogType.Debug, Event.AddingMainSTFS, "STFS file match will be main file");
                             }
                         }
                         stfs.CloseStream();
@@ -1657,6 +1932,11 @@ namespace XeniaLauncher
                         {
                             stfs.CloseStream();
                         }
+                        Logging.Write(LogType.Critical, Event.Error, "Exception while reading from STFS file", new Dictionary<string, string>()
+                        {
+                            { "filepath", filepaths[i] },
+                            { "exception", e.ToString() }
+                        });
                     };
                 }
             }
@@ -1672,18 +1952,22 @@ namespace XeniaLauncher
             if (!Directory.Exists("Apps"))
             {
                 Directory.CreateDirectory("Apps");
+                Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Created Apps directory");
             }
             if (!Directory.Exists("Apps\\Xenia"))
             {
                 Directory.CreateDirectory("Apps\\Xenia");
+                Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Created Apps\\Xenia directory");
             }
             if (!Directory.Exists("Apps\\Canary"))
             {
                 Directory.CreateDirectory("Apps\\Canary");
+                Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Created Apps\\Canary directory");
             }
             if (!Directory.Exists("Apps\\Dump"))
             {
                 Directory.CreateDirectory("Apps\\Dump");
+                Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Created Apps\\Dump directory");
             }
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -1732,6 +2016,7 @@ namespace XeniaLauncher
             {
                 themeThumbnails.Add("custom", white);
             }
+            Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Internal assets loaded");
 
             LoadArts();
 
@@ -1742,8 +2027,10 @@ namespace XeniaLauncher
                 while (!triviaFile.EndOfStream)
                 {
                     trivia.Add(triviaFile.ReadLine());
+                    Logging.Write(LogType.Debug, Event.TriviaLoad, "Loaded new trivia", "triviaString", trivia.Last());
                 }
             }
+            Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Trivia loaded");
 
             gameIcons = new List<XGame>();
             gameIcons.Add(new XGame(white, new Rectangle(50, 336, 300, 406)));
@@ -1763,6 +2050,7 @@ namespace XeniaLauncher
             {
                 game.AdjustIndex(gameData.Count);
             }
+            Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Game icons initialized");
 
             xeniaCompatLogo = new ObjectSprite(logo, new Rectangle(220, 400, 125, 125));
             canaryCompatLogo = new ObjectSprite(logoCanary, new Rectangle(530, 400, 125, 125));
@@ -1770,6 +2058,7 @@ namespace XeniaLauncher
             canaryCompat = new ObjectSprite(compatBars["nothing"], new Rectangle(514, 535, 156, 19));
             xeniaUntestedText = new TextSprite(font, "Untested", 0.4f, new Vector2(222, 525), Color.FromNonPremultiplied(0, 0, 0, 0));
             canaryUntestedText = new TextSprite(font, "Untested", 0.4f, new Vector2(532, 525), Color.FromNonPremultiplied(0, 0, 0, 0));
+            Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Compat window elements initialized");
 
             titleSprite = new TextSprite(bold, "");
             subTitleSprite = new TextSprite(font, "", 0.6f);
@@ -1830,9 +2119,13 @@ namespace XeniaLauncher
             mainFadeLayer.Add(titleSprite);
             mainFadeLayer.Add(subTitleSprite);
 
+            Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Dashboard elements initialized");
+
             LoadMobyData();
 
-            ReadConfig();
+            //ReadConfig();
+
+            Logging.Write(LogType.Critical, Event.ContentLoad, "Content Load complete");
         }
 
         /// <summary>
@@ -1848,6 +2141,15 @@ namespace XeniaLauncher
                 LoadArts();
             }
 
+            // User Research prompt
+            if (showResearchPrompt)
+            {
+                message = new MessageWindow(this, "User Research Note", "This is a User Research build of Continuum Launcher. As such, features may be in an early state and may not represent the final version.", State.Main);
+                state = State.Message;
+                showResearchPrompt = false;
+                Logging.Write(LogType.Standard, Event.ResearchPrompt, "User Research prompt shown");
+            }
+
             GamepadInput.Update();
             MouseInput.Update();
             KeyboardInput.Update();
@@ -1857,12 +2159,12 @@ namespace XeniaLauncher
                 {
                     state = State.Menu;
                     menuWindow = new Window(this, new Rectangle(560, 115, 800, 860), "Menu", new Menu(), new StdInputEvent(6), new GenericStart(), State.Main);
-                    menuWindow.AddButton(new Rectangle(610, 265, 700, 100));
-                    menuWindow.AddButton(new Rectangle(610, 375, 700, 100));
-                    menuWindow.AddButton(new Rectangle(610, 485, 700, 100));
-                    menuWindow.AddButton(new Rectangle(610, 595, 700, 100));
-                    menuWindow.AddButton(new Rectangle(610, 705, 700, 100));
-                    menuWindow.AddButton(new Rectangle(610, 815, 700, 100));
+                    menuWindow.AddButton(new Rectangle(610, 265, 700, 100), "Go back to the game selection menu.", DBSpawnPos.CenterLeftBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 375, 700, 100), "Add a game to Continuum.", DBSpawnPos.CenterRightBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 485, 700, 100), "Change preferences, Continuum settings,\nglobal Xenia settings, and more.", DBSpawnPos.CenterLeftBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 595, 700, 100), "Manage imported game data,\ninstall add-on content,\ndelete temporary data, and more.", DBSpawnPos.CenterRightTop, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 705, 700, 100), "View Continuum's Credits.", DBSpawnPos.CenterLeftTop, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 815, 700, 100), "Close Continuum.", DBSpawnPos.CenterRightTop, 0.4f);
                     menuWindow.AddText("Return to Dashboard");
                     menuWindow.AddText("Add a Game");
                     menuWindow.AddText("Launcher Options");
@@ -1915,6 +2217,7 @@ namespace XeniaLauncher
                             }
                             indexChange = false;
                             switchSound.Play();
+                            Logging.Write(LogType.Standard, Event.XGameChange, "Index change +1", "newIndex", "" + index);
                         }
                     }
                 }
@@ -1937,12 +2240,14 @@ namespace XeniaLauncher
                             }
                             indexChange = false;
                             switchSound.Play();
+                            Logging.Write(LogType.Standard, Event.XGameChange, "Index change -1", "newIndex", "" + index);
                         }
                     }
                 }
             }
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || KeyboardInput.keys["Space"].IsFirstDown() || (gameIcons[2].CheckMouse(true) && MouseInput.IsLeftFirstDown())) && state == State.Main && IsActive)
             {
+                Logging.Write(LogType.Standard, Event.GameSelected, "Game selected", "index", "" + index);
                 state = State.Select;
                 mainFadeGradient.ValueUpdate(0);
                 mainFadeGradient.Update();
@@ -1989,6 +2294,7 @@ namespace XeniaLauncher
 
                 if (gameData[index].kinect == GameData.KinectCompat.Required)
                 {
+                    Logging.Write(LogType.Standard, Event.KinectWarning, "Kinect game selected");
                     message = new MessageWindow(this, "Note", "Xenia currently does not support the Kinect peripheral. This game may not work as intended.", State.Select);
                     state = State.Message;
                 }
@@ -2040,6 +2346,7 @@ namespace XeniaLauncher
                 firstReset = true;
                 ResetGameIcons();
                 sortSound.Play();
+                Logging.Write(LogType.Standard, Event.DashSort, "Games have been sorted", "newSort", sort.ToString());
             }
             // Switching folders
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.RightShoulder, true) || KeyboardInput.keys["RCtrl"].IsFirstDown() || (folderSprite.CheckMouse(true) && MouseInput.IsLeftFirstDown())) && state == State.Main && IsActive)
@@ -2068,6 +2375,7 @@ namespace XeniaLauncher
                 rightFolderSound.Play();
                 folderPath = new AnimationPath(folderSprite, new Vector2(200 - folderSprite.font.MeasureString(folderSprite.text).X, 60), 1f, 15);
                 secondFolderPath = new AnimationPath(folderSprite, new Vector2(10000, 10000), 1f, 15);
+                Logging.Write(LogType.Standard, Event.DashFolderSwitch, "Folder index change +1", "newFolderIndex", "" + folderIndex);
             }
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.LeftShoulder, true) || KeyboardInput.keys["LCtrl"].IsFirstDown()) && state == State.Main && IsActive)
             {
@@ -2095,6 +2403,7 @@ namespace XeniaLauncher
                 leftFolderSound.Play();
                 folderPath = new AnimationPath(folderSprite, new Vector2(1860, 60), 1f, 15);
                 secondFolderPath = new AnimationPath(folderSprite, new Vector2(-1, -1), 1f, 15);
+                Logging.Write(LogType.Standard, Event.DashFolderSwitch, "Folder index change -1", "newFolderIndex", "" + folderIndex);
             }
             // Switching covers
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.X, true) || KeyboardInput.keys["C"].IsFirstDown()) && state == State.Main && IsActive)
@@ -2129,7 +2438,7 @@ namespace XeniaLauncher
             // File deletion check
             if (messageYes && toDelete != null)
             {
-                string fileTitle = GetFilepathString(masterData[selectedDataIndex].gameTitle);
+                string fileTitle = GetFilepathString(localData[selectedDataIndex].gameTitle);
                 try
                 {
                     if (toDelete.name.Contains("Xenia {Temporary Copy}"))
@@ -2146,6 +2455,7 @@ namespace XeniaLauncher
                         {
                             File.Delete("XData\\Xenia\\" + fileTitle + "\\xenia.config.toml");
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted Xenia temp copy", "fileTitle", fileTitle);
                     }
                     else if (toDelete.name.Contains("Xenia Canary {Temporary Copy}"))
                     {
@@ -2161,6 +2471,7 @@ namespace XeniaLauncher
                         {
                             File.Delete("XData\\Canary\\" + fileTitle + "\\xenia-canary.config.toml");
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted Canary temp copy", "fileTitle", fileTitle);
                     }
                     else if (toDelete.name.Contains("Save Data (Xenia)"))
                     {
@@ -2172,10 +2483,11 @@ namespace XeniaLauncher
                             }
                             Directory.Delete("XData\\Xenia\\" + fileTitle + "\\content", true);
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted Xenia save data", "fileTitle", fileTitle);
                     }
                     else if (toDelete.name.Contains("Save Data (Canary)"))
                     {
-                        string dir = "XData\\Canary\\" + fileTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\profile";
+                        string dir = "XData\\Canary\\" + fileTitle + "\\content\\" + localData[selectedDataIndex].titleId + "\\profile";
                         if (Directory.Exists(dir))
                         {
                             foreach (string filepath in Directory.GetFiles(dir, "", SearchOption.AllDirectories))
@@ -2184,10 +2496,11 @@ namespace XeniaLauncher
                             }
                             Directory.Delete(dir, true);
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted Canary save data", "fileTitle", fileTitle);
                     }
                     else if (toDelete.name.Contains("Installed DLC"))
                     {
-                        string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\00000002";
+                        string dir = "XData\\Canary\\" + localData[selectedDataIndex].gameTitle + "\\content\\" + localData[selectedDataIndex].titleId + "\\00000002";
                         dir = GetFilepathString(dir, true);
                         if (Directory.Exists(dir))
                         {
@@ -2197,10 +2510,11 @@ namespace XeniaLauncher
                             }
                             Directory.Delete(dir, true);
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted installed DLC", "dir", dir);
                     }
                     else if (toDelete.name.Contains("Installed Title Update"))
                     {
-                        string dir = "XData\\Canary\\" + masterData[selectedDataIndex].gameTitle + "\\content\\" + masterData[selectedDataIndex].titleId + "\\000B0000";
+                        string dir = "XData\\Canary\\" + localData[selectedDataIndex].gameTitle + "\\content\\" + localData[selectedDataIndex].titleId + "\\000B0000";
                         dir = GetFilepathString(dir, true);
                         if (Directory.Exists(dir))
                         {
@@ -2210,10 +2524,11 @@ namespace XeniaLauncher
                             }
                             Directory.Delete(dir, true);
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted installed Title Update", "dir", dir);
                     }
                     else if (toDelete.name.Contains("Extract"))
                     {
-                        string[] split = masterData[selectedDataIndex].gamePath.Split("\\");
+                        string[] split = localData[selectedDataIndex].gamePath.Split("\\");
                         string currentDir = "";
                         for (int i = 0; i < split.Length - 2; i++)
                         {
@@ -2234,6 +2549,7 @@ namespace XeniaLauncher
                             }
                             Directory.Delete(dir, true);
                         }
+                        Logging.Write(LogType.Important, Event.FileDelete, "Deleted Extract", "dir", dir);
                     }
                     refreshData = true;
                     message = new MessageWindow(this, "File Deleted", "The file was successfully deleted", State.Data);
@@ -2243,6 +2559,7 @@ namespace XeniaLauncher
                 {
                     message = new MessageWindow(this, "Error", "Unable to delete file. It may currently be in use", State.Data);
                     state = State.Message;
+                    Logging.Write(LogType.Critical, Event.Error, "Error when deleting file", "fileTitle", fileTitle);
                 }
                 messageYes = false;
                 toDelete = null;
@@ -2305,9 +2622,11 @@ namespace XeniaLauncher
                     ProcessStartInfo startInfo = new ProcessStartInfo(extractPath, args);
                     startInfo.WorkingDirectory = Directory.GetCurrentDirectory();
                     Process.Start(startInfo);
+                    Logging.Write(LogType.Critical, Event.CanaryImport, "Launched dump tool", "args", args);
                 }
                 else
                 {
+                    Logging.Write(LogType.Critical, Event.Error, "Error when importing content", "filepath", toImport.filepath);
                     message = new MessageWindow(this, "Error", "Import filepath does not exist", State.Manage);
                     state = State.Message;
                 }
@@ -2394,9 +2713,11 @@ namespace XeniaLauncher
                     ProcessStartInfo startInfo = new ProcessStartInfo(extractPath, args);
                     startInfo.WorkingDirectory = Directory.GetCurrentDirectory();
                     Process.Start(startInfo);
+                    Logging.Write(LogType.Critical, Event.Extract, "Launched dump tool", "args", args);
                 }
                 else
                 {
+                    Logging.Write(LogType.Critical, Event.Error, "Error when extracting content", "filepath", toExtract.filepath);
                     message = new MessageWindow(this, "Error", "Extract filepath does not exist", State.Manage);
                     state = State.Message;
                 }
@@ -2506,6 +2827,7 @@ namespace XeniaLauncher
                         }
                         catch
                         {
+                            Logging.Write(LogType.Critical, Event.Error, "Invalid image path", "filepath", textWindowInput);
                             message = new MessageWindow(this, "Error", "Invalid image path", State.GameFilepaths);
                             state = State.Message;
                         }
@@ -2521,7 +2843,8 @@ namespace XeniaLauncher
                         }
                         catch
                         {
-                            message = new MessageWindow(this, "Error", "Invalid image path", State.GameFilepaths);
+                            Logging.Write(LogType.Critical, Event.Error, "Invalid icon path", "filepath", textWindowInput);
+                            message = new MessageWindow(this, "Error", "Invalid icon path", State.GameFilepaths);
                             state = State.Message;
                         }
                         SaveGames();
@@ -2542,9 +2865,11 @@ namespace XeniaLauncher
                             folders.Add(textWindowInput);
                             gameData[index].folders.Add(textWindowInput);
                             SaveGames();
+                            Logging.Write(LogType.Important, Event.FolderAdd, "Added a new folder", "name", textWindowInput);
                         }
                         else
                         {
+                            Logging.Write(LogType.Critical, Event.Error, "Duplicate folder name", "name", textWindowInput);
                             message = new MessageWindow(this, "Error", "Cannot have duplicate Category names", State.GameCategories);
                             state = State.Message;
                         }
@@ -2568,9 +2893,15 @@ namespace XeniaLauncher
                             SaveGames();
                             FolderReset();
                             Initialize();
+                            Logging.Write(LogType.Important, Event.FolderRename, "Renamed folder", new Dictionary<string, string>()
+                            {
+                                { "oldName", oldName },
+                                { "newName", textWindowInput }
+                            });
                         }
                         else
                         {
+                            Logging.Write(LogType.Critical, Event.Error, "Duplicate folder name", "name", textWindowInput);
                             message = new MessageWindow(this, "Error", "Cannot have duplicate Category names", State.GameCategories);
                             state = State.Message;
                         }
@@ -2582,6 +2913,7 @@ namespace XeniaLauncher
                     // Deleting Category
                     if (gameCategoriesWindow.buttonIndex == 5)
                     {
+                        string folderName = folders[tempCategoryIndex];
                         foreach (GameData game in masterData)
                         {
                             game.folders.Remove(folders[tempCategoryIndex]);
@@ -2590,6 +2922,7 @@ namespace XeniaLauncher
                         SaveGames();
                         FolderReset();
                         Initialize();
+                        Logging.Write(LogType.Important, Event.FolderDelete, "Deleted folder", "name", folderName);
                     }
                     messageYes = false;
                 }
@@ -2611,6 +2944,11 @@ namespace XeniaLauncher
                         {
                             gameData[index].xexNames.Add(newXEX);
                             gameData[index].xexPaths.Add(textWindowInput);
+                            Logging.Write(LogType.Important, Event.AddXEX, "Added new XEX", new Dictionary<string, string>()
+                            {
+                                { "xexName", newXEX },
+                                { "xexPath", textWindowInput }
+                            });
                             newXEX = null;
                             SaveGames();
                         }
@@ -2621,12 +2959,14 @@ namespace XeniaLauncher
                         gameData[index].xexNames[tempCategoryIndex] = textWindowInput;
                         gameXEXWindow.extraSprites[0].ToTextSprite().text = textWindowInput;
                         SaveGames();
+                        Logging.Write(LogType.Important, Event.RenameXEX, "Renamed XEX", "name", textWindowInput);
                         textWindowInput = null;
                     }
                     else if (gameXEXWindow.buttonIndex == 4)
                     {
                         gameData[index].xexPaths[tempCategoryIndex] = textWindowInput;
                         SaveGames();
+                        Logging.Write(LogType.Important, Event.RepathXEX, "Changed XEX path", "path", textWindowInput);
                         textWindowInput = null;
                     }
                 }
@@ -2636,6 +2976,7 @@ namespace XeniaLauncher
                     {
                         if (tempCategoryIndex == -1)
                         {
+                            Logging.Write(LogType.Critical, Event.DeleteGame, "Deleting game", "gameTitle", gameData[index].gameTitle);
                             int masterIndex = -1;
                             int count = 0;
                             foreach (GameData game in masterData)
@@ -2660,6 +3001,7 @@ namespace XeniaLauncher
                         }
                         else
                         {
+                            Logging.Write(LogType.Critical, Event.DeleteXEX, "Deleted XEX", "name", gameData[index].xexNames[tempCategoryIndex]);
                             gameData[index].xexNames.RemoveAt(tempCategoryIndex);
                             gameData[index].xexPaths.RemoveAt(tempCategoryIndex);
                             SaveGames();
@@ -2746,6 +3088,7 @@ namespace XeniaLauncher
                         }
                         catch (Exception e)
                         {
+                            Logging.Write(LogType.Critical, Event.Error, "Invalid game directory", "dir", textWindowInput);
                             message = new MessageWindow(this, "Error", "Invalid Directory\n" + e.ToString(), State.NewGame);
                             textWindowInput = null;
                             state = State.Message;
@@ -2788,6 +3131,7 @@ namespace XeniaLauncher
                         }
                         catch (Exception e)
                         {
+                            Logging.Write(LogType.Critical, Event.Error, "Invalid STFS/SVOD file", "exception", e.ToString());
                             message = new MessageWindow(this, "Error", "Invalid STFS/SVOD file\n" + e.ToString(), State.NewGame);
                             state = State.Message;
                         }
@@ -2797,12 +3141,15 @@ namespace XeniaLauncher
                 {
                     if (newGameWindow.buttonIndex == 0)
                     {
+                        Logging.Write(LogType.Important, Event.NewGameStartSTFS, "Starting game add process", "tempIdSTFS", tempIdSTFS);
                         // Saving icon
                         if (!Directory.Exists("IconData"))
                         {
                             Directory.CreateDirectory("IconData");
+                            Logging.Write(LogType.Critical, Event.DirCreate, "Created IconData directory");
                         }
                         tempIconSTFS.Save("IconData\\" + tempIdSTFS + ".png");
+                        Logging.Write(LogType.Critical, Event.IconSave, "Saved icon", "path", "IconData\\" + tempIdSTFS + ".png");
                         // Creating new game
                         masterData.Add(new GameData());
                         // Checking if a game with this name is already imported
@@ -2824,6 +3171,7 @@ namespace XeniaLauncher
                         if (duplicateNum >= 2)
                         {
                             tempTitleSTFS = tempTitleSTFS + " (" + duplicateNum + ")";
+                            Logging.Write(LogType.Standard, Event.NewGameDuplicate, "New game has duplicate name, fixing name", "newName", tempTitleSTFS);
                         }
                         // Grabbing a cover for the game
                         if (Directory.Exists(newGamePath + "\\_covers"))
@@ -2833,6 +3181,7 @@ namespace XeniaLauncher
                                 masterData.Last().artPath = newGamePath + "\\_covers\\cover0.jpg";
                                 arts[masterData.Last().gameTitle] = Texture2D.FromFile(_graphics.GraphicsDevice, masterData.Last().artPath);
                                 masterData.Last().hasCoverArt = true;
+                                Logging.Write(LogType.Debug, Event.NewGameCoverFound, "cover0.jpg found");
                             }
                         }
                         // Adding game to masterData
@@ -2841,6 +3190,14 @@ namespace XeniaLauncher
                         masterData.Last().titleId = tempIdSTFS;
                         masterData.Last().iconPath = "IconData\\" + tempIdSTFS + ".png";
                         masterData.Last().xexNames = stfsFiles.Keys.ToList();
+                        Logging.Write(LogType.Critical, Event.NewGameProcessed, "New game added", new Dictionary<string, string>()
+                        {
+                            { "gameTitle", tempTitleSTFS },
+                            { "gamePath", tempFilepathSTFS },
+                            { "titleID", tempIdSTFS },
+                            { "iconPath", masterData.Last().iconPath },
+                            { "xexCount", "" + masterData.Last().xexNames.Count }
+                        });
                         for (int i = 0; i < stfsFiles.Keys.Count; i++)
                         {
                             masterData.Last().xexPaths.Add(stfsFiles[masterData.Last().xexNames[i]]);
@@ -2861,6 +3218,7 @@ namespace XeniaLauncher
                 {
                     DataWindowEffects.RefreshData(this, dataWindow);
                     refreshData = false;
+                    Logging.Write(LogType.Debug, Event.ManageDataRefresh, "Data refresh");
                 }
                 dataWindow.Update();
             }
@@ -2918,7 +3276,7 @@ namespace XeniaLauncher
                     {
                         verType += " + EXP";
                     }
-                    message = new MessageWindow(this, "Version Info", "Continuum Launcher version " + ver + ", compiled " + compileDate + ". " + verType, State.Credits);
+                    message = new MessageWindow(this, "Version Info", "VERNUM " + Shared.VERNUM + ". " + verType, State.Credits);
                     state = State.Message;
                 }
             }
@@ -3093,6 +3451,7 @@ namespace XeniaLauncher
                 bottomInfo.displayGradient.colors[0] = backColorAlt;
                 bottomInfo.Reset();
             }
+
             // Time
             timeText.color = timeDateColor;
             if (timeText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
@@ -3120,6 +3479,7 @@ namespace XeniaLauncher
             timeText.Centerize(new Vector2(120, 970));
             timeText.pos.Y = tempY;
             timeText.UpdatePos();
+
             // Date
             dateText.color = timeDateColor;
             if (dateText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
@@ -3139,7 +3499,9 @@ namespace XeniaLauncher
             tempY = dateText.pos.Y;
             dateText.Centerize(new Vector2(timeText.GetCenterPoint().X, 1000));
             dateText.pos.Y = tempY;
+
             // Controllers
+            int oldControllers = Convert.ToInt32(contNumText.text);
             int connectedControllers = 0;
             for (PlayerIndex i = PlayerIndex.One; i <= PlayerIndex.Four; i++)
             {
@@ -3149,7 +3511,12 @@ namespace XeniaLauncher
                     connectedControllers++;
                 }
             }
+            if (oldControllers != connectedControllers)
+            {
+                Logging.Write(LogType.Important, Event.ControllerCountChange, "Controller(s) have been dis/connected", "change", "" + (connectedControllers - oldControllers));
+            }
             contNumText.text = "" + connectedControllers;
+
             // Other corner stuff
             if ((drivesText.CheckMouse(true) || freeSpaceText.CheckMouse(true)) && MouseInput.IsLeftFirstDown() && state == State.Main)
             {
@@ -3186,6 +3553,7 @@ namespace XeniaLauncher
                 }
                 triviaSprite.text = nextTrivia;
                 triviaSprite.pos.X = 1600;
+                Logging.Write(LogType.Debug, Event.TriviaChange, "New trivia displayed", "trivia", nextTrivia);
             }
             triviaSprite.color = triviaColor;
 

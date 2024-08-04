@@ -13,6 +13,7 @@ using ObjectSprite = XeniaLauncher.OzzzFramework.ObjectSprite;
 using TextSprite = XeniaLauncher.OzzzFramework.TextSprite;
 using Layer = XeniaLauncher.OzzzFramework.SpriteGroup.Layer;
 using Button = XeniaLauncher.OzzzFramework.Button;
+using DescriptionBox = XeniaLauncher.OzzzFramework.DescriptionBox;
 using Gradient = XeniaLauncher.OzzzFramework.Gradient;
 using AnimationPath = XeniaLauncher.OzzzFramework.AnimationPath;
 using MouseInput = XeniaLauncher.OzzzFramework.MouseInput;
@@ -21,6 +22,9 @@ using Key = XeniaLauncher.OzzzFramework.KeyboardInput.Key;
 using GamepadInput = XeniaLauncher.OzzzFramework.GamepadInput;
 using AnalogPad = XeniaLauncher.OzzzFramework.GamepadInput.AnalogPad;
 using DigitalPad = XeniaLauncher.OzzzFramework.GamepadInput.DigitalPad;
+using SharpDX.MediaFoundation;
+using Continuum_Launcher;
+using System.Reflection;
 
 namespace XeniaLauncher
 {
@@ -34,6 +38,7 @@ namespace XeniaLauncher
         public TextSprite titleSprite, descSprite;
         public List<TextSprite> sprites;
         public List<ObjectSprite> buttons;
+        public List<DescriptionBox> descriptionBoxes;
         public List<Sprite> extraSprites;
         public List<string> strings;
         public Game1.State returnState;
@@ -42,7 +47,7 @@ namespace XeniaLauncher
         public IStartEffects startEffects;
         public IButtonIndexChangeEffects changeEffects;
         public int buttonIndex, stringIndex;
-        public bool useFade, skipMainStateTransition, firstFrame, preferEscapeExit;
+        public bool useFade, skipMainStateTransition, firstFrame, preferEscapeExit, disableKeyboard;
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : this(game, rect, title, buttonEffects, inputEvents, startEffects, returnState, true) { }
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : this(game, rect, title, "", buttonEffects, inputEvents, startEffects, returnState, playSelectSound) { }
         public Window(Game1 game, Rectangle rect, string title, string description, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : base(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0))
@@ -50,6 +55,7 @@ namespace XeniaLauncher
             this.game = game;
             sprites = new List<TextSprite>();
             buttons = new List<ObjectSprite>();
+            descriptionBoxes = new List<DescriptionBox>();
             extraSprites = new List<Sprite>();
             strings = new List<string>();
             this.buttonEffects = buttonEffects;
@@ -59,6 +65,7 @@ namespace XeniaLauncher
             useFade = true;
             firstFrame = true;
             preferEscapeExit = false;
+            disableKeyboard = false;
 
             ResetGradients();
 
@@ -75,6 +82,7 @@ namespace XeniaLauncher
             titleSprite = new TextSprite(game.bold, title, 0.65f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
             descSprite = new TextSprite(game.font, description, 0.4f, new Vector2(), Color.FromNonPremultiplied(0, 0, 0, 0));
 
+            Logging.Write(Logging.LogType.Important, Logging.LogEvent.WindowOpen, "Window opened: " + title);
         }
         /// <summary>
         /// Resets the Window's Gradients, for transitioning purposes
@@ -110,8 +118,24 @@ namespace XeniaLauncher
         /// <param name="rect"></param>
         public void AddButton(Rectangle rect)
         {
+            AddButton(rect, "", DescriptionBox.SpawnPositions.BelowRight, 0.1f);
+        }
+        /// <summary>
+        /// Adds a button to the Window, at a location of (0, 0), with a description
+        /// </summary>
+        /// <param name="rect"></param>
+        public void AddButton(Rectangle rect, string description, DescriptionBox.SpawnPositions spawnPos, float textScale)
+        {
             buttons.Add(new ObjectSprite(game.rectTex, rect, Color.FromNonPremultiplied(0, 0, 0, 0)));
             sprites.Add(new TextSprite(game.font, "", 0.5f, Vector2.Zero, Color.White));
+            DescriptionBox descBox = new DescriptionBox(buttons.Last(), game.font, game.rectTex, selectGradient.colors[1], 75, 25);
+            descBox.spawnPos = spawnPos;
+            descBox.textSprite.color = Ozzz.Helper.NewColorAlpha(game.fontSelectColor, 255);
+            descBox.textSprite.text = description;
+            descBox.textSprite.scale = textScale;
+            descBox.textSprite.splitDraw = true;
+            descBox.UpdateSpawnPos();
+            descriptionBoxes.Add(descBox);
         }
         /// <summary>
         /// Adds text to a button, in order (Ex: The third call to AddText() will add text to the third button)
@@ -126,6 +150,23 @@ namespace XeniaLauncher
                 sprites[strings.Count - 1].color = Color.FromNonPremultiplied(0, 0, 0, 0);
             }
             ResetTextPositions();
+
+            Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowStringAdded, "Button added: " + text);
+        }
+        /// <summary>
+        /// Closes the Window
+        /// </summary>
+        public void CloseWindow()
+        {
+            bool fromMessage = game.state == Game1.State.Message;
+            game.state = returnState;
+            ResetGradients();
+            game.backSound.Play();
+            if (game.state == Game1.State.Main && !skipMainStateTransition && !fromMessage)
+            {
+                game.BeginMainTransition();
+            }
+            Logging.Write(Logging.LogType.Standard, Logging.LogEvent.WindowClose, "Window closed: " + titleSprite.text);
         }
         /// <summary>
         /// Updates the Window. Should be called once every frame, if the Window is to be updated
@@ -170,59 +211,69 @@ namespace XeniaLauncher
                     }
                 }
             }
+            // Checking if click was outside of Window
+            if (!mouseClick)
+            {
+                if (MouseInput.IsLeftFirstDown() && !CheckMouse(false) && !firstFrame && game.IsActive)
+                {
+                    CloseWindow();
+                }
+            }
+
+            // Triggering description box
+            descriptionBoxes[buttonIndex].TriggerTransparencyUpdate();
+
             // Executing an effect (A button, Enter key, Space key)
-            if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || (KeyboardInput.keys["Space"].IsFirstDown() && !preferEscapeExit) || mouseClick) && game.IsActive && !firstFrame)
+            if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || (KeyboardInput.keys["Enter"].IsFirstDown() && !disableKeyboard) || (KeyboardInput.keys["Space"].IsFirstDown() && !preferEscapeExit) || mouseClick) && game.IsActive && !firstFrame)
             {
                 game.buttonSwitchSound.Play();
                 buttonEffects.ActivateButton(game, this, buttons[buttonIndex], stringIndex);
+                Logging.Write(Logging.LogType.Standard, Logging.LogEvent.WindowButtonActivated, "Button activated", "buttonText", strings[stringIndex]);
             }
-            // Exiting the window (B button, Backspace key, Right click)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.Back, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Escape"].IsFirstDown())) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame)
+            // Exiting the window (B button, Backspace key, Right click, Enter key if disableKeyboard)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.Back, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Enter"].IsFirstDown() && disableKeyboard) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame))
             {
-                bool fromMessage = game.state == Game1.State.Message;
-                game.state = returnState;
-                ResetGradients();
-                game.backSound.Play();
-                if (game.state == Game1.State.Main && !skipMainStateTransition && !fromMessage)
-                {
-                    game.BeginMainTransition();
-                }
+                CloseWindow();
             }
             // Cycling down (D-Pad Down, Down arrow key)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadDown, true) || (KeyboardInput.keys["Down"].IsFirstDown()) || MouseInput.scrollChange < 0) && game.IsActive)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadDown, true) || (KeyboardInput.keys["Down"].IsFirstDown() && !disableKeyboard) || MouseInput.scrollChange < 0) && game.IsActive)
             {
                 inputEvents.DownButton(game, this, buttonIndex);
                 if (changeEffects != null)
                 {
                     changeEffects.IndexChanged(stringIndex);
                 }
+                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Down): " + stringIndex);
             }
             // Cycling up (D-Pad Up, Up arrow key)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadUp, true) || (KeyboardInput.keys["Up"].IsFirstDown()) || MouseInput.scrollChange > 0) && game.IsActive)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadUp, true) || (KeyboardInput.keys["Up"].IsFirstDown() && !disableKeyboard) || MouseInput.scrollChange > 0) && game.IsActive)
             {
                 inputEvents.UpButton(game, this, buttonIndex);
                 if (changeEffects != null)
                 {
                     changeEffects.IndexChanged(stringIndex);
                 }
+                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Up): " + stringIndex);
             }
             // Cycling left (D-Pad Left, Left arrow key)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadLeft, true) || KeyboardInput.keys["Left"].IsFirstDown()) && game.IsActive)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadLeft, true) || KeyboardInput.keys["Left"].IsFirstDown() && !disableKeyboard) && game.IsActive)
             {
                 inputEvents.LeftButton(game, this, buttonIndex);
                 if (changeEffects != null)
                 {
                     changeEffects.IndexChanged(stringIndex);
                 }
+                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Left): " + stringIndex);
             }
             // Cycling right (D-Pad Right, Right arrow key)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadRight, true) || KeyboardInput.keys["Right"].IsFirstDown()) && game.IsActive)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadRight, true) || KeyboardInput.keys["Right"].IsFirstDown() && !disableKeyboard) && game.IsActive)
             {
                 inputEvents.RightButton(game, this, buttonIndex);
                 if (changeEffects != null)
                 {
                     changeEffects.IndexChanged(stringIndex);
                 }
+                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Right): " + stringIndex);
             }
 
             // Updating text and Gradients
@@ -288,6 +339,12 @@ namespace XeniaLauncher
                 }
             }
 
+            // Updating description boxes
+            foreach (DescriptionBox box in descriptionBoxes)
+            {
+                box.Update();
+            }
+
             firstFrame = false;
         }
         public void Draw(SpriteBatch sb)
@@ -310,6 +367,13 @@ namespace XeniaLauncher
             foreach (Sprite sprite in extraSprites)
             {
                 sprite.Draw(sb);
+            }
+            foreach (DescriptionBox box in descriptionBoxes)
+            {
+                if (box.textSprite.text != "")
+                {
+                    box.Draw(sb);
+                }
             }
         }
     }
