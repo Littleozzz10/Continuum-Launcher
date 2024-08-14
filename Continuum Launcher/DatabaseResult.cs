@@ -111,6 +111,10 @@ namespace XeniaLauncher
             game.tempMonth = Convert.ToInt32(results[resultIndex].Release_Date.Substring(5, 2));
             game.tempDay = Convert.ToInt32(results[resultIndex].Release_Date.Substring(8, 2));
             string date = "Database Release: " + game.tempMonth + "-" + game.tempDay + "-" + game.tempYear;
+            if (game.inverseDate)
+            {
+                date = "Database Release: " + game.tempDay + "-" + game.tempMonth + "-" + game.tempYear;
+            }
             if ((bool)game.databaseGameInfo[game.databaseResultIndex].Incorrect_Date)
             {
                 date = date + "*";

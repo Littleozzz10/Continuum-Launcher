@@ -122,7 +122,13 @@ namespace XeniaLauncher
                 int height = 1080;
                 if (game.hideSecretMetadata)
                 {
-                    desc = "Note: Potentially sensitive metadata has been hidden, as per user preferences";
+                    desc = "Note: Potentially sensitive metadata has been hidden. Press the S key to show this data.";
+                    yPos = -40;
+                    height = 1120;
+                }
+                if (!game.hideSecretMetadata)
+                {
+                    desc = "Note: Potentially sensitive metadata is on screen. Press the S key to hide this data.";
                     yPos = -40;
                     height = 1120;
                 }

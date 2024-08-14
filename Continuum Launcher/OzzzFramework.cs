@@ -123,6 +123,10 @@ namespace XeniaLauncher
             }
             return times / frameTimes.Count;
         }
+        public static Vector2 GetResolution()
+        {
+            return new Vector2(scale.X * 1920, scale.Y * 1080);
+        }
         /// <summary>Static class to handle scaling.</summary>
         /// <remarks>
         /// Note that OzzzFramework components are automatically scaled at draw time, so no scaling has to be done elsewhere. 

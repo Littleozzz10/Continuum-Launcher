@@ -41,12 +41,13 @@ namespace XeniaLauncher
         public List<DescriptionBox> descriptionBoxes;
         public List<Sprite> extraSprites;
         public List<string> strings;
+        public Vector2 stickDelays;
         public Game1.State returnState;
         public IWindowEffects buttonEffects;
         public IButtonInputEvent inputEvents;
         public IStartEffects startEffects;
         public IButtonIndexChangeEffects changeEffects;
-        public int buttonIndex, stringIndex;
+        public int buttonIndex, stringIndex, stickDelayFirst, stickDelaySecond;
         public bool useFade, skipMainStateTransition, firstFrame, preferEscapeExit, disableKeyboard;
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState) : this(game, rect, title, buttonEffects, inputEvents, startEffects, returnState, true) { }
         public Window(Game1 game, Rectangle rect, string title, IWindowEffects buttonEffects, IButtonInputEvent inputEvents, IStartEffects startEffects, Game1.State returnState, bool playSelectSound) : this(game, rect, title, "", buttonEffects, inputEvents, startEffects, returnState, playSelectSound) { }
@@ -71,6 +72,9 @@ namespace XeniaLauncher
 
             stringIndex = 0;
             buttonIndex = 0;
+            stickDelayFirst = 36;
+            stickDelaySecond = 8;
+            stickDelays = Vector2.Zero;
             whiteGradient.ValueUpdate(0);
             whiteGradient.Update();
 
@@ -169,6 +173,55 @@ namespace XeniaLauncher
             Logging.Write(Logging.LogType.Standard, Logging.LogEvent.WindowClose, "Window closed: " + titleSprite.text);
         }
         /// <summary>
+        /// Trigger the Down event
+        /// </summary>
+        public void TriggerDown()
+        {
+            inputEvents.DownButton(game, this, buttonIndex);
+            if (changeEffects != null)
+            {
+                changeEffects.IndexChanged(stringIndex);
+            }
+            Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Down): " + stringIndex);
+        }
+        /// <summary>
+        /// Trigger the Up event
+        /// </summary>
+        public void TriggerUp()
+        {
+            inputEvents.UpButton(game, this, buttonIndex);
+            if (changeEffects != null)
+            {
+                changeEffects.IndexChanged(stringIndex);
+            }
+            Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Up): " + stringIndex);
+        }
+        /// <summary>
+        /// Trigger the Left event
+        /// </summary>
+        public void TriggerLeft()
+        {
+            inputEvents.LeftButton(game, this, buttonIndex);
+            if (changeEffects != null)
+            {
+                changeEffects.IndexChanged(stringIndex);
+            }
+            Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Left): " + stringIndex);
+        }
+        /// <summary>
+        /// Trigger the Right event
+        /// </summary>
+        public void TriggerRight()
+        {
+            inputEvents.RightButton(game, this, buttonIndex);
+            if (changeEffects != null)
+            {
+                changeEffects.IndexChanged(stringIndex);
+            }
+            Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Right): " + stringIndex);
+        }
+
+        /// <summary>
         /// Updates the Window. Should be called once every frame, if the Window is to be updated
         /// </summary>
         public void Update()
@@ -216,12 +269,19 @@ namespace XeniaLauncher
             {
                 if (MouseInput.IsLeftFirstDown() && !CheckMouse(false) && !firstFrame && game.IsActive)
                 {
-                    CloseWindow();
+                    Vector2 mousePos = new Vector2(MouseInput.GetMouseRect().X, MouseInput.GetMouseRect().Y);
+                    if (mousePos.X >= 0 && mousePos.X <= Ozzz.GetResolution().X && mousePos.Y >= 0 && mousePos.Y <= Ozzz.GetResolution().Y)
+                    {
+                        CloseWindow();
+                    }
                 }
             }
 
             // Triggering description box
-            descriptionBoxes[buttonIndex].TriggerTransparencyUpdate();
+            if (descriptionBoxes.Count > 0)
+            {
+                descriptionBoxes[buttonIndex].TriggerTransparencyUpdate();
+            }
 
             // Executing an effect (A button, Enter key, Space key)
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || (KeyboardInput.keys["Enter"].IsFirstDown() && !disableKeyboard) || (KeyboardInput.keys["Space"].IsFirstDown() && !preferEscapeExit) || mouseClick) && game.IsActive && !firstFrame)
@@ -231,49 +291,122 @@ namespace XeniaLauncher
                 Logging.Write(Logging.LogType.Standard, Logging.LogEvent.WindowButtonActivated, "Button activated", "buttonText", strings[stringIndex]);
             }
             // Exiting the window (B button, Backspace key, Right click, Enter key if disableKeyboard)
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.Back, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Enter"].IsFirstDown() && disableKeyboard) || MouseInput.IsRightFirstDown()) && game.IsActive && !firstFrame))
+            else if (((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.B, true) || GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.Back, true) || ((KeyboardInput.keys["Backspace"].IsFirstDown() && !preferEscapeExit) || (KeyboardInput.keys["Enter"].IsFirstDown() && disableKeyboard) || MouseInput.IsRightFirstDown())) && game.IsActive && !firstFrame))
             {
                 CloseWindow();
             }
             // Cycling down (D-Pad Down, Down arrow key)
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadDown, true) || (KeyboardInput.keys["Down"].IsFirstDown() && !disableKeyboard) || MouseInput.scrollChange < 0) && game.IsActive)
             {
-                inputEvents.DownButton(game, this, buttonIndex);
-                if (changeEffects != null)
-                {
-                    changeEffects.IndexChanged(stringIndex);
-                }
-                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Down): " + stringIndex);
+                TriggerDown();
             }
             // Cycling up (D-Pad Up, Up arrow key)
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadUp, true) || (KeyboardInput.keys["Up"].IsFirstDown() && !disableKeyboard) || MouseInput.scrollChange > 0) && game.IsActive)
             {
-                inputEvents.UpButton(game, this, buttonIndex);
-                if (changeEffects != null)
-                {
-                    changeEffects.IndexChanged(stringIndex);
-                }
-                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Up): " + stringIndex);
+                TriggerUp();
             }
             // Cycling left (D-Pad Left, Left arrow key)
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadLeft, true) || KeyboardInput.keys["Left"].IsFirstDown() && !disableKeyboard) && game.IsActive)
             {
-                inputEvents.LeftButton(game, this, buttonIndex);
-                if (changeEffects != null)
-                {
-                    changeEffects.IndexChanged(stringIndex);
-                }
-                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Left): " + stringIndex);
+                TriggerLeft();
             }
             // Cycling right (D-Pad Right, Right arrow key)
             else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadRight, true) || KeyboardInput.keys["Right"].IsFirstDown() && !disableKeyboard) && game.IsActive)
             {
-                inputEvents.RightButton(game, this, buttonIndex);
-                if (changeEffects != null)
+                TriggerRight();
+            }
+
+            // Left stick controls
+            if (GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickX) <= -0.3f)
+            {
+                // Checking for stick movement
+                if (stickDelays.X == -stickDelayFirst - 1 || stickDelays.X > 0)
                 {
-                    changeEffects.IndexChanged(stringIndex);
+                    TriggerLeft();
+                    stickDelays.X = -stickDelayFirst; // Initial delay for faster selection
                 }
-                Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowButtonIndexChanged, "String Index changed (Right): " + stringIndex);
+                else if (stickDelays.X == 0)
+                {
+                    TriggerLeft();
+                    stickDelays.X = -stickDelaySecond; // Faster selection
+                }
+                else
+                {
+                    stickDelays.X++;
+                }
+            }
+            else if (!(GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickX) >= 0.3f))
+            {
+                stickDelays.X = -stickDelayFirst - 1; // Stick is "centered", stopping any movement
+            }
+            // Right stick controls
+            if (GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickX) >= 0.3f)
+            {
+                // Checking for stick movement
+                if (stickDelays.X == stickDelayFirst + 1 || stickDelays.X < 0)
+                {
+                    TriggerRight();
+                    stickDelays.X = stickDelayFirst; // Initial delay for faster selection
+                }
+                else if (stickDelays.X == 0)
+                {
+                    TriggerRight();
+                    stickDelays.X = stickDelaySecond; // Faster selection
+                }
+                else
+                {
+                    stickDelays.X--;
+                }
+            }
+            else if (!(GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickX) <= -0.3f))
+            {
+                stickDelays.X = stickDelayFirst + 1; // Stick is "centered", stopping any movement
+            }
+            // Down stick controls
+            if (GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickY) <= -0.3f)
+            {
+                // Checking for stick movement
+                if (stickDelays.Y == -stickDelayFirst - 1 || stickDelays.Y > 0)
+                {
+                    TriggerDown();
+                    stickDelays.Y = -stickDelayFirst; // Initial delay for faster selection
+                }
+                else if (stickDelays.Y == 0)
+                {
+                    TriggerDown();
+                    stickDelays.Y = -stickDelaySecond; // Faster selection
+                }
+                else
+                {
+                    stickDelays.Y++;
+                }
+            }
+            else if (!(GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickY) >= 0.3f))
+            {
+                stickDelays.Y = -stickDelayFirst - 1; // Stick is "centered", stopping any movement
+            }
+            // Up stick controls
+            if (GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickY) >= 0.3f)
+            {
+                // Checking for stick movement
+                if (stickDelays.Y == stickDelayFirst + 1 || stickDelays.Y < 0)
+                {
+                    TriggerUp();
+                    stickDelays.Y = stickDelayFirst; // Initial delay for faster selection
+                }
+                else if (stickDelays.Y == 0)
+                {
+                    TriggerUp();
+                    stickDelays.Y = stickDelaySecond; // Faster selection
+                }
+                else
+                {
+                    stickDelays.Y--;
+                }
+            }
+            else if (!(GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickY) <= -0.3f))
+            {
+                stickDelays.Y = stickDelayFirst + 1; // Stick is "centered", stopping any movement
             }
 
             // Updating text and Gradients

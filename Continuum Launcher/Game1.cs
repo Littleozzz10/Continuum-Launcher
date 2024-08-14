@@ -39,6 +39,7 @@ using STFS;
 using Newtonsoft.Json;
 using Continuum_Launcher;
 using Assimp;
+using static XeniaLauncher.OzzzFramework.KeyboardInput;
 
 namespace XeniaLauncher
 {
@@ -50,9 +51,9 @@ namespace XeniaLauncher
         public Texture2D white, rectTex, logo, circ, calendar, player, logoCanary, mainLogo, topBorderTex, bottomBorderTex, compLogo, topBorderNew, bottomBorderNew;
         public SpriteFont font, bold;
         public SoundEffect selectSound, backSound, launchSound, switchSound, buttonSwitchSound, sortSound, leftFolderSound, rightFolderSound;
-        public ObjectSprite xeniaCompatLogo, canaryCompatLogo, xeniaCompat, canaryCompat, topBorder, bottomBorder, topBorderBack, bottomBorderBack;
-        public TextSprite titleSprite, subTitleSprite, sortSprite, folderSprite, xeniaUntestedText, canaryUntestedText, timeText, dateText, contNumText, controllerText, freeSpaceText, drivesText, triviaSprite;
-        public Layer mainFadeLayer, bottomLayer, backBorderLayer, triviaMaskingLayer, topBorderLayer;
+        public ObjectSprite xeniaCompatLogo, canaryCompatLogo, xeniaCompat, canaryCompat, topBorder, bottomBorder, topBorderBack, bottomBorderBack, jumpFade;
+        public TextSprite titleSprite, subTitleSprite, sortSprite, folderSprite, xeniaUntestedText, canaryUntestedText, timeText, dateText, contNumText, controllerText, freeSpaceText, drivesText, triviaSprite, jumpToText, jumpIndexText;
+        public Layer mainFadeLayer, bottomLayer, backBorderLayer, triviaMaskingLayer, topBorderLayer, jumpLayer;
         public Gradient mainFadeGradient, darkGradient, blackGradient, selectGradient, whiteGradient, buttonGradient;
         public AnimationPath mainTransitionPath, folderPath, secondFolderPath, topBorderPath, bottomBorderPath;
         public List<Ring> rings;
@@ -74,7 +75,7 @@ namespace XeniaLauncher
         public List<GameInfo> databaseGameInfo;
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath, tempGameTitle;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay, jumpLayerAlpha, jumpTriggerCooldown, jumpTriggerCooldownDefault;
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData, showResearchPrompt, windowClickExit, enterCloseTextInput, rightClickGames;
         public enum State
         {
@@ -378,6 +379,9 @@ namespace XeniaLauncher
             ringDuration = 240;
             compatWindowDelay = 30;
             fullscreenDelay = -1;
+            jumpLayerAlpha = 0;
+            jumpTriggerCooldownDefault = 30;
+            jumpTriggerCooldown = jumpTriggerCooldownDefault;
             showRings = true;
             checkDrivesOnManage = true;
             lastActiveCheck = true;
@@ -386,8 +390,8 @@ namespace XeniaLauncher
             hideSecretMetadata = true;
             showResearchPrompt = false;
             windowClickExit = true;
-            enterCloseTextInput = true;
-            rightClickGames = true;
+            enterCloseTextInput = false;
+            rightClickGames = false;
 
             dataSort = DataSort.NameAZ;
 
@@ -711,6 +715,10 @@ namespace XeniaLauncher
                 ringSelectColor = ColorFromString(themeReader.ReadLine());
                 descColor = ColorFromString(themeReader.ReadLine());
             }
+            if (theme != Theme.Custom)
+            {
+                descColor = selectGradient.colors[1];
+            }
             darkGradient.ValueUpdate(0);
             blackGradient.ValueUpdate(0);
             buttonGradient.ValueUpdate(0);
@@ -737,6 +745,21 @@ namespace XeniaLauncher
                 menuWindow.whiteGradient.Update();
                 optionsWindow.ResetGradients();
                 optionsWindow.whiteGradient.Update();
+            }
+
+            // Resetting Description Box colors
+            if (optionsWindow != null)
+            {
+                foreach (DescriptionBox desc in optionsWindow.descriptionBoxes)
+                {
+                    desc.color = descColor;
+                    desc.textSprite.color = fontSelectColor;
+                }
+                foreach (DescriptionBox desc in menuWindow.descriptionBoxes)
+                {
+                    desc.color = descColor;
+                    desc.textSprite.color = fontSelectColor;
+                }
             }
         }
 
@@ -1507,6 +1530,119 @@ namespace XeniaLauncher
                 compatWaitFrames = delay;
             }
         }
+        private void JumpToIndexHandler(int gameIndex, string character)
+        {
+            index = gameIndex;
+            int offset = 1;
+            if (right)
+            {
+                offset = -1;
+            }
+
+            for (int i = 0; i < gameIcons.Count; i++)
+            {
+                gameIcons[i].index = index + (i - 2 + offset);
+            }
+            ResetGameIcons();
+            switchSound.Play();
+            jumpLayerAlpha = 480;
+            jumpToText.text = character;
+            jumpToText.Centerize(new Vector2(960, 140));
+            jumpIndexText.text = "" + (gameIndex + 1) + " of " + gameData.Count;
+            jumpIndexText.Centerize(new Vector2(960, 820));
+            Logging.Write(LogType.Standard, Event.XGameChange, "Index jump", "newIndex", "" + index);
+        }
+        public void JumpTo(string character, bool indexChange)
+        {
+            if (indexChange && state == State.Main)
+            {
+                switch (sort)
+                {
+                    case Sort.Date:
+                        int year = 2005;
+                        switch (character)
+                        {
+                            case "0":
+                                year = 2010;
+                                break;
+                            case "1":
+                                year = 2011;
+                                break;
+                            case "2":
+                                year = 2012;
+                                break;
+                            case "3":
+                                year = 2013;
+                                break;
+                            case "4":
+                                year = 2014;
+                                break;
+                            case "5":
+                                year = 2005;
+                                break;
+                            case "6":
+                                year = 2006;
+                                break;
+                            case "7":
+                                year = 2007;
+                                break;
+                            case "8":
+                                year = 2008;
+                                break;
+                            case "9":
+                                year = 2009;
+                                break;
+                        }
+                        if (gameData[index].year == year && year < 2010)
+                        {
+                            year += 10;
+                        }
+                        else if (gameData[index].year == year && year >= 2015 && year <= 2018)
+                        {
+                            year -= 10;
+                        }
+                        for (int i = 0; i < gameData.Count; i++)
+                        {
+                            if (gameData[i].year == year)
+                            {
+                                JumpToIndexHandler(i, "" + year);
+                                break;
+                            }
+                        }
+                        break;
+                    case Sort.Dev:
+                        for (int i = 0; i < gameData.Count; i++)
+                        {
+                            if (gameData[i].developer.Substring(0, character.Length).ToLower() == character.ToLower())
+                            {
+                                JumpToIndexHandler(i, character);
+                                break;
+                            }
+                        }
+                        break;
+                    case Sort.Pub:
+                        for (int i = 0; i < gameData.Count; i++)
+                        {
+                            if (gameData[i].publisher.Substring(0, character.Length).ToLower() == character.ToLower())
+                            {
+                                JumpToIndexHandler(i, character);
+                                break;
+                            }
+                        }
+                        break;
+                    default:
+                        for (int i = 0; i < gameData.Count; i++)
+                        {
+                            if (gameData[i].alphaAs.Substring(0, character.Length).ToLower() == character.ToLower())
+                            {
+                                JumpToIndexHandler(i, character);
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
 
         public void SaveGames()
         {
@@ -2119,6 +2255,14 @@ namespace XeniaLauncher
             mainFadeLayer.Add(titleSprite);
             mainFadeLayer.Add(subTitleSprite);
 
+            jumpFade = new ObjectSprite(white, new Rectangle(0, 0, 1920, 1080), Color.FromNonPremultiplied(0, 0, 0, 0));
+            jumpToText = new TextSprite(bold, "", 2.0f, Vector2.Zero, Color.FromNonPremultiplied(255, 255, 255, 0));
+            jumpIndexText = new TextSprite(font, "", 0.4f, Vector2.Zero, Color.FromNonPremultiplied(255, 255, 255, 0));
+            jumpLayer = new Layer(white, new Rectangle(), Color.FromNonPremultiplied(0, 0, 0, 0));
+            jumpLayer.Add(jumpFade);
+            jumpLayer.Add(jumpToText);
+            jumpLayer.Add(jumpIndexText);
+
             Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Dashboard elements initialized");
 
             LoadMobyData();
@@ -2197,6 +2341,16 @@ namespace XeniaLauncher
                 triggerMissingWindow = false;
             }
 
+            // Jump trigger cooldown
+            if (jumpTriggerCooldown > 0)
+            {
+                jumpTriggerCooldown--;
+            }
+            if (GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.RightTrigger) <= 0.65f && GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftTrigger) <= 0.65f)
+            {
+                jumpTriggerCooldown = 0;
+            }
+
             // Moving game icons
             bool indexChange = true;
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.DPadRight, true) || GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftStickX) > 0.3 || KeyboardInput.keys["Right"].IsDown() || gameIcons[3].CheckMouse(true) || gameIcons[4].CheckMouse(true)) && state == State.Main && !firstReset && IsActive)
@@ -2243,6 +2397,62 @@ namespace XeniaLauncher
                             Logging.Write(LogType.Standard, Event.XGameChange, "Index change -1", "newIndex", "" + index);
                         }
                     }
+                }
+            }
+            else if (jumpTriggerCooldown == 0 && GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.RightTrigger) >= 0.65f)
+            {
+                int newIndex = index + 1;
+                string currChar = gameData[index].alphaAs.Substring(0, 1).ToUpper();
+                string newChar = currChar;
+                while (newChar == currChar && newIndex != index)
+                {
+                    if (newIndex >= gameData.Count)
+                    {
+                        newIndex = 0;
+                    }
+                    else
+                    {
+                        newChar = gameData[newIndex].alphaAs.Substring(0, 1).ToUpper();
+                        newIndex++;
+                    }
+                }
+                if (newChar != currChar)
+                {
+                    JumpTo(newChar, indexChange);
+                    indexChange = false;
+                    jumpTriggerCooldown = jumpTriggerCooldownDefault;
+                }
+            }
+            else if (jumpTriggerCooldown == 0 && GamepadInput.GetAnalogInputData(PlayerIndex.One, AnalogPad.AnalogInput.LeftTrigger) >= 0.65f)
+            {
+                int newIndex = index - 1;
+                string currChar = gameData[index].alphaAs.Substring(0, 1).ToUpper();
+                string newChar = currChar;
+                while (newChar == currChar && newIndex != index)
+                {
+                    if (newIndex <= 0)
+                    {
+                        newIndex = gameData.Count - 1;
+                    }
+                    else
+                    {
+                        newChar = gameData[newIndex].alphaAs.Substring(0, 1).ToUpper();
+                        newIndex--;
+                    }
+                }
+                if (newChar != currChar)
+                {
+                    JumpTo(newChar, indexChange);
+                    indexChange = false;
+                    jumpTriggerCooldown = jumpTriggerCooldownDefault;
+                }
+            }
+            foreach (string key in TextInputWindow.keys)
+            {
+                if (KeyboardInput.keys[key].IsFirstDown())
+                {
+                    JumpTo(key, indexChange);
+                    indexChange = false;
                 }
             }
             if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.A, true) || KeyboardInput.keys["Enter"].IsFirstDown() || KeyboardInput.keys["Space"].IsFirstDown() || (gameIcons[2].CheckMouse(true) && MouseInput.IsLeftFirstDown())) && state == State.Main && IsActive)
@@ -2406,7 +2616,7 @@ namespace XeniaLauncher
                 Logging.Write(LogType.Standard, Event.DashFolderSwitch, "Folder index change -1", "newFolderIndex", "" + folderIndex);
             }
             // Switching covers
-            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.X, true) || KeyboardInput.keys["C"].IsFirstDown()) && state == State.Main && IsActive)
+            else if ((GamepadInput.IsButtonDown(PlayerIndex.One, Buttons.X, true) || KeyboardInput.keys["Tab"].IsFirstDown()) && state == State.Main && IsActive)
             {
                 AdjustCover();
             }
@@ -3261,6 +3471,11 @@ namespace XeniaLauncher
             else if (state == State.Metadata)
             {
                 metadataWindow.Update();
+                if (KeyboardInput.keys["S"].IsFirstDown())
+                {
+                    hideSecretMetadata = !hideSecretMetadata;
+                    fileManageWindow.buttonEffects.ActivateButton(this, fileManageWindow, fileManageWindow.buttons[fileManageWindow.stringIndex], fileManageWindow.stringIndex);
+                }
             }
             else if (state == State.Credits)
             {
@@ -3298,7 +3513,29 @@ namespace XeniaLauncher
             titleSprite.pos = titleSprite.GetCenterCoords();
             titleSprite.pos.Y += 330;
             titleSprite.scale = 0.9f;
-            subTitleSprite.text = gameData[index].developer + " - " + gameData[index].year;
+            if (sort == Sort.Pub)
+            {
+                subTitleSprite.text = gameData[index].publisher + " - ";
+            }
+            else
+            {
+                subTitleSprite.text = gameData[index].developer + " - ";
+            }
+            if (sort == Sort.Date)
+            {
+                if (inverseDate)
+                {
+                    subTitleSprite.text += gameData[index].day + "/" + gameData[index].month + "/" + gameData[index].year;
+                }
+                else
+                {
+                    subTitleSprite.text += gameData[index].month + "/" + gameData[index].day + "/" + gameData[index].year;
+                }
+            }
+            else
+            {
+                subTitleSprite.text += gameData[index].year;
+            }
             subTitleSprite.pos = subTitleSprite.GetCenterCoords();
             subTitleSprite.pos.Y += 400;
             // Sort text
@@ -3387,6 +3624,28 @@ namespace XeniaLauncher
                 foreach (Sprite s in mainFadeLayer.sprites)
                 {
                     s.color = mainFadeGradient.GetColor();
+                }
+            }
+
+            // Updating Jump Layer
+            jumpLayer.Update();
+            if (jumpLayerAlpha > 0)
+            {
+                //jumpToText.color = fontColor;
+                //jumpIndexText.color = fontColor;
+
+                jumpLayerAlpha -= 16;
+                if (jumpLayerAlpha > 240)
+                {
+                    jumpFade.color.A = 120;
+                    jumpToText.color = Color.White;
+                    jumpIndexText.color = Color.White;
+                }
+                else
+                {
+                    jumpFade.color.A = (byte)(jumpLayerAlpha / 2);
+                    jumpToText.color = Color.FromNonPremultiplied(jumpLayerAlpha, jumpLayerAlpha, jumpLayerAlpha, jumpLayerAlpha);
+                    jumpIndexText.color = Color.FromNonPremultiplied(jumpLayerAlpha, jumpLayerAlpha, jumpLayerAlpha, jumpLayerAlpha);
                 }
             }
 
@@ -3664,8 +3923,6 @@ namespace XeniaLauncher
                     ring.Draw(_spriteBatch);
                 }
             }
-            backBorderLayer.Draw(_spriteBatch);
-            triviaSprite.Draw(_spriteBatch);
             
             if (!skipDraw)
             {
@@ -3685,9 +3942,13 @@ namespace XeniaLauncher
             _spriteBatch.Draw(white, Ozzz.Scaling.RectangleScaled(1400, 0, 700, 210), backColor);
             sortSprite.Draw(_spriteBatch);
             _spriteBatch.Draw(mainLogo, Ozzz.Scaling.RectangleScaled(50, 40, 150, 150), Color.White);
+            jumpLayer.Draw(_spriteBatch);
+            backBorderLayer.Draw(_spriteBatch);
+            triviaSprite.Draw(_spriteBatch);
             timeText.Draw(_spriteBatch);
             bottomLayer.Draw(_spriteBatch);
             bottomInfo.Draw(_spriteBatch);
+
             // Select menu
             _spriteBatch.Draw(white, new Rectangle(0, 0, Ozzz.Scaling.ScaleIntX(1920), Ozzz.Scaling.ScaleIntY(1080)), darkGradient.GetColor());
             if (CheckStateSelectMenu() && showRings)
@@ -3712,7 +3973,14 @@ namespace XeniaLauncher
             _spriteBatch.DrawString(font, "Developer: " + gameData[index].developer, Ozzz.Scaling.ScaleVector2(new Vector2(200, 200)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
             _spriteBatch.DrawString(font, "Publisher: " + gameData[index].publisher, Ozzz.Scaling.ScaleVector2(new Vector2(200, 240)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
             _spriteBatch.Draw(calendar, Ozzz.Scaling.RectangleScaled(200, 290, 40, 40), altColor);
-            _spriteBatch.DrawString(font, "" + gameData[index].month + "/" + gameData[index].day + "/" + gameData[index].year, Ozzz.Scaling.ScaleVector2(new Vector2(250, 290)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            if (inverseDate)
+            {
+                _spriteBatch.DrawString(font, "" + gameData[index].day + "/" + gameData[index].month + "/" + gameData[index].year, Ozzz.Scaling.ScaleVector2(new Vector2(250, 290)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            }
+            else
+            {
+                _spriteBatch.DrawString(font, "" + gameData[index].month + "/" + gameData[index].day + "/" + gameData[index].year, Ozzz.Scaling.ScaleVector2(new Vector2(250, 290)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
+            }
             //_spriteBatch.DrawString(font, "Title ID: " + gameData[index].titleId, Ozzz.Scaling.ScaleVector2(new Vector2(200, 320)), whiteGradient.GetColor(), 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
             _spriteBatch.Draw(player, Ozzz.Scaling.RectangleScaled(200, 340, 40, 40), altColor);
             _spriteBatch.DrawString(font, "" + gameData[index].minPlayers + "-" + gameData[index].maxPlayers, Ozzz.Scaling.ScaleVector2(new Vector2(250, 340)), altColor, 0f, Vector2.Zero, Ozzz.Scaling.ScaleFloatX(0.375f), SpriteEffects.None, 0f);
