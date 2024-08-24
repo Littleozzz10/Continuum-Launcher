@@ -44,10 +44,6 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 2)
             {
-                game.text = new TextInputWindow(game, "STFS Filepath for New Game", "", Game1.State.NewGame);
-            }
-            else if (buttonIndex == 3)
-            {
                 game.state = Game1.State.Menu;
                 game.backSound.Play();
             }

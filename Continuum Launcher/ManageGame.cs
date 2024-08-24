@@ -84,7 +84,7 @@ namespace XeniaLauncher
                 game.databaseGameInfo = new List<GameInfo>(); // Clearing out old data
                 foreach (GameInfo info in game.mobyData.Data)
                 {
-                    if (info.Variants != null && info.Variants[0].TitleID == game.gameData[game.index].titleId)
+                    if (info.Variants != null && (info.Variants[0].TitleID == game.gameData[game.index].titleId))
                     {
                         game.databaseGameInfo.Add(info);
                     }

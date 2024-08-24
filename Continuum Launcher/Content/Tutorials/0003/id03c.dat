@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Game Trailer\nContent Type: Xbox 360 (000C0000)\nDescription: This file is a trailer video\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - View Metadata: Open the Metadata Viewer to view STFS metadata for this file\n  - Extract STFS Container: Extract this file to an _EXTRACT directory\n  - Play Video: If extracted, opens the video in the default video player
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

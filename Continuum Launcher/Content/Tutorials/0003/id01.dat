@@ -1,0 +1,64 @@
+-
+type=box
+position=centerTopLeft
+text=Currently, we are in the game selection menu.\nWe need to be in the Menu to install DLC and manage game data.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTopLeft
+text=Please open the Menu.
+end=state
+state=Menu
+-
+type=box
+position=centerTop
+text=Now click on the "Manage Data" button to open the Data Management window.
+end=state
+state=Data
+-
+type=box
+position=centerTopRight
+text=This is the Data Management window. From here, you can install DLC and Title Updates (If they're in GoD packages),\nbrowse and extract local GoD files adjacent to your games, backup Continuum config files, and so much more.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTopRight
+text=Note: Some features may not work properly if game files are not GoD packages
+end=cooldown
+frames=120
+-
+type=box
+position=centerTopRight
+text=Games in this window are listed in alphabetical order by default. Under each game's name, it's Title ID is displayed.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTopRight
+text=Additionally, all of it's data's size (GoD packages, Xenia executables, save data, etc) is displayed to the right.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTopRight
+text=Scroll to the bottom if needed, and click the "Sort Entries" button.
+end=state
+state=DataSort
+-
+type=box
+position=centerTopRight
+text=Here you can sort data entries. Likewise, you can filter entries by clicking the "Filter Entries" button instead.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTopRight
+text=Close the window.
+end=state
+state=Data
+-
+type=split
+condition=none
+newFile=id02

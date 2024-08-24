@@ -4458,7 +4458,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Focus Home Interactive SAS" ],
       "Release_Date": "2010-05-12",
-      "Title": "TOW: Things on Wheels",
+      "Title": "Things on Wheels",
       "Alternate_Name": "things on wheels",
       "Variants": [
         {
@@ -4813,7 +4813,7 @@
       "Variants": [
         {
           "GameName": "split/second",
-          "TitleID": "4256070000000",
+          "TitleID": "425607E7",
           "Serial": "BV-2023",
           "Region": "RF",
           "XEXCRC": "9FFB1366",
@@ -6143,7 +6143,7 @@
       "Variants": [
         {
           "GameName": "toy story 3",
-          "TitleID": "42560700000",
+          "TitleID": "425607E5",
           "Serial": "BV-2021",
           "Region": "RF",
           "XEXCRC": "3D4ECCAF",
@@ -10590,7 +10590,7 @@
       "Variants": [
         {
           "GameName": "the sims 3",
-          "TitleID": "45410800",
+          "TitleID": "454108E2",
           "Serial": "EA-2274",
           "Region": "RF",
           "XEXCRC": "09FB15BF",

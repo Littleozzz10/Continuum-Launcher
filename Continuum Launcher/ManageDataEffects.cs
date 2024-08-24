@@ -71,7 +71,7 @@ namespace XeniaLauncher
                 game.fileManageWindow.AddText(Shared.FileManageStrings["extract"]);
                 game.fileManageWindow.AddText(Shared.FileManageStrings["video"]);
             }
-            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Demo")
+            else if (game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Game on Demand" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Installed Disc Game" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox Live Arcade Title" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Gamer Picture" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Xbox 360 Theme" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Game Demo" || game.dataFiles[game.selectedDataIndex][buttonIndex].subTitle == "Avatar Item")
             {
                 game.fileManageWindow.AddButton(new Rectangle(1235, 750, 490, 80), "Extract this content into an _EXTRACT folder\nin this game's directory.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.fileManageWindow.AddButton(new Rectangle(1235, 660, 490, 80), "Open the STFS Metadata Viewer.", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
@@ -112,7 +112,7 @@ namespace XeniaLauncher
                 {
                     DataEntry entry = game.dataFiles[buttonIndex][i];
                     // Excluding Xenia data, since it will already have been read prior to this
-                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content" && entry.subTitle != "Internal" && entry.subTitle != "Internal (Non-Indexed)" && entry.subTitle != "Internal (Xenia)" && entry.subTitle != "User Data Metric" && entry.subTitle != "Configuration Data")
+                    if (entry.subTitle != "Localized Xenia Data" && entry.subTitle != "Xenia Game Save" && entry.subTitle != "Xenia Installed Content" && entry.subTitle != "Resources" && entry.subTitle != "Extracted Content" && entry.subTitle != "Internal" && entry.subTitle != "Internal (Non-Indexed)" && entry.subTitle != "Internal (Xenia)" && entry.subTitle != "User Data Metric" && entry.subTitle != "Configuration Data" && entry.subTitle != "Program Usage Data")
                     {
                         game.dataFiles[buttonIndex].RemoveAt(i);
                         i--;

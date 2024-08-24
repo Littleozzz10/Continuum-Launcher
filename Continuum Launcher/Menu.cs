@@ -44,15 +44,13 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 1)
             {
-                game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(4), new GenericStart(), Game1.State.Menu);
+                game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
                 game.state = Game1.State.NewGame;
                 game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100), "Import a game with it's parent folder/directory.\n\nNOTE: The game must be in GoD format with a valid\nSTFS header, with the original Xbox 360 folder\nstructure. See Continuum Launcher's Wiki pages on\nGitHub for more information.\n\nThis import will auto-import title IDs, which can be\nused for Database Lookups.", Ozzz.DescriptionBox.SpawnPositions.BottomRightInfoDump, 0.4f);
-                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Deprecated functionality. Do not use.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
-                game.newGameWindow.AddButton(new Rectangle(610, 585, 700, 100), "Deprecated functionality. Do not use.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Directly provide a filepath to a game file, either in\nSTFS/GoD format or XEX format.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
                 game.newGameWindow.AddButton(new Rectangle(610, 695, 700, 100));
                 game.newGameWindow.AddText("STFS Folder Import");
-                game.newGameWindow.AddText("Manual Import (OLD)");
-                game.newGameWindow.AddText("Import From STFS (OLD)");
+                game.newGameWindow.AddText("Manual Import");
                 game.newGameWindow.AddText("Back to Menu");
                 game.newGameWindow.buttonEffects.SetupEffects(game, source);
             }
@@ -168,7 +166,7 @@ namespace XeniaLauncher
                                                         extractSize += file.Length;
                                                     }
                                                     size += extractSize;
-                                                    game.dataFiles[index].Add(new DataEntry("Extracted " + Shared.contentTypes[extractDir.Name], Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + extractSize), null, game.icons[data.gameTitle]));
+                                                    game.dataFiles[index].Add(new DataEntry("Extracted " + Shared.contentTypes[extractDir.Name], Shared.contentTypes["_EXTRACT"], game.ConvertDataSize("" + extractSize), extractDir.FullName, game.icons[data.gameTitle]));
                                                     game.dataFiles[index].Last().fileSize = extractSize;
                                                     Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataPreCheckFileFound, Shared.contentTypes[extractDir.Name] + "Extract files added", "fileSize", "" + extractSize);
                                                 }
@@ -391,12 +389,12 @@ namespace XeniaLauncher
                             //    case Game1.DataSort.FileCountLowHigh:
                             //        game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList(); break;
                             //}
-                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
-                            game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
-                            game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", ""));
-                            linkedDataStrings.Add(data.gameTitle, game.dataStrings.dataSizeList.Count - 1);
                             data.fileSize = size;
                             data.fileCount = game.dataFiles[index].Count;
+                            game.dataFiles[index] = game.dataFiles[index].OrderByDescending(o => o.fileSize).ThenBy(o => o.name).ToList();
+                            game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + size));
+                            game.dataStrings.dataIdList.Add(data.titleId.Replace("0x", "") + " - " + data.fileCount + " files");
+                            linkedDataStrings.Add(data.gameTitle, game.dataStrings.dataSizeList.Count - 1);
                             index++;
 
                             game.localData.Add(data); // Adding data to separate list of data
@@ -505,12 +503,20 @@ namespace XeniaLauncher
                     {
                         appsSize[2] = new FileInfo(Environment.CurrentDirectory + "\\Apps\\Dump\\xenia-vfs-dump.exe").Length;
                     }
+                    appsSize[3] = appsSize[0] + appsSize[1] + appsSize[2];
                     float configSize = 0;
                     if (File.Exists(Environment.CurrentDirectory + "\\Content\\XLConfig.txt"))
                     {
                         configSize = new FileInfo(Environment.CurrentDirectory + "\\Content\\XLConfig.txt\\").Length;
                     }
-                    appsSize[3] = appsSize[0] + appsSize[1] + appsSize[2];
+                    float logSize = 0;
+                    int logCount = 0;
+                    foreach (string filepath in Directory.GetFiles(Environment.CurrentDirectory + "\\Logs", "*", SearchOption.AllDirectories))
+                    {
+                        FileInfo file = new FileInfo(filepath);
+                        logSize += file.Length;
+                        logCount++;
+                    }
                     float contTotalSize = contSize + contAudioSize + contDatabaseSize + contFontsSize + contTextureSize + win64Size;
                     // Adding Launcher files to file manager
                     game.dataFiles[index].Add(new DataEntry("Continuum Launcher", "Internal", game.ConvertDataSize("" + contTotalSize), Environment.CurrentDirectory + "\\", game.mainLogo));
@@ -525,6 +531,8 @@ namespace XeniaLauncher
                     game.dataFiles[index].Last().fileSize = contRuntimeSize;
                     game.dataFiles[index].Add(new DataEntry("User Config File", "Configuration Data", game.ConvertDataSize("" + configSize), Environment.CurrentDirectory + "\\Content\\", game.mainLogo));
                     game.dataFiles[index].Last().fileSize = configSize;
+                    game.dataFiles[index].Add(new DataEntry("Log Files (x" + logCount + ")", "Program Usage Data", game.ConvertDataSize("" + logSize), Environment.CurrentDirectory + "\\Logs\\", game.mainLogo));
+                    game.dataFiles[index].Last().fileSize = logSize;
                     game.dataFiles[index].Add(new DataEntry("Total: Artwork and Icons", "User Data Metric", game.ConvertDataSize("" + artSize), Environment.CurrentDirectory + "\\IconData\\", game.compLogo));
                     game.dataFiles[index].Last().fileSize = -1;
                     game.dataFiles[index].Add(new DataEntry("Total: Xenia Content and Temporary Data", "User Data Metric", game.ConvertDataSize("" + tempDataSize), Environment.CurrentDirectory + "\\XData\\", game.compLogo));
@@ -550,7 +558,7 @@ namespace XeniaLauncher
 
                     // Adding Launcher to games
                     game.dataStrings.dataStringList.Add("Continuum Launcher");
-                    game.dataStrings.dataSizeList.Add(game.ConvertDataSize("" + (contTotalSize + win64Size + contRuntimeSize)));
+                    game.dataStrings.dataSizeList.Add(game.ConvertDataSize("" + (contTotalSize + contRuntimeSize + appsSize[3] + configSize + logSize)));
                     game.dataStrings.dataIdList.Add("Internal");
                     //game.dataStrings.dataStringList.Add("Artwork and Icons");
                     //game.dataStrings.dataSizeList.Add("" + game.ConvertDataSize("" + artSize));
@@ -647,8 +655,27 @@ namespace XeniaLauncher
                 }
                 
             }
-            // About/Credits
             else if (buttonIndex == 4)
+            {
+                game.state = Game1.State.TutorialSelect;
+                game.tutorialWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Continuum Tutorials", new TutorialMenu(), new StdInputEvent(5), new GenericStart(), Game1.State.Menu);
+                game.tutorialWindow.AddButton(new Rectangle(610, 320, 700, 100), "Learn how to interact with Continuum, with\nbasic controls and window navigation.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.tutorialWindow.AddButton(new Rectangle(610, 430, 700, 100), "Learn how to add games to Continuum, as\nwell as adjust their settings and use\nContinuum's game database.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.tutorialWindow.AddButton(new Rectangle(610, 540, 700, 100), "Learn how to install DLC and Title Updates\nto Xenia Canary, including an overview\nof Continuum's Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+                game.tutorialWindow.AddButton(new Rectangle(610, 650, 700, 100), "Learn how to remove a game from\nContinuum.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftTop, 0.4f);
+                game.tutorialWindow.AddButton(new Rectangle(610, 760, 700, 100), "Return to the Menu", Ozzz.DescriptionBox.SpawnPositions.CenterRightTop, 0.4f);
+                game.tutorialWindow.AddText("1. Navigating Continuum");
+                game.tutorialWindow.AddText("2. Adding Games");
+                game.tutorialWindow.AddText("3. Installing DLC");
+                game.tutorialWindow.AddText("4. Removing Games");
+                game.tutorialWindow.AddText("Back to Menu");
+                foreach (TextSprite sprite in game.tutorialWindow.sprites)
+                {
+                    sprite.scale = 0.6f;
+                }
+            }
+            // About/Credits
+            else if (buttonIndex == 5)
             {
                 game.creditsWindow = new Window(game, new Rectangle(150, 50, 1620, 980), "About Continuum Launcher", "Version " + Shared.VERSION + ", compiled on " + Shared.COMPILED, new MessageButtonEffects(), new SingleButtonEvent(), new GenericStart(), Game1.State.Menu, true);
                 game.creditsWindow.AddButton(new Rectangle(460, 900, 1000, 100));
@@ -672,7 +699,7 @@ namespace XeniaLauncher
                 game.state = Game1.State.Credits;
             }
             // Exit
-            else if (buttonIndex == 5)
+            else if (buttonIndex == 6)
             {
                 Logging.Close();
                 game.Exit();

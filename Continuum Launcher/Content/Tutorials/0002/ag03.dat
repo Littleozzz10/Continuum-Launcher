@@ -1,0 +1,219 @@
+-
+type=box
+position=centerTop
+text=Excellent! Your game is now imported into Continuum, however, we aren't quite done yet.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=This is the Game Management window, where you can change Xenia settings specifically for this game,\nedit names and sorting information, add additional executables, and more.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Let's go through each of these windows. First, click on the "Edit Launch Settings" window.
+end=state
+state=GameXeniaSettings
+-
+type=box
+position=centerTop
+text=With the exception of the "Allow Custom Builds" option, these are all settings that apply to Xenia for this game only.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=Of special note are the License Mask and Scaling settings.
+end=cooldown
+frames=90
+-
+type=box
+position=centerTopLeft
+text=The License Mask defaults to 0, but for games with trials, 0 runs them in trial mode.\nTo run the game in full game mode, set it to 1, or -1 if that doesn't work.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTopRight
+text=The Horizontal and Vertical Scale settings affect the resolution Xenia renders the game at. 1080p is not\npossible as a native resolution. Additionally, many games will have issues at higher resolutions.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Once you are ready, back out of this window.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTop
+text=Now, please click on the "Edit Game Info" button.
+end=state
+state=GameInfo
+-
+type=box
+position=centerTop
+text=This window allows you to change information Continuum has stored for this game.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=The Name and Alphabetization values are filled in already, and if you did an STFS Import the Title ID will be too.\nAt the end of the Tutorial, we'll use Continuum's database to fill in the rest of the data.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Please return to the Game Management window.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTop
+text=Now click on the "Change Filepaths" button.
+end=state
+state=GameFilepaths
+-
+type=box
+position=centerTop
+text=In this window, you can change the filepaths that this game is tied to. Note that an STFS Import extracts\nthe game's Icon for you, and will also import Cover Art if labeled properly (See the GitHub Wiki).
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Close the window.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTop
+text=Please click on the "Manage Categories" button.
+end=state
+state=GameCategories
+-
+type=box
+position=centerTop
+text=In the Catagory Management window, you can manage the Categories a game is in. You can also create, delete,\nor rename Categories. These changes are global changes, and every game in that Category will be affected.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Also note that the "All Games" Category cannot be modified in any way, and all games are part of it by default.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=To switch between Categories, click on the left and right arrow buttons.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=Close out of the Category Management window.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTop
+text=Now, click on the "Manage Executables" button.
+end=state
+state=GameXEX
+-
+type=box
+position=centerTop
+text=The Executable Management window is laid out just like the Category Management window.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTopLeft
+text=To add a new Executable (XEX), click the "Add New XEX" button, and you will be\nprompted to give it a name and provide a filepath to it.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Also note that you can delete a game by deleting it's main Executable, which is the default one that matches the game name.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Return to the Game Management window.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTop
+text=The last part of this Tutorial covers Continuum's game database; however, it is not universal.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=Continuum's game database, while containing a few PAL and NTSC/J region titles, focuses on NTSC\n(North American) region titles. As such, European and Japanese titles may not be recognized.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Additionally, even if a title released across regions, the title has unique Title IDs for each region.\n(Note: This will be rectified in a later update, however, the game database is a W.I.P.)
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=As the game database is a work in progress, expect issues. Some games may not be recognized properly,\nsome games may have incorrect information (or missing info), or variants of games could have issues.\nPlease report any issues or incorrect data on Continuum's GitHub page by opening a new Issue.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=If you need to exit the Tutorial, remember you can do so by holding down the [ESC] key or the (A) button on a controller.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=To continue the Tutorial, click on the "Database Lookup" button, if this game has a valid Title ID. If prompted\nto choose between multiple games/variants, select whichever one you want as long as it matches your game.
+end=state
+state=DatabaseResult
+-
+type=box
+position=centerTop
+text=This is the Database Result window. First off, some games may have multiple developers and/or publishers.\nIn addition, the database may have incorrect developers and publishers, such as ones from non-NTSC regions, or\nfrom versions of the game on platforms other than the Xbox 360. Please report these games when encountered.
+end=cooldown
+frames=240
+-
+type=box
+position=centerTopLeft
+text=Next, we can edit the game's new title it will receive from the database by clicking the "Edit Game Title" button.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTopRight
+text=Likewise, we can edit the game's new release date by clicking the "Edit Release Date" button.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=Finally, clicking on the "Accept Entry and Save" button will save this information to the game, while\nclicking on the "Discard Changes" button exits the window and makes no modifications to the game.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=Return to the game selection menu to complete this Tutorial.
+end=state
+state=Main
+-
+type=end
+promptType=0

@@ -110,6 +110,9 @@ namespace Continuum_Launcher
             ManageDataFileAdded, // Event for when a file for a game is found
             MissingGame, // Triggered when a game is reported missing by the ManageData window
             GameFileFound, // Triggered when a game's file is found by the ManageData window
+            TutorialStart, // Triggered when a Tutorial begins it's starting process
+            TutorialInstruction, // Contains an instruction read in for a Tutorial
+            TutorialInstructionsRead, // Triggered when a Tutorial has finished loading a set of instructions
             Exit // Event when Continuum is exited
         }
 

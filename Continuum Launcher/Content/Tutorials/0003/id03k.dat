@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Avatar Item\nContent Type: Avatar Item\nDescription: This file contains a cosmetic for an Xbox 360 avatar\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - View Metadata: Open the Metadata Viewer to view STFS metadata for this file\n  - Extract STFS Container: Extract this file to an _EXTRACT directory
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

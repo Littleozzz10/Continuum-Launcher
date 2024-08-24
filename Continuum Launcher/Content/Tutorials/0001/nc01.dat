@@ -1,0 +1,14 @@
+-
+type=box
+position=centerTopLeft
+text=Currently, we are in the game selection menu.\nHere, you can select games by clicking on them.
+end=cooldown
+frames=120
+-
+type=split
+condition=noGames
+newFile=nc02
+-
+type=split
+condition=none
+newFile=nc03

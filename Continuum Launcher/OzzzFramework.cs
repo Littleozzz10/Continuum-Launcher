@@ -1611,7 +1611,7 @@ namespace XeniaLauncher
             /// </summary>
             public enum SpawnPositions
             {
-                BelowRight, CenterRightTop, CenterRightBottom, AboveRight, BelowLeft, CenterLeftTop, CenterLeftBottom, AboveLeft, CenterTop, CenterBottom, BottomRightInfoDump
+                BelowRight, CenterRightTop, CenterRightBottom, AboveRight, BelowLeft, CenterLeftTop, CenterLeftBottom, AboveLeft, CenterTop, CenterBottom, BottomRightInfoDump, CenterPerfect, CenterPerfectLeft, CenterPerfectRight
             }
             /// <summary>
             /// Where the Description Box will appear.
@@ -1710,6 +1710,21 @@ namespace XeniaLauncher
                 {
                     rect.X = (int)(hostSprite.pos.X + hostSprite.GetSize().X * 0.8f);
                     rect.Y = (int)(hostSprite.pos.Y + hostSprite.GetSize().Y);
+                }
+                else if (spawnPos == SpawnPositions.CenterPerfect)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width / 2);
+                    rect.Y = (int)(hostSprite.pos.Y);
+                }
+                else if (spawnPos == SpawnPositions.CenterPerfectLeft)
+                {
+                    rect.X = (int)(hostSprite.pos.X);
+                    rect.Y = (int)(hostSprite.pos.Y);
+                }
+                else if (spawnPos == SpawnPositions.CenterPerfectRight)
+                {
+                    rect.X = (int)(hostSprite.pos.X - rect.Width);
+                    rect.Y = (int)(hostSprite.pos.Y);
                 }
 
                 // Resizing
