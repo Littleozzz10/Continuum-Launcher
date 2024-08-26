@@ -17,9 +17,9 @@ namespace XeniaLauncher
             All, Games, DLC, TempContent, Videos
         }
 
-        public static readonly string VERSION = "1.2.0 Alpha 13";
-        public static readonly string COMPILED = "August 24, 2024";
-        public static readonly int VERNUM = 2013;
+        public static readonly string VERSION = "1.2.0 Alpha 14";
+        public static readonly string COMPILED = "August 25, 2024";
+        public static readonly int VERNUM = 2014;
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Xbox 360 Saved Game"  },
             { "00000002", "Downloadable Content" },
@@ -658,10 +658,10 @@ namespace XeniaLauncher
         public class GameData
         {
             public List<string> folders, xexPaths, xexNames;
-            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath, alphaAs;
+            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath, alphaAs, extraParams;
             public double fileSize;
             public long lastPlayed;
-            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY, fileCount;
+            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY, fileCount, vernum;
             public bool preferCanary, hasCoverArt, cpuReadback, vsync, mountCache;
 
             private static int nextID;
@@ -687,6 +687,26 @@ namespace XeniaLauncher
                 Broken, Starts, Menu, Gameplay1, Gameplay2, Gameplay3, Playable, Unknown
             }
             public XeniaCompat xeniaCompat, canaryCompat;
+            public enum Language
+            {
+                English = 1,
+                Japanese = 2,
+                German = 3,
+                French = 4,
+                Spanish = 5,
+                Italian = 6,
+                Korean = 7,
+                TraditionalChinese = 8,
+                Portuguese = 9,
+                Polish = 11,
+                Russian = 12,
+                Swedish = 13,
+                Turkish = 14,
+                Norwegian = 15,
+                Dutch = 16,
+                SimplifiedChinese = 17
+            }
+            public Language language;
 
             public GameData()
             {
@@ -701,6 +721,7 @@ namespace XeniaLauncher
                 artPath = "NULL";
                 iconPath = "NULL";
                 alphaAs = "No Title";
+                extraParams = "";
                 fileSize = 0;
                 lastPlayed = 0;
                 year = 2005;
@@ -722,6 +743,7 @@ namespace XeniaLauncher
                 renderer = Renderer.Any;
                 xeniaCompat = XeniaCompat.Unknown;
                 canaryCompat = XeniaCompat.Unknown;
+                language = Language.English;
 
                 internalID = nextID;
                 nextID++;
@@ -754,6 +776,7 @@ namespace XeniaLauncher
                 chunk.AddData("artPath", artPath, DataType.String);
                 chunk.AddData("iconPath", iconPath, DataType.String);
                 chunk.AddData("alphaAs", alphaAs, DataType.String);
+                chunk.AddData("extraParams", extraParams, DataType.String);
                 chunk.AddData("fileSize", "" + fileSize, DataType.Number);
                 chunk.AddData("lastPlayed", "" + lastPlayed, DataType.Number);
                 chunk.AddData("year", "" + year, DataType.Number);
@@ -774,6 +797,7 @@ namespace XeniaLauncher
                 chunk.AddData("renderer", renderer.ToString(), DataType.String);
                 chunk.AddData("xeniaCompat", xeniaCompat.ToString(), DataType.String);
                 chunk.AddData("canaryCompat", canaryCompat.ToString(), DataType.String);
+                chunk.AddData("language", "" + (int)language, DataType.Number);
                 return chunk;
             }
             public void Read(SaveDataChunk chunk)
@@ -831,6 +855,10 @@ namespace XeniaLauncher
                     else if (obj.name == "alphaAs")
                     {
                         alphaAs = obj.data;
+                    }
+                    else if (obj.name == "extraParams")
+                    {
+                        extraParams = obj.data;
                     }
                     else if (obj.name == "fileSize")
                     {
@@ -1006,6 +1034,10 @@ namespace XeniaLauncher
                         {
                             canaryCompat = XeniaCompat.Playable;
                         }
+                    }
+                    else if (obj.name == "language")
+                    {
+                        language = (Language)Convert.ToInt32(obj.data);
                     }
                     // Filling in Alpha As values for older config files (Pre-2010, aka before 1.2.0 Alpha 10)
                     if (alphaAs == "No Title" && gameTitle != "No Title")

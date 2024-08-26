@@ -26,6 +26,7 @@ namespace Continuum_Launcher
                     {
                         game.state = Game1.State.Main;
                     }
+                    game.selectSound.Play();
                 }
                 else if (buttonIndex == 1)
                 {
@@ -34,6 +35,7 @@ namespace Continuum_Launcher
                     {
                         game.state = Game1.State.Main;
                     }
+                    game.selectSound.Play();
                 }
                 else if (buttonIndex == 2)
                 {
@@ -42,6 +44,7 @@ namespace Continuum_Launcher
                     {
                         game.state = Game1.State.Main;
                     }
+                    game.selectSound.Play();
                 }
                 else if (buttonIndex == 3)
                 {
@@ -50,6 +53,12 @@ namespace Continuum_Launcher
                     {
                         game.state = Game1.State.Main;
                     }
+                    game.selectSound.Play();
+                }
+                else if (buttonIndex == 4)
+                {
+                    game.state = source.returnState;
+                    game.backSound.Play();
                 }
             }
             else

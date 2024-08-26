@@ -257,7 +257,7 @@ namespace XeniaLauncher
                     {
                         SoundEffectInstance sound = game.buttonSwitchSound.CreateInstance();
                         sound.Play();
-                        sound.Pan = CalculateButtonPan(i);
+                        //sound.Pan = CalculateButtonPan(i);
                         stringIndex += i - buttonIndex;
                         buttonIndex = i;
                         if (changeEffects != null)

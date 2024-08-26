@@ -657,22 +657,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 4)
             {
-                game.state = Game1.State.TutorialSelect;
-                game.tutorialWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Continuum Tutorials", new TutorialMenu(), new StdInputEvent(5), new GenericStart(), Game1.State.Menu);
-                game.tutorialWindow.AddButton(new Rectangle(610, 320, 700, 100), "Learn how to interact with Continuum, with\nbasic controls and window navigation.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
-                game.tutorialWindow.AddButton(new Rectangle(610, 430, 700, 100), "Learn how to add games to Continuum, as\nwell as adjust their settings and use\nContinuum's game database.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
-                game.tutorialWindow.AddButton(new Rectangle(610, 540, 700, 100), "Learn how to install DLC and Title Updates\nto Xenia Canary, including an overview\nof Continuum's Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
-                game.tutorialWindow.AddButton(new Rectangle(610, 650, 700, 100), "Learn how to remove a game from\nContinuum.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftTop, 0.4f);
-                game.tutorialWindow.AddButton(new Rectangle(610, 760, 700, 100), "Return to the Menu", Ozzz.DescriptionBox.SpawnPositions.CenterRightTop, 0.4f);
-                game.tutorialWindow.AddText("1. Navigating Continuum");
-                game.tutorialWindow.AddText("2. Adding Games");
-                game.tutorialWindow.AddText("3. Installing DLC");
-                game.tutorialWindow.AddText("4. Removing Games");
-                game.tutorialWindow.AddText("Back to Menu");
-                foreach (TextSprite sprite in game.tutorialWindow.sprites)
-                {
-                    sprite.scale = 0.6f;
-                }
+                OpenTutorialMenu(game);
             }
             // About/Credits
             else if (buttonIndex == 5)
@@ -708,6 +693,25 @@ namespace XeniaLauncher
         public void SetupEffects(Game1 game, Window window)
         {
 
+        }
+        public static void OpenTutorialMenu(Game1 game)
+        {
+            game.state = Game1.State.TutorialSelect;
+            game.tutorialWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Continuum Tutorials", new TutorialMenu(), new StdInputEvent(5), new GenericStart(), Game1.State.Menu);
+            game.tutorialWindow.AddButton(new Rectangle(610, 320, 700, 100), "Learn how to interact with Continuum, with\nbasic controls and window navigation.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+            game.tutorialWindow.AddButton(new Rectangle(610, 430, 700, 100), "Learn how to add games to Continuum, as\nwell as adjust their settings and use\nContinuum's game database.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+            game.tutorialWindow.AddButton(new Rectangle(610, 540, 700, 100), "Learn how to install DLC and Title Updates\nto Xenia Canary, including an overview\nof Continuum's Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.CenterRightBottom, 0.4f);
+            game.tutorialWindow.AddButton(new Rectangle(610, 650, 700, 100), "Learn how to remove a game from\nContinuum.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftTop, 0.4f);
+            game.tutorialWindow.AddButton(new Rectangle(610, 760, 700, 100), "Return to the Menu", Ozzz.DescriptionBox.SpawnPositions.CenterRightTop, 0.4f);
+            game.tutorialWindow.AddText("1. Navigating Continuum");
+            game.tutorialWindow.AddText("2. Adding Games");
+            game.tutorialWindow.AddText("3. Installing DLC");
+            game.tutorialWindow.AddText("4. Removing Games");
+            game.tutorialWindow.AddText("Back to Menu");
+            foreach (TextSprite sprite in game.tutorialWindow.sprites)
+            {
+                sprite.scale = 0.6f;
+            }
         }
     }
 }

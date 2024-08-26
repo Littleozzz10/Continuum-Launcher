@@ -4,5 +4,5 @@ initialFile=nc01
 requiresGames=False
 title=Navigating Continuum
 description=In this tutorial, you will learn how to interact with Continuum
-rollingText=False
+rollingText=True
 size=0.4

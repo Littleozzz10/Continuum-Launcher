@@ -63,7 +63,7 @@ namespace XeniaLauncher
         public Dictionary<string, string> stfsFiles; // Stores stfsFiles during the game import process
         public List<string> folders, trivia;
         public List<List<DataEntry>> dataFiles;
-        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow, metadataWindow, dataSortWindow, dataFilterWindow, tutorialWindow;
+        public Window xexWindow, launchWindow, menuWindow, optionsWindow, graphicsWindow, compatWindow, settingsWindow, creditsWindow, dataWindow, manageWindow, deleteWindow, gameManageWindow, gameXeniaSettingsWindow, gameFilepathsWindow, gameInfoWindow, gameCategoriesWindow, gameXEXWindow, newGameWindow, databaseResultWindow, releaseWindow, databasePickerWindow, fileManageWindow, metadataWindow, dataSortWindow, dataFilterWindow, tutorialWindow, welcomeWindow;
         public MessageWindow message;
         public TextInputWindow text;
         public Color backColor, backColorAlt, fontColor, fontSelectColor, fontAltColor, fontAltLightColor, majorFontColor, sortColor, folderColor, timeDateColor, cornerStatsColor, triviaColor, topBorderColor, bottomBorderColor, ringMainColor, ringSelectColor, descColor;
@@ -76,11 +76,11 @@ namespace XeniaLauncher
         public List<GameInfo> databaseGameInfo;
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath, tempGameTitle;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay, jumpLayerAlpha, jumpTriggerCooldown, jumpTriggerCooldownDefault;
-        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData, showResearchPrompt, windowClickExit, enterCloseTextInput, rightClickGames, tutorialLock, tutorialExitPrompt;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay, jumpLayerAlpha, jumpTriggerCooldown, jumpTriggerCooldownDefault, configVernum;
+        public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData, showResearchPrompt, windowClickExit, enterCloseTextInput, rightClickGames, tutorialLock, tutorialExitPrompt, welcomeShown;
         public enum State
         {
-            None, Any, Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile, Metadata, DataSort, DataFilter, TutorialSelect
+            None, Any, Main, Select, Launch, Menu, Options, Credits, Graphics, Settings, Compat, Message, Data, Manage, Delete, GameMenu, GameXeniaSettings, GameFilepaths, GameInfo, GameCategories, GameXEX, Text, NewGame, DatabaseResult, ReleaseYear, ReleaseMonth, ReleaseDay, DatabasePicker, ManageFile, Metadata, DataSort, DataFilter, TutorialSelect, Welcome
         }
         public State state;
         public enum Sort
@@ -253,6 +253,22 @@ namespace XeniaLauncher
             {
                 enableExp = Convert.ToBoolean(exp.data);
                 Logging.Write(LogType.Critical, Event.InitEvent, "Experimental config file loaded");
+            }
+
+            // Vernum
+            SaveDataObject ver = read.savedData.FindData("vernum");
+            if (ver != null)
+            {
+                configVernum = Convert.ToInt32(ver.data);
+                Logging.Write(LogType.Critical, Event.InitEvent, "Vernum read from config", "vernum", "" + configVernum);
+                if (configVernum == Shared.VERNUM)
+                {
+                    welcomeShown = true;
+                }
+            }
+            else
+            {
+                configVernum = Shared.VERNUM - 1;
             }
 
             // Making new settings file if not already present
@@ -587,11 +603,7 @@ namespace XeniaLauncher
         public void ResetTheme(Theme newTheme, bool forceWindowReset)
         {
             Logging.Write(LogType.Debug, Event.ThemeReset, "Theme reset: " + newTheme.ToString(), new Dictionary<string, string>() { { "forceWindowReset", "" + forceWindowReset } });
-            StreamReader themeReader = null;
-            if (enableExp)
-            {
-                themeReader = new StreamReader("Content\\XLTheme.txt");
-            }
+            StreamReader themeReader = new StreamReader("Content\\XLTheme.txt");
             fontColor = Color.White;
             fontSelectColor = Color.White;
             fontAltColor = Color.White;
@@ -735,7 +747,7 @@ namespace XeniaLauncher
             }
             whiteGradient.ValueUpdate(0);
 
-            if (enableExp)
+            if (themeReader != null)
             {
                 themeReader.Close();
             }
@@ -1181,9 +1193,14 @@ namespace XeniaLauncher
             {
                 param = param + " --license_mask=-1";
             }
+            param = param + " --user_language=" + (int)gameData[index].language;
             param = param + " --log_level=" + (int)logLevel;
             param = param + " --fullscreen=" + xeniaFullscreen.ToString().ToLower();
             param = param + " --headless=" + runHeadless.ToString().ToLower();
+            if (gameData[index].extraParams != "")
+            {
+                param = param + " " + gameData[index].extraParams;
+            }
             Logging.Write(LogType.Critical, Event.XeniaParam, "Xenia param string: " + param);
             return param;
         }
@@ -1660,6 +1677,7 @@ namespace XeniaLauncher
                 save.AddSaveObject(new SaveDataObject("xenia", xeniaPath, SaveData.DataType.String));
                 save.AddSaveObject(new SaveDataObject("canary", canaryPath, SaveData.DataType.String));
                 save.AddSaveObject(new SaveDataObject("enableExp", "" + enableExp, SaveData.DataType.Boolean));
+                save.AddSaveObject(new SaveDataObject("vernum", "" + Shared.VERNUM, SaveData.DataType.Number));
                 SaveDataChunk chunk = new SaveDataChunk("games");
                 masterData = masterData.OrderBy(o => o.gameTitle).ToList();
                 foreach (GameData game in masterData)
@@ -2974,6 +2992,11 @@ namespace XeniaLauncher
             else if (state == State.GameXeniaSettings)
             {
                 gameXeniaSettingsWindow.Update();
+                if (textWindowInput != null)
+                {
+                    gameData[index].extraParams = textWindowInput;
+                    textWindowInput = null;
+                }
             }
             else if (state == State.DatabasePicker)
             {
@@ -3525,6 +3548,11 @@ namespace XeniaLauncher
                     state = State.Message;
                 }
             }
+            else if (state == State.Welcome)
+            {
+                welcomeWindow.Update();
+            }
+
             if (tutorialExitPrompt && messageYes)
             {
                 ExitTutorial();
@@ -3533,6 +3561,7 @@ namespace XeniaLauncher
             {
                 compatWaitFrames--;
             }
+
             if (state == State.Message)
             {
                 message.Update();
@@ -3875,6 +3904,7 @@ namespace XeniaLauncher
                 gameXEXWindow = null;
                 newGameWindow = null;
                 tutorialWindow = null;
+                welcomeWindow = null;
             }
             else if (state == State.Select)
             {
@@ -3949,6 +3979,10 @@ namespace XeniaLauncher
             {
                 metadataWindow = null;
             }
+            else if (state == State.Welcome)
+            {
+                tutorialWindow = null;
+            }
             if (state != State.Message)
             {
                 message = null;
@@ -3956,6 +3990,61 @@ namespace XeniaLauncher
             if (state != State.Text)
             {
                 text = null;
+            }
+
+            if (!welcomeShown)
+            {
+                welcomeWindow = new Window(this, new Rectangle(50, 50, 1820, 980), "Welcome to Continuum Launcher!", "You've just been updated. Here's what's new.", new WelcomeEffects(), new StdInputEvent(2), new GenericStart(), State.Main, true);
+                welcomeWindow.AddButton(new Rectangle(310, 900, 600, 100));
+                welcomeWindow.AddButton(new Rectangle(1010, 900, 600, 100));
+                welcomeWindow.AddText("Let's Go!");
+                welcomeWindow.AddText("View Tutorials");
+                welcomeWindow.extraSprites.Add(new ObjectSprite(mainLogo, new Rectangle(300, 360, 300, 300)));
+                // Updated window
+                if (configVernum > 0 && configVernum < Shared.VERNUM)
+                {
+                    TextSprite header = new TextSprite(font, "Continuum just got better. The all-new 1.2 version brings\nmany new features, including the following:", 0.5f, new Vector2(760, 260), Color.White);
+                    header.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(header);
+
+                    TextSprite notes = new TextSprite(font, 
+                        "- New game database for matching games with their information\n" +
+                        "- Interactive Tutorials and tooltips to guide you through Continuum\n" +
+                        "- New import system to make importing games even easier\n" +
+                        "- Overhauled and improved Data Management\n" +
+                        "- Custom Theme support (Advanced feature)\n" +
+                        "- Dozens of bug fixes and changes from v1.1\n" +
+                        "... And even more!", 0.4f, new Vector2(860, 370), Color.White);
+                    notes.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(notes);
+
+                    TextSprite footnote = new TextSprite(font, "View complete patch notes and a full usage guide on GitHub.\nUntil then, it's time to Jump In and play some games!\n                                                                                - Littleozzz10", 0.5f, new Vector2(760, 660), Color.White);
+                    footnote.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(footnote);
+                }
+                else if (configVernum <= 0)
+                {
+                    TextSprite header = new TextSprite(font, "This is Continuum Launcher, an application for managing and\nplaying your Xbox 360 library with Xenia. If it's your first time\nhere, check out the Tutorials menu or the GitHub guide to get\nstarted.", 0.5f, new Vector2(760, 260), Color.White);
+                    header.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(header);
+
+                    TextSprite notes = new TextSprite(font,
+                        "Note: Continuum is not designed to enable piracy, and piracy is not condoned.\n" +
+                        "Additionally, Continuum is free, open-source software. If you paid for any part\n" +
+                        "of this software, get a refund immedietely and report the seller.", 0.4f, new Vector2(760, 500), Color.White);
+                    notes.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(notes);
+
+                    TextSprite footnote = new TextSprite(font, "Continuum is in active development, so please report any bugs\non GitHub. Now, it's time to Jump In and play some games!\n                                                                                - Littleozzz10", 0.5f, new Vector2(760, 660), Color.White);
+                    footnote.splitDraw = true;
+                    welcomeWindow.extraSprites.Add(footnote);
+                    welcomeWindow.descSprite.text = "The Xenia launcher we've all been waiting for.";
+                }
+                // First run window
+                welcomeWindow.skipMainStateTransition = true;
+                state = State.Welcome;
+                welcomeShown = true;
+                SaveGames();
             }
 
             firstLoad = false;
@@ -4149,13 +4238,13 @@ namespace XeniaLauncher
             {
                 metadataWindow.Draw(_spriteBatch);
             }
+            if (welcomeWindow != null)
+            {
+                welcomeWindow.Draw(_spriteBatch);
+            }
             if (tutorialWindow != null)
             {
                 tutorialWindow.Draw(_spriteBatch);
-            }
-            if (message != null)
-            {
-                message.Draw(_spriteBatch);
             }
             if (text != null)
             {
@@ -4166,6 +4255,11 @@ namespace XeniaLauncher
             if (tutorial != null)
             {
                 tutorial.Draw(_spriteBatch);
+            }
+
+            if (message != null)
+            {
+                message.Draw(_spriteBatch);
             }
 
             _spriteBatch.End();
