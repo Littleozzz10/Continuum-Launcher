@@ -227,25 +227,7 @@ namespace XeniaLauncher
             //        xeniaPath = "Apps\\Canary\\xenia_canary.exe";
             //    }
             //}
-            if (File.Exists("Apps\\Xenia\\xenia.exe"))
-            {
-                xeniaPath = "Apps\\Xenia\\xenia.exe";
-                Logging.Write(LogType.Critical, Event.XeniaPath, "Xenia path found", "xeniaPath", xeniaPath);
-            }
-            if (File.Exists("Apps\\Canary\\xenia_canary.exe"))
-            {
-                canaryPath = "Apps\\Canary\\xenia_canary.exe";
-                Logging.Write(LogType.Critical, Event.XeniaPath, "Canary path found", "canaryPath", canaryPath);
-            }
-            if (File.Exists("Apps\\Dump\\xenia-vfs-dump.exe"))
-            {
-                extractPath = "Apps\\Dump\\xenia-vfs-dump.exe";
-                Logging.Write(LogType.Critical, Event.XeniaPath, "Dump path found", "extractPath", extractPath);
-            }
-            else
-            {
-                extractPath = null;
-            }
+            FindXenia();
 
             // Experimental config file
             SaveDataObject exp = read.savedData.FindData("enableExp");
@@ -421,6 +403,32 @@ namespace XeniaLauncher
             base.Initialize();
 
             Logging.Write(LogType.Critical, Event.Init, "Initialization complete");
+        }
+
+        /// <summary>
+        /// Updates Xenia filepaths
+        /// </summary>
+        public void FindXenia()
+        {
+            if (File.Exists("Apps\\Xenia\\xenia.exe"))
+            {
+                xeniaPath = "Apps\\Xenia\\xenia.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Xenia path found", "xeniaPath", xeniaPath);
+            }
+            if (File.Exists("Apps\\Canary\\xenia_canary.exe"))
+            {
+                canaryPath = "Apps\\Canary\\xenia_canary.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Canary path found", "canaryPath", canaryPath);
+            }
+            if (File.Exists("Apps\\Dump\\xenia-vfs-dump.exe"))
+            {
+                extractPath = "Apps\\Dump\\xenia-vfs-dump.exe";
+                Logging.Write(LogType.Critical, Event.XeniaPath, "Dump path found", "extractPath", extractPath);
+            }
+            else
+            {
+                extractPath = null;
+            }
         }
 
         /// <summary>
@@ -603,7 +611,15 @@ namespace XeniaLauncher
         public void ResetTheme(Theme newTheme, bool forceWindowReset)
         {
             Logging.Write(LogType.Debug, Event.ThemeReset, "Theme reset: " + newTheme.ToString(), new Dictionary<string, string>() { { "forceWindowReset", "" + forceWindowReset } });
-            StreamReader themeReader = new StreamReader("Content\\XLTheme.txt");
+            StreamReader themeReader = null;
+            if (File.Exists("Content\\XLTheme.txt"))
+            {
+                themeReader = new StreamReader("Content\\XLTheme.txt");
+            }
+            else
+            {
+                Logging.Write(LogType.Critical, Event.Error, "XLTheme not found");
+            }
             fontColor = Color.White;
             fontSelectColor = Color.White;
             fontAltColor = Color.White;
@@ -1215,6 +1231,8 @@ namespace XeniaLauncher
         }
         public void LaunchXenia(string path)
         {
+            FindXenia();
+
             string param = GetParamString();
             launchSound.Play();
 
@@ -1278,6 +1296,8 @@ namespace XeniaLauncher
         }
         public void LaunchCanary(string path)
         {
+            FindXenia();
+
             string param = GetParamString();
             launchSound.Play();
 
