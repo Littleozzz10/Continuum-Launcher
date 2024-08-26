@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Xenia Game Save\nContent Type: Xenia Save Data\nDescription: Save data for Xenia\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - Delete Content: Deletes this save game
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

@@ -1,0 +1,8 @@
+startupPrompt=True
+endPrompt=True
+initialFile=ag01
+requiresGames=False
+title=Adding Games
+description=In this tutorial, you will learn how to add games to Continuum and manage them
+rollingText=True
+size=0.4

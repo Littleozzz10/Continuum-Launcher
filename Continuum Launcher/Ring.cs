@@ -28,15 +28,19 @@ namespace XeniaLauncher
                 {
                     fade = new Gradient(Color.FromNonPremultiplied(210, 210, 210, 255), fadeFrames);
                 }
-                if (game.theme == Game1.Theme.Purple)
+                else if (game.theme == Game1.Theme.Purple)
                 {
                     fade = new Gradient(Color.FromNonPremultiplied(120, 0, 120, 255), fadeFrames);
+                }
+                else if (game.theme == Game1.Theme.Custom)
+                {
+                    fade = new Gradient(game.ringMainColor, fadeFrames);
                 }
                 else
                 {
                     fade = new Gradient(Color.FromNonPremultiplied(152, 211, 21, 255), fadeFrames);
                 }
-                fade.colors.Add(game.darkGradient.colors[0]);
+                fade.colors.Add(game.backColor);
             }
             else if (type == RingType.Gray)
             {
@@ -59,6 +63,10 @@ namespace XeniaLauncher
                 else if (game.theme == Game1.Theme.Purple)
                 {
                     fade = new Gradient(Color.FromNonPremultiplied(60, 60, 60, 255), fadeFrames);
+                }
+                else if (game.theme == Game1.Theme.Custom)
+                {
+                    fade = new Gradient(game.ringSelectColor, fadeFrames);
                 }
                 fade.colors.Add(game.darkGradient.colors[1]);
             }

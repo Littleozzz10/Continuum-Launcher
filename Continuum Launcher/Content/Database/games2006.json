@@ -1,0 +1,3020 @@
+{
+  "Data": [
+    {
+      "Developers": [ "Electronic Arts Canada" ],
+      "Genres": [ "Sports", "Football (European) / Soccer", "Licensed", "3rd-person (Other)", "Diagonal-down" ],
+      "ID": 79427,
+      "Moby_Score": 7.27,
+      "Moby_URL": "https://www.mobygames.com/game/79427/fifa-soccer-07/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-10-26",
+      "Title": "FIFA Soccer 07",
+      "Alternate_Name": "fifa 07",
+      "Variants": [
+        {
+          "GameName": "fifa 07",
+          "TitleID": "454107EF",
+          "Serial": "EA-2031",
+          "Region": "PAL",
+          "XEXCRC": "2358D937",
+          "MediaID": "1C05FF99",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Kush Games, Inc." ],
+      "Genres": [ "Sports", "Hockey", "Managerial / business simulation", "Licensed", "Diagonal-down", "2D scrolling", "Direct control" ],
+      "ID": 46670,
+      "Moby_Score": 7.85,
+      "Moby_URL": "https://www.mobygames.com/game/46670/nhl-2k7/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2006-09-12",
+      "Title": "NHL 2K7",
+      "Alternate_Name": "nhl 2k7",
+      "Variants": [
+        {
+          "GameName": "nhl 2k7",
+          "TitleID": "545407EB",
+          "Serial": "TT-2027",
+          "Region": "PAL",
+          "XEXCRC": "27EE7CF6",
+          "MediaID": "178F83BB",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Vid Kidz" ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Top-down", "Shooter", "Fixed / flip-screen" ],
+      "ID": 102,
+      "Moby_Score": 7.26,
+      "Moby_URL": "https://www.mobygames.com/game/102/robotron-2084/",
+      "Platforms": [ "PC Booter", "Lynx", "Atari ST", "Commodore 64", "Apple II", "Atari 5200", "Atari 7800", "Atari 8-bit", "VIC-20", "Xbox 360", "Macintosh", "Browser", "BBC Micro", "Electron", "Arcade", "Antstream" ],
+      "Publishers": [ "Atarisoft", "Williams Electronics, Inc.", "Shadowsoft", "Atari, Inc.", "Midway Home Entertainment, Inc.", "Digital Eclipse Software, Inc.", "Warner Bros. Interactive Entertainment Inc.", "Shockwave", "Atari Corporation" ],
+      "Release_Date": "1982",
+      "Title": "Robotron: 2084",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "584107E0",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "FromSoftware, Inc." ],
+      "Genres": [ "Puzzle elements", "Role-playing (RPG)", "Fantasy", "Turn-based", "3rd-person (Other)" ],
+      "ID": 25899,
+      "Moby_Score": 6.9,
+      "Moby_URL": "https://www.mobygames.com/game/25899/enchanted-arms/",
+      "Platforms": [ "Xbox 360", "PlayStation 3", "Xbox One" ],
+      "Publishers": [ "FromSoftware, Inc.", "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-01-12",
+      "Title": "Enchanted Arms",
+      "Alternate_Name": "enchanted arms",
+      "Variants": [
+        {
+          "GameName": "enchanted arms",
+          "TitleID": "555307000000",
+          "Serial": "US-2022",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "AE7D4794",
+          "MediaID": "41637F65",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "GarageGames, Inc." ],
+      "Genres": [ "Action", "Arcade", "Puzzle", "Behind view", "Direct control" ],
+      "ID": 31327,
+      "Moby_Score": 7.57,
+      "Moby_URL": "https://www.mobygames.com/game/31327/marble-blast-ultra/",
+      "Platforms": [ "Xbox 360", "Windows", "Browser" ],
+      "Publishers": [ "GarageGames, Inc." ],
+      "Release_Date": "2006-01-25",
+      "Title": "Marble Blast Ultra",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "584107D7",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "Stainless Software Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Top-down", "Fixed / flip-screen" ],
+      "ID": 30781,
+      "Moby_Score": 6.67,
+      "Moby_URL": "https://www.mobygames.com/game/30781/crystal-quest/",
+      "Platforms": [ "Game Boy", "Amiga", "Apple IIgs", "Xbox 360", "Macintosh", "J2ME", "Windows Mobile", "Palm OS", "iPhone", "Windows" ],
+      "Publishers": [ "Infinite Ventures, Inc.", "Stainless Software Ltd.", "Game Mechanics LLC", "Data East USA, Inc.", "Casady & Greene, Inc.", "Hands-On Mobile, Inc." ],
+      "Release_Date": "1987",
+      "Title": "Crystal Quest",
+      "Alternate_Name": "crystal quest",
+      "Variants": [
+        {
+          "GameName": "crystal quest",
+          "TitleID": "584107EE",
+          "Serial": "XA-2030",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Pseudo Interactive, Inc." ],
+      "Genres": [ "Racing / Driving", "Arcade", "Behind view", "Automobile", "Track racing" ],
+      "ID": 23252,
+      "Moby_Score": 7.11,
+      "Moby_URL": "https://www.mobygames.com/game/23252/full-auto/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "SEGA of America, Inc.", "SEGA Corporation", "SEGA Europe Ltd." ],
+      "Release_Date": "2006-02-10",
+      "Title": "Full Auto",
+      "Alternate_Name": "full auto",
+      "Variants": [
+        {
+          "GameName": "full auto",
+          "TitleID": "534507D5",
+          "Serial": "SE-2005",
+          "Region": "RF",
+          "XEXCRC": "ADF483C0",
+          "MediaID": "1D5F3880",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Chicago" ],
+      "Genres": [ "Action", "Sports", "Boxing", "Fighting", "3rd-person (Other)" ],
+      "ID": 24001,
+      "Moby_Score": 8.33,
+      "Moby_URL": "https://www.mobygames.com/game/24001/fight-night-round-3/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-02-20",
+      "Title": "Fight Night Round 3",
+      "Alternate_Name": "fight night round 3",
+      "Variants": [
+        {
+          "GameName": "fight night round 3",
+          "TitleID": "454107DE",
+          "Serial": "EA-2014",
+          "Region": "PAL",
+          "XEXCRC": "6AE54282",
+          "MediaID": "1954C7DE",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Red Storm Entertainment, Inc.", "Ubisoft Paris Studios SARL", "Tiwak SAS", "Ubi Studios SL" ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Behind view" ],
+      "ID": 21652,
+      "Moby_Score": 8.78,
+      "Moby_URL": "https://www.mobygames.com/game/21652/tom-clancys-ghost-recon-advanced-warfighter/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-03-09",
+      "Title": "Tom Clancy's Ghost Recon: Advanced Warfighter",
+      "Alternate_Name": "tom clancys ghost recon advanced warfighter",
+      "Variants": [
+        {
+          "GameName": "tom clancys ghost recon advanced warfighter",
+          "TitleID": "555307D5",
+          "Serial": "US-2005",
+          "Region": "RF",
+          "XEXCRC": "93BCA60B",
+          "MediaID": "617C5216",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Criterion Software Ltd." ],
+      "Genres": [ "Action", "Racing / Driving", "1st-person", "Behind view", "Direct control", "Automobile", "Street racing", "Contemporary" ],
+      "ID": 19356,
+      "Moby_Score": 8.59,
+      "Moby_URL": "https://www.mobygames.com/game/19356/burnout-revenge/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-03-07",
+      "Title": "Burnout: Revenge",
+      "Alternate_Name": "burnout revenge",
+      "Variants": [
+        {
+          "GameName": "burnout revenge",
+          "TitleID": "454107DC",
+          "Serial": "EA-2012",
+          "Region": "PAL",
+          "XEXCRC": "D4B9513D",
+          "MediaID": "213B2D4C",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Visual Concepts Entertainment, Inc." ],
+      "Genres": [ "Sports", "Basketball", "Licensed", "3rd-person (Other)" ],
+      "ID": 30774,
+      "Moby_Score": 7.47,
+      "Moby_URL": "https://www.mobygames.com/game/30774/college-hoops-2k6/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2005-11-23",
+      "Title": "College Hoops 2K6",
+      "Alternate_Name": "college hoops 2k6",
+      "Variants": [
+        {
+          "GameName": "college hoops 2k6",
+          "TitleID": "545407D2",
+          "Serial": "TT-2002",
+          "Region": "NTSC/U",
+          "XEXCRC": "55B4F683",
+          "MediaID": "43BE510A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Relic Entertainment Inc" ],
+      "Genres": [ "Action", "Shooter", "Behind view", "World War II", "Regional differences" ],
+      "ID": 21650,
+      "Moby_Score": 6.92,
+      "Moby_URL": "https://www.mobygames.com/game/21650/the-outfit/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "THQ Inc." ],
+      "Release_Date": "2006-03-13",
+      "Title": "The Outfit",
+      "Alternate_Name": "the outfit",
+      "Variants": [
+        {
+          "GameName": "the outfit",
+          "TitleID": "545107D2",
+          "Serial": "TQ-2002",
+          "Region": "PAL",
+          "XEXCRC": "E2BE8100",
+          "MediaID": "4DBF4A8A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "PopCap Games, Inc.", "Sprout Games, LLC" ],
+      "Genres": [ "Action", "Educational", "Side view", "Ecology / nature", "2D scrolling" ],
+      "ID": 14273,
+      "Moby_Score": 6.47,
+      "Moby_URL": "https://www.mobygames.com/game/14273/feeding-frenzy/",
+      "Platforms": [ "Windows", "BREW", "J2ME", "Xbox 360", "Macintosh", "Arcade", "Xbox One" ],
+      "Publishers": [ "Oberon Games, Inc." ],
+      "Release_Date": "2006-03-15",
+      "Title": "Feeding Frenzy",
+      "Alternate_Name": "feeding frenzy",
+      "Variants": [
+        {
+          "GameName": "feeding frenzy",
+          "TitleID": "584107F1",
+          "Serial": "XA-2033",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Bethesda Game Studios" ],
+      "Genres": [ "1st-person", "Role-playing (RPG)", "Fantasy", "Behind view", "Sandbox / open world", "Action RPG", "Direct control", "Regional differences" ],
+      "ID": 21735,
+      "Moby_Score": 8.54,
+      "Moby_URL": "https://www.mobygames.com/game/21735/the-elder-scrolls-iv-oblivion/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Xbox Cloud Gaming", "Xbox One" ],
+      "Publishers": [ "Ubisoft Entertainment SA", "Cenega Poland Sp. z o.o.", "Bethesda Softworks LLC", "1C Company", "Spike Co., Ltd.", "2K Games, Inc." ],
+      "Release_Date": "2006-03-20",
+      "Title": "The Elder Scrolls IV: Oblivion",
+      "Alternate_Name": "the elder scrolls iv oblivion",
+      "Variants": [
+        {
+          "GameName": "the elder scrolls iv oblivion",
+          "TitleID": "425307D1",
+          "Serial": "BS-2001",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "16ACAA37",
+          "MediaID": "7D25BE50",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Physical extras", "Special edition" ],
+      "ID": 21765,
+      "Moby_Score": 8.06,
+      "Moby_URL": "https://www.mobygames.com/game/21765/the-elder-scrolls-iv-oblivion-collectors-edition/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "2K Games, Inc.", "1C Company" ],
+      "Release_Date": "2006-03-21",
+      "Title": "The Elder Scrolls IV: Oblivion (Collector's Edition)",
+      "Alternate_Name": "the elder scrolls iv oblivion",
+      "Variants": [
+        {
+          "GameName": "the elder scrolls iv oblivion",
+          "TitleID": "425307D1",
+          "Serial": "BS-2001",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "16ACAA37",
+          "MediaID": "7D25BE50",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "PopCap Games, Inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Top-down", "Puzzle", "Fixed / flip-screen", "Tile matching puzzle", "Direct control" ],
+      "ID": 16122,
+      "Moby_Score": 7.42,
+      "Moby_URL": "https://www.mobygames.com/game/16122/astropop-deluxe/",
+      "Platforms": [ "Windows", "Xbox", "Xbox 360" ],
+      "Publishers": [ "PopCap Games, Inc.", "Oberon Games, Inc." ],
+      "Release_Date": "2004-03-30",
+      "Title": "AstroPop Deluxe",
+      "Alternate_Name": "astropop",
+      "Variants": [
+        {
+          "GameName": "astropop",
+          "TitleID": "584107F2",
+          "Serial": "XA-2034",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Ubisoft SRL", "Ubisoft Studios SRL" ],
+      "Genres": [ "Action", "Historical events", "Flight / aviation", "Behind view", "World War II" ],
+      "ID": 22119,
+      "Moby_Score": 6.91,
+      "Moby_URL": "https://www.mobygames.com/game/22119/blazing-angels-squadrons-of-wwii/",
+      "Platforms": [ "Windows", "Xbox", "Xbox 360", "PlayStation 3", "Wii" ],
+      "Publishers": [ "Ubisoft Entertainment SA", "CNEC Inc.", "Ubi Soft Entertainment Software", "Akella", "D3Publisher Inc." ],
+      "Release_Date": "2006-03-23",
+      "Title": "Blazing Angels: Squadrons of WWII",
+      "Alternate_Name": "blazing angels squadrons of wwii",
+      "Variants": [
+        {
+          "GameName": "blazing angels squadrons of wwii",
+          "TitleID": "555307DB",
+          "Serial": "US-2011",
+          "Region": "RF",
+          "XEXCRC": "9E2A27D4",
+          "MediaID": "4AAE0934",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Omega Force" ],
+      "Genres": [ "Action", "Strategy", "1st-person", "Historical events", "Real-time", "Managerial / business simulation", "Hack and slash", "Fantasy", "Turn-based", "3rd-person (Other)", "China (Ancient / Imperial)" ],
+      "ID": 29077,
+      "Moby_Score": 6.41,
+      "Moby_URL": "https://www.mobygames.com/game/29077/dynasty-warriors-5-empires/",
+      "Platforms": [ "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "KOEI Corporation", "KOEI Co., Ltd." ],
+      "Release_Date": "2006-03-23",
+      "Title": "Dynasty Warriors 5: Empires",
+      "Alternate_Name": "dynasty warriors 5 empires",
+      "Variants": [
+        {
+          "GameName": "dynasty warriors 5 empires",
+          "TitleID": "4B4F07D3",
+          "Serial": "KO-2003",
+          "Region": "NTSC/U",
+          "XEXCRC": "08B5E96F",
+          "MediaID": "289E8C6C",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "iWin, Inc." ],
+      "Genres": [ "Side view", "Puzzle", "Fixed / flip-screen", "Falling block puzzle", "Tile matching puzzle", "Point and select" ],
+      "ID": 16247,
+      "Moby_Score": 6.6,
+      "Moby_URL": "https://www.mobygames.com/game/16247/jewel-quest/",
+      "Platforms": [ "Windows", "J2ME", "Xbox 360", "Macintosh" ],
+      "Publishers": [ "iWin, Inc.", "CTXM Ltd.", "MacPlay", "Alawar Entertainment, Inc.", "I-play" ],
+      "Release_Date": "2004-07-14",
+      "Title": "Jewel Quest",
+      "Alternate_Name": "jewel quest",
+      "Variants": [
+        {
+          "GameName": "jewel quest",
+          "TitleID": "584107EA",
+          "Serial": "XA-2026",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Hudson Soft Company, Ltd." ],
+      "Genres": [ "Role-playing (RPG)", "Anime / Manga", "Fantasy", "Turn-based", "3rd-person (Other)" ],
+      "ID": 22311,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/22311/tengai-makyo-ziria-haruka-naru-jipang/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Hudson Soft Company, Ltd." ],
+      "Release_Date": "2006-03-23",
+      "Title": "Tengai Makyō Ziria: Haruka Naru Jipang",
+      "Alternate_Name": "tengai makyou ziria haruka naru jipang",
+      "Variants": [
+        {
+          "GameName": "tengai makyou ziria haruka naru jipang",
+          "TitleID": "485507D2",
+          "Serial": "HU-2002",
+          "Region": "NTSC/J (Excludes China)",
+          "XEXCRC": "A57D174C",
+          "MediaID": "4F1B6D60",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Crytek GmbH", "Ubisoft Entertainment Inc." ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Compilation", "Fantasy", "Stealth" ],
+      "ID": 21830,
+      "Moby_Score": 7.36,
+      "Moby_URL": "https://www.mobygames.com/game/21830/far-cry-instincts-predator/",
+      "Platforms": [ "Xbox 360", "Xbox One", "Xbox Series" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-03-28",
+      "Title": "Far Cry: Instincts - Predator",
+      "Alternate_Name": "far cry instincts predator",
+      "Variants": [
+        {
+          "GameName": "far cry instincts predator",
+          "TitleID": "555307DC",
+          "Serial": "US-2012",
+          "Region": "RF",
+          "XEXCRC": "B0478E7A",
+          "MediaID": "4971ECEF",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Yuke's Co. Ltd." ],
+      "Genres": [ "Action", "Sports", "Fighting", "Wrestling", "3rd-person (Other)" ],
+      "ID": 30692,
+      "Moby_Score": 6.25,
+      "Moby_URL": "https://www.mobygames.com/game/30692/rumble-roses-xx/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Konami Digital Entertainment, Inc.", "Konami Digital Entertainment Co., Ltd." ],
+      "Release_Date": "2006-03-28",
+      "Title": "Rumble Roses XX",
+      "Alternate_Name": "rumble roses xx",
+      "Variants": [
+        {
+          "GameName": "rumble roses xx",
+          "TitleID": "4B4E07D1",
+          "Serial": "KN-2001",
+          "Region": "NTSC/J (Excludes China), NTSC/U",
+          "XEXCRC": "06B1469D",
+          "MediaID": "1A6D4362",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Indie Built, Inc.", "Power and Magic Development" ],
+      "Genres": [ "Sports", "Tennis", "Licensed", "Behind view" ],
+      "ID": 22184,
+      "Moby_Score": 7.55,
+      "Moby_URL": "https://www.mobygames.com/game/22184/top-spin-2/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "Aspyr Media, Inc.", "2K Games, Inc.", "Buka Entertainment" ],
+      "Release_Date": "2006-03-29",
+      "Title": "Top Spin 2",
+      "Alternate_Name": "top spin 2",
+      "Variants": [
+        {
+          "GameName": "top spin 2",
+          "TitleID": "545407D5",
+          "Serial": "TT-2005",
+          "Region": "NTSC/U",
+          "XEXCRC": "5E9B9D88",
+          "MediaID": "2AFB259E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Taito Corporation" ],
+      "Genres": [ "Simulation", "1st-person", "Flight / aviation", "3rd-person (Other)", "Vehicular combat" ],
+      "ID": 23160,
+      "Moby_Score": 5.96,
+      "Moby_URL": "https://www.mobygames.com/game/23160/over-g-fighters/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Taito Corporation", "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-03-30",
+      "Title": "Over G Fighters",
+      "Alternate_Name": "over g fighters",
+      "Variants": [
+        {
+          "GameName": "over g fighters",
+          "TitleID": "544907D1",
+          "Serial": "TI-2001",
+          "Region": "RF",
+          "XEXCRC": "A1F84FBD",
+          "MediaID": "72CA730E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Crystal Dynamics, Inc.", "Buzz Monkey Software, LLC" ],
+      "Genres": [ "Action", "Platform", "Puzzle elements", "Behind view", "Direct control", "Africa", "Asia", "Europe", "South America", "Quick Time Events (QTEs)", "Japan (Modern/Futuristic)" ],
+      "ID": 21999,
+      "Moby_Score": 7.81,
+      "Moby_URL": "https://www.mobygames.com/game/21999/lara-croft-tomb-raider-legend/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "PSP", "Xbox 360", "OnLive" ],
+      "Publishers": [ "Eidos Interactive Limited" ],
+      "Release_Date": "2006-04-07",
+      "Title": "Lara Croft: Tomb Raider - Legend",
+      "Alternate_Name": "tomb raider legend",
+      "Variants": [
+        {
+          "GameName": "tomb raider legend",
+          "TitleID": "534307D4",
+          "Serial": "SC-2004",
+          "Region": "RF",
+          "XEXCRC": "8268831C",
+          "MediaID": "3629AE3A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Kush Games, Inc." ],
+      "Genres": [ "Sports", "1st-person", "Baseball", "Licensed", "3rd-person (Other)" ],
+      "ID": 35909,
+      "Moby_Score": 6.59,
+      "Moby_URL": "https://www.mobygames.com/game/35909/major-league-baseball-2k6/",
+      "Platforms": [ "PlayStation 2", "Xbox", "GameCube", "Xbox 360" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2006-04-03",
+      "Title": "Major League Baseball 2K6",
+      "Alternate_Name": "major league baseball 2k6",
+      "Variants": [
+        {
+          "GameName": "major league baseball 2k6",
+          "TitleID": "545407D3",
+          "Serial": "TT-2003",
+          "Region": "NTSC/U",
+          "XEXCRC": "4BAB6A48",
+          "MediaID": "65EAACD6",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts UK Ltd.", "Digital Illusions CE AB" ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Helicopter", "Tank", "War", "Behind view", "Direct control", "Contemporary" ],
+      "ID": 19863,
+      "Moby_Score": 7.71,
+      "Moby_URL": "https://www.mobygames.com/game/19863/battlefield-2-modern-combat/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2005-10-24",
+      "Title": "Battlefield 2: Modern Combat",
+      "Alternate_Name": "battlefield 2 modern combat",
+      "Variants": [
+        {
+          "GameName": "battlefield 2 modern combat",
+          "TitleID": "454107DB",
+          "Serial": "EA-2011",
+          "Region": "PAL",
+          "XEXCRC": "56D73E42",
+          "MediaID": "4966F72B",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sports Interactive Limited" ],
+      "Genres": [ "Simulation", "Strategy / tactics", "Sports", "Top-down", "Managerial / business simulation", "Football (European) / Soccer", "Text-based / Spreadsheet", "Menu structures" ],
+      "ID": 19886,
+      "Moby_Score": 7.92,
+      "Moby_URL": "https://www.mobygames.com/game/19886/worldwide-soccer-manager-2006/",
+      "Platforms": [ "Windows", "Xbox 360", "Macintosh" ],
+      "Publishers": [ "SEGA Europe Ltd.", "Global Software Publishing Ltd.", "SEGA of America, Inc." ],
+      "Release_Date": "2005-10-21",
+      "Title": "Worldwide Soccer Manager 2006",
+      "Alternate_Name": "football manager 2006",
+      "Variants": [
+        {
+          "GameName": "football manager 2006",
+          "TitleID": "534507D1",
+          "Serial": "SE-2001",
+          "Region": "RF",
+          "XEXCRC": "9525FA86",
+          "MediaID": "39A0B07D",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Compilation" ],
+      "ID": 24897,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/24897/final-fantasy-xi-online/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 2" ],
+      "Publishers": [ "Square Enix Ltd", "Square Enix Co., Ltd.", "Square Enix, Inc." ],
+      "Release_Date": "2006-04-20",
+      "Title": "Final Fantasy XI Online",
+      "Alternate_Name": "final fantasy xi",
+      "Variants": [
+        {
+          "GameName": "final fantasy xi",
+          "TitleID": "535107D5",
+          "Serial": "SQ-2005",
+          "Region": "PAL",
+          "XEXCRC": "B9BA00F2",
+          "MediaID": "1DD77A11",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Phantagram Co., Ltd.", "Q ENTERTAINMENT, Inc." ],
+      "Genres": [ "Action", "Hack and slash", "Fantasy", "3rd-person (Other)", "Direct control" ],
+      "ID": 24335,
+      "Moby_Score": 6.26,
+      "Moby_URL": "https://www.mobygames.com/game/24335/n3-ninety-nine-nights/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-04-20",
+      "Title": "N3: Ninety-Nine Nights",
+      "Alternate_Name": "n3 ninety-nine nights",
+      "Variants": [
+        {
+          "GameName": "n3 ninety-nine nights",
+          "TitleID": "4D5307DB",
+          "Serial": "MS-2011",
+          "Region": "RF",
+          "XEXCRC": "B3ABA1BD",
+          "MediaID": "5D48689C",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Exient Entertainment", "Electronic Arts Canada" ],
+      "Genres": [ "Sports", "Football (European) / Soccer", "Licensed", "Diagonal-down", "2D scrolling", "Direct control", "Multiple units/characters control", "Europe" ],
+      "ID": 22292,
+      "Moby_Score": 7.36,
+      "Moby_URL": "https://www.mobygames.com/game/22292/fifa-world-cup-germany-2006/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "PSP", "Xbox 360" ],
+      "Publishers": [ "CNEC Inc.", "Electronic Arts, Inc." ],
+      "Release_Date": "2006-04-24",
+      "Title": "FIFA World Cup: Germany 2006",
+      "Alternate_Name": "fifa 06 road to fifa world cup",
+      "Variants": [
+        {
+          "GameName": "fifa 06 road to fifa world cup",
+          "TitleID": "454107D7",
+          "Serial": "EA-2007",
+          "Region": "PAL",
+          "XEXCRC": "BD5F1E2F",
+          "MediaID": "4FF628CF",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Carbonated Games" ],
+      "Genres": [ "Strategy / tactics", "Top-down", "Board game", "Cards / tiles", "Licensed" ],
+      "ID": 24472,
+      "Moby_Score": 7.9,
+      "Moby_URL": "https://www.mobygames.com/game/24472/uno/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-05-08",
+      "Title": "Uno",
+      "Alternate_Name": "uno",
+      "Variants": [
+        {
+          "GameName": "uno",
+          "TitleID": "584107F3",
+          "Serial": "XA-2035",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Extra content / game", "Physical extras", "Special edition" ],
+      "ID": 28800,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/28800/call-of-duty-2-game-of-the-year-edition/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-05-16",
+      "Title": "Call of Duty 2 (Game of the Year Edition)",
+      "Alternate_Name": "call of duty 2",
+      "Variants": [
+        {
+          "GameName": "call of duty 2",
+          "TitleID": "415607D1",
+          "Serial": "AV-2001",
+          "Region": "RF",
+          "XEXCRC": "3C31FA79",
+          "MediaID": "1A5153F4",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Z-Axis, Ltd." ],
+      "Genres": [ "Action", "Side view", "Flight / aviation", "Hack and slash", "Licensed", "Beat 'em up / brawler", "2D scrolling" ],
+      "ID": 23248,
+      "Moby_Score": 6.16,
+      "Moby_URL": "https://www.mobygames.com/game/23248/x-men-the-official-game/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "Xbox 360" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-03-19",
+      "Title": "X-Men: The Official Game",
+      "Alternate_Name": "x-men the official game",
+      "Variants": [
+        {
+          "GameName": "x-men the official game",
+          "TitleID": "415607DB",
+          "Serial": "AV-2011",
+          "Region": "RF",
+          "XEXCRC": "1D0703A2",
+          "MediaID": "572D8DEC",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Rockstar San Diego, Inc." ],
+      "Genres": [ "Sports", "1st-person", "Ping pong / table tennis", "Direct control", "Motion control" ],
+      "ID": 22531,
+      "Moby_Score": 7.65,
+      "Moby_URL": "https://www.mobygames.com/game/22531/rockstar-games-presents-table-tennis/",
+      "Platforms": [ "Xbox 360", "Wii", "Xbox One" ],
+      "Publishers": [ "Rockstar Games, Inc." ],
+      "Release_Date": "2006-05-22",
+      "Title": "Rockstar Table Tennis",
+      "Alternate_Name": "rockstar games presents table tennis",
+      "Variants": [
+        {
+          "GameName": "rockstar games presents table tennis",
+          "TitleID": "545407DF",
+          "Serial": "TT-2015",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "FC7132A0",
+          "MediaID": "434C4803",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Io-Interactive A/S" ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Stealth", "Crime", "Thriller", "Behind view", "Direct control" ],
+      "ID": 22576,
+      "Moby_Score": 7.98,
+      "Moby_URL": "https://www.mobygames.com/game/22576/hitman-blood-money/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "Xbox 360", "Browser", "OnLive" ],
+      "Publishers": [ "Io-Interactive A/S", "Eidos Interactive Limited", "Mastertronic Games Ltd.", "Noviy Disk", "Square Enix, Inc.", "Cenega Poland Sp. z o.o.", "Square Enix Limited", "Square Enix Ltd" ],
+      "Release_Date": "2006-05-25",
+      "Title": "Hitman: Blood Money",
+      "Alternate_Name": "hitman blood money",
+      "Variants": [
+        {
+          "GameName": "hitman blood money",
+          "TitleID": "534307DB",
+          "Serial": "SC-2011",
+          "Region": "RF",
+          "XEXCRC": "8A8FEA67",
+          "MediaID": "2783613B",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Climax Racing" ],
+      "Genres": [ "Simulation", "Racing / Driving", "1st-person", "Motorcycle", "Licensed", "Behind view", "Vehicle simulator", "Track racing" ],
+      "ID": 22840,
+      "Moby_Score": 7.79,
+      "Moby_URL": "https://www.mobygames.com/game/22840/motogp-06/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "THQ Inc." ],
+      "Release_Date": "2006-06-09",
+      "Title": "MotoGP '06",
+      "Alternate_Name": "motogp 06",
+      "Variants": [
+        {
+          "GameName": "motogp 06",
+          "TitleID": "545107D4",
+          "Serial": "TQ-2004",
+          "Region": "RF",
+          "XEXCRC": "CD2DFEC4",
+          "MediaID": "32AFC543",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "FromSoftware, Inc." ],
+      "Genres": [ "Action", "Simulation", "Strategy / tactics", "1st-person", "Sci-fi / futuristic", "Mecha / giant robot", "3rd-person (Other)" ],
+      "ID": 23153,
+      "Moby_Score": 7.1,
+      "Moby_URL": "https://www.mobygames.com/game/23153/chromehounds/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "SEGA of America, Inc.", "SEGA Europe Ltd.", "SEGA Corporation" ],
+      "Release_Date": "2006-06-29",
+      "Title": "Chromehounds",
+      "Alternate_Name": "chromehounds",
+      "Variants": [
+        {
+          "GameName": "chromehounds",
+          "TitleID": "534507D4",
+          "Serial": "SE-2004",
+          "Region": "RF",
+          "XEXCRC": "C82C81EA",
+          "MediaID": "048EED64",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Idea Factory Co., Ltd.", "XPEC Entertainment Inc." ],
+      "Genres": [ "Strategy", "Role-playing (RPG)", "Fantasy", "Turn-based", "Diagonal-down", "Tactical RPG" ],
+      "ID": 164955,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/164955/spectral-force-3/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Idea Factory Co., Ltd.", "Atlus U.S.A., Inc." ],
+      "Release_Date": "2006-06-29",
+      "Title": "Spectral Force 3",
+      "Alternate_Name": "spectral force 3",
+      "Variants": [
+        {
+          "GameName": "spectral force 3",
+          "TitleID": "415407D3",
+          "Serial": "AT-2003",
+          "Region": "NTSC/J (Excludes China), NTSC/U",
+          "XEXCRC": "9DB32B06",
+          "MediaID": "1973322C",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Los Angeles" ],
+      "Genres": [ "Strategy / tactics", "Real-time", "Fantasy", "Licensed", "War", "Diagonal-down", "Free camera", "RPG elements", "Point and select", "Multiple units/characters control", "Real-time strategy (RTS)" ],
+      "ID": 23582,
+      "Moby_Score": 7.9,
+      "Moby_URL": "https://www.mobygames.com/game/23582/the-lord-of-the-rings-the-battle-for-middle-earth-ii/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc.", "CNEC Inc." ],
+      "Release_Date": "2006-02-28",
+      "Title": "The Lord of the Rings: The Battle for Middle-earth II",
+      "Alternate_Name": "the lord of the rings the battle for middle-earth ii",
+      "Variants": [
+        {
+          "GameName": "the lord of the rings the battle for middle-earth ii",
+          "TitleID": "454107DF",
+          "Serial": "EA-2015",
+          "Region": "PAL",
+          "XEXCRC": "25D641B1",
+          "MediaID": "2BF7C928",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Hudson Soft Company, Ltd." ],
+      "Genres": [ "Action", "Sports", "Sci-fi / futuristic", "Arcade", "Board game", "Skateboarding", "Pool / snooker", "Tricks / stunts", "Diagonal-down" ],
+      "ID": 26429,
+      "Moby_Score": 5.38,
+      "Moby_URL": "https://www.mobygames.com/game/26429/fuzion-frenzy-2/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-07-02",
+      "Title": "Fuzion Frenzy 2",
+      "Alternate_Name": "fuzion frenzy 2",
+      "Variants": [
+        {
+          "GameName": "fuzion frenzy 2",
+          "TitleID": "485507D4",
+          "Serial": "HU-2004",
+          "Region": "RF",
+          "XEXCRC": "49216491",
+          "MediaID": "7D9E713E",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Human Head Studios, Inc." ],
+      "Genres": [ "Action", "1st-person", "Sci-fi / futuristic", "Shooter", "Puzzle elements" ],
+      "ID": 23082,
+      "Moby_Score": 7.84,
+      "Moby_URL": "https://www.mobygames.com/game/23082/prey/",
+      "Platforms": [ "Linux", "Windows", "Xbox 360", "Macintosh" ],
+      "Publishers": [ "2K Games, Inc.", "icculus.org", "Cenega Poland Sp. z o.o.", "3D Realms Entertainment, Inc.", "Aspyr Media, Inc.", "Spike Co., Ltd.", "1C Company", "Mastertronic Games Ltd." ],
+      "Release_Date": "2006-07-11",
+      "Title": "Prey",
+      "Alternate_Name": "prey",
+      "Variants": [
+        {
+          "GameName": "prey",
+          "TitleID": "545407E0",
+          "Serial": "TT-2016",
+          "Region": "RF",
+          "XEXCRC": "DC5E17E6",
+          "MediaID": "1ABA0DD5",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Digital extras", "Physical extras", "Special edition" ],
+      "ID": 23083,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/23083/prey-limited-collectors-edition/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2006-07-11",
+      "Title": "Prey (Limited Collector's Edition)",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "545407E0",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "Konami Industry Co. Ltd." ],
+      "Genres": [ "Action", "Arcade", "Top-down" ],
+      "ID": 66732,
+      "Moby_Score": 6.64,
+      "Moby_URL": "https://www.mobygames.com/game/66732/frogger/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Konami Digital Entertainment, Inc." ],
+      "Release_Date": "2006-07-12",
+      "Title": "Frogger",
+      "Alternate_Name": "frogger",
+      "Variants": [
+        {
+          "GameName": "frogger",
+          "TitleID": "58410813",
+          "Serial": "XA-2067",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "EA Tiburon", "Team Fusion" ],
+      "Genres": [ "Sports", "Football (American)", "Licensed", "Diagonal-down" ],
+      "ID": 34727,
+      "Moby_Score": 8.07,
+      "Moby_URL": "https://www.mobygames.com/game/34727/ncaa-football-07/",
+      "Platforms": [ "PlayStation 2", "Xbox", "PSP", "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-07-17",
+      "Title": "NCAA Football 07",
+      "Alternate_Name": "ncaa football 07",
+      "Variants": [
+        {
+          "GameName": "ncaa football 07",
+          "TitleID": "45410700000000",
+          "Serial": "EA-2024",
+          "Region": "NTSC/U",
+          "XEXCRC": "95D55B8D",
+          "MediaID": "5E0FB15F",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Wahoo Studios, Inc." ],
+      "Genres": [ "Action", "Side view", "Platform", "Puzzle", "2D scrolling", "Direct control" ],
+      "ID": 23410,
+      "Moby_Score": 7.56,
+      "Moby_URL": "https://www.mobygames.com/game/23410/cloning-clyde/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "NinjaBee" ],
+      "Release_Date": "2006-07-19",
+      "Title": "Cloning Clyde",
+      "Alternate_Name": "cloning clyde",
+      "Variants": [
+        {
+          "GameName": "cloning clyde",
+          "TitleID": "5841070000000",
+          "Serial": "XA-2023",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Namco Limited" ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Top-down", "Shooter", "Fixed / flip-screen" ],
+      "ID": 8402,
+      "Moby_Score": 7.24,
+      "Moby_URL": "https://www.mobygames.com/game/8402/galaga/",
+      "Platforms": [ "Windows", "NES", "SEGA Master System", "Atari 7800", "MSX", "BREW", "J2ME", "Palm OS", "Windows Mobile", "Xbox 360", "Wii", "BlackBerry", "PC-98", "Nintendo 3DS", "SG-1000", "Sharp X1", "FM-7", "Wii U", "Sord M5", "PlayStation 4", "Xbox One", "Arcade", "Sharp MZ-80K/700/800/1500", "Roku", "Antstream" ],
+      "Publishers": [ "Namco Bandai Games Inc." ],
+      "Release_Date": "2006-07-06",
+      "Title": "Galaga",
+      "Alternate_Name": "galaga",
+      "Variants": [
+        {
+          "GameName": "galaga",
+          "TitleID": "58410812",
+          "Serial": "XA-2066",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "cavia inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Post-apocalyptic", "Fantasy", "Behind view" ],
+      "ID": 28268,
+      "Moby_Score": 6.01,
+      "Moby_URL": "https://www.mobygames.com/game/28268/bullet-witch/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "XSEED Games", "Atari Europe S.A.S.U.", "AQ Interactive, Inc.", "Marvelous USA, Inc.", "Atari, Inc." ],
+      "Release_Date": "2006-07-27",
+      "Title": "Bullet Witch",
+      "Alternate_Name": "bullet witch",
+      "Variants": [
+        {
+          "GameName": "bullet witch",
+          "TitleID": "434107D1",
+          "Serial": "CA-2001",
+          "Region": "NTSC/J (Excludes China)",
+          "XEXCRC": "AEB770FB",
+          "MediaID": "548822B1",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Genki Co., Ltd." ],
+      "Genres": [ "Racing / Driving", "1st-person", "Behind view", "Automobile", "Street racing" ],
+      "ID": 25386,
+      "Moby_Score": 6.14,
+      "Moby_URL": "https://www.mobygames.com/game/25386/import-tuner-challenge/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Genki Co., Ltd.", "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-07-27",
+      "Title": "Import Tuner Challenge",
+      "Alternate_Name": "import tuner challenge",
+      "Variants": [
+        {
+          "GameName": "import tuner challenge",
+          "TitleID": "555307EE",
+          "Serial": "US-2030",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "CA52328C",
+          "MediaID": "1E9F4315",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "G.rev Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Top-down", "Shooter", "Mecha / giant robot", "3rd-person (Other)" ],
+      "ID": 28786,
+      "Moby_Score": 6.32,
+      "Moby_URL": "https://www.mobygames.com/game/28786/wartech-senko-no-ronde/",
+      "Platforms": [ "Xbox 360", "Arcade" ],
+      "Publishers": [ "Ubisoft Entertainment SA", "G.rev Ltd." ],
+      "Release_Date": "2005-04",
+      "Title": "WarTech: Senko no Ronde",
+      "Alternate_Name": "wartech senko no ronde",
+      "Variants": [
+        {
+          "GameName": "wartech senko no ronde",
+          "TitleID": "475207D1",
+          "Serial": "GR-2001",
+          "Region": "RF",
+          "XEXCRC": "0E0C9C8A",
+          "MediaID": "679EDAC8",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "cavia inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Anime / Manga", "Mecha / giant robot", "Licensed", "Behind view", "Direct control" ],
+      "ID": 207798,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/207798/zegapain-xor/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "BANDAI NAMCO Entertainment Inc." ],
+      "Release_Date": "2006-07-27",
+      "Title": "Zegapain XOR",
+      "Alternate_Name": "zegapain xor",
+      "Variants": [
+        {
+          "GameName": "zegapain xor",
+          "TitleID": "424107D1",
+          "Serial": "BA-2001",
+          "Region": "NTSC/J (Excludes China)",
+          "XEXCRC": "7292CBA8",
+          "MediaID": "0F03EDDB",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Capcom Co., Ltd." ],
+      "Genres": [ "Action", "Side view", "Fighting", "Anime / Manga", "3rd-person (Other)" ],
+      "ID": 23379,
+      "Moby_Score": 6.93,
+      "Moby_URL": "https://www.mobygames.com/game/23379/street-fighter-ii-hyper-fighting/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Capcom Co., Ltd." ],
+      "Release_Date": "2006-08-02",
+      "Title": "Street Fighter II': Hyper Fighting",
+      "Alternate_Name": "street fighter ii hyper fighting",
+      "Variants": [
+        {
+          "GameName": "street fighter ii hyper fighting",
+          "TitleID": "584107F4",
+          "Serial": "XA-2036",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Hudson Soft Company, Ltd." ],
+      "Genres": [ "Action", "Arcade", "Puzzle elements", "Cyberpunk / dark sci-fi", "Diagonal-down", "2D scrolling", "Direct control" ],
+      "ID": 28267,
+      "Moby_Score": 3.86,
+      "Moby_URL": "https://www.mobygames.com/game/28267/bomberman-actzero/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Hudson Soft Company, Ltd.", "Konami Digital Entertainment GmbH", "Konami Corporation" ],
+      "Release_Date": "2006-08-03",
+      "Title": "Bomberman: Act:Zero",
+      "Alternate_Name": "bomberman act zero",
+      "Variants": [
+        {
+          "GameName": "bomberman act zero",
+          "TitleID": "485507D1",
+          "Serial": "HU-2001",
+          "Region": "NTSC/U",
+          "XEXCRC": "0553D7C6",
+          "MediaID": "176C65AC",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Capcom Co., Ltd." ],
+      "Genres": [ "Action", "Shooter", "Horror", "Survival horror", "Behind view", "Quick Time Events (QTEs)", "Regional differences" ],
+      "ID": 23514,
+      "Moby_Score": 8.06,
+      "Moby_URL": "https://www.mobygames.com/game/23514/dead-rising/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 4", "Xbox One" ],
+      "Publishers": [ "Capcom Co., Ltd." ],
+      "Release_Date": "2006-08-08",
+      "Title": "Dead Rising",
+      "Alternate_Name": "dead rising",
+      "Variants": [
+        {
+          "GameName": "dead rising",
+          "TitleID": "434307D2",
+          "Serial": "CC-2002",
+          "Region": "PAL",
+          "XEXCRC": "1BFB3553",
+          "MediaID": "633ECD10",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Namco Limited" ],
+      "Genres": [ "Action", "Arcade", "Fantasy", "Diagonal-down", "Fixed / flip-screen", "Direct control" ],
+      "ID": 138,
+      "Moby_Score": 7.14,
+      "Moby_URL": "https://www.mobygames.com/game/138/pac-man/",
+      "Platforms": [ "Windows", "PC Booter", "Game Boy", "Game Boy Advance", "NES", "Game Gear", "Commodore 64", "Atari 2600", "Intellivision", "Apple II", "Atari 5200", "Atari 8-bit", "ZX Spectrum", "VIC-20", "TI-99/4A", "Neo Geo Pocket Color", "MSX", "Palm OS", "Xbox 360", "Wii", "iPhone", "BlackBerry", "Android", "PC-88", "PC-98", "Windows Phone", "Nintendo 3DS", "Sharp X1", "FM-7", "Wii U", "PlayStation 4", "Xbox One", "Arcade", "PC-6001", "Sharp Zaurus", "Antstream", "Nintendo Switch", "PC-8000", "Sharp MZ-80B/2000/2500", "Sharp MZ-80K/700/800/1500" ],
+      "Publishers": [ "Namco Bandai Games Inc." ],
+      "Release_Date": "2006-08-09",
+      "Title": "Pac-Man",
+      "Alternate_Name": "pac-man",
+      "Variants": [
+        {
+          "GameName": "pac-man",
+          "TitleID": "58410811",
+          "Serial": "XA-2065",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Omega Force" ],
+      "Genres": [ "Action", "Historical events", "Martial arts", "Hack and slash", "Fantasy", "Behind view", "Japan (Ancient/Classical/Medieval)" ],
+      "ID": 42588,
+      "Moby_Score": 5.97,
+      "Moby_URL": "https://www.mobygames.com/game/42588/samurai-warriors-2/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "KOEI Co., Ltd.", "KOEI Ltd.", "KOEI Corporation", "Koei Tecmo Europe Ltd." ],
+      "Release_Date": "2006-02-24",
+      "Title": "Samurai Warriors 2",
+      "Alternate_Name": "samurai warriors 2",
+      "Variants": [
+        {
+          "GameName": "samurai warriors 2",
+          "TitleID": "4B4F07D5",
+          "Serial": "KO-2005",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "D83254D6",
+          "MediaID": "6EBE8410",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "EA Tiburon" ],
+      "Genres": [ "Sports", "Real-time", "Football (American)", "Licensed", "Diagonal-down", "2D scrolling", "Direct control" ],
+      "ID": 73298,
+      "Moby_Score": 7.77,
+      "Moby_URL": "https://www.mobygames.com/game/73298/madden-nfl-07/",
+      "Platforms": [ "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-08-22",
+      "Title": "Madden NFL 07",
+      "Alternate_Name": "madden nfl 07",
+      "Variants": [
+        {
+          "GameName": "madden nfl 07",
+          "TitleID": "454107EB",
+          "Serial": "EA-2027",
+          "Region": "PAL",
+          "XEXCRC": "AD3B9F79",
+          "MediaID": "12958491",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Digital extras", "Special edition" ],
+      "ID": 29079,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/29079/madden-nfl-07-hall-of-fame-edition/",
+      "Platforms": [ "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-08-22",
+      "Title": "Madden NFL 07 (Hall of Fame Edition)",
+      "Alternate_Name": "madden nfl 07",
+      "Variants": [
+        {
+          "GameName": "madden nfl 07",
+          "TitleID": "454107EB",
+          "Serial": "EA-2027",
+          "Region": "PAL",
+          "XEXCRC": "AD3B9F79",
+          "MediaID": "12958491",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "TikGames, LLC" ],
+      "Genres": [ "1st-person", "Cards / tiles", "Gambling" ],
+      "ID": 23770,
+      "Moby_Score": 6.86,
+      "Moby_URL": "https://www.mobygames.com/game/23770/texas-hold-em/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "TikGames, LLC" ],
+      "Release_Date": "2006-08-23",
+      "Title": "Texas Hold 'em",
+      "Alternate_Name": "texas holdem",
+      "Variants": [
+        {
+          "GameName": "texas holdem",
+          "TitleID": "584107F6",
+          "Serial": "XA-2038",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Volition, Inc." ],
+      "Genres": [ "Action", "Racing / Driving", "Shooter", "Crime", "Behind view", "Sandbox / open world", "Direct control", "Contemporary", "Regional differences" ],
+      "ID": 24088,
+      "Moby_Score": 8.0,
+      "Moby_URL": "https://www.mobygames.com/game/24088/saints-row/",
+      "Platforms": [ "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Koch Media GmbH (Austria)", "THQ Inc." ],
+      "Release_Date": "2006-08-29",
+      "Title": "Saints Row",
+      "Alternate_Name": "saints row",
+      "Variants": [
+        {
+          "GameName": "saints row",
+          "TitleID": "545107D1",
+          "Serial": "TQ-2001",
+          "Region": "RF",
+          "XEXCRC": "9AD42CA7",
+          "MediaID": "24367742",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Konami Industry Co. Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Side view", "Flight / aviation", "Shooter", "2D scrolling", "Direct control" ],
+      "ID": 12834,
+      "Moby_Score": 6.64,
+      "Moby_URL": "https://www.mobygames.com/game/12834/time-pilot/",
+      "Platforms": [ "Windows", "Atari 2600", "ColecoVision", "MSX", "Xbox 360", "PlayStation 4", "Arcade", "Nintendo Switch" ],
+      "Publishers": [ "HAMSTER Corporation", "Coleco Industries, Inc.", "Microsoft Corporation", "Konami Digital Entertainment, Inc.", "Konami Industry Co. Ltd.", "Centuri, Inc." ],
+      "Release_Date": "1982",
+      "Title": "Time Pilot",
+      "Alternate_Name": "time pilot",
+      "Variants": [
+        {
+          "GameName": "time pilot",
+          "TitleID": "58410815",
+          "Serial": "XA-2069",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Eden Games S.A.S." ],
+      "Genres": [ "Racing / Driving", "1st-person", "Motorcycle", "Licensed", "Behind view", "Vehicle simulator", "Automobile", "Street racing", "Track racing" ],
+      "ID": 26898,
+      "Moby_Score": 7.94,
+      "Moby_URL": "https://www.mobygames.com/game/26898/test-drive-unlimited/",
+      "Platforms": [ "Windows", "PlayStation 2", "PSP", "Xbox 360" ],
+      "Publishers": [ "Atari, Inc." ],
+      "Release_Date": "2006-09-05",
+      "Title": "Test Drive Unlimited",
+      "Alternate_Name": "test drive unlimited",
+      "Variants": [
+        {
+          "GameName": "test drive unlimited",
+          "TitleID": "494707D4",
+          "Serial": "IG-2004",
+          "Region": "NTSC/J (Excludes China), NTSC/U",
+          "XEXCRC": "B642128C",
+          "MediaID": "3ABABF3E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Compilation" ],
+      "ID": 23974,
+      "Moby_Score": 7.04,
+      "Moby_URL": "https://www.mobygames.com/game/23974/xbox-live-arcade-unplugged-volume-1/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-09-05",
+      "Title": "Xbox Live Arcade Unplugged Volume 1",
+      "Alternate_Name": "xbox live arcade unplugged volume 1",
+      "Variants": [
+        {
+          "GameName": "xbox live arcade unplugged volume 1",
+          "TitleID": "4D5307FC",
+          "Serial": "MS-2044",
+          "Region": "RF",
+          "XEXCRC": "3847825A",
+          "MediaID": "0BE5CEE6",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Genki Co., Ltd." ],
+      "Genres": [ "Action", "Arcade", "Historical events", "Martial arts", "Fighting", "Stealth", "3rd-person (Other)" ],
+      "ID": 34580,
+      "Moby_Score": 5.04,
+      "Moby_URL": "https://www.mobygames.com/game/34580/kengo-legend-of-the-9/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Genki Co., Ltd.", "Majesco Entertainment Company" ],
+      "Release_Date": "2006-09-07",
+      "Title": "Kengo: Legend of the 9",
+      "Alternate_Name": "kengo legend of the 9",
+      "Variants": [
+        {
+          "GameName": "kengo legend of the 9",
+          "TitleID": "474507D2",
+          "Serial": "GE-2002",
+          "Region": "NTSC/U",
+          "XEXCRC": "71D5C6E9",
+          "MediaID": "0BD6D530",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sand Grain Studios", "Magic Wand Productions SRL", "FUN Labs Romania S.R.L." ],
+      "Genres": [ "Action", "1st-person", "Fishing", "Hunting", "Licensed", "Behind view", "North America" ],
+      "ID": 35401,
+      "Moby_Score": 5.63,
+      "Moby_URL": "https://www.mobygames.com/game/35401/cabelas-alaskan-adventures/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "Activision Value Publishing, Inc." ],
+      "Release_Date": "2006-09-09",
+      "Title": "Cabela's Alaskan Adventures",
+      "Alternate_Name": "cabelas alaskan adventures",
+      "Variants": [
+        {
+          "GameName": "cabelas alaskan adventures",
+          "TitleID": "415607DC",
+          "Serial": "AV-2012",
+          "Region": "NTSC/U",
+          "XEXCRC": "4A5E805B",
+          "MediaID": "73A29D08",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Traveller's Tales (UK) Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Platform", "Licensed", "3rd-person (Other)", "Cinematic camera" ],
+      "ID": 23874,
+      "Moby_Score": 7.96,
+      "Moby_URL": "https://www.mobygames.com/game/23874/lego-star-wars-ii-the-original-trilogy/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "PSP", "Xbox 360", "Macintosh", "PlayStation 3" ],
+      "Publishers": [ "LucasArts", "Tt Games Publishing Ltd." ],
+      "Release_Date": "2006-09-08",
+      "Title": "LEGO Star Wars II: The Original Trilogy",
+      "Alternate_Name": "lego star wars ii the original trilogy",
+      "Variants": [
+        {
+          "GameName": "lego star wars ii the original trilogy",
+          "TitleID": "4C4107D1",
+          "Serial": "LA-2001",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "262706C4",
+          "MediaID": "3F20DF7E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Canada" ],
+      "Genres": [ "Sports", "Side view", "Hockey", "Managerial / business simulation", "Licensed", "Behind view", "Diagonal-down", "Direct control" ],
+      "ID": 206280,
+      "Moby_Score": 7.98,
+      "Moby_URL": "https://www.mobygames.com/game/206280/nhl-07/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-09-12",
+      "Title": "NHL 07",
+      "Alternate_Name": "nhl 07",
+      "Variants": [
+        {
+          "GameName": "nhl 07",
+          "TitleID": "454107F3",
+          "Serial": "EA-2035",
+          "Region": "NTSC/U",
+          "XEXCRC": "2D8B5C16",
+          "MediaID": "610CF9FA",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Ubisoft Entertainment Inc." ],
+      "Genres": [ "Action", "Puzzle elements", "Licensed", "Behind view" ],
+      "ID": 23780,
+      "Moby_Score": 6.37,
+      "Moby_URL": "https://www.mobygames.com/game/23780/open-season/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "Xbox 360", "Wii" ],
+      "Publishers": [ "Ubisoft Entertainment SA", "CNEC Inc." ],
+      "Release_Date": "2006-05-31",
+      "Title": "Open Season",
+      "Alternate_Name": "open season",
+      "Variants": [
+        {
+          "GameName": "open season",
+          "TitleID": "55530700000000",
+          "Serial": "US-2024",
+          "Region": "RF",
+          "XEXCRC": "A42BC468",
+          "MediaID": "2AE61897",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Konami Industry Co. Ltd." ],
+      "Genres": [ "Action", "Arcade", "Side view", "Shooter", "2D scrolling" ],
+      "ID": 12405,
+      "Moby_Score": 6.81,
+      "Moby_URL": "https://www.mobygames.com/game/12405/scramble/",
+      "Platforms": [ "Vectrex", "Xbox 360", "PlayStation 4", "Arcade", "Tomy Tutor", "Nintendo Switch", "Windows" ],
+      "Publishers": [ "Konami Industry Co. Ltd.", "Milton Bradley Ltd.", "Microsoft Corporation", "GCE", "Konami Digital Entertainment, Inc.", "Tomy Company, Ltd.", "HAMSTER Corporation" ],
+      "Release_Date": "1981",
+      "Title": "Scramble",
+      "Alternate_Name": "scramble",
+      "Variants": [
+        {
+          "GameName": "scramble",
+          "TitleID": "58410814",
+          "Serial": "XA-2068",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Frontier Groove, Inc." ],
+      "Genres": [ "Simulation", "Fixed / flip-screen", "Point and select" ],
+      "ID": 165563,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/165563/aquazone-life-simulator/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Frontier Groove, Inc." ],
+      "Release_Date": "2006-09-14",
+      "Title": "AquaZone: Life Simulator",
+      "Alternate_Name": "aquazone life simulator",
+      "Variants": [
+        {
+          "GameName": "aquazone life simulator",
+          "TitleID": "464707D1",
+          "Serial": "FG-2001",
+          "Region": "NTSC/J (Excludes China)",
+          "XEXCRC": "2CDE6186",
+          "MediaID": "18AE8C26",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Redwood Shores Studio" ],
+      "Genres": [ "Action", "Racing / Driving", "Licensed", "Crime", "Behind view" ],
+      "ID": 21586,
+      "Moby_Score": 7.22,
+      "Moby_URL": "https://www.mobygames.com/game/21586/the-godfather-the-game/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-03-21",
+      "Title": "The Godfather: The Game",
+      "Alternate_Name": "the godfather",
+      "Variants": [
+        {
+          "GameName": "the godfather",
+          "TitleID": "454107000000000",
+          "Serial": "EA-2025",
+          "Region": "NTSC/U",
+          "XEXCRC": "333640BA",
+          "MediaID": "39C09F0B",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Left Field Productions, Inc." ],
+      "Genres": [ "Strategy / tactics", "Cards / tiles", "Gambling", "Licensed" ],
+      "ID": 24448,
+      "Moby_Score": 6.4,
+      "Moby_URL": "https://www.mobygames.com/game/24448/world-series-of-poker-tournament-of-champions/",
+      "Platforms": [ "Windows", "PlayStation 2", "PSP", "Xbox 360", "Wii" ],
+      "Publishers": [ "Activision Value Publishing, Inc.", "Activision Publishing, Inc." ],
+      "Release_Date": "2006-09-21",
+      "Title": "World Series of Poker: Tournament of Champions",
+      "Alternate_Name": "world series of poker tournament of champions 2007 edition",
+      "Variants": [
+        {
+          "GameName": "world series of poker tournament of champions 2007 edition",
+          "TitleID": "415607D9",
+          "Serial": "AV-2009",
+          "Region": "NTSC/U",
+          "XEXCRC": "BEC6BD8F",
+          "MediaID": "5DE0B54E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Avalanche Studios AB" ],
+      "Genres": [ "Action", "Racing / Driving", "Shooter", "Helicopter", "Spy / espionage", "Behind view", "Direct control" ],
+      "ID": 24152,
+      "Moby_Score": 6.6,
+      "Moby_URL": "https://www.mobygames.com/game/24152/just-cause/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3", "OnLive" ],
+      "Publishers": [ "Eidos Interactive Limited", "Mastertronic Games Ltd.", "Noviy Disk", "Cenega Poland Sp. z o.o.", "Square Enix Limited" ],
+      "Release_Date": "2006-09-22",
+      "Title": "Just Cause",
+      "Alternate_Name": "just cause",
+      "Variants": [
+        {
+          "GameName": "just cause",
+          "TitleID": "534307D5",
+          "Serial": "SC-2005",
+          "Region": "RF",
+          "XEXCRC": "D539D6F7",
+          "MediaID": "6C47A625",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Codemasters Software Company Limited, The" ],
+      "Genres": [ "Simulation", "Strategy / tactics", "Sports", "Managerial / business simulation", "Football (European) / Soccer", "Licensed", "Diagonal-down", "Text-based / Spreadsheet", "Menu structures" ],
+      "ID": 42240,
+      "Moby_Score": 6.54,
+      "Moby_URL": "https://www.mobygames.com/game/42240/lma-manager-2007/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "Codemasters Software Company Limited, The" ],
+      "Release_Date": "2006-09-22",
+      "Title": "LMA Manager 2007",
+      "Alternate_Name": "lma manager 2007",
+      "Variants": [
+        {
+          "GameName": "lma manager 2007",
+          "TitleID": "434D07D2",
+          "Serial": "CM-2002",
+          "Region": "PAL",
+          "XEXCRC": "4471ADD2",
+          "MediaID": "4A6F374B",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Visual Concepts Entertainment, Inc." ],
+      "Genres": [ "Sports", "Basketball", "Licensed", "Diagonal-down", "2D scrolling" ],
+      "ID": 31934,
+      "Moby_Score": 8.33,
+      "Moby_URL": "https://www.mobygames.com/game/31934/nba-2k7/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2006-09-25",
+      "Title": "NBA 2K7",
+      "Alternate_Name": "nba 2k7",
+      "Variants": [
+        {
+          "GameName": "nba 2k7",
+          "TitleID": "545407EF",
+          "Serial": "TT-2031",
+          "Region": "NTSC/U",
+          "XEXCRC": "9DF0E3A4",
+          "MediaID": "62336097",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "id Software, Inc." ],
+      "Genres": [ "Action", "1st-person", "Sci-fi / futuristic", "Shooter", "Horror", "Direct control" ],
+      "ID": 707,
+      "Moby_Score": 8.36,
+      "Moby_URL": "https://www.mobygames.com/game/707/the-ultimate-doom/",
+      "Platforms": [ "DOS", "Windows", "Xbox 360", "Macintosh", "iPhone", "iPad", "Windows Apps", "PlayStation 4", "Nintendo Switch", "Xbox One", "Xbox Cloud Gaming" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-09-27",
+      "Title": "Doom",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "58410824",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "SETA Visual Contents Department", "Game Arts Co., Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Shooter", "3rd-person (Other)", "Space flight" ],
+      "ID": 30236,
+      "Moby_Score": 6.37,
+      "Moby_URL": "https://www.mobygames.com/game/30236/project-sylpheed-arc-of-deception/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation", "Square Enix Co., Ltd.", "Square Enix, Inc." ],
+      "Release_Date": "2006-09-28",
+      "Title": "Project Sylpheed: Arc of Deception",
+      "Alternate_Name": "project sylpheed arc of deception",
+      "Variants": [
+        {
+          "GameName": "project sylpheed arc of deception",
+          "TitleID": "535107D4",
+          "Serial": "SQ-2004",
+          "Region": "RF",
+          "XEXCRC": "B55BFFC1",
+          "MediaID": "2D2E2EEB",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Rainbow Studios, Inc." ],
+      "Genres": [ "Racing / Driving", "1st-person", "Off-roading", "Fantasy", "Licensed", "Behind view", "Direct control", "Motion control", "Automobile", "Track racing" ],
+      "ID": 23057,
+      "Moby_Score": 6.84,
+      "Moby_URL": "https://www.mobygames.com/game/23057/disneypixar-cars/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "Xbox 360", "Macintosh", "PlayStation 3", "Wii" ],
+      "Publishers": [ "THQ Inc.", "Noviy Disk", "Disney Interactive", "Sony Computer Entertainment America LLC", "troll.ru" ],
+      "Release_Date": "2006-06-06",
+      "Title": "Disney•Pixar Cars",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "545107EA",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "Shanghai Ubisoft Computer Software Co., Ltd." ],
+      "Genres": [ "Action", "Strategy / tactics", "1st-person", "Licensed", "Spy / espionage", "Stealth", "Behind view", "Africa", "Asia", "North America" ],
+      "ID": 24562,
+      "Moby_Score": 8.09,
+      "Moby_URL": "https://www.mobygames.com/game/24562/tom-clancys-splinter-cell-double-agent/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Xbox One", "Xbox Series" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-10-17",
+      "Title": "Tom Clancy's Splinter Cell: Double Agent",
+      "Alternate_Name": "tom clancys splinter cell double agent",
+      "Variants": [
+        {
+          "GameName": "tom clancys splinter cell double agent",
+          "TitleID": "555307D7",
+          "Serial": "US-2007",
+          "Region": "RF",
+          "XEXCRC": "6051E6AF",
+          "MediaID": "3FA11EB0",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Strange Flavour Ltd.", "Freeverse, Inc." ],
+      "Genres": [ "Action", "Arcade", "3rd-person (Other)" ],
+      "ID": 24871,
+      "Moby_Score": 5.65,
+      "Moby_URL": "https://www.mobygames.com/game/24871/totemball/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-10-04",
+      "Title": "TotemBall",
+      "Alternate_Name": "totemball",
+      "Variants": [
+        {
+          "GameName": "totemball",
+          "TitleID": "58410831",
+          "Serial": "XA-2097",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "K2 LLC" ],
+      "Genres": [ "Action", "Fantasy", "Spy / espionage", "Stealth", "Behind view", "Japan (Ancient/Classical/Medieval)" ],
+      "ID": 38884,
+      "Moby_Score": 5.6,
+      "Moby_URL": "https://www.mobygames.com/game/38884/tenchu-z/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "FromSoftware, Inc.", "Microsoft Corporation" ],
+      "Release_Date": "2006-10-05",
+      "Title": "Tenchu Z",
+      "Alternate_Name": "tenchu z",
+      "Variants": [
+        {
+          "GameName": "tenchu z",
+          "TitleID": "465307D1",
+          "Serial": "FS-2001",
+          "Region": "NTSC/J (Excludes China)",
+          "XEXCRC": "3FD77CA7",
+          "MediaID": "21D822B5",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Canada" ],
+      "Genres": [ "Sports", "Basketball", "Managerial / business simulation", "Licensed", "Behind view", "Diagonal-down", "Direct control" ],
+      "ID": 175909,
+      "Moby_Score": 6.47,
+      "Moby_URL": "https://www.mobygames.com/game/175909/nba-live-07/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-10-06",
+      "Title": "NBA Live 07",
+      "Alternate_Name": "nba live 07",
+      "Variants": [
+        {
+          "GameName": "nba live 07",
+          "TitleID": "454107F1",
+          "Serial": "EA-2033",
+          "Region": "PAL",
+          "XEXCRC": "1E7A488F",
+          "MediaID": "03908045",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Namco Limited" ],
+      "Genres": [ "Action", "Arcade", "Side view", "Fixed / flip-screen" ],
+      "ID": 139,
+      "Moby_Score": 7.31,
+      "Moby_URL": "https://www.mobygames.com/game/139/dig-dug/",
+      "Platforms": [ "Windows", "PC Booter", "Game Boy", "Game Boy Advance", "NES", "Commodore 64", "Atari 2600", "Intellivision", "Apple II", "Atari 5200", "Atari 7800", "Atari 8-bit", "VIC-20", "TI-99/4A", "MSX", "BREW", "J2ME", "Palm OS", "Windows Mobile", "Xbox 360", "Wii", "BlackBerry", "PC-88", "Nintendo 3DS", "Casio PV-1000", "FM-7", "Wii U", "Sord M5", "PlayStation 4", "Xbox One", "Arcade", "PC-6001", "PC-8000", "Sharp X1", "Nintendo Switch", "Antstream" ],
+      "Publishers": [ "Namco Bandai Games Inc." ],
+      "Release_Date": "2006-10-11",
+      "Title": "Dig Dug",
+      "Alternate_Name": "dig dug",
+      "Variants": [
+        {
+          "GameName": "dig dug",
+          "TitleID": "58410836",
+          "Serial": "XA-2102",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sand Grain Studios", "FUN Labs Romania S.R.L.", "Magic Wand Productions SRL" ],
+      "Genres": [ "Sports", "1st-person", "Hunting", "Licensed", "Behind view", "Africa" ],
+      "ID": 31283,
+      "Moby_Score": 6.28,
+      "Moby_URL": "https://www.mobygames.com/game/31283/cabelas-african-safari/",
+      "Platforms": [ "Windows", "PlayStation 2", "PSP", "Xbox 360" ],
+      "Publishers": [ "Activision Value Publishing, Inc." ],
+      "Release_Date": "2006-10-17",
+      "Title": "Cabela's African Safari",
+      "Alternate_Name": "cabelas african safari",
+      "Variants": [
+        {
+          "GameName": "cabelas african safari",
+          "TitleID": "41560700000",
+          "Serial": "AV-2021",
+          "Region": "NTSC/U",
+          "XEXCRC": "A4D162DD",
+          "MediaID": "7B4AF5D1",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Electronic Arts Redwood Shores Studio" ],
+      "Genres": [ "Sports", "Golf", "Licensed", "Behind view" ],
+      "ID": 28963,
+      "Moby_Score": 7.88,
+      "Moby_URL": "https://www.mobygames.com/game/28963/tiger-woods-pga-tour-07/",
+      "Platforms": [ "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-10-17",
+      "Title": "Tiger Woods PGA Tour 07",
+      "Alternate_Name": "tiger woods pga tour 07",
+      "Variants": [
+        {
+          "GameName": "tiger woods pga tour 07",
+          "TitleID": "454107F4",
+          "Serial": "EA-2036",
+          "Region": "NTSC/U",
+          "XEXCRC": "A6ABFCAB",
+          "MediaID": "6C1D6641",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Digital extras", "Special edition" ],
+      "ID": 25568,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/25568/tom-clancys-splinter-cell-double-agent-limited-collectors-editio/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-10-17",
+      "Title": "Tom Clancy's Splinter Cell: Double Agent (Limited Collector's Edition)",
+      "Alternate_Name": "tom clancys splinter cell double agent",
+      "Variants": [
+        {
+          "GameName": "tom clancys splinter cell double agent",
+          "TitleID": "555307D7",
+          "Serial": "US-2007",
+          "Region": "RF",
+          "XEXCRC": "6051E6AF",
+          "MediaID": "3FA11EB0",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Q ENTERTAINMENT, Inc." ],
+      "Genres": [ "Real-time", "Music / rhythm", "Puzzle", "Falling block puzzle" ],
+      "ID": 24553,
+      "Moby_Score": 7.41,
+      "Moby_URL": "https://www.mobygames.com/game/24553/lumines-live/",
+      "Platforms": [ "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Q ENTERTAINMENT, Inc.", "Microsoft Corporation" ],
+      "Release_Date": "2006-10-18",
+      "Title": "Lumines Live!",
+      "Alternate_Name": "lumines live!",
+      "Variants": [
+        {
+          "GameName": "lumines live!",
+          "TitleID": "584107F8",
+          "Serial": "XA-2040",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Midway Manufacturing Company" ],
+      "Genres": [ "Action", "Side view", "Fighting", "2D scrolling" ],
+      "ID": 6593,
+      "Moby_Score": 7.31,
+      "Moby_URL": "https://www.mobygames.com/game/6593/ultimate-mortal-kombat-3/",
+      "Platforms": [ "Game Boy Advance", "SNES", "Genesis", "SEGA Saturn", "Nintendo DS", "Xbox 360", "Arcade" ],
+      "Publishers": [ "Midway Manufacturing Company", "Midway Home Entertainment, Inc.", "Williams Entertainment, Inc.", "Tec Toy Indústria de Brinquedos S.A.", "Playtronic Industrial Ltda." ],
+      "Release_Date": "1995-10-06",
+      "Title": "Ultimate Mortal Kombat 3",
+      "Alternate_Name": "mortal kombat arcade",
+      "Variants": [
+        {
+          "GameName": "mortal kombat arcade",
+          "TitleID": "58410B62",
+          "Serial": "XA-2914",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Raven Software Corporation" ],
+      "Genres": [ "Sci-fi / futuristic", "Role-playing (RPG)", "Licensed", "Diagonal-down", "2D scrolling", "Action RPG", "Quick Time Events (QTEs)" ],
+      "ID": 25209,
+      "Moby_Score": 7.62,
+      "Moby_URL": "https://www.mobygames.com/game/25209/marvel-ultimate-alliance/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "PSP", "Xbox 360", "PlayStation 3", "Wii", "PlayStation 4", "Xbox One" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-10-24",
+      "Title": "Marvel Ultimate Alliance",
+      "Alternate_Name": "marvel ultimate alliance",
+      "Variants": [
+        {
+          "GameName": "marvel ultimate alliance",
+          "TitleID": "415607DA",
+          "Serial": "AV-2010",
+          "Region": "RF",
+          "XEXCRC": "8ADC3403",
+          "MediaID": "26848425",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sonic Team" ],
+      "Genres": [ "Sci-fi / futuristic", "Role-playing (RPG)", "Anime / Manga", "Persistent", "3rd-person (Other)" ],
+      "ID": 26265,
+      "Moby_Score": 6.48,
+      "Moby_URL": "https://www.mobygames.com/game/26265/phantasy-star-universe/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "SEGA Europe Ltd.", "SEGA Corporation", "SEGA of America, Inc." ],
+      "Release_Date": "2006-08-31",
+      "Title": "Phantasy Star Universe",
+      "Alternate_Name": "phantasy star universe",
+      "Variants": [
+        {
+          "GameName": "phantasy star universe",
+          "TitleID": "534507000",
+          "Serial": "SE-2019",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "577A61C5",
+          "MediaID": "4D33612E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Konami Digital Entertainment Co., Ltd.", "Konami Computer Entertainment Tokyo, Inc.", "Winning Eleven Productions" ],
+      "Genres": [ "Sports", "Managerial / business simulation", "Football (European) / Soccer", "Diagonal-down", "2D scrolling", "Direct control" ],
+      "ID": 24827,
+      "Moby_Score": 8.09,
+      "Moby_URL": "https://www.mobygames.com/game/24827/winning-eleven-pro-evolution-soccer-2007/",
+      "Platforms": [ "Windows", "PlayStation 2", "PSP", "Xbox 360" ],
+      "Publishers": [ "Konami Digital Entertainment Co., Ltd." ],
+      "Release_Date": "2006-10-26",
+      "Title": "Winning Eleven: Pro Evolution Soccer 2007",
+      "Alternate_Name": "winning eleven pro evolution soccer 2007",
+      "Variants": [
+        {
+          "GameName": "winning eleven pro evolution soccer 2007",
+          "TitleID": "4B4E07DF",
+          "Serial": "KN-2015",
+          "Region": "NTSC/U",
+          "XEXCRC": "19F82F4C",
+          "MediaID": "3C0CEF84",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "EA Black Box" ],
+      "Genres": [ "Racing / Driving", "1st-person", "Arcade", "Licensed", "Behind view", "Vehicle simulator", "Direct control", "Automobile", "Street racing" ],
+      "ID": 24726,
+      "Moby_Score": 7.23,
+      "Moby_URL": "https://www.mobygames.com/game/24726/need-for-speed-carbon/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "Xbox 360", "Macintosh", "PlayStation 3", "Wii" ],
+      "Publishers": [ "CNEC Inc.", "Electronic Arts, Inc." ],
+      "Release_Date": "2006-10-30",
+      "Title": "Need for Speed: Carbon",
+      "Alternate_Name": "need for speed carbon",
+      "Variants": [
+        {
+          "GameName": "need for speed carbon",
+          "TitleID": "454107EC",
+          "Serial": "EA-2028",
+          "Region": "NTSC/U",
+          "XEXCRC": "4A09BE91",
+          "MediaID": "51D2B53F",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Monolith Productions, Inc." ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Horror", "Direct control", "Regional differences" ],
+      "ID": 19787,
+      "Moby_Score": 8.01,
+      "Moby_URL": "https://www.mobygames.com/game/19787/fear-first-encounter-assault-recon/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Sierra Entertainment, Inc." ],
+      "Release_Date": "2005-10-17",
+      "Title": "F.E.A.R.: First Encounter Assault Recon",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "565507D9",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "EA Black Box" ],
+      "Genres": [ "Digital extras", "Extra content / game", "Special edition" ],
+      "ID": 24824,
+      "Moby_Score": 7.74,
+      "Moby_URL": "https://www.mobygames.com/game/24824/need-for-speed-carbon-collectors-edition/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360", "Macintosh" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-10-31",
+      "Title": "Need for Speed: Carbon (Collector's Edition)",
+      "Alternate_Name": "need for speed carbon collectors edition",
+      "Variants": [
+        {
+          "GameName": "need for speed carbon collectors edition",
+          "TitleID": "454107EC",
+          "Serial": "EA-2028",
+          "Region": "PAL",
+          "XEXCRC": "92BA531D",
+          "MediaID": "5E74E60D",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Yuke's Co. Ltd." ],
+      "Genres": [ "Sports", "Wrestling", "Licensed", "3rd-person (Other)" ],
+      "ID": 25577,
+      "Moby_Score": 7.77,
+      "Moby_URL": "https://www.mobygames.com/game/25577/wwe-smackdown-vs-raw-2007/",
+      "Platforms": [ "PlayStation 2", "PSP", "Xbox 360" ],
+      "Publishers": [ "THQ Inc." ],
+      "Release_Date": "2006-11-03",
+      "Title": "WWE Smackdown vs. Raw 2007",
+      "Alternate_Name": "wwe smackdown vs. raw 2007",
+      "Variants": [
+        {
+          "GameName": "wwe smackdown vs. raw 2007",
+          "TitleID": "545107",
+          "Serial": "TQ-2016",
+          "Region": "RF",
+          "XEXCRC": "55BC6096",
+          "MediaID": "31981C72",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Treyarch Corporation" ],
+      "Genres": [ "Action", "1st-person", "Historical events", "Shooter", "Tank", "War", "Direct control", "World War II", "Regional differences" ],
+      "ID": 24923,
+      "Moby_Score": 7.65,
+      "Moby_URL": "https://www.mobygames.com/game/24923/call-of-duty-3/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3", "Wii", "Xbox One" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-11-07",
+      "Title": "Call of Duty 3",
+      "Alternate_Name": "call of duty 3",
+      "Variants": [
+        {
+          "GameName": "call of duty 3",
+          "TitleID": "415607E1",
+          "Serial": "AV-2017",
+          "Region": "RF",
+          "XEXCRC": "DD85E9F6",
+          "MediaID": "2E07093A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Epic Games, Inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Behind view" ],
+      "ID": 25761,
+      "Moby_Score": 8.82,
+      "Moby_URL": "https://www.mobygames.com/game/25761/gears-of-war/",
+      "Platforms": [ "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-11-07",
+      "Title": "Gears of War",
+      "Alternate_Name": "gears of war",
+      "Variants": [
+        {
+          "GameName": "gears of war",
+          "TitleID": "4D5307D5",
+          "Serial": "MS-2005",
+          "Region": "RF",
+          "XEXCRC": "A82C9204",
+          "MediaID": "76E9DF5B",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Physical extras", "Special edition" ],
+      "ID": 24929,
+      "Moby_Score": 7.58,
+      "Moby_URL": "https://www.mobygames.com/game/24929/gears-of-war-limited-collectors-edition/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-11-07",
+      "Title": "Gears of War (Limited Collector's Edition)",
+      "Alternate_Name": "gears of war 2 limited collectors edition bonus disc",
+      "Variants": [
+        {
+          "GameName": "gears of war 2 limited collectors edition bonus disc",
+          "TitleID": "4D530876",
+          "Serial": "MS-2166",
+          "Region": "RF",
+          "XEXCRC": "58F1C218",
+          "MediaID": "40B65A26",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Neversoft Entertainment, Inc.", "Shaba Games LLC" ],
+      "Genres": [ "Sports", "Skateboarding", "Licensed", "Behind view", "Direct control", "Regional differences" ],
+      "ID": 25133,
+      "Moby_Score": 7.88,
+      "Moby_URL": "https://www.mobygames.com/game/25133/tony-hawks-project-8/",
+      "Platforms": [ "PlayStation 2", "Xbox", "PSP", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-11-07",
+      "Title": "Tony Hawk's Project 8",
+      "Alternate_Name": "tony hawks project 8",
+      "Variants": [
+        {
+          "GameName": "tony hawks project 8",
+          "TitleID": "415607DD",
+          "Serial": "AV-2013",
+          "Region": "RF",
+          "XEXCRC": "2D92F988",
+          "MediaID": "2CB96AE4",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Konami Industry Co. Ltd." ],
+      "Genres": [ "Action", "Side view", "Platform", "Shooter", "Behind view", "2D scrolling", "Fixed / flip-screen", "Direct control", "Regional differences" ],
+      "ID": 4863,
+      "Moby_Score": 6.82,
+      "Moby_URL": "https://www.mobygames.com/game/4863/contra/",
+      "Platforms": [ "DOS", "Commodore 64", "ZX Spectrum", "Amstrad CPC", "Xbox 360", "PlayStation 4", "Arcade", "Nintendo Switch", "BlackBerry" ],
+      "Publishers": [ "Konami Industry Co. Ltd.", "Konami, Inc.", "Erbe Software, S.A.", "Ocean Software Ltd.", "Konami Digital Entertainment, Inc.", "HAMSTER Corporation", "Handmark, Inc." ],
+      "Release_Date": "1987-02-20",
+      "Title": "Contra",
+      "Alternate_Name": "contra",
+      "Variants": [
+        {
+          "GameName": "contra",
+          "TitleID": "58410818",
+          "Serial": "XA-2072",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Rare Limited" ],
+      "Genres": [ "Simulation", "Managerial / business simulation", "Licensed", "Puzzle", "3rd-person (Other)", "Mini-games" ],
+      "ID": 25261,
+      "Moby_Score": 7.91,
+      "Moby_URL": "https://www.mobygames.com/game/25261/viva-pinata/",
+      "Platforms": [ "Windows", "Xbox 360", "Xbox One", "Xbox Cloud Gaming" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-11-09",
+      "Title": "Viva Piñata",
+      "Alternate_Name": "viva pinata",
+      "Variants": [
+        {
+          "GameName": "viva pinata",
+          "TitleID": "4D5307F2",
+          "Serial": "MS-2034",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "F9E56069",
+          "MediaID": "690B3287",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Extra content / game", "Physical extras", "Special edition" ],
+      "ID": 37794,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/37794/viva-pinata-special-edition/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-11-09",
+      "Title": "Viva Piñata (Special Edition)",
+      "Alternate_Name": "viva pinata",
+      "Variants": [
+        {
+          "GameName": "viva pinata",
+          "TitleID": "4D5307F2",
+          "Serial": "MS-2034",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "F9E56069",
+          "MediaID": "690B3287",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Shooter", "Special edition" ],
+      "ID": 24924,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/24924/call-of-duty-3-special-edition/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-11-10",
+      "Title": "Call of Duty 3 (Special Edition)",
+      "Alternate_Name": "call of duty 3",
+      "Variants": [
+        {
+          "GameName": "call of duty 3",
+          "TitleID": "415607E1",
+          "Serial": "AV-2017",
+          "Region": "RF",
+          "XEXCRC": "DD85E9F6",
+          "MediaID": "2E07093A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Cauldron Ltd." ],
+      "Genres": [ "Action", "1st-person", "Historical events", "Shooter", "Licensed" ],
+      "ID": 31229,
+      "Moby_Score": 5.8,
+      "Moby_URL": "https://www.mobygames.com/game/31229/the-history-channel-civil-war-a-nation-divided/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox 360" ],
+      "Publishers": [ "Activision Value Publishing, Inc." ],
+      "Release_Date": "2006-11-07",
+      "Title": "The History Channel: Civil War - A Nation Divided",
+      "Alternate_Name": "the history channel civil war a nation divided",
+      "Variants": [
+        {
+          "GameName": "the history channel civil war a nation divided",
+          "TitleID": "4156070000",
+          "Serial": "AV-2020",
+          "Region": "NTSC/U",
+          "XEXCRC": "1C4F6D4C",
+          "MediaID": "10AFA67C",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Midway Games, Inc." ],
+      "Genres": [ "Sports", "Top-down", "Football (American)", "Quick Time Events (QTEs)" ],
+      "ID": 19552,
+      "Moby_Score": 7.3,
+      "Moby_URL": "https://www.mobygames.com/game/19552/blitz-the-league/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360" ],
+      "Publishers": [ "Midway Home Entertainment, Inc." ],
+      "Release_Date": "2005-10-18",
+      "Title": "Blitz: The League",
+      "Alternate_Name": "blitz the league",
+      "Variants": [
+        {
+          "GameName": "blitz the league",
+          "TitleID": "4D5707D4",
+          "Serial": "MW-2004",
+          "Region": "RF",
+          "XEXCRC": "3B046919",
+          "MediaID": "163CC7E4",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Team Ninja" ],
+      "Genres": [ "Sports", "Racing / Driving", "1st-person", "Gambling", "Sailing / boating", "Volleyball", "3rd-person (Other)" ],
+      "ID": 26263,
+      "Moby_Score": 5.35,
+      "Moby_URL": "https://www.mobygames.com/game/26263/dead-or-alive-xtreme-2/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Tecmo, Ltd.", "Tecmo, Inc." ],
+      "Release_Date": "2006-11-14",
+      "Title": "Dead or Alive: Xtreme 2",
+      "Alternate_Name": "dead or alive xtreme 2",
+      "Variants": [
+        {
+          "GameName": "dead or alive xtreme 2",
+          "TitleID": "544307D2",
+          "Serial": "TC-2002",
+          "Region": "NTSC/U",
+          "XEXCRC": "E446B481",
+          "MediaID": "21B9628E",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Stormfront Studios" ],
+      "Genres": [ "Action", "Hack and slash", "Fantasy", "Licensed", "3rd-person (Other)" ],
+      "ID": 31307,
+      "Moby_Score": 5.64,
+      "Moby_URL": "https://www.mobygames.com/game/31307/eragon/",
+      "Platforms": [ "Windows", "PlayStation 2", "Xbox", "Xbox 360" ],
+      "Publishers": [ "Sierra Entertainment, Inc.", "Vivendi Games, Inc." ],
+      "Release_Date": "2006-11-14",
+      "Title": "Eragon",
+      "Alternate_Name": "eragon",
+      "Variants": [
+        {
+          "GameName": "eragon",
+          "TitleID": "565507D8",
+          "Serial": "VU-2008",
+          "Region": "NTSC/U",
+          "XEXCRC": "0C58E8FB",
+          "MediaID": "3D8D6CF1",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sonic Team" ],
+      "Genres": [ "Action", "Platform", "Puzzle elements", "Anime / Manga", "Fantasy", "3rd-person (Other)", "Direct control" ],
+      "ID": 26398,
+      "Moby_Score": 4.88,
+      "Moby_URL": "https://www.mobygames.com/game/26398/sonic-the-hedgehog/",
+      "Platforms": [ "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "SEGA of America, Inc.", "SEGA Europe Ltd.", "SEGA Corporation" ],
+      "Release_Date": "2006-11-14",
+      "Title": "Sonic the Hedgehog",
+      "Alternate_Name": "sonic the hedgehog",
+      "Variants": [
+        {
+          "GameName": "sonic the hedgehog",
+          "TitleID": "534507D6",
+          "Serial": "SE-2006",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "9A5ACE67",
+          "MediaID": "7709C3E8",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Traveller's Tales (UK) Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Licensed", "Behind view" ],
+      "ID": 28262,
+      "Moby_Score": 6.37,
+      "Moby_URL": "https://www.mobygames.com/game/28262/bionicle-heroes/",
+      "Platforms": [ "Windows", "PlayStation 2", "GameCube", "Xbox 360", "Wii" ],
+      "Publishers": [ "Eidos Pty Ltd.", "Eidos, Inc.", "Eidos Interactive Limited" ],
+      "Release_Date": "2006-11-14",
+      "Title": "Bionicle Heroes",
+      "Alternate_Name": "bionicle heroes",
+      "Variants": [
+        {
+          "GameName": "bionicle heroes",
+          "TitleID": "53430700",
+          "Serial": "SC-2018",
+          "Region": "RF",
+          "XEXCRC": "7250456B",
+          "MediaID": "39D1B5B2",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Williams Electronics, Inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Side view", "Shooter", "2D scrolling", "Space flight" ],
+      "ID": 140,
+      "Moby_Score": 7.39,
+      "Moby_URL": "https://www.mobygames.com/game/140/defender/",
+      "Platforms": [ "PC Booter", "Commodore 64", "Atari 2600", "ColecoVision", "Intellivision", "Apple II", "Atari 5200", "Atari 8-bit", "VIC-20", "TI-99/4A", "Xbox 360", "Arcade", "Dedicated handheld", "Antstream", "Browser", "Macintosh", "Adventure Vision" ],
+      "Publishers": [ "Entex Industries, Inc.", "Midway Home Entertainment, Inc.", "Atari, Inc.", "Shockwave", "Zellers", "Sears, Roebuck and Co.", "Williams Electronics, Inc.", "Taito Corporation", "Warner Bros. Interactive Entertainment Inc.", "Atarisoft", "Digital Eclipse Software, Inc." ],
+      "Release_Date": "1981-02",
+      "Title": "Defender",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "58410823",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "Point of View, Inc." ],
+      "Genres": [ "Simulation", "Cards / tiles", "Licensed", "Diagonal-down" ],
+      "ID": 86173,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/86173/world-championship-poker-featuring-howard-lederer-all-in/",
+      "Platforms": [ "PlayStation 2", "PSP", "Xbox 360", "Wii" ],
+      "Publishers": [ "Crave Entertainment, Inc." ],
+      "Release_Date": "2006-08-09",
+      "Title": "World Championship Poker featuring Howard Lederer: All In",
+      "Alternate_Name": "world championship poker featuring howard lederer all in",
+      "Variants": [
+        {
+          "GameName": "world championship poker featuring howard lederer all in",
+          "TitleID": "435607D1",
+          "Serial": "CV-2001",
+          "Region": "NTSC/U",
+          "XEXCRC": "EFCFE8A6",
+          "MediaID": "4879D344",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Blitz Arcade" ],
+      "Genres": [ "Action", "Racing / Driving", "Arcade", "Diagonal-down", "2D scrolling", "Direct control" ],
+      "ID": 25182,
+      "Moby_Score": 6.63,
+      "Moby_URL": "https://www.mobygames.com/game/25182/big-bumpin/",
+      "Platforms": [ "Xbox", "Xbox 360" ],
+      "Publishers": [ "King Games" ],
+      "Release_Date": "2006-11-19",
+      "Title": "Big Bumpin'",
+      "Alternate_Name": null,
+      "Variants": null
+    },
+    {
+      "Developers": [ "Blitz Arcade" ],
+      "Genres": [ "Action", "Racing / Driving", "Motorcycle", "Behind view", "Direct control", "Track racing" ],
+      "ID": 25184,
+      "Moby_Score": 6.04,
+      "Moby_URL": "https://www.mobygames.com/game/25184/pocketbike-racer/",
+      "Platforms": [ "Xbox", "Xbox 360" ],
+      "Publishers": [ "King Games" ],
+      "Release_Date": "2006-11-19",
+      "Title": "PocketBike Racer",
+      "Alternate_Name": null,
+      "Variants": null
+    },
+    {
+      "Developers": [ "Blitz Arcade" ],
+      "Genres": [ "Action", "Licensed", "Stealth", "3rd-person (Other)" ],
+      "ID": 25162,
+      "Moby_Score": 5.87,
+      "Moby_URL": "https://www.mobygames.com/game/25162/sneak-king/",
+      "Platforms": [ "Xbox", "Xbox 360" ],
+      "Publishers": [ "King Games" ],
+      "Release_Date": "2006-11-19",
+      "Title": "Sneak King",
+      "Alternate_Name": null,
+      "Variants": [
+        {
+          "GameName": null,
+          "TitleID": "4D538802",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
+    },
+    {
+      "Developers": [ "Visual Concepts, Ltd." ],
+      "Genres": [ "Sports", "Basketball", "Licensed", "3rd-person (Other)" ],
+      "ID": 36928,
+      "Moby_Score": 7.95,
+      "Moby_URL": "https://www.mobygames.com/game/36928/college-hoops-ncaa-2k7/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2006-11-20",
+      "Title": "College Hoops NCAA 2K7",
+      "Alternate_Name": "college hoops 2k7",
+      "Variants": [
+        {
+          "GameName": "college hoops 2k7",
+          "TitleID": "545407F1",
+          "Serial": "TT-2033",
+          "Region": "NTSC/U",
+          "XEXCRC": "E7282140",
+          "MediaID": "5CBBBD95",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Eutechnyx Limited" ],
+      "Genres": [ "Racing / Driving", "Licensed", "Behind view", "Mini-games", "Direct control", "Automobile" ],
+      "ID": 47846,
+      "Moby_Score": 5.12,
+      "Moby_URL": "https://www.mobygames.com/game/47846/mtv-pimp-my-ride/",
+      "Platforms": [ "PlayStation 2", "Xbox 360", "Wii", "PSP" ],
+      "Publishers": [ "Activision Publishing, Inc." ],
+      "Release_Date": "2006-11-21",
+      "Title": "MTV Pimp My Ride",
+      "Alternate_Name": "pimp my ride",
+      "Variants": [
+        {
+          "GameName": "pimp my ride",
+          "TitleID": "415607",
+          "Serial": "AV-2016",
+          "Region": "RF",
+          "XEXCRC": "7C19F25E",
+          "MediaID": "1B17FCD8",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Ubisoft Entertainment Inc." ],
+      "Genres": [ "Action", "1st-person", "Shooter", "Licensed", "Behind view", "Tactical shooter", "North America" ],
+      "ID": 25557,
+      "Moby_Score": 8.08,
+      "Moby_URL": "https://www.mobygames.com/game/25557/tom-clancys-rainbow-six-vegas/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-11-21",
+      "Title": "Tom Clancy's Rainbow Six: Vegas",
+      "Alternate_Name": "tom clancys rainbow six vegas",
+      "Variants": [
+        {
+          "GameName": "tom clancys rainbow six vegas",
+          "TitleID": "555307D6",
+          "Serial": "US-2006",
+          "Region": "RF",
+          "XEXCRC": "3AE65A51",
+          "MediaID": "5CB271BD",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Physical extras", "Special edition" ],
+      "ID": 25646,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/25646/tom-clancys-rainbow-six-vegas-limited-collectors-edition/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-11-21",
+      "Title": "Tom Clancy's Rainbow Six: Vegas (Limited Collector's Edition)",
+      "Alternate_Name": "tom clancys rainbow six vegas",
+      "Variants": [
+        {
+          "GameName": "tom clancys rainbow six vegas",
+          "TitleID": "555307D6",
+          "Serial": "US-2006",
+          "Region": "RF",
+          "XEXCRC": "3AE65A51",
+          "MediaID": "5CB271BD",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Gastronaut Studios LLC" ],
+      "Genres": [ "Action", "Arcade", "Side view", "Platform", "Fighting", "2D scrolling" ],
+      "ID": 25819,
+      "Moby_Score": 6.82,
+      "Moby_URL": "https://www.mobygames.com/game/25819/small-arms/",
+      "Platforms": [ "Xbox 360", "Xbox One" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-11-22",
+      "Title": "Small Arms",
+      "Alternate_Name": "small arms",
+      "Variants": [
+        {
+          "GameName": "small arms",
+          "TitleID": "584107D5",
+          "Serial": "XA-2005",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "EA Tiburon" ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Licensed", "3rd-person (Other)" ],
+      "ID": 25245,
+      "Moby_Score": 5.56,
+      "Moby_URL": "https://www.mobygames.com/game/25245/superman-returns/",
+      "Platforms": [ "PlayStation 2", "Xbox", "Xbox 360" ],
+      "Publishers": [ "Electronic Arts, Inc." ],
+      "Release_Date": "2006-11-22",
+      "Title": "Superman Returns",
+      "Alternate_Name": "superman returns",
+      "Variants": [
+        {
+          "GameName": "superman returns",
+          "TitleID": "454107ED",
+          "Serial": "EA-2029",
+          "Region": "NTSC/U",
+          "XEXCRC": "3DB3A564",
+          "MediaID": "64A4002A",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sports Interactive Limited" ],
+      "Genres": [ "Simulation", "Strategy / tactics", "Sports", "Top-down", "Managerial / business simulation", "Football (European) / Soccer", "Licensed", "Text-based / Spreadsheet", "Menu structures" ],
+      "ID": 25587,
+      "Moby_Score": 8.05,
+      "Moby_URL": "https://www.mobygames.com/game/25587/worldwide-soccer-manager-2007/",
+      "Platforms": [ "Windows", "Xbox 360", "Macintosh" ],
+      "Publishers": [ "SEGA Europe Ltd.", "SEGA Corporation" ],
+      "Release_Date": "2006-10-18",
+      "Title": "Worldwide Soccer Manager 2007",
+      "Alternate_Name": "football manager 2007",
+      "Variants": [
+        {
+          "GameName": "football manager 2007",
+          "TitleID": "5345070000000",
+          "Serial": "SE-2023",
+          "Region": "RF",
+          "XEXCRC": "36AA27CB",
+          "MediaID": "76FA3577",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Naked Sky Entertainment, Inc." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Puzzle elements", "Behind view" ],
+      "ID": 30714,
+      "Moby_Score": 7.42,
+      "Moby_URL": "https://www.mobygames.com/game/30714/roboblitz/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "1C Company", "Naked Sky Entertainment, Inc." ],
+      "Release_Date": "2006-11-07",
+      "Title": "RoboBlitz",
+      "Alternate_Name": "roboblitz",
+      "Variants": [
+        {
+          "GameName": "roboblitz",
+          "TitleID": "58410700000",
+          "Serial": "XA-2021",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Mistwalker Co., Ltd.", "Artoon Co., Ltd." ],
+      "Genres": [ "Sci-fi / futuristic", "Role-playing (RPG)", "Anime / Manga", "Fantasy", "Turn-based", "3rd-person (Other)", "Diagonal-down", "Quick Time Events (QTEs)" ],
+      "ID": 28617,
+      "Moby_Score": 7.4,
+      "Moby_URL": "https://www.mobygames.com/game/28617/blue-dragon/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2006-12-07",
+      "Title": "Blue Dragon",
+      "Alternate_Name": "blue dragon",
+      "Variants": [
+        {
+          "GameName": "blue dragon",
+          "TitleID": "4D5307DF",
+          "Serial": "MS-2015",
+          "Region": "RF",
+          "XEXCRC": "8B0E319A",
+          "MediaID": "40ED67A4",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [],
+      "Genres": [ "Extra content / game", "Special edition" ],
+      "ID": 32783,
+      "Moby_Score": null,
+      "Moby_URL": "https://www.mobygames.com/game/32783/tom-clancys-ghost-recon-advanced-warfighter-premium-edition/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2006-12-07",
+      "Title": "Tom Clancy's Ghost Recon: Advanced Warfighter (Premium Edition)",
+      "Alternate_Name": "tom clancys ghost recon advanced warfighter",
+      "Variants": [
+        {
+          "GameName": "tom clancys ghost recon advanced warfighter",
+          "TitleID": "555307D5",
+          "Serial": "US-2005",
+          "Region": "RF",
+          "XEXCRC": "93BCA60B",
+          "MediaID": "617C5216",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Wanako Studios Ltd." ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Arcade", "Top-down", "Shooter", "Tank", "3rd-person (Other)" ],
+      "ID": 26292,
+      "Moby_Score": 7.34,
+      "Moby_URL": "https://www.mobygames.com/game/26292/assault-heroes/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Sierra Online", "Konami Digital Entertainment, Inc." ],
+      "Release_Date": "2006-12-13",
+      "Title": "Assault Heroes",
+      "Alternate_Name": "assault heroes",
+      "Variants": [
+        {
+          "GameName": "assault heroes",
+          "TitleID": "584107FE",
+          "Serial": "XA-2046",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Sandlot" ],
+      "Genres": [ "Action", "Sci-fi / futuristic", "Shooter", "Helicopter", "Mecha / giant robot", "Tank", "Behind view" ],
+      "ID": 27388,
+      "Moby_Score": 7.33,
+      "Moby_URL": "https://www.mobygames.com/game/27388/earth-defense-force-2017/",
+      "Platforms": [ "Xbox 360", "PS Vita", "Nintendo Switch" ],
+      "Publishers": [ "D3Publisher of America, Inc.", "D3Publisher Inc.", "D3Publisher of Europe Ltd." ],
+      "Release_Date": "2006-12-14",
+      "Title": "Earth Defense Force 2017",
+      "Alternate_Name": "earth defense force 2017",
+      "Variants": [
+        {
+          "GameName": "earth defense force 2017",
+          "TitleID": "445007D3",
+          "Serial": "DP-2003",
+          "Region": "PAL, NTSC/U",
+          "XEXCRC": "A2641A57",
+          "MediaID": "539B5529",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Tamsoft Corporation" ],
+      "Genres": [ "Action", "Shooter", "Martial arts", "Hack and slash", "Fantasy", "Horror", "Beat 'em up / brawler", "3rd-person (Other)" ],
+      "ID": 34569,
+      "Moby_Score": 4.46,
+      "Moby_URL": "https://www.mobygames.com/game/34569/onechanbara-bikini-samurai-squad/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "D3Publisher of Europe Ltd.", "D3Publisher Inc.", "D3Publisher of America, Inc." ],
+      "Release_Date": "2006-12-14",
+      "Title": "Onechanbara: Bikini Samurai Squad",
+      "Alternate_Name": "onechanbara bikini samurai squad",
+      "Variants": [
+        {
+          "GameName": "onechanbara bikini samurai squad",
+          "TitleID": "445007EA",
+          "Serial": "DP-2026",
+          "Region": "RF",
+          "XEXCRC": "53B274C8",
+          "MediaID": "31A55A84",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Mad Doc Software, LLC" ],
+      "Genres": [ "Action", "Simulation", "Strategy / tactics", "Sci-fi / futuristic", "Real-time", "Licensed", "Behind view", "Space flight" ],
+      "ID": 25558,
+      "Moby_Score": 6.26,
+      "Moby_URL": "https://www.mobygames.com/game/25558/star-trek-legacy/",
+      "Platforms": [ "Windows", "Xbox 360" ],
+      "Publishers": [ "Bethesda Softworks LLC" ],
+      "Release_Date": "2006-12-15",
+      "Title": "Star Trek: Legacy",
+      "Alternate_Name": "star trek legacy",
+      "Variants": [
+        {
+          "GameName": "star trek legacy",
+          "TitleID": "425307D2",
+          "Serial": "BS-2002",
+          "Region": "RF",
+          "XEXCRC": "5B6B1653",
+          "MediaID": "2E05061C",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Stainless Software Ltd." ],
+      "Genres": [ "Action", "Racing / Driving", "Sci-fi / futuristic", "Shooter", "3rd-person (Other)" ],
+      "ID": 25769,
+      "Moby_Score": 6.04,
+      "Moby_URL": "https://www.mobygames.com/game/25769/novadrome/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "Buena Vista Games, Inc." ],
+      "Release_Date": "2006-12-20",
+      "Title": "Novadrome",
+      "Alternate_Name": "novadrome",
+      "Variants": [
+        {
+          "GameName": "novadrome",
+          "TitleID": "584107000000000",
+          "Serial": "XA-2025",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Artdink Corporation" ],
+      "Genres": [ "Simulation", "Strategy / tactics", "1st-person", "Managerial / business simulation", "Train", "Diagonal-down", "Free camera" ],
+      "ID": 33649,
+      "Moby_Score": 5.63,
+      "Moby_URL": "https://www.mobygames.com/game/33649/a-trainhx/",
+      "Platforms": [ "Xbox 360" ],
+      "Publishers": [ "505 Games S.R.L.", "Artdink Corporation" ],
+      "Release_Date": "2006-12-21",
+      "Title": "A-TrainHX",
+      "Alternate_Name": "a-train hx",
+      "Variants": [
+        {
+          "GameName": "a-train hx",
+          "TitleID": "414B07D1",
+          "Serial": "AK-2001",
+          "Region": "PAL",
+          "XEXCRC": "1EA6608A",
+          "MediaID": "4B908A09",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Capcom Co., Ltd." ],
+      "Genres": [ "Action", "1st-person", "Sci-fi / futuristic", "Shooter", "Behind view", "Direct control" ],
+      "ID": 25955,
+      "Moby_Score": 7.46,
+      "Moby_URL": "https://www.mobygames.com/game/25955/lost-planet-extreme-condition/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
+      "Publishers": [ "Capcom Co., Ltd.", "1C Company" ],
+      "Release_Date": "2006-12-21",
+      "Title": "Lost Planet: Extreme Condition",
+      "Alternate_Name": "lost planet extreme condition",
+      "Variants": [
+        {
+          "GameName": "lost planet extreme condition",
+          "TitleID": "434307D3",
+          "Serial": "CC-2003",
+          "Region": "RF",
+          "XEXCRC": "3CA0283D",
+          "MediaID": "0E58CFC1",
+          "Wave": "1"
+        }
+      ]
+    },
+    {
+      "Developers": [ "Namco Limited" ],
+      "Genres": [ "Action", "Racing / Driving", "Arcade", "Top-down" ],
+      "ID": 25768,
+      "Moby_Score": 5.93,
+      "Moby_URL": "https://www.mobygames.com/game/25768/new-rally-x/",
+      "Platforms": [ "Windows", "BREW", "J2ME", "Xbox 360", "Wii", "Sharp X1", "FM-7", "PlayStation 4", "Arcade", "Nintendo Switch", "Antstream" ],
+      "Publishers": [ "Namco Bandai Games Inc." ],
+      "Release_Date": "2006-12-27",
+      "Title": "New Rally-X",
+      "Alternate_Name": "new rally-x",
+      "Variants": [
+        {
+          "GameName": "new rally-x",
+          "TitleID": "58410835",
+          "Serial": "XA-2101",
+          "Region": "",
+          "XEXCRC": "",
+          "MediaID": "",
+          "Wave": "-"
+        }
+      ]
+    }
+  ]
+}

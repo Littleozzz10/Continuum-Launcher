@@ -1,0 +1,8 @@
+startupPrompt=True
+endPrompt=True
+initialFile=id01
+requiresGames=True
+title=Installing DLC
+description=In this tutorial, you will explore the Data Management window, including how to install DLC and Title Updates
+rollingText=True
+size=0.4

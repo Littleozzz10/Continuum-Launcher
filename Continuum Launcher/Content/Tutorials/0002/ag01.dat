@@ -1,0 +1,50 @@
+-
+type=box
+position=centerTopLeft
+text=Currently, we are in the game selection menu.\nWe need to be in the Menu to add a game.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTopLeft
+text=Open the Menu.
+end=state
+state=Menu
+-
+type=box
+position=centerTop
+text=Last we were here, we went into the Launcher Options menu.
+end=cooldown
+frames=90
+-
+type=box
+position=centerTop
+text=This time, since we're adding a game, please click on the "Add a Game" button.
+end=state
+state=NewGame
+-
+type=box
+position=centerTop
+text=Here, we have two ways of adding a game: STFS Folder Import and Manual Import.\nSTFS Folder Import is preferable, if you have files in GoD format (eg. straight from an Xbox 360).\nManual Import will allow you to import extracted games' XEX executables instead.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Refer to Continuum Launcher's GitHub Wiki pages if necessary for more information.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=Now, please select an Import type to continue.
+end=state
+state=Text
+-
+type=split
+condition=stfsImportCheck
+newFile=ag02a
+-
+type=split
+condition=manualImportCheck
+newFile=ag02b

@@ -1,0 +1,8 @@
+startupPrompt=True
+endPrompt=True
+initialFile=dc01
+requiresGames=True
+title=Navigating Continuum
+description=In this tutorial, you will learn how to remove games from Continuum
+rollingText=True
+size=0.4

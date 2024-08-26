@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Extracted Content\nContent Type: Extracted Xbox 360 Data\nDescription: Xbox 360 content that's been extracted\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - Delete Content: Deletes this extracted content
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

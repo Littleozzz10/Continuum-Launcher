@@ -12,12 +12,19 @@ namespace XeniaLauncher
     using DataType = Shared.SaveData.DataType;
     public static class Shared
     {
-        public static readonly string VERSION = "1.1.0 Beta 3";
-        public static readonly string COMPILED = "December 20, 2023";
+        public enum DataFilter
+        {
+            All, Games, DLC, TempContent, Videos
+        }
+
+        public static readonly string VERSION = "1.2.0 Beta 1";
+        public static readonly string COMPILED = "August 25, 2024";
+        public static readonly int VERNUM = 2015;
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
-            { "00000001", "Saved Game"  },
+            { "00000001", "Xbox 360 Saved Game"  },
             { "00000002", "Downloadable Content" },
             { "00001000", "Xbox 360 Title" },
+            { "00002000", "IPTV Pause Buffer" },
             { "00004000", "Installed Disc Game" },
             { "00005000", "Xbox Original Game" },
             { "00007000", "Installed Game on Demand" },
@@ -25,20 +32,97 @@ namespace XeniaLauncher
             { "00010000", "Profile" },
             { "00020000", "Gamer Picture" },
             { "00030000", "Xbox 360 Theme" },
-            { "00050000", "Xbox 360 Cache File" },
+            { "00040000", "Cache File" },
+            { "00050000", "Storage Download" },
             { "00060000", "Xbox Saved Game" },
+            { "00070000", "Download Progress" },
             { "00080000", "Game Demo" },
             { "00090000", "Video" },
             { "000A0000", "Game Title" },
             { "000B0000", "Title Update" },
-            { "000C0000", "Video" },
+            { "000C0000", "Game Trailer" },
             { "000D0000", "Xbox Live Arcade Title" },
             { "000E0000", "XNA Content" },
             { "000F0000", "License Store" },
             { "00100000", "Movie" },
             { "00200000", "TV" },
             { "00300000", "Music Video" },
-            { "EXTRACT", "Extracted Content" }
+            { "00400000", "Game Video" },
+            { "00500000", "Podcast Video" },
+            { "00600000", "Viral Video" },
+            { "02000000", "Indie Game" },
+            { "_EXTRACT", "Extracted Content" }
+        };
+        public static readonly Dictionary<DataFilter, List<string>> filteredContentTypes = new Dictionary<DataFilter, List<string>>() {
+            { DataFilter.All, new List<string>() {
+                "00000001",
+                "00000002",
+                "00001000",
+                "00002000",
+                "00004000",
+                "00005000",
+                "00007000",
+                "00009000",
+                "00010000",
+                "00020000",
+                "00030000",
+                "00040000",
+                "00050000",
+                "00060000",
+                "00070000",
+                "00080000",
+                "00090000",
+                "000A0000",
+                "000B0000",
+                "000C0000",
+                "000D0000",
+                "000E0000",
+                "000F0000",
+                "00100000",
+                "00200000",
+                "00300000",
+                "00400000",
+                "00500000",
+                "00600000",
+                "02000000",
+                "_EXTRACT"
+            } },
+            { DataFilter.Games, new List<string>() {
+                "00001000",
+                "00004000",
+                "00005000",
+                "00007000",
+                "00080000",
+                "000D0000",
+                "000E0000",
+                "02000000"
+            } },
+            { DataFilter.DLC, new List<string>() {
+                "00000002",
+                "000B0000"
+            } },
+            { DataFilter.TempContent, new List<string>() {
+                "_EXTRACT"
+            } },
+            { DataFilter.Videos, new List<string>() {
+                "00090000",
+                "000C0000",
+                "00100000",
+                "00200000",
+                "00300000",
+                "00400000",
+                "00500000",
+                "00600000"
+            } }
+        };
+        public static readonly Dictionary<string, string> FileManageStrings = new Dictionary<string, string>() {
+            { "explorer", "Show in Explorer" },
+            { "metadata", "View Metadata" },
+            { "extract", "Extract STFS Container" },
+            { "install", "Install Content" },
+            { "delete", "Delete Content" },
+            { "video", "Play Video" },
+            { "backup", "Create Backup" }
         };
         public class SaveData
         {
@@ -574,9 +658,10 @@ namespace XeniaLauncher
         public class GameData
         {
             public List<string> folders, xexPaths, xexNames;
-            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath;
+            public string gameTitle, developer, publisher, titleId, gamePath, artPath, iconPath, alphaAs, extraParams;
             public double fileSize;
-            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY;
+            public long lastPlayed;
+            public int year, month, day, minPlayers, maxPlayers, timesLaunched, resX, resY, fileCount, vernum;
             public bool preferCanary, hasCoverArt, cpuReadback, vsync, mountCache;
 
             private static int nextID;
@@ -602,6 +687,26 @@ namespace XeniaLauncher
                 Broken, Starts, Menu, Gameplay1, Gameplay2, Gameplay3, Playable, Unknown
             }
             public XeniaCompat xeniaCompat, canaryCompat;
+            public enum Language
+            {
+                English = 1,
+                Japanese = 2,
+                German = 3,
+                French = 4,
+                Spanish = 5,
+                Italian = 6,
+                Korean = 7,
+                TraditionalChinese = 8,
+                Portuguese = 9,
+                Polish = 11,
+                Russian = 12,
+                Swedish = 13,
+                Turkish = 14,
+                Norwegian = 15,
+                Dutch = 16,
+                SimplifiedChinese = 17
+            }
+            public Language language;
 
             public GameData()
             {
@@ -615,7 +720,10 @@ namespace XeniaLauncher
                 gamePath = "NULL";
                 artPath = "NULL";
                 iconPath = "NULL";
+                alphaAs = "No Title";
+                extraParams = "";
                 fileSize = 0;
+                lastPlayed = 0;
                 year = 2005;
                 month = 11;
                 day = 22;
@@ -624,6 +732,7 @@ namespace XeniaLauncher
                 maxPlayers = 0;
                 resX = 1;
                 resY = 1;
+                fileCount = 0;
                 preferCanary = false;
                 hasCoverArt = false;
                 cpuReadback = false;
@@ -634,6 +743,7 @@ namespace XeniaLauncher
                 renderer = Renderer.Any;
                 xeniaCompat = XeniaCompat.Unknown;
                 canaryCompat = XeniaCompat.Unknown;
+                language = Language.English;
 
                 internalID = nextID;
                 nextID++;
@@ -665,7 +775,10 @@ namespace XeniaLauncher
                 chunk.AddData("gamePath", gamePath, DataType.String);
                 chunk.AddData("artPath", artPath, DataType.String);
                 chunk.AddData("iconPath", iconPath, DataType.String);
+                chunk.AddData("alphaAs", alphaAs, DataType.String);
+                chunk.AddData("extraParams", extraParams, DataType.String);
                 chunk.AddData("fileSize", "" + fileSize, DataType.Number);
+                chunk.AddData("lastPlayed", "" + lastPlayed, DataType.Number);
                 chunk.AddData("year", "" + year, DataType.Number);
                 chunk.AddData("month", "" + month, DataType.Number);
                 chunk.AddData("day", "" + day, DataType.Number);
@@ -684,6 +797,7 @@ namespace XeniaLauncher
                 chunk.AddData("renderer", renderer.ToString(), DataType.String);
                 chunk.AddData("xeniaCompat", xeniaCompat.ToString(), DataType.String);
                 chunk.AddData("canaryCompat", canaryCompat.ToString(), DataType.String);
+                chunk.AddData("language", "" + (int)language, DataType.Number);
                 return chunk;
             }
             public void Read(SaveDataChunk chunk)
@@ -738,9 +852,21 @@ namespace XeniaLauncher
                     {
                         iconPath = obj.data;
                     }
+                    else if (obj.name == "alphaAs")
+                    {
+                        alphaAs = obj.data;
+                    }
+                    else if (obj.name == "extraParams")
+                    {
+                        extraParams = obj.data;
+                    }
                     else if (obj.name == "fileSize")
                     {
                         fileSize = Convert.ToDouble(obj.data);
+                    }
+                    else if (obj.name == "lastPlayed")
+                    {
+                        lastPlayed = Convert.ToInt64(obj.data);
                     }
                     else if (obj.name == "year")
                     {
@@ -908,6 +1034,15 @@ namespace XeniaLauncher
                         {
                             canaryCompat = XeniaCompat.Playable;
                         }
+                    }
+                    else if (obj.name == "language")
+                    {
+                        language = (Language)Convert.ToInt32(obj.data);
+                    }
+                    // Filling in Alpha As values for older config files (Pre-2010, aka before 1.2.0 Alpha 10)
+                    if (alphaAs == "No Title" && gameTitle != "No Title")
+                    {
+                        alphaAs = gameTitle;
                     }
                 }
             }

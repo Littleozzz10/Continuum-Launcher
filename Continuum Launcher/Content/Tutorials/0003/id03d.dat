@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Xbox Live Arcade Title\nContent Type: Xbox 360 (000D0000)\nDescription: This file is a downloadable arcade game.\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - View Metadata: Open the Metadata Viewer to view STFS metadata for this file\n  - Extract STFS Container: Extract this file to an _EXTRACT directory
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

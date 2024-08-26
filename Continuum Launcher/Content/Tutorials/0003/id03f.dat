@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Gamer Picture\nContent Type: Xbox 360 (00020000)\nDescription: This file is a gamer picture file for Xbox 360 profiles\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - View Metadata: Open the Metadata Viewer to view STFS metadata for this file\n  - Extract STFS Container: Extract this file to an _EXTRACT directory
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

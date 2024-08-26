@@ -38,6 +38,10 @@ namespace XeniaLauncher
             // Volume
             AdjustVolume(game, window);
             // Themes
+            if (game.enableExp)
+            {
+                themeKeys = new List<string>() { "original", "green", "orange", "blue", "gray", "purple", "custom" };
+            }
             for (int i = 0; i < themeKeys.Count; i++)
             {
                 if (themeKeys[i] == game.theme.ToString().ToLower())
@@ -129,26 +133,26 @@ namespace XeniaLauncher
                     AdjustCompat(game, source);
                     break;
                 case 6:
-                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Graphics Settings", new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options);
+                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Graphics Settings", "Continuum Graphics Options", new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
                     // Resolution buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 355, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(910, 355, 90, 90), "Decrease Continuum's resolution.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 355, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "Increase Continuum's resolution.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // Fullscreen buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 455, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(910, 455, 90, 90), "Enable or disable Fullscreen mode.\nNote: Fullscreen can be buggy.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 455, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "Enable or disable Fullscreen mode.\nNote: Fullscreen can be buggy.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // V-Sync buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 555, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(910, 555, 90, 90), "Enable or Disable V-Sync for Continuum.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 555, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "Enable or Disable V-Sync for Continuum.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // Rings buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 655, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(910, 655, 90, 90), "Show or Hide Continuum's background ring effect.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 655, 90, 90));
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "Show or Hide Continuum's background ring effect.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
 
                     game.graphicsWindow.AddButton(new Rectangle(660, 790, 600, 100));
@@ -183,26 +187,26 @@ namespace XeniaLauncher
                     }
                     break;
                 case 7:
-                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Xenia Settings", new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options);
+                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Xenia Settings", "Options for all games", new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
                     // Resolution buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 355, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(910, 355, 90, 90), "Xenia Log Levels:\n  - 0: Critical errors only\n  - 1: Critical errors and other warnings\n  - 2: Critical errors, warnings, and other info\n  - 3: Debugging info (Highly storage intensive)", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 355, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "Xenia Log Levels:\n  - 0: Critical errors only\n  - 1: Critical errors and other warnings\n  - 2: Critical errors, warnings, and other info\n  - 3: Debugging info (Highly storage intensive)", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
                     // Fullscreen buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 455, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(910, 455, 90, 90), "Whether or not to launch Xenia in Fullscreen.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 455, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "Whether or not to launch Xenia in Fullscreen.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
                     // V-Sync buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 555, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(910, 555, 90, 90), "When enabled, Continuum will consolidate Xenia data within\nthe Launcher's files. Uses storage temporarily until manually\ncleared. Required to use the Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 555, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "When enabled, Continuum will consolidate Xenia data within\nthe Launcher's files. Uses storage temporarily until manually\ncleared. Required to use the Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
                     // Rings buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 655, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(910, 655, 90, 90), "When running Headless, Xenia will not show any prompts\nthat require user interaction, instead using default actions.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 655, 90, 90));
+                    game.settingsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "When running Headless, Xenia will not show any prompts\nthat require user interaction, instead using default actions.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
 
                     game.settingsWindow.AddButton(new Rectangle(620, 790, 600, 100));
@@ -258,6 +262,10 @@ namespace XeniaLauncher
             else if (themeKeys[themeIndex] == "purple")
             {
                 game.ResetTheme(Game1.Theme.Purple, true);
+            }
+            else if (themeKeys[themeIndex] == "custom")
+            {
+                game.ResetTheme(Game1.Theme.Custom, true);
             }
             game.SaveConfig();
         }
