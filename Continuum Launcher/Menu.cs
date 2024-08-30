@@ -47,7 +47,7 @@ namespace XeniaLauncher
                 game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
                 game.state = Game1.State.NewGame;
                 game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100), "Import a game with it's parent folder/directory.\n\nNOTE: The game must be in GoD format with a valid\nSTFS header, with the original Xbox 360 folder\nstructure. See Continuum Launcher's Wiki pages on\nGitHub for more information.\n\nThis import will auto-import title IDs, which can be\nused for Database Lookups.", Ozzz.DescriptionBox.SpawnPositions.BottomRightInfoDump, 0.4f);
-                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Directly provide a filepath to a game file, either in\nSTFS/GoD format or XEX format.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Directly provide a filepath to a game file,\neither in STFS/GoD format or XEX\nformat.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
                 game.newGameWindow.AddButton(new Rectangle(610, 695, 700, 100));
                 game.newGameWindow.AddText("STFS Folder Import");
                 game.newGameWindow.AddText("Manual Import");
@@ -306,6 +306,24 @@ namespace XeniaLauncher
                                                     }
                                                     if (saveSize > 0)
                                                     {
+                                                        game.dataFiles[index].Add(new DataEntry("Game Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Last().fileSize = saveSize;
+                                                        tempDataSize += saveSize;
+                                                        Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary save added", "saveSize", "" + saveSize);
+                                                    }
+                                                    size += saveSize;
+                                                }
+                                                // Game data
+                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\00000001"))
+                                                {
+                                                    float saveSize = 0;
+                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\00000001", "", SearchOption.AllDirectories))
+                                                    {
+                                                        FileInfo file = new FileInfo(filename);
+                                                        saveSize += file.Length;
+                                                    }
+                                                    if (saveSize > 0)
+                                                    {
                                                         game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
@@ -314,17 +332,18 @@ namespace XeniaLauncher
                                                     size += saveSize;
                                                 }
                                                 // Imported DLC
-                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\00000002"))
+                                                string dirDLC = dir + "\\content\\" + data.titleId + "\\00000002\\";
+                                                if (Directory.Exists(dirDLC))
                                                 {
                                                     float saveSize = 0;
-                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\00000002", "", SearchOption.AllDirectories))
+                                                    foreach (string filename in Directory.GetFiles(dirDLC, "", SearchOption.AllDirectories))
                                                     {
                                                         FileInfo file = new FileInfo(filename);
                                                         saveSize += file.Length;
                                                     }
                                                     if (saveSize > 0)
                                                     {
-                                                        game.dataFiles[index].Add(new DataEntry("Installed DLC", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Add(new DataEntry("Installed DLC", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), dirDLC, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
                                                         Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary DLC added", "saveSize", "" + saveSize);
@@ -332,17 +351,18 @@ namespace XeniaLauncher
                                                     size += saveSize;
                                                 }
                                                 // Imported Title Updates
-                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\000B0000"))
+                                                string dirTU = dir + "\\content\\" + data.titleId + "\\000B0000\\";
+                                                if (Directory.Exists(dirTU))
                                                 {
                                                     float saveSize = 0;
-                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\000B0000", "", SearchOption.AllDirectories))
+                                                    foreach (string filename in Directory.GetFiles(dirTU, "", SearchOption.AllDirectories))
                                                     {
                                                         FileInfo file = new FileInfo(filename);
                                                         saveSize += file.Length;
                                                     }
                                                     if (saveSize > 0)
                                                     {
-                                                        game.dataFiles[index].Add(new DataEntry("Installed Title Update", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Add(new DataEntry("Installed Title Update", "Xenia Installed Content", game.ConvertDataSize("" + saveSize), dirTU, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
                                                         Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary TU added", "saveSize", "" + saveSize);
@@ -622,6 +642,10 @@ namespace XeniaLauncher
                         game.dataWindow.extraSprites.Add(new TextSprite(game.font, game.ConvertDataSize("" + totalSize) + " Total", 0.6f, new Vector2(1600, 965), Color.FromNonPremultiplied(255, 255, 255, 0)));
                         game.dataWindow.inputEvents.UpButton(game, game.dataWindow, 0);
                         game.dataWindow.inputEvents.DownButton(game, game.dataWindow, 5);
+                        for (int i = 0; i < 6;  i++)
+                        {
+                            game.dataWindow.extraSprites[i].tags.Add("data");
+                        }
                         for (int i = 12; i < 18; i++)
                         {
                             game.dataWindow.extraSprites[i].tags.Add("gray");
@@ -680,9 +704,9 @@ namespace XeniaLauncher
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 460));
                 game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xbox 360 sounds and Convection font made by Microsoft.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 540));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Disclaimer: Continuum Launcher has no affiliation with the Xenia Project.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Disclaimer: Continuum Launcher has no affiliation with the Xenia Project", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 620));
-                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Xenia and Xenia Canary logos made by the Xenia Project.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.creditsWindow.extraSprites.Add(new TextSprite(game.font, " or Microsoft. Xenia and Xenia Canary logos made by the Xenia Project.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 680));
                 game.creditsWindow.extraSprites.Add(new TextSprite(game.font, "Game information data provided by MobyGames.", 0.6f, new Vector2(0, 0), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.creditsWindow.extraSprites.Last().Centerize(new Vector2(960, 750));

@@ -608,7 +608,7 @@
       "Moby_Score": 7.43,
       "Moby_URL": "https://www.mobygames.com/game/35109/worms/",
       "Platforms": [ "Xbox 360", "PlayStation 3", "iPhone", "Android", "bada", "Symbian" ],
-      "Publishers": [ "Team17 Software Limited", "Electronic Arts, Inc." ],
+      "Publishers": [ "Team17 Software Limited" ],
       "Release_Date": "2007-03-07",
       "Title": "Worms",
       "Alternate_Name": "worms",
@@ -1896,14 +1896,14 @@
       "Moby_Score": 8.05,
       "Moby_URL": "https://www.mobygames.com/game/6579/sonic-the-hedgehog/",
       "Platforms": [ "Linux", "Windows", "Game Boy Advance", "Genesis", "BREW", "J2ME", "Xbox 360", "DoJa", "Macintosh", "iPod Classic", "PlayStation 3", "Wii", "iPhone", "BlackBerry", "Android", "iPad", "Nintendo 3DS", "Xbox One", "Arcade", "tvOS", "Nintendo Switch" ],
-      "Publishers": [ "Electronic Arts, Inc.", "SEGA Games Co., Ltd.", "SEGA Europe Ltd.", "SEGA of America, Inc.", "Nintendo Co., Ltd.", "SEGA Corporation", "SEGA Mobile", "Tec Toy Indústria de Brinquedos S.A.", "Sony Computer Entertainment America Inc.", "SEGA Enterprises Ltd.", "Tec Toy Mobile" ],
-      "Release_Date": "1991-06-23",
+      "Publishers": [ "SEGA Enterprises Ltd." ],
+      "Release_Date": "2007-07-11",
       "Title": "Sonic the Hedgehog",
       "Alternate_Name": "sonic the hedgehog",
       "Variants": [
         {
           "GameName": "sonic the hedgehog",
-          "TitleID": "534507D6",
+          "TitleID": "58410864",
           "Serial": "SE-2006",
           "Region": "PAL, NTSC/U",
           "XEXCRC": "9A5ACE67",
@@ -2241,7 +2241,7 @@
       "Moby_Score": 8.69,
       "Moby_URL": "https://www.mobygames.com/game/29886/bioshock/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "iPhone", "iPad", "OnLive" ],
-      "Publishers": [ "Mastertronic Games Ltd.", "Feral Interactive Ltd.", "1C Company", "Spike Co., Ltd.", "ZOO Corporation", "2K Games, Inc." ],
+      "Publishers": [ "2K Games, Inc." ],
       "Release_Date": "2007-08-21",
       "Title": "BioShock",
       "Alternate_Name": "bioshock",
@@ -2695,14 +2695,14 @@
       ]
     },
     {
-      "Developers": [ "Sega Technical Institute", "Sonic Team" ],
+      "Developers": [ "Sonic Team", "Sega Technical Institute" ],
       "Genres": [ "Action", "Side view", "Platform", "Anime / Manga", "2D scrolling" ],
       "ID": 6611,
       "Moby_Score": 8.38,
       "Moby_URL": "https://www.mobygames.com/game/6611/sonic-the-hedgehog-2/",
       "Platforms": [ "Linux", "Windows", "Genesis", "Xbox 360", "DoJa", "Macintosh", "PlayStation 3", "Wii", "iPhone", "BlackBerry", "Nintendo 3DS", "Xbox One", "Arcade", "tvOS", "Nintendo Switch" ],
-      "Publishers": [ "SEGA Europe Ltd.", "Tec Toy Indústria de Brinquedos S.A.", "SEGA Games Co., Ltd.", "SEGA of America, Inc.", "SEGA Corporation", "SEGA Enterprises Ltd.", "Electronic Arts, Inc." ],
-      "Release_Date": "1992-11-21",
+      "Publishers": [ "SEGA Enterprises Ltd." ],
+      "Release_Date": "2007-09-12",
       "Title": "Sonic the Hedgehog 2",
       "Alternate_Name": "sonic the hedgehog 2",
       "Variants": [
@@ -3508,7 +3508,7 @@
       "Platforms": [ "Windows", "PlayStation 2", "PSP", "Xbox 360", "Macintosh", "Wii", "OnLive" ],
       "Publishers": [ "Eidos Interactive Limited" ],
       "Release_Date": "2007-10-23",
-      "Title": "Lara Croft: Tomb Raider - Anniversary",
+      "Title": "Tomb Raider: Anniversary",
       "Alternate_Name": "lara croft tomb raider anniversary",
       "Variants": [
         {
@@ -3761,7 +3761,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2007-10-30",
-      "Title": "Viva Piñata: Party Animals",
+      "Title": "Viva Pinata: Party Animals",
       "Alternate_Name": "viva pinata party animals",
       "Variants": [
         {
@@ -3899,7 +3899,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2007-11-02",
-      "Title": "Viva Piñata / Forza Motorsport 2",
+      "Title": "Viva Pinata / Forza Motorsport 2",
       "Alternate_Name": "viva pinata",
       "Variants": [
         {

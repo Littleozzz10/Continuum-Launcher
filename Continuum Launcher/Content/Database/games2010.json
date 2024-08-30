@@ -106,29 +106,6 @@
       ]
     },
     {
-      "Developers": [],
-      "Genres": [ "Compilation" ],
-      "ID": 70557,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/70557/metro-2033-darksiders-double-pack/",
-      "Platforms": [ "Xbox 360" ],
-      "Publishers": [ "THQ Inc." ],
-      "Release_Date": "2010",
-      "Title": "Metro 2033 / Darksiders Double Pack",
-      "Alternate_Name": "metro 2033",
-      "Variants": [
-        {
-          "GameName": "metro 2033",
-          "TitleID": "53440800",
-          "Serial": "SD-2048",
-          "Region": "NTSC/J (Excludes China)",
-          "XEXCRC": "A3D030A6",
-          "MediaID": "422D3A29",
-          "Wave": "6"
-        }
-      ]
-    },
-    {
       "Developers": [ "Gusto Games Ltd." ],
       "Genres": [ "Educational", "Game show / trivia / quiz", "Ecology / nature", "Licensed", "Puzzle", "Menu structures" ],
       "ID": 207170,
@@ -1125,13 +1102,13 @@
       "Variants": null
     },
     {
-      "Developers": [ "Digital Extremes London", "2K Australia Pty. Ltd", "Digital Extremes, Inc.", "2K Marin, Inc" ],
+      "Developers": [ "2K Australia Pty. Ltd", "Digital Extremes, Inc.", "2K Marin, Inc" ],
       "Genres": [ "Action", "1st-person", "Sci-fi / futuristic", "Shooter", "RPG elements", "Direct control", "Steampunk" ],
       "ID": 45089,
       "Moby_Score": 8.33,
       "Moby_URL": "https://www.mobygames.com/game/45089/bioshock-2/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
-      "Publishers": [ "Feral Interactive Ltd.", "Cenega Poland Sp. z o.o.", "1C-SoftClub", "2K Games, Inc." ],
+      "Publishers": [ "2K Games, Inc." ],
       "Release_Date": "2010-02-09",
       "Title": "BioShock 2",
       "Alternate_Name": "bioshock 2",
@@ -2099,14 +2076,14 @@
       "Moby_Score": 7.71,
       "Moby_URL": "https://www.mobygames.com/game/45642/metro-2033/",
       "Platforms": [ "Windows", "Xbox 360", "OnLive" ],
-      "Publishers": [ "THQ Inc.", "Spike Co., Ltd.", "Akella", "ZOO Corporation" ],
+      "Publishers": [ "THQ Inc." ],
       "Release_Date": "2010-03-16",
       "Title": "Metro 2033",
       "Alternate_Name": "metro 2033",
       "Variants": [
         {
           "GameName": "metro 2033",
-          "TitleID": "53440800",
+          "TitleID": "54510842",
           "Serial": "SD-2048",
           "Region": "NTSC/J (Excludes China)",
           "XEXCRC": "A3D030A6",
@@ -4164,7 +4141,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2010-05-07",
-      "Title": "Banjo-Kazooie: Nuts & Bolts / Viva Piñata",
+      "Title": "Banjo-Kazooie: Nuts & Bolts / Viva Pinata",
       "Alternate_Name": "banjo-kazooie nuts and bolts",
       "Variants": [
         {
@@ -4224,9 +4201,9 @@
       "Moby_Score": 8.18,
       "Moby_URL": "https://www.mobygames.com/game/47017/batman-arkham-asylum-game-of-the-year-edition/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "OnLive", "Gloud" ],
-      "Publishers": [ "Warner Bros. Interactive Entertainment Inc.", "Feral Interactive Ltd.", "Square Enix Limited" ],
+      "Publishers": [ "Warner Bros. Interactive Entertainment Inc." ],
       "Release_Date": "2010-03-26",
-      "Title": "Batman: Arkham Asylum - Game of the Year Edition",
+      "Title": "Batman: Arkham Asylum - GOTY",
       "Alternate_Name": "batman arkham asylum game of the year edition",
       "Variants": [
         {
@@ -7088,7 +7065,7 @@
       "Moby_Score": 5.81,
       "Moby_URL": "https://www.mobygames.com/game/47149/sniper-ghost-warrior/",
       "Platforms": [ "Windows", "Xbox 360" ],
-      "Publishers": [ "City Interactive S.A.", "rondomedia Marketing & Vertriebs GmbH", "Noviy Disk", "City Interactive USA Inc" ],
+      "Publishers": [ "City Interactive S.A." ],
       "Release_Date": "2010-06-24",
       "Title": "Sniper: Ghost Warrior",
       "Alternate_Name": "sniper ghost warrior",
@@ -7569,7 +7546,7 @@
       "Moby_URL": "https://www.mobygames.com/game/47237/deathspank/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
       "Publishers": [ "Electronic Arts, Inc." ],
-      "Release_Date": "2010-07-13",
+      "Release_Date": "2010-07-14",
       "Title": "DeathSpank",
       "Alternate_Name": "deathspank",
       "Variants": [
@@ -9817,8 +9794,8 @@
       "Moby_Score": 8.08,
       "Moby_URL": "https://www.mobygames.com/game/3530/sonic-adventure/",
       "Platforms": [ "Dreamcast", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "SEGA of America, Inc.", "Tec Toy Indústria de Brinquedos S.A.", "SEGA Enterprises Ltd." ],
-      "Release_Date": "1998-12-23",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2010-10-15",
       "Title": "Sonic Adventure",
       "Alternate_Name": "sonic adventure",
       "Variants": [
@@ -9961,7 +9938,7 @@
       "Moby_Score": 6.7,
       "Moby_URL": "https://www.mobygames.com/game/51250/alien-breed-2-assault/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Team17 Digital Limited", "Team17 Software Limited", "Microsoft Corporation" ],
+      "Publishers": [ "Team17 Software Limited", "Microsoft Corporation" ],
       "Release_Date": "2010-09-22",
       "Title": "Alien Breed 2: Assault",
       "Alternate_Name": "alien breed 2 assault",
@@ -10021,7 +9998,7 @@
       "Moby_URL": "https://www.mobygames.com/game/48442/deathspank-thongs-of-virtue/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
       "Publishers": [ "Electronic Arts, Inc." ],
-      "Release_Date": "2010-09-21",
+      "Release_Date": "2010-09-22",
       "Title": "DeathSpank: Thongs of Virtue",
       "Alternate_Name": "deathspank thongs of virtue",
       "Variants": [
@@ -10216,7 +10193,7 @@
       "Moby_Score": 7.79,
       "Moby_URL": "https://www.mobygames.com/game/48368/dead-rising-2/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "1C-SoftClub", "Capcom Co., Ltd.", "Cenega Poland Sp. z o.o." ],
+      "Publishers": [ "Capcom Co., Ltd." ],
       "Release_Date": "2010-09-24",
       "Title": "Dead Rising 2",
       "Alternate_Name": "dead rising 2",
@@ -11094,14 +11071,14 @@
       "Variants": null
     },
     {
-      "Developers": [ "Dimps Corporation", "Sonic Team" ],
+      "Developers": [ "Sonic Team", "Dimps Corporation" ],
       "Genres": [ "Action", "Side view", "Platform", "Anime / Manga", "Fantasy", "2D scrolling", "Direct control" ],
       "ID": 48575,
       "Moby_Score": 7.09,
       "Moby_URL": "https://www.mobygames.com/game/48575/sonic-the-hedgehog-4-episode-i/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii", "iPhone", "BlackBerry", "Android", "iPad", "Windows Phone", "Xbox One", "Ouya" ],
-      "Publishers": [ "SEGA Europe Ltd.", "SEGA Games Co., Ltd.", "SEGA of America, Inc." ],
-      "Release_Date": "2010-10-07",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2010-10-13",
       "Title": "Sonic the Hedgehog 4: Episode I",
       "Alternate_Name": "sonic the hedgehog 4",
       "Variants": [

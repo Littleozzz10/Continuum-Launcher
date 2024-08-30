@@ -472,6 +472,10 @@ namespace XeniaLauncher
                 {
                     sprite.color = selectGradient.GetColor();
                 }
+                else if (sprite.HasTag("data"))
+                {
+                    sprite.color = Ozzz.Helper.NewColorAlpha(game.dataTitleColor, (int)whiteGradient.values[3]);
+                }
                 else if (sprite.HasTag("gray"))
                 {
                     sprite.color = Ozzz.Helper.NewColorAlpha(game.fontAltLightColor, (int)whiteGradient.values[3]);
