@@ -3958,7 +3958,7 @@ namespace XeniaLauncher
 
             // Time
             timeText.color = timeDateColor;
-            if (timeText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
+            if (timeText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select) && IsActive)
             {
                 militaryTime = !militaryTime;
                 buttonSwitchSound.Play();
@@ -3986,7 +3986,7 @@ namespace XeniaLauncher
 
             // Date
             dateText.color = timeDateColor;
-            if (dateText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select))
+            if (dateText.CheckMouse(true) && MouseInput.IsLeftFirstDown() && (state == State.Main || state == State.Select) && IsActive)
             {
                 inverseDate = !inverseDate;
                 buttonSwitchSound.Play();

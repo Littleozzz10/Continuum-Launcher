@@ -108,6 +108,7 @@ namespace XeniaLauncher
                     game.dataWindow.AddButton(new Rectangle(20, 540, 1880, 120));
                     game.dataWindow.AddButton(new Rectangle(20, 670, 1880, 120));
                     game.dataWindow.AddButton(new Rectangle(20, 800, 1880, 120));
+                    game.dataWindow.stickDelaySecond = 2;
 
                     game.dataStrings.Clear();
                     game.dataFiles.Clear();
@@ -237,24 +238,43 @@ namespace XeniaLauncher
                                                 }
                                                 if (dataSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logo));
+                                                    game.dataFiles[index].Add(new DataEntry("Xenia {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), dir + "\\", game.logo));
                                                     game.dataFiles[index].Last().fileSize = dataSize;
                                                     tempDataSize += dataSize;
                                                     Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Xenia data added", "dataSize", "" + dataSize);
                                                 }
                                                 size += dataSize;
-                                                // Save data
-                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\profile"))
+                                                // Game data
+                                                string gameDir = dir + "\\content\\" + data.titleId + "\\profile\\";
+                                                if (Directory.Exists(gameDir))
                                                 {
                                                     float saveSize = 0;
-                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\profile", "", SearchOption.AllDirectories))
+                                                    foreach (string filename in Directory.GetFiles(gameDir, "", SearchOption.AllDirectories))
                                                     {
                                                         FileInfo file = new FileInfo(filename);
                                                         saveSize += file.Length;
                                                     }
                                                     if (saveSize > 0)
                                                     {
-                                                        game.dataFiles[index].Add(new DataEntry("Save Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Add(new DataEntry("Game Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), gameDir, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Last().fileSize = saveSize;
+                                                        tempDataSize += saveSize;
+                                                        Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Xenia save added", "saveSize", "" + saveSize);
+                                                    }
+                                                }
+                                                // Game data
+                                                string saveDir = dir + "\\content\\" + data.titleId + "\\00000001\\";
+                                                if (Directory.Exists(saveDir))
+                                                {
+                                                    float saveSize = 0;
+                                                    foreach (string filename in Directory.GetFiles(saveDir, "", SearchOption.AllDirectories))
+                                                    {
+                                                        FileInfo file = new FileInfo(filename);
+                                                        saveSize += file.Length;
+                                                    }
+                                                    if (saveSize > 0)
+                                                    {
+                                                        game.dataFiles[index].Add(new DataEntry("Game Data (Xenia)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), saveDir, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
                                                         Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Xenia save added", "saveSize", "" + saveSize);
@@ -289,42 +309,44 @@ namespace XeniaLauncher
                                                 }
                                                 if (dataSize > 0)
                                                 {
-                                                    game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), null, game.logoCanary));
+                                                    game.dataFiles[index].Add(new DataEntry("Xenia Canary {Temporary Copy}", "Localized Xenia Data", game.ConvertDataSize("" + dataSize), dir + "\\", game.logoCanary));
                                                     game.dataFiles[index].Last().fileSize = dataSize;
                                                     tempDataSize += dataSize;
                                                     Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary data added", "dataSize", "" + dataSize);
                                                 }
                                                 size += dataSize;
-                                                // Save data
-                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\profile"))
+                                                // Game data
+                                                string gameDir = dir + "\\content\\" + data.titleId + "\\profile\\";
+                                                if (Directory.Exists(gameDir))
                                                 {
                                                     float saveSize = 0;
-                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\profile", "", SearchOption.AllDirectories))
+                                                    foreach (string filename in Directory.GetFiles(gameDir, "", SearchOption.AllDirectories))
                                                     {
                                                         FileInfo file = new FileInfo(filename);
                                                         saveSize += file.Length;
                                                     }
                                                     if (saveSize > 0)
                                                     {
-                                                        game.dataFiles[index].Add(new DataEntry("Game Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Add(new DataEntry("Game Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), gameDir, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
                                                         Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary save added", "saveSize", "" + saveSize);
                                                     }
                                                     size += saveSize;
                                                 }
-                                                // Game data
-                                                if (Directory.Exists(dir + "\\content\\" + data.titleId + "\\00000001"))
+                                                // Save data
+                                                string saveDir = dir + "\\content\\" + data.titleId + "\\00000001\\";
+                                                if (Directory.Exists(saveDir))
                                                 {
                                                     float saveSize = 0;
-                                                    foreach (string filename in Directory.GetFiles(dir + "\\content\\" + data.titleId + "\\00000001", "", SearchOption.AllDirectories))
+                                                    foreach (string filename in Directory.GetFiles(saveDir, "", SearchOption.AllDirectories))
                                                     {
                                                         FileInfo file = new FileInfo(filename);
                                                         saveSize += file.Length;
                                                     }
                                                     if (saveSize > 0)
                                                     {
-                                                        game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), null, game.icons[data.gameTitle]));
+                                                        game.dataFiles[index].Add(new DataEntry("Save Data (Canary)", "Xenia Game Save", game.ConvertDataSize("" + saveSize), saveDir, game.icons[data.gameTitle]));
                                                         game.dataFiles[index].Last().fileSize = saveSize;
                                                         tempDataSize += saveSize;
                                                         Logging.Write(Logging.LogType.Debug, Logging.LogEvent.ManageDataFileAdded, "Canary save added", "saveSize", "" + saveSize);

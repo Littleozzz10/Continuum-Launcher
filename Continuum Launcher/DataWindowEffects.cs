@@ -47,6 +47,10 @@ namespace XeniaLauncher
             {
                 game.selectedDataIndex = buttonIndex;
                 game.manageWindow = new Window(game, game.dataWindow.rect, game.localData[buttonIndex].gameTitle, new ManageDataEffects(), new StdInputEvent(Math.Min(game.dataFiles[buttonIndex].Count, 6)), new GenericStart(), Game1.State.Data);
+                if (game.dataFiles[buttonIndex].Count == 1)
+                {
+                    game.manageWindow.inputEvents = new SingleButtonEvent();
+                }
                 game.manageWindow.changeEffects = new DataWindowChangeEffects(game, game.manageWindow);
                 game.manageWindow.buttonEffects.SetupEffects(game, source);
                 game.state = Game1.State.Manage;
