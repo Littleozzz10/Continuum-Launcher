@@ -7,7 +7,7 @@ https://github.com/IronRingX/xbox360-gamelist
 Obtained May 29, 2024
 
 Data modified by William Jones. Data is not complete or wholly accurate, but within acceptable margins. If errors are found, please report them on Continuum Launcher's GitHub repository by opening a new Issue.
-Last Modified June 8, 2024.
+Last Modified August 29, 2024.
 
 Note that this data is mostly based on NTSC-U region data. Release dates are also not wholly accurate, as it reflects the game's first release date on any platform, not just Xbox 360. If the date in the data does not match the year in the JSON file's name, Continuum will set the release date field to {YEAR-01-01}, with YEAR being the JSON's year.
 
