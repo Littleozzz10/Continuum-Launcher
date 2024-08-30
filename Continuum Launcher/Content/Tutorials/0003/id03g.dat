@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Downloadable Content (DLC)\nContent Type: Xbox 360 (00000002)\nDescription: This file is additional content for a game\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - View Metadata: Open the Metadata Viewer to view STFS metadata for this file\n  - Extract STFS Container: Extract this file to an _EXTRACT directory\n  - Install Content: Installs this DLC for use in Xenia Canary
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

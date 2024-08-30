@@ -1,17 +1,28 @@
-﻿The Xbox 360 first launched on November 22, 2005, with 18 titles in North America, 15 in Europe, and 7 in Japan
-The Xbox 360 was first revealed on May 12, 2005, on MTV
-Xenon was the codename for Xbox 360
-Zephyr was the codename for the Xbox 360 Elite model
-Natal was the codename for the Kinect
-The Xbox 360 received two major dashboard revisions after the original Blades version; NXE in 2008 and Metro in 2011
-Two major redesigns of the Xbox 360 were released; the Xbox 360 Slim in 2010 and the Xbox 360 E in 2013
-In total, the Xbox 360 had 2,157 officially released titles, including titles only released in one region
-Microsoft discontinued the Xbox 360 on April 20, 2016
-As of June 9, 2014, the Xbox 360 sold 84 million units worldwide, becoming the best-selling Xbox and the ninth best-selling console in history (As of 2023)
-The Xbox 360 was originally supposed to have only 256 MB of RAM, but Gears of War developer Epic Games pushed Microsoft to double the amount to 512 MB
-Infamously, the Xbox 360 only ever came with a standard DVD drive, never a higher-capicity optical drive like the PlayStation 3
-Kinect was first announced on June 1, 2009 at E3, and released November 4, 2010
-The first Xbox 360 with an HDMI port was the Elite revision, released in 2007
-The infamous Red Ring of Death is actually only three of the four rings lit up -- Four rings means your AV cables fell out
-The last game officially released for the Xbox 360 was Ubisoft's Just Dance 2019, released on October 23, 2018
-More trivia will be added with each update to Continuum!
+﻿The Xbox 360 first launched on November 22, 2005, with 18 titles in North America, 15 in Europe, and 7 in Japan.
+The Xbox 360 was first revealed on May 12, 2005, on MTV.
+Xenon was the codename for Xbox 360.
+Zephyr was the codename for the Xbox 360 Elite model.
+Natal was the codename for the Kinect.
+The Xbox 360 received two major dashboard revisions after the original Blades version; NXE in 2008 and Metro in 2011.
+Two major redesigns of the Xbox 360 were released; the Xbox 360 Slim in 2010 and the Xbox 360 E in 2013.
+In total, the Xbox 360 had 2,157 officially released titles, including titles only released in one region.
+Microsoft discontinued the Xbox 360 on April 20, 2016.
+As of June 9, 2014, the Xbox 360 sold 84 million units worldwide, becoming the best-selling Xbox and the ninth best-selling console in history (As of 2023).
+The Xbox 360 was originally supposed to have only 256 MB of RAM, but Gears of War developer Epic Games pushed Microsoft to double the amount to 512 MB.
+Infamously, the Xbox 360 only ever came with a standard DVD drive, never a higher-capicity optical drive like the PlayStation 3.
+Kinect was first announced on June 1, 2009 at E3, and released November 4, 2010.
+The first Xbox 360 with an HDMI port was the Elite model, released in 2007.
+The infamous Red Ring of Death is actually only three of the four rings lit up -- Four rings means your AV cables fell out.
+The last game officially released for the Xbox 360 was Ubisoft's Just Dance 2019, released on October 23, 2018.
+When Halo 3 launched in 2007, it made more money in the first 24 hours than any other entertainment product in history (at the time), making $170 million USD.
+Due to a variety of factors, including the Red Ring of Death, the Xbox 360 had over a dozen motherboard revisions.
+The Slim revision of the Xbox 360 had the codename "Trinity", named after the new APU combining three chips into one.
+The final motherboard revision of the Xbox 360, Winchester, was released in mid-2014 and is the only type of Xbox 360 that isn't moddable (as of 2024)
+On July, 29, 2024, the Xbox 360 Marketplace was closed, disabling the ability to buy new Xbox 360 content. Content that is playable on modern Xboxes can still be purchased and previously purchased content can still be downloaded.
+The largest official Xbox 360 hard drive was 500 GB.
+Slightly less than 50% of the original Xbox's library is officially playable on Xbox 360.
+Wired Xbox 360 controllers can be used on a Windows PC natively.
+Xbox 360 consoles with the Tonasket motherboard (often misnamed Jasper V2) are often considered the most reliable, since they have one of the lowest failure rates and are easier to replace components on than the later Slim and E motherboards.
+The Red Ring of Death cost Microsoft an estimated $1.15 billion in repair and shipping costs.
+The Xbox 360 version of Wolfenstein: The New Order came on four discs!
+Only one limited edition of the Xbox 360 E was made, a somewhat rare blue variant made in 2015.

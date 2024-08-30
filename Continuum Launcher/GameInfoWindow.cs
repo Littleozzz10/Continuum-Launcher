@@ -53,9 +53,24 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 4)
             {
-                game.text = new TextInputWindow(game, "Edit Release Date (yr-mt-dy)", game.gameData[game.index].year + "-" + game.gameData[game.index].month + "-" + game.gameData[game.index].day, Game1.State.GameInfo);
+                if (game.gameData[game.index].gameTitle != "No Title")
+                {
+                    game.text = new TextInputWindow(game, "Alphabetize As", game.gameData[game.index].alphaAs, Game1.State.GameInfo);
+                }
+                else
+                {
+                    game.message = new MessageWindow(game, "Brave, But Foolish", "This game doesn't have a title. Add a title before changing it's alphabetization!", Game1.State.GameInfo);
+                    game.state = Game1.State.Message;
+                }
             }
             else if (buttonIndex == 5)
+            {
+                game.tempYear = game.gameData[game.index].year;
+                game.tempMonth = game.gameData[game.index].month;
+                game.tempDay = game.gameData[game.index].day;
+                game.OpenDateEditWindow(Game1.State.ReleaseYear, Game1.State.GameInfo);
+            }
+            else if (buttonIndex == 6)
             {
                 game.gameData[game.index].minPlayers--;
                 if (game.gameData[game.index].minPlayers < 0)
@@ -65,7 +80,7 @@ namespace XeniaLauncher
                 game.SaveGames();
                 AdjustMinPlayers(game, source);
             }
-            else if (buttonIndex == 6)
+            else if (buttonIndex == 7)
             {
                 game.gameData[game.index].minPlayers++;
                 if (game.gameData[game.index].minPlayers > 4)
@@ -75,7 +90,7 @@ namespace XeniaLauncher
                 game.SaveGames();
                 AdjustMinPlayers(game, source);
             }
-            else if (buttonIndex == 7)
+            else if (buttonIndex == 8)
             {
                 game.gameData[game.index].maxPlayers--;
                 if (game.gameData[game.index].maxPlayers < 0)
@@ -85,7 +100,7 @@ namespace XeniaLauncher
                 game.SaveGames();
                 AdjustMaxPlayers(game, source);
             }
-            else if (buttonIndex == 8)
+            else if (buttonIndex == 9)
             {
                 game.gameData[game.index].maxPlayers++;
                 if (game.gameData[game.index].maxPlayers > 4)
@@ -95,7 +110,7 @@ namespace XeniaLauncher
                 game.SaveGames();
                 AdjustMaxPlayers(game, source);
             }
-            else if (buttonIndex == 9)
+            else if (buttonIndex == 10)
             {
                 game.state = Game1.State.GameMenu;
                 game.backSound.Play();
@@ -105,7 +120,7 @@ namespace XeniaLauncher
         {
             for (int i = 0; i < 8; i++)
             {
-                window.extraSprites.Add(new TextSprite(game.bold, ""));
+                window.extraSprites.Add(new TextSprite(game.font, ""));
             }
             foreach (TextSprite sprite in window.extraSprites)
             {
@@ -118,12 +133,12 @@ namespace XeniaLauncher
         private void AdjustMinPlayers(Game1 game, Window source)
         {
             source.extraSprites[0].ToTextSprite().text = "Min Players: " + game.gameData[game.index].minPlayers;
-            source.extraSprites[0].Centerize(new Vector2(1305, 480));
+            source.extraSprites[0].Centerize(new Vector2(1305, 580));
         }
         private void AdjustMaxPlayers(Game1 game, Window source)
         {
             source.extraSprites[1].ToTextSprite().text = "Max Players: " + game.gameData[game.index].maxPlayers;
-            source.extraSprites[1].Centerize(new Vector2(1305, 580));
+            source.extraSprites[1].Centerize(new Vector2(1305, 680));
         }
     }
     public class GameInfoInput : IButtonInputEvent
@@ -132,13 +147,13 @@ namespace XeniaLauncher
         {
             if (buttonIndex == 0 || buttonIndex == 4)
             {
-                buttonIndex = 9;
+                buttonIndex = 10;
             }
-            else if (buttonIndex <= 5)
+            else if (buttonIndex <= 6)
             {
                 buttonIndex--;
             }
-            else if (buttonIndex == 9)
+            else if (buttonIndex == 10)
             {
                 buttonIndex = 3;
             }
@@ -152,19 +167,15 @@ namespace XeniaLauncher
         }
         public void DownButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex == 3 || buttonIndex == 7 || buttonIndex == 8)
+            if (buttonIndex == 3 || buttonIndex == 8 || buttonIndex == 9)
             {
-                buttonIndex = 9;
-            }
-            else if (buttonIndex == 3)
-            {
-                buttonIndex = 0;
+                buttonIndex = 10;
             }
             else if (buttonIndex < 5)
             {
                 buttonIndex++;
             }
-            else if (buttonIndex == 9)
+            else if (buttonIndex == 10)
             {
                 buttonIndex = 0;
             }
@@ -178,37 +189,45 @@ namespace XeniaLauncher
         }
         public void LeftButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex == 9)
-            {
-                buttonIndex = 3;
-            }
-            else if (buttonIndex == 0)
+            if (buttonIndex == 0)
             {
                 buttonIndex = 4;
             }
             else if (buttonIndex == 1)
             {
-                buttonIndex = 6;
+                buttonIndex = 5;
             }
-            else if (buttonIndex <= 3)
+            else if (buttonIndex == 2)
             {
-                buttonIndex = 8;
+                buttonIndex = 7;
+            }
+            else if (buttonIndex == 3)
+            {
+                buttonIndex = 9;
             }
             else if (buttonIndex == 4)
             {
                 buttonIndex = 0;
             }
-            else if (buttonIndex == 6 || buttonIndex == 8)
-            {
-                buttonIndex--;
-            }
             else if (buttonIndex == 5)
             {
                 buttonIndex = 1;
             }
-            else if (buttonIndex == 7)
+            else if (buttonIndex == 6)
             {
                 buttonIndex = 2;
+            }
+            else if (buttonIndex == 7 || buttonIndex == 9)
+            {
+                buttonIndex--;
+            }
+            else if (buttonIndex == 8)
+            {
+                buttonIndex = 3;
+            }
+            else if (buttonIndex == 10)
+            {
+                buttonIndex = 3;
             }
             game.buttonSwitchSound.Play();
             source.buttonIndex = buttonIndex;
@@ -216,33 +235,41 @@ namespace XeniaLauncher
         }
         public void RightButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex == 9)
+            if (buttonIndex == 10)
             {
-                buttonIndex = 8;
+                buttonIndex = 9;
             }
             else if (buttonIndex <= 1)
             {
                 buttonIndex += 4;
             }
-            else if (buttonIndex <= 3)
+            else if (buttonIndex == 2)
             {
-                buttonIndex = 7;
+                buttonIndex = 6;
+            }
+            else if (buttonIndex == 3)
+            {
+                buttonIndex = 8;
             }
             else if (buttonIndex == 4)
             {
                 buttonIndex = 0;
             }
-            else if (buttonIndex == 5 || buttonIndex == 7)
-            {
-                buttonIndex++;
-            }
-            else if (buttonIndex == 6)
+            else if (buttonIndex == 5)
             {
                 buttonIndex = 1;
             }
-            else if (buttonIndex == 8)
+            else if (buttonIndex == 6 || buttonIndex == 8)
+            {
+                buttonIndex++;
+            }
+            else if (buttonIndex == 7)
             {
                 buttonIndex = 2;
+            }
+            else if (buttonIndex == 9)
+            {
+                buttonIndex = 3;
             }
             game.buttonSwitchSound.Play();
             source.buttonIndex = buttonIndex;

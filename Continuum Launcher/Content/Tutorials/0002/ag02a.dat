@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTop
+text=Enter the filepath to the folder that contains your GoD file. The folder should be the one before content ID folders,\nsuch as "000D0000" or "00004000". You can use Ctrl+V to paste.
+end=state
+state=GameMenu
+-
+type=split
+condition=none
+newFile=ag03

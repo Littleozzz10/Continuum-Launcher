@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Xbox 360 Saved Game\nContent Type: Xbox 360 (00000001)\nDescription: This file is a game save from an Xbox 360\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

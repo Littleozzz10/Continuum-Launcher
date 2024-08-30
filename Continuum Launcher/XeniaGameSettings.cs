@@ -75,6 +75,26 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 8)
             {
+                game.gameData[game.index].language--;
+                if ((int)game.gameData[game.index].language == 10)
+                {
+                    game.gameData[game.index].language--;
+                }
+                AdjustLanguage(game, source);
+                game.SaveGames();
+            }
+            else if (buttonIndex == 9)
+            {
+                game.gameData[game.index].language++;
+                if ((int)game.gameData[game.index].language == 10)
+                {
+                    game.gameData[game.index].language++;
+                }
+                AdjustLanguage(game, source);
+                game.SaveGames();
+            }
+            else if (buttonIndex == 10)
+            {
                 game.gameData[game.index].resX--;
                 if (game.gameData[game.index].resX < 1)
                 {
@@ -83,7 +103,7 @@ namespace XeniaLauncher
                 AdjustHRes(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 9)
+            else if (buttonIndex == 11)
             {
                 game.gameData[game.index].resX++;
                 if (game.gameData[game.index].resX > 3)
@@ -93,7 +113,7 @@ namespace XeniaLauncher
                 AdjustHRes(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 10)
+            else if (buttonIndex == 12)
             {
                 game.gameData[game.index].resY--;
                 if (game.gameData[game.index].resY < 1)
@@ -103,7 +123,7 @@ namespace XeniaLauncher
                 AdjustVRes(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 11)
+            else if (buttonIndex == 13)
             {
                 game.gameData[game.index].resY++;
                 if (game.gameData[game.index].resY > 3)
@@ -113,13 +133,13 @@ namespace XeniaLauncher
                 AdjustVRes(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 12 || buttonIndex == 13)
+            else if (buttonIndex == 14 || buttonIndex == 15)
             {
                 game.gameData[game.index].vsync = !game.gameData[game.index].vsync;
                 AdjustVSync(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 14)
+            else if (buttonIndex == 16)
             {
                 game.gameData[game.index].renderer--;
                 if ((int)game.gameData[game.index].renderer < 0)
@@ -129,7 +149,7 @@ namespace XeniaLauncher
                 AdjustRenderer(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 15)
+            else if (buttonIndex == 17)
             {
                 game.gameData[game.index].renderer++;
                 if ((int)game.gameData[game.index].renderer > 2)
@@ -139,7 +159,11 @@ namespace XeniaLauncher
                 AdjustRenderer(game, source);
                 game.SaveGames();
             }
-            else if (buttonIndex == 16)
+            else if (buttonIndex == 18)
+            {
+                game.text = new TextInputWindow(game, "Enter Additional Parameters", game.gameData[game.index].extraParams, Game1.State.GameXeniaSettings);
+            }
+            else if (buttonIndex == 19)
             {
                 game.state = Game1.State.GameMenu;
                 game.backSound.Play();
@@ -147,14 +171,14 @@ namespace XeniaLauncher
         }
         public void SetupEffects(Game1 game, Window window)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
-                window.extraSprites.Add(new TextSprite(game.bold, ""));
+                window.extraSprites.Add(new TextSprite(game.font, ""));
             }
             foreach (TextSprite sprite in window.extraSprites)
             {
                 sprite.scale = 0.6f;
-                sprite.color = Color.FromNonPremultiplied(255, 255, 255, 0);
+                sprite.color = Color.FromNonPremultiplied(250, 255, 255, 0);
             }
             AdjustLicense(game, window);
             AdjustCanary(game, window, true);
@@ -164,6 +188,7 @@ namespace XeniaLauncher
             AdjustVRes(game, window);
             AdjustVSync(game, window);
             AdjustRenderer(game, window);
+            AdjustLanguage(game, window);
         }
         private void AdjustLicense(Game1 game, Window source)
         {
@@ -177,7 +202,7 @@ namespace XeniaLauncher
                 license = -1;
             }
             source.extraSprites[0].ToTextSprite().text = "License Mask: " + license;
-            source.extraSprites[0].Centerize(new Vector2(615, 380));
+            source.extraSprites[0].Centerize(new Vector2(620, 370));
         }
         private void AdjustCanary(Game1 game, Window source, bool first)
         {
@@ -193,7 +218,7 @@ namespace XeniaLauncher
             }
             source.extraSprites[1].ToTextSprite().text = "Allow Custom Builds: " + canary;
             source.extraSprites[1].ToTextSprite().scale = 0.5f;
-            source.extraSprites[1].Centerize(new Vector2(615, 480));
+            source.extraSprites[1].Centerize(new Vector2(620, 470));
         }
         private void AdjustMountCache(Game1 game, Window source)
         {
@@ -203,7 +228,7 @@ namespace XeniaLauncher
                 cache = "On";
             }
             source.extraSprites[2].ToTextSprite().text = "Mount Cache: " + cache;
-            source.extraSprites[2].Centerize(new Vector2(615, 580));
+            source.extraSprites[2].Centerize(new Vector2(620, 570));
         }
         private void AdjustReadback(Game1 game, Window source)
         {
@@ -213,7 +238,7 @@ namespace XeniaLauncher
                 readback = "On";
             }
             source.extraSprites[3].ToTextSprite().text = "CPU Readback: " + readback;
-            source.extraSprites[3].Centerize(new Vector2(615, 680));
+            source.extraSprites[3].Centerize(new Vector2(620, 670));
         }
         private void AdjustHRes(Game1 game, Window source)
         {
@@ -227,7 +252,7 @@ namespace XeniaLauncher
                 res = "3840 (3x)";
             }
             source.extraSprites[4].ToTextSprite().text = "Hor. Scale: " + res;
-            source.extraSprites[4].Centerize(new Vector2(1305, 380));
+            source.extraSprites[4].Centerize(new Vector2(1310, 370));
         }
         private void AdjustVRes(Game1 game, Window source)
         {
@@ -241,7 +266,7 @@ namespace XeniaLauncher
                 res = "2160 (3x)";
             }
             source.extraSprites[5].ToTextSprite().text = "Ver. Scale: " + res;
-            source.extraSprites[5].Centerize(new Vector2(1305, 480));
+            source.extraSprites[5].Centerize(new Vector2(1310, 470));
         }
         private void AdjustVSync(Game1 game, Window source)
         {
@@ -251,7 +276,7 @@ namespace XeniaLauncher
                 vsync = "On";
             }
             source.extraSprites[6].ToTextSprite().text = "V-Sync: " + vsync;
-            source.extraSprites[6].Centerize(new Vector2(1305, 580));
+            source.extraSprites[6].Centerize(new Vector2(1310, 570));
         }
         private void AdjustRenderer(Game1 game, Window source)
         {
@@ -265,16 +290,45 @@ namespace XeniaLauncher
                 res = "Vulkan";
             }
             source.extraSprites[7].ToTextSprite().text = "Renderer: " + res;
-            source.extraSprites[7].Centerize(new Vector2(1305, 680));
+            source.extraSprites[7].Centerize(new Vector2(1310, 670));
+        }
+        private void AdjustLanguage(Game1 game, Window source)
+        {
+            if ((game.gameData[game.index].language).ToString() == "17")
+            {
+                game.gameData[game.index].language = GameData.Language.English;
+            }
+            else if ((game.gameData[game.index].language).ToString() == "0")
+            {
+                game.gameData[game.index].language = GameData.Language.SimplifiedChinese;
+            }
+
+            string lang = "English";
+            lang = (game.gameData[game.index].language).ToString();
+            if (game.gameData[game.index].language == GameData.Language.TraditionalChinese)
+            {
+                lang = "Trad. Chinese";
+            }
+            else if (game.gameData[game.index].language == GameData.Language.SimplifiedChinese)
+            {
+                lang = "Simp. Chinese";
+            }
+
+            source.extraSprites[8].ToTextSprite().text = "Language: " + lang;
+            source.extraSprites[8].Centerize(new Vector2(620, 770));
         }
     }
     public class XeniaGameInput : IButtonInputEvent
     {
         public void UpButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex <= 1 || buttonIndex == 8 || buttonIndex == 9)
+            if (buttonIndex <= 1 || buttonIndex == 10 || buttonIndex == 11)
             {
-                buttonIndex = 16;
+                buttonIndex = 19;
+            }
+            else if (buttonIndex == 19)
+            {
+                buttonIndex--;
             }
             else
             {
@@ -286,13 +340,17 @@ namespace XeniaLauncher
         }
         public void DownButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex == 6 || buttonIndex == 7 || buttonIndex == 14 || buttonIndex == 15)
+            if (buttonIndex == 8 || buttonIndex == 9 || buttonIndex == 18)
             {
-                buttonIndex = 16;
+                buttonIndex = 19;
             }
-            else if (buttonIndex == 16)
+            else if (buttonIndex == 17)
             {
-                buttonIndex = 0;
+                buttonIndex = 18;
+            }
+            else if (buttonIndex == 19)
+            {
+                buttonIndex = 10;
             }
             else
             {
@@ -304,21 +362,25 @@ namespace XeniaLauncher
         }
         public void LeftButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex < 8 && buttonIndex % 2 == 0)
+            if (buttonIndex == 8)
             {
-                buttonIndex += 9;
+                buttonIndex = 18;
             }
-            else if (buttonIndex < 8 || (buttonIndex >= 8 && buttonIndex % 2 == 1))
+            else if (buttonIndex < 10 && buttonIndex % 2 == 0)
+            {
+                buttonIndex += 11;
+            }
+            else if (buttonIndex == 19)
+            {
+                buttonIndex = 8;
+            }
+            else if (buttonIndex < 10 || (buttonIndex >= 10 && buttonIndex % 2 == 1))
             {
                 buttonIndex--;
             }
-            else if (buttonIndex == 16)
-            {
-                buttonIndex = 6;
-            }
             else
             {
-                buttonIndex -= 7;
+                buttonIndex -= 9;
             }
             game.buttonSwitchSound.Play();
             source.buttonIndex = buttonIndex;
@@ -326,21 +388,25 @@ namespace XeniaLauncher
         }
         public void RightButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex < 8 && buttonIndex % 2 == 1)
+            if (buttonIndex < 10 && buttonIndex % 2 == 1)
             {
-                buttonIndex += 7;
+                buttonIndex += 9;
             }
-            else if (buttonIndex < 8 || (buttonIndex >= 8 && buttonIndex % 2 == 0))
+            else if (buttonIndex == 18)
+            {
+                buttonIndex = 8;
+            }
+            else if (buttonIndex < 10 || (buttonIndex >= 10 && buttonIndex % 2 == 0))
             {
                 buttonIndex++;
             }
-            else if (buttonIndex == 16)
+            else if (buttonIndex == 19)
             {
-                buttonIndex = 15;
+                buttonIndex = 18;
             }
             else
             {
-                buttonIndex -= 9;
+                buttonIndex -= 11;
             }
             game.buttonSwitchSound.Play();
             source.buttonIndex = buttonIndex;

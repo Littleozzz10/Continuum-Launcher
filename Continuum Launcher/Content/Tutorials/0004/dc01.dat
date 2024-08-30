@@ -1,0 +1,27 @@
+-
+type=box
+position=centerTopLeft
+text=Currently, we are in the game selection menu.\nPlease click on a game you wish to delete.
+end=state
+state=Select
+-
+type=box
+position=centerTopRight
+text=Now, click the "Manage Game" button.
+end=state
+state=GameMenu
+-
+type=box
+position=centerTopRight
+text=Then click the "Manage Executables" button
+end=state
+state=GameXEX
+-
+type=box
+position=centerTopRight
+text=From the Executable Management window, you can remove a game from Continuum by\ndeleting it's main executable. Return to the game selection menu when finished.
+end=state
+state=Main
+-
+type=end
+promptType=0

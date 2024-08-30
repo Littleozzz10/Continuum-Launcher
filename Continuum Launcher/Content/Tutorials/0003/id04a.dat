@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Xenia Installed Content\nContent Type: Xenia Data\nDescription: A Title Update or additional DLC for this game, installed to Xenia Canary\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - Delete Content: Deletes this content
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

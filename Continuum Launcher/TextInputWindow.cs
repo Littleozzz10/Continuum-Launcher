@@ -58,6 +58,7 @@ namespace XeniaLauncher
             return clipText;
         }
         // End retrieved code
+
         public static readonly List<string> keys = new List<string>{ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/" };
         public static readonly List<string> shiftKeys = new List<string> { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "{", "}", "|", ":", "\"", "<", ">", "?" };
         public bool shift, caps, shiftLock, ctrl, ctrlLock;
@@ -66,6 +67,7 @@ namespace XeniaLauncher
             extraSprites.Add(new ObjectSprite(game.white, new Rectangle(90, 200, 1740, 80), Color.White));
             extraSprites.Add(new TextSprite(game.font, message, 0.5f, new Vector2(110, 0), Color.FromNonPremultiplied(0, 0, 0, 255)));
             extraSprites[1].tags.Add("black");
+            disableKeyboard = game.enterCloseTextInput;
 
             // Key Buttons
             for (int i = 0; i < 12; i++)
@@ -142,6 +144,10 @@ namespace XeniaLauncher
             {
                 ctrl = false;
             }
+            if (disableKeyboard && KeyboardInput.keys["Enter"].IsFirstDown())
+            {
+                game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[48], 48);
+            }
 
             if (shift || shiftLock || caps)
             {
@@ -211,7 +217,10 @@ namespace XeniaLauncher
                 }
                 if (KeyboardInput.keys["Enter"].IsFirstDown())
                 {
-                    game.text.extraSprites[1].ToTextSprite().text = game.text.extraSprites[1].ToTextSprite().text.Substring(0, game.text.extraSprites[1].ToTextSprite().text.Length - 1);
+                    if (game.text.extraSprites[1].ToTextSprite().text.Length > 0 && !disableKeyboard)
+                    {
+                        game.text.extraSprites[1].ToTextSprite().text = game.text.extraSprites[1].ToTextSprite().text.Substring(0, game.text.extraSprites[1].ToTextSprite().text.Length - 1);
+                    }
                     game.text.buttonEffects.ActivateButton(game, game.text, game.text.buttons[48], 48);
                 }
             }

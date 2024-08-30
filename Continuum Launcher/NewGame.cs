@@ -36,11 +36,11 @@ namespace XeniaLauncher
         {
             if (buttonIndex == 0)
             {
-                game.text = new TextInputWindow(game, "New Game Title", "", Game1.State.NewGame);
+                game.text = new TextInputWindow(game, "Folder Filepath for New Game", "", Game1.State.NewGame);
             }
             else if (buttonIndex == 1)
             {
-                game.text = new TextInputWindow(game, "STFS Filepath for New Game", "", Game1.State.NewGame);
+                game.text = new TextInputWindow(game, "New Game Title", "", Game1.State.NewGame);
             }
             else if (buttonIndex == 2)
             {

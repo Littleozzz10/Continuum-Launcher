@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=This file type doesn't have an entry in the Tutorial.
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02

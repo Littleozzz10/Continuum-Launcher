@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=While no games have been imported, this placeholder\n will serve the same purposes for now.
+end=cooldown
+frames=120
+-
+type=split
+condition=none
+newFile=nc03

@@ -49,7 +49,7 @@ namespace XeniaLauncher
             }
             else
             {
-                game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia does not exist", Game1.State.Select);
+                game.message = new MessageWindow(game, "These aren't the droids you're looking for...", "Provided filepath to Xenia does not exist", Game1.State.Select);
                 game.state = Game1.State.Message;
             }
         }
@@ -75,7 +75,7 @@ namespace XeniaLauncher
             }
             else
             {
-                game.message = new MessageWindow(game, "Error", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
+                game.message = new MessageWindow(game, "These aren't the droids you're looking for...", "Provided filepath to Xenia Canary does not exist", Game1.State.Select);
                 game.state = Game1.State.Message;
             }
         }
@@ -92,7 +92,7 @@ namespace XeniaLauncher
             else if (buttonIndex == 2)
             {
                 game.state = Game1.State.GameMenu;
-                game.gameManageWindow = new Window(game, new Rectangle(560, 170, 800, 750), "Manage " + game.gameData[game.index].gameTitle, new ManageGame(), new StdInputEvent(5), new GenericStart(), Game1.State.Select);
+                game.gameManageWindow = new Window(game, new Rectangle(560, 115, 800, 860), "Manage " + game.gameData[game.index].gameTitle, new ManageGame(), new StdInputEvent(6), new GenericStart(), Game1.State.Select);
                 game.gameManageWindow.buttonEffects.SetupEffects(game, source);
             }
             else if (game.gameData[game.index].xexNames.Count == 0)

@@ -10,8 +10,9 @@ using System.Drawing;
 namespace XeniaLauncher
 {
     /// <summary>
+    /// {NOTE: THIS CODE IS DEPRECATED. Use STFS24 from now on. Any code still using this library anymore should be converted over to the new one.}
     /// Old code from an old project of mine that I kind of abandoned.
-    /// Reusing it so that I don't have to go down the rabbit hole of STFS and SVOD headers again
+    /// Reusing it so that I don't have to go down the rabbit hole of STFS and SVOD headers again.
     /// </summary>
     public class STFS
     {

@@ -1,0 +1,105 @@
+-
+type=box
+position=centerTopLeft
+text=Now, please click on a game to open the game menu.
+end=state
+state=Select
+-
+type=box
+position=centerTopRight
+text=This is where you can launch a game, with Xenia\nor Xenia Canary. Additionally, you can edit\ngame options and information.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTopRight
+text=To exit a window, you can right-click, press the\nBackspace or Escape keys, or press the B button\non your controller.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Now, exit the game menu.
+end=state
+state=Main
+-
+type=box
+position=centerTopLeft
+text=The same way you close a window is also how you can open the Menu.\nWhen in the game selection menu, using the Backspace/Escape keys,\nright-clicking, or pressing the B button will open the Menu.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Open the Menu.
+end=state
+state=Menu
+-
+type=box
+position=centerTop
+text=This is the Menu, where you can change settings, manage data, and more.
+end=cooldown
+frames=120
+-
+type=box
+position=centerTop
+text=Hovering over some buttons will display a description. Take a moment to look through the Menu's\nfeatures, then click on the "Launcher Options" button to proceed.
+end=state
+state=Options
+-
+type=box
+position=centerTop
+text=In this menu, you can change Continuum's settings. This window has sound, theming,\nand compatibility prompt options, as well as two buttons leading to more.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Try changing the active Theme. Note that new Themes can be downloaded from\nContinuum's GitHub. When ready, click on the "Graphics Settings" button.
+end=state
+state=Graphics
+-
+type=box
+position=centerTop
+text=Here are graphics settings. These only apply to Continuum itself,\nnot to Xenia. Note that Continuum has problems launching games in Fullscreen while in fullscreen.
+end=cooldown
+frames=180
+-
+type=box
+position=centerTop
+text=Change the graphics settings how you like, then exit the window.
+end=state
+state=Options
+-
+type=box
+position=centerTop
+text=Now click on the "Xenia Settings" button.
+end=state
+state=Settings
+-
+type=box
+position=centerTop
+text=These settings, unlike the previous ones, apply to Xenia and Xenia alone.\nAdditionally, they apply to all games in Continuum.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=The slight exception is the "Consolidate Saves" setting, which is\na Continuum setting that affects Xenia.
+end=cooldown
+frames=150
+-
+type=box
+position=centerTop
+text=This setting creates a copy of Xenia every time you launch a game, so that saves will all reside in Continuum's\ndirectory. Unless you have a good reason to, this setting should remain enabled at all times.
+end=cooldown
+frames=210
+-
+type=box
+position=centerTop
+text=Return to the game selection screen.
+end=state
+state=Main
+-
+type=end
+promptType=0

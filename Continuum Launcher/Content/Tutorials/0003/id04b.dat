@@ -1,0 +1,10 @@
+-
+type=box
+position=centerTopLeft
+text=File Type: Localized Xenia Data\nContent Type: Xenia Data\nDescription: A copy of the Xenia executable, made by Continuum\nOptions:\n  - Show in Explorer: Open a File Explorer window to this file's directory\n  - Delete Content: Deletes this temporary content
+end=state
+state=Manage
+-
+type=split
+condition=none
+newFile=id02
