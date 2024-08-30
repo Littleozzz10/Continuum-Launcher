@@ -53,8 +53,8 @@
       "Moby_Score": 7.26,
       "Moby_URL": "https://www.mobygames.com/game/102/robotron-2084/",
       "Platforms": [ "PC Booter", "Lynx", "Atari ST", "Commodore 64", "Apple II", "Atari 5200", "Atari 7800", "Atari 8-bit", "VIC-20", "Xbox 360", "Macintosh", "Browser", "BBC Micro", "Electron", "Arcade", "Antstream" ],
-      "Publishers": [ "Atarisoft", "Williams Electronics, Inc.", "Shadowsoft", "Atari, Inc.", "Midway Home Entertainment, Inc.", "Digital Eclipse Software, Inc.", "Warner Bros. Interactive Entertainment Inc.", "Shockwave", "Atari Corporation" ],
-      "Release_Date": "1982",
+      "Publishers": [ "Midway Home Entertainment, Inc." ],
+      "Release_Date": "2006-01-02",
       "Title": "Robotron: 2084",
       "Alternate_Name": null,
       "Variants": [
@@ -306,7 +306,7 @@
       "Moby_Score": 8.54,
       "Moby_URL": "https://www.mobygames.com/game/21735/the-elder-scrolls-iv-oblivion/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Xbox Cloud Gaming", "Xbox One" ],
-      "Publishers": [ "Ubisoft Entertainment SA", "Cenega Poland Sp. z o.o.", "Bethesda Softworks LLC", "1C Company", "Spike Co., Ltd.", "2K Games, Inc." ],
+      "Publishers": [ "Bethesda Softworks LLC", "2K Games, Inc." ],
       "Release_Date": "2006-03-20",
       "Title": "The Elder Scrolls IV: Oblivion",
       "Alternate_Name": "the elder scrolls iv oblivion",
@@ -561,7 +561,7 @@
       "Platforms": [ "Windows", "PlayStation 2", "Xbox", "GameCube", "PSP", "Xbox 360", "OnLive" ],
       "Publishers": [ "Eidos Interactive Limited" ],
       "Release_Date": "2006-04-07",
-      "Title": "Lara Croft: Tomb Raider - Legend",
+      "Title": "Tomb Raider: Legend",
       "Alternate_Name": "tomb raider legend",
       "Variants": [
         {
@@ -1364,7 +1364,7 @@
       "Moby_Score": 8.0,
       "Moby_URL": "https://www.mobygames.com/game/24088/saints-row/",
       "Platforms": [ "Xbox 360", "Xbox One" ],
-      "Publishers": [ "Koch Media GmbH (Austria)", "THQ Inc." ],
+      "Publishers": [ "THQ Inc." ],
       "Release_Date": "2006-08-29",
       "Title": "Saints Row",
       "Alternate_Name": "saints row",
@@ -2309,7 +2309,7 @@
       "Platforms": [ "Windows", "Xbox 360", "Xbox One", "Xbox Cloud Gaming" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2006-11-09",
-      "Title": "Viva Piñata",
+      "Title": "Viva Pinata",
       "Alternate_Name": "viva pinata",
       "Variants": [
         {
@@ -2332,7 +2332,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2006-11-09",
-      "Title": "Viva Piñata (Special Edition)",
+      "Title": "Viva Pinata (Special Edition)",
       "Alternate_Name": "viva pinata",
       "Variants": [
         {
@@ -2468,7 +2468,7 @@
       "Moby_Score": 4.88,
       "Moby_URL": "https://www.mobygames.com/game/26398/sonic-the-hedgehog/",
       "Platforms": [ "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "SEGA of America, Inc.", "SEGA Europe Ltd.", "SEGA Corporation" ],
+      "Publishers": [ "SEGA of America, Inc." ],
       "Release_Date": "2006-11-14",
       "Title": "Sonic the Hedgehog",
       "Alternate_Name": "sonic the hedgehog",
@@ -2839,7 +2839,7 @@
       "Moby_Score": 7.34,
       "Moby_URL": "https://www.mobygames.com/game/26292/assault-heroes/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Sierra Online", "Konami Digital Entertainment, Inc." ],
+      "Publishers": [ "Sierra Online" ],
       "Release_Date": "2006-12-13",
       "Title": "Assault Heroes",
       "Alternate_Name": "assault heroes",
@@ -2977,7 +2977,7 @@
       "Moby_Score": 7.46,
       "Moby_URL": "https://www.mobygames.com/game/25955/lost-planet-extreme-condition/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Capcom Co., Ltd.", "1C Company" ],
+      "Publishers": [ "Capcom Co., Ltd." ],
       "Release_Date": "2006-12-21",
       "Title": "Lost Planet: Extreme Condition",
       "Alternate_Name": "lost planet extreme condition",

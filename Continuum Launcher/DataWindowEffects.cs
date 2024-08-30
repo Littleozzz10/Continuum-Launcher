@@ -113,7 +113,7 @@ namespace XeniaLauncher
             {
                 offset--;
             }
-            for (int i = 0; i < Math.Min(game.dataFiles[buttonIndex].Count - 2, 6); i++)
+            for (int i = 0; i < Math.Min(game.dataFiles[buttonIndex].Count - 1, 6); i++)
             {
                 game.manageWindow.extraSprites[i * 4].ToTextSprite().text = game.dataFiles[buttonIndex][i + offset].name;
                 game.manageWindow.extraSprites[i * 4 + 1].ToTextSprite().text = game.dataFiles[buttonIndex][i + offset].size;

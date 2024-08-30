@@ -309,8 +309,8 @@
       "Moby_Score": 6.66,
       "Moby_URL": "https://www.mobygames.com/game/55931/choplifter-hd/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Ouya", "PlayStation Now", "Android" ],
-      "Publishers": [ "Konami Digital Entertainment, Inc.", "inXile Entertainment, Inc." ],
-      "Release_Date": "2012-01-10",
+      "Publishers": [ "Konami Digital Entertainment, Inc." ],
+      "Release_Date": "2012-01-11",
       "Title": "Choplifter HD",
       "Alternate_Name": "choplifter hd",
       "Variants": [
@@ -2788,7 +2788,7 @@
       "Moby_Score": 8.02,
       "Moby_URL": "https://www.mobygames.com/game/55877/sine-mora/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "iPhone", "iPad", "PS Vita", "Ouya", "Android" ],
-      "Publishers": [ "Microsoft Corporation", "Kalypso Media Digital Ltd.", "Digital Reality Publishing Kft.", "Kalypso Media GmbH" ],
+      "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2012-03-21",
       "Title": "Sine Mora",
       "Alternate_Name": "sine mora",
@@ -3251,14 +3251,14 @@
       "Variants": null
     },
     {
-      "Developers": [],
+      "Developers": [ "Capcom Production Studio 1" ],
       "Genres": [ "Compilation" ],
       "ID": 55325,
       "Moby_Score": 7.43,
       "Moby_URL": "https://www.mobygames.com/game/55325/devil-may-cry-hd-collection/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PlayStation 4", "Xbox One", "Nintendo Switch" ],
       "Publishers": [ "Capcom Co., Ltd." ],
-      "Release_Date": "2012-03-22",
+      "Release_Date": "2012-04-03",
       "Title": "Devil May Cry: HD Collection",
       "Alternate_Name": "devil may cry hd collection",
       "Variants": [
@@ -4426,14 +4426,14 @@
       ]
     },
     {
-      "Developers": [ "Dimps Corporation", "Sonic Team" ],
+      "Developers": [ "Sonic Team", "Dimps Corporation" ],
       "Genres": [ "Action", "Side view", "Platform", "Anime / Manga", "2D scrolling" ],
       "ID": 63326,
       "Moby_Score": 6.43,
       "Moby_URL": "https://www.mobygames.com/game/63326/sonic-the-hedgehog-4-episode-ii/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "iPhone", "Android", "iPad", "Ouya" ],
       "Publishers": [ "SEGA of America, Inc." ],
-      "Release_Date": "2012-05-15",
+      "Release_Date": "2012-05-16",
       "Title": "Sonic the Hedgehog 4: Episode II",
       "Alternate_Name": "sonic 4 episode ii",
       "Variants": [
@@ -5070,14 +5070,14 @@
       ]
     },
     {
-      "Developers": [ "Digital Reality Software Kft", "Playbox Ltd." ],
+      "Developers": [ "Playbox Ltd.", "Digital Reality Software Kft" ],
       "Genres": [ "Racing / Driving", "Diagonal-down" ],
       "ID": 56332,
       "Moby_Score": 6.73,
       "Moby_URL": "https://www.mobygames.com/game/56332/bang-bang-racing/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Android" ],
-      "Publishers": [ "Atomicom Ltd.", "Kalypso Media Digital Ltd.", "Digital Reality Publishing Kft." ],
-      "Release_Date": "2011-05-13",
+      "Publishers": [ "Digital Reality Publishing Kft." ],
+      "Release_Date": "2012-06-06",
       "Title": "Bang Bang Racing",
       "Alternate_Name": "bang bang racing",
       "Variants": [
@@ -6236,7 +6236,7 @@
       "Variants": [
         {
           "GameName": "zumas revenge!",
-          "TitleID": "4541099F",
+          "TitleID": "584111E9",
           "Serial": "EA-2463",
           "Region": "NTSC/U",
           "XEXCRC": "3049FCF5",
@@ -7851,8 +7851,8 @@
       "Moby_Score": 6.27,
       "Moby_URL": "https://www.mobygames.com/game/57302/port-royale-3-pirates-merchants/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Kalypso Media UK Ltd", "Kalypso Media GmbH", "Kalypso Media Digital Ltd." ],
-      "Release_Date": "2012-05-04",
+      "Publishers": [ "Kalypso Media Digital Ltd." ],
+      "Release_Date": "2012-09-07",
       "Title": "Port Royale 3: Pirates & Merchants",
       "Alternate_Name": "port royale 3 pirates and merchants",
       "Variants": [
@@ -8153,7 +8153,7 @@
       "Moby_Score": 7.5,
       "Moby_URL": "https://www.mobygames.com/game/62738/joe-danger-2-the-movie/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PS Vita", "Macintosh", "Linux" ],
-      "Publishers": [ "Hello Games Ltd.", "UIG Entertainment GmbH", "Microsoft Corporation" ],
+      "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2012-09-14",
       "Title": "Joe Danger 2: The Movie",
       "Alternate_Name": "joe danger 2 the movie",
@@ -8353,11 +8353,21 @@
       "Moby_Score": 8.33,
       "Moby_URL": "https://www.mobygames.com/game/4126/jet-grind-radio/",
       "Platforms": [ "Windows", "Dreamcast", "Xbox 360", "PlayStation 3", "iPhone", "Android", "iPad", "PS Vita" ],
-      "Publishers": [ "SEGA of America, Inc.", "SEGA Corporation" ],
-      "Release_Date": "2000-06-29",
-      "Title": "Jet Grind Radio",
-      "Alternate_Name": null,
-      "Variants": null
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2012-09-19",
+      "Title": "Jet Set Radio",
+      "Alternate_Name": "jet set radio",
+      "Variants": [
+        {
+          "GameName": "jet set radio",
+          "TitleID": "58411247",
+          "Serial": null,
+          "Region": null,
+          "XEXCRC": null,
+          "MediaID": null,
+          "Wave": null
+        }
+      ]
     },
     {
       "Developers": [ "PES Productions" ],
@@ -8792,7 +8802,7 @@
       "Moby_Score": 6.71,
       "Moby_URL": "https://www.mobygames.com/game/58397/resident-evil-6/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Capcom Co., Ltd.", "1C-SoftClub" ],
+      "Publishers": [ "Capcom Co., Ltd." ],
       "Release_Date": "2012-10-02",
       "Title": "Resident Evil 6",
       "Alternate_Name": "resident evil 6",
@@ -8861,7 +8871,7 @@
       "Moby_Score": 7.1,
       "Moby_URL": "https://www.mobygames.com/game/70887/hell-yeah-wrath-of-the-dead-rabbit/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "SEGA of America, Inc.", "SEGA Corporation" ],
+      "Publishers": [ "SEGA Corporation" ],
       "Release_Date": "2012-09-25",
       "Title": "Hell Yeah!: Wrath of the Dead Rabbit",
       "Alternate_Name": "hell yeah! wrath of the dead rabbit",
@@ -8973,14 +8983,14 @@
       ]
     },
     {
-      "Developers": [ "SEGA Studios USA" ],
+      "Developers": [ "Sonic Team" ],
       "Genres": [ "Action", "Platform", "Anime / Manga", "Fantasy", "Behind view", "Direct control" ],
       "ID": 4455,
       "Moby_Score": 8.23,
       "Moby_URL": "https://www.mobygames.com/game/4455/sonic-adventure-2/",
       "Platforms": [ "Windows", "Dreamcast", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "SEGA of America, Inc.", "SEGA Corporation" ],
-      "Release_Date": "2001-06-19",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2012-10-05",
       "Title": "Sonic Adventure 2",
       "Alternate_Name": "sonic adventure 2",
       "Variants": [
@@ -9402,9 +9412,9 @@
       "Moby_Score": 6.81,
       "Moby_URL": "https://www.mobygames.com/game/58263/doom3-bfg-edition/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Android" ],
-      "Publishers": [ "ZeniMax Asia K.K.", "Bethesda Softworks LLC", "NVIDIA Lightspeed Studios", "ZeniMax Europe Ltd." ],
+      "Publishers": [ "Bethesda Softworks LLC" ],
       "Release_Date": "2012-10-16",
-      "Title": "Doom³: BFG Edition",
+      "Title": "Doom 3: BFG Edition",
       "Alternate_Name": "doom 3 bfg edition",
       "Variants": [
         {
@@ -11195,9 +11205,9 @@
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/64013/sonic-championship/",
       "Platforms": [ "Xbox 360", "PlayStation 3", "Arcade" ],
-      "Publishers": [ "SEGA of America, Inc.", "SEGA Enterprises Ltd." ],
-      "Release_Date": "1996-05",
-      "Title": "Sonic Championship",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2012-11-28",
+      "Title": "Sonic: The Fighters",
       "Alternate_Name": "sonic the fighters",
       "Variants": [
         {

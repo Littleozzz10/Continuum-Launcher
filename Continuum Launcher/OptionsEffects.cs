@@ -38,7 +38,7 @@ namespace XeniaLauncher
             // Volume
             AdjustVolume(game, window);
             // Themes
-            if (game.enableExp)
+            if (System.IO.File.Exists("Content\\XLTheme.txt"))
             {
                 themeKeys = new List<string>() { "original", "green", "orange", "blue", "gray", "purple", "custom" };
             }

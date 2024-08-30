@@ -93,6 +93,29 @@
       ]
     },
     {
+      "Developers": [ "Ubisoft Entertainment Inc." ],
+      "Genres": [ "Action", "Racing / Driving", "Shooter", "Cyberpunk / dark sci-fi", "Spy / espionage", "Stealth", "Behind view", "Sandbox / open world", "North America" ],
+      "ID": 66948,
+      "Moby_Score": 7.52,
+      "Moby_URL": "https://www.mobygames.com/game/66948/watch_dogs/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One", "Stadia" ],
+      "Publishers": [ "Ubisoft, Inc." ],
+      "Release_Date": "2014-05-27",
+      "Title": "Watch_Dogs",
+      "Alternate_Name": "watch_dogs",
+      "Variants": [
+        {
+          "GameName": "watch_dogs",
+          "TitleID": "555308B7",
+          "Serial": "US-2231",
+          "Region": "RF",
+          "XEXCRC": "5A5B0DF8",
+          "MediaID": "54A95DF1",
+          "Wave": "XGD3"
+        }
+      ]
+    },
+    {
       "Developers": [],
       "Genres": [ "Extra content / game", "Special edition" ],
       "ID": 74243,
@@ -504,9 +527,9 @@
       "Moby_Score": 8.06,
       "Moby_URL": "https://www.mobygames.com/game/12534/far-cry/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
-      "Publishers": [ "Midas Interactive Entertainment Ltd.", "Mastertronic Games Ltd.", "Ubisoft Entertainment SA" ],
-      "Release_Date": "2004-03-23",
-      "Title": "Far Cry",
+      "Publishers": [ "Ubisoft Entertainment SA" ],
+      "Release_Date": "2014-02-11",
+      "Title": "Far Cry: Classic",
       "Alternate_Name": "far cry classic",
       "Variants": [
         {
@@ -1513,9 +1536,19 @@
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii U" ],
       "Publishers": [ "Warner Bros. Interactive Entertainment Inc." ],
       "Release_Date": "2014-04-01",
-      "Title": "Batman: Arkham Origins - Blackgate: Deluxe Edition",
-      "Alternate_Name": null,
-      "Variants": null
+      "Title": "Batman: Arkham Origins: Blackgate Deluxe",
+      "Alternate_Name": "batman arkham origins blackgate deluxe edition",
+      "Variants": [
+        {
+          "GameName": "batman arkham origins blackgate deluxe edition",
+          "TitleID": "58411441",
+          "Serial": "W6-2009",
+          "Region": "PAL",
+          "XEXCRC": "413A19A7",
+          "MediaID": "58F5FBCC",
+          "Wave": "19"
+        }
+      ]
     },
     {
       "Developers": [ "Avalanche Software LLC" ],
@@ -2146,14 +2179,14 @@
       ]
     },
     {
-      "Developers": [ "Flashbulb Games ApS", "Press Play ApS" ],
+      "Developers": [ "Press Play ApS" ],
       "Genres": [ "Action", "Side view", "Platform", "Puzzle", "2D scrolling", "Direct control" ],
       "ID": 64852,
       "Moby_Score": 7.49,
       "Moby_URL": "https://www.mobygames.com/game/64852/max-the-curse-of-brotherhood/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 4", "Xbox One", "Nintendo Switch" ],
-      "Publishers": [ "Microsoft Corporation", "Flashbulb Games ApS", "Rainy Frog LLC" ],
-      "Release_Date": "2013-12-20",
+      "Publishers": [ "Microsoft Corporation" ],
+      "Release_Date": "2014-05-21",
       "Title": "Max: The Curse of Brotherhood",
       "Alternate_Name": "max the curse of brotherhood",
       "Variants": [
@@ -2193,29 +2226,6 @@
       "Title": "Rocksmith: All-new 2014 Edition - Slash Song Pack",
       "Alternate_Name": null,
       "Variants": null
-    },
-    {
-      "Developers": [ "Ubisoft Entertainment Inc." ],
-      "Genres": [ "Action", "Racing / Driving", "Shooter", "Cyberpunk / dark sci-fi", "Spy / espionage", "Stealth", "Behind view", "Sandbox / open world", "North America" ],
-      "ID": 66948,
-      "Moby_Score": 7.52,
-      "Moby_URL": "https://www.mobygames.com/game/66948/watch_dogs/",
-      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One", "Stadia" ],
-      "Publishers": [ "Ubisoft Entertainment SA", "Ubisoft, Inc." ],
-      "Release_Date": "2014-05-27",
-      "Title": "Watch_Dogs",
-      "Alternate_Name": "watch_dogs",
-      "Variants": [
-        {
-          "GameName": "watch_dogs",
-          "TitleID": "555308B7",
-          "Serial": "US-2231",
-          "Region": "RF",
-          "XEXCRC": "5A5B0DF8",
-          "MediaID": "54A95DF1",
-          "Wave": "XGD3"
-        }
-      ]
     },
     {
       "Developers": [],
@@ -2582,7 +2592,7 @@
       "Moby_URL": "https://www.mobygames.com/game/70293/tales-from-space-mutant-blobs-attack/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PS Vita", "Nintendo Switch", "Macintosh", "Linux" ],
       "Publishers": [ "DrinkBox Studios Inc.", "Midnight City" ],
-      "Release_Date": "2012-02-21",
+      "Release_Date": "2014-06-18",
       "Title": "Tales from Space: Mutant Blobs Attack",
       "Alternate_Name": "mutant blobs attack",
       "Variants": [
@@ -3635,7 +3645,7 @@
       "Variants": [
         {
           "GameName": "persona 4 arena ultimax",
-          "TitleID": "41540700",
+          "TitleID": "415407E2",
           "Serial": "AT-2018",
           "Region": "RF",
           "XEXCRC": "48BA8CA9",
@@ -4097,7 +4107,7 @@
       "Moby_URL": "https://www.mobygames.com/game/69002/the-evil-within/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PlayStation 4", "Xbox One", "Xbox Cloud Gaming" ],
       "Publishers": [ "Bethesda Softworks LLC" ],
-      "Release_Date": "2014-10-13",
+      "Release_Date": "2014-10-14",
       "Title": "The Evil Within",
       "Alternate_Name": "the evil within",
       "Variants": [
@@ -5522,7 +5532,7 @@
       "Variants": null
     },
     {
-      "Developers": [],
+      "Developers": [ "Slitherine Ltd." ],
       "Genres": [ "Strategy", "Top-down", "Historical events", "Licensed", "Turn-based", "World War II" ],
       "ID": 70350,
       "Moby_Score": null,

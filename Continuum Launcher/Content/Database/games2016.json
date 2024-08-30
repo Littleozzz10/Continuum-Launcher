@@ -3,29 +3,6 @@
     {
       "Developers": [],
       "Genres": [ "Compilation" ],
-      "ID": 159446,
-      "Moby_Score": null,
-      "Moby_URL": "https://www.mobygames.com/game/159446/lego-star-wars-the-force-awakens/",
-      "Platforms": [ "Xbox 360", "Windows" ],
-      "Publishers": [ "Warner Bros. Interactive Entertainment Inc." ],
-      "Release_Date": "2016-06-28",
-      "Title": "LEGO Star Wars: The Force Awakens",
-      "Alternate_Name": "lego star wars the force awakens",
-      "Variants": [
-        {
-          "GameName": "lego star wars the force awakens",
-          "TitleID": "57520851",
-          "Serial": "WR-2129",
-          "Region": "RF",
-          "XEXCRC": "36C4EC47",
-          "MediaID": "74C15AA7",
-          "Wave": "XGD3"
-        }
-      ]
-    },
-    {
-      "Developers": [],
-      "Genres": [ "Compilation" ],
       "ID": 110800,
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/110800/rocksmith-all-new-2014-edition-hit-singles-song-pack-iii/",
@@ -83,7 +60,7 @@
       "Moby_URL": "https://www.mobygames.com/game/7746/resident-evil-0/",
       "Platforms": [ "Windows", "GameCube", "Xbox 360", "PlayStation 3", "Wii", "PlayStation 4", "Xbox One", "Nintendo Switch" ],
       "Publishers": [ "Capcom Co., Ltd." ],
-      "Release_Date": "2002-11-12",
+      "Release_Date": "2016-01-19",
       "Title": "Resident Evil 0",
       "Alternate_Name": "resident evil 0",
       "Variants": [
@@ -167,7 +144,7 @@
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/88436/cobalt/",
       "Platforms": [ "Windows", "Xbox One", "Xbox 360" ],
-      "Publishers": [ "Microsoft Corporation", "Mojang AB" ],
+      "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2016-02-02",
       "Title": "Cobalt",
       "Alternate_Name": "cobalt",
@@ -444,8 +421,8 @@
       "Moby_Score": 8.29,
       "Moby_URL": "https://www.mobygames.com/game/75359/tales-from-the-borderlands/",
       "Platforms": [ "Windows", "PlayStation 3", "PlayStation 4", "Xbox One", "Nintendo Switch", "Xbox 360", "Macintosh" ],
-      "Publishers": [ "Take-Two Interactive Software, Inc.", "Telltale, Inc.", "2K Games, Inc." ],
-      "Release_Date": "2014-11-25",
+      "Publishers": [ "2K Games, Inc." ],
+      "Release_Date": "2016-04-26",
       "Title": "Tales from the Borderlands",
       "Alternate_Name": "tales from the borderlands",
       "Variants": [
@@ -598,6 +575,19 @@
       "Variants": null
     },
     {
+      "Developers": [ "Comcept Inc.", "Inti Creates Co., Ltd." ],
+      "Genres": [ "Action" ],
+      "ID": 79460,
+      "Moby_Score": 5.6,
+      "Moby_URL": "https://www.mobygames.com/game/79460/mighty-no-9/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One" ],
+      "Publishers": [ "Deep Silver" ],
+      "Release_Date": "2016-06-21",
+      "Title": "Mighty No. 9",
+      "Alternate_Name": null,
+      "Variants": null
+    },
+    {
       "Developers": [],
       "Genres": [ "Compilation" ],
       "ID": 100707,
@@ -630,7 +620,7 @@
       "Moby_Score": 7.74,
       "Moby_URL": "https://www.mobygames.com/game/82088/lego-star-wars-the-force-awakens/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3", "Wii U", "PlayStation 4", "Xbox One" ],
-      "Publishers": [ "Feral Interactive Ltd.", "ak tronic Software & Services GmbH", "Warner Bros. Interactive Entertainment Inc." ],
+      "Publishers": [ "Warner Bros. Interactive Entertainment Inc." ],
       "Release_Date": "2016-06-28",
       "Title": "LEGO Star Wars: The Force Awakens",
       "Alternate_Name": "lego star wars the force awakens",
@@ -718,8 +708,8 @@
       "Moby_Score": 7.97,
       "Moby_URL": "https://www.mobygames.com/game/82165/prison-architect/",
       "Platforms": [ "Windows", "iPad", "Windows Apps", "PlayStation 4", "Xbox One", "Nintendo Switch", "Linux", "Macintosh", "Xbox 360", "Android" ],
-      "Publishers": [ "Introversion Software Limited", "Paradox Interactive AB", "Double Eleven Limited", "MP Digital, LLC" ],
-      "Release_Date": "2013-03-20",
+      "Publishers": [ "Double Eleven Limited" ],
+      "Release_Date": "2016-08-02",
       "Title": "Prison Architect",
       "Alternate_Name": null,
       "Variants": null

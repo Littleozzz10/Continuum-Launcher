@@ -112,14 +112,14 @@
       "Variants": null
     },
     {
-      "Developers": [ "Capcom Co., Ltd.", "Capcom Production Studio 4" ],
+      "Developers": [ "Capcom Co., Ltd." ],
       "Genres": [ "Action", "Puzzle elements", "Horror", "Survival horror", "3rd-person (Other)" ],
       "ID": 12847,
       "Moby_Score": 8.46,
       "Moby_URL": "https://www.mobygames.com/game/12847/resident-evil/",
       "Platforms": [ "Windows", "GameCube", "Xbox 360", "PlayStation 3", "Wii", "PlayStation 4", "Xbox One", "Nintendo Switch" ],
       "Publishers": [ "Capcom Co., Ltd." ],
-      "Release_Date": "2002-03-22",
+      "Release_Date": "2015-01-20",
       "Title": "Resident Evil",
       "Alternate_Name": "resident evil",
       "Variants": [
@@ -410,13 +410,13 @@
       "Moby_URL": "https://www.mobygames.com/game/71477/resident-evil-revelations-2-episode-one-penal-colony/",
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "PlayStation 4", "Xbox One" ],
       "Publishers": [ "Capcom Co., Ltd." ],
-      "Release_Date": "2015-02-24",
-      "Title": "Resident Evil: Revelations 2 - Episode One: Penal Colony",
+      "Release_Date": "2015-03-17",
+      "Title": "Resident Evil: Revelations 2",
       "Alternate_Name": "resident evil revelations 2",
       "Variants": [
         {
           "GameName": "resident evil revelations 2",
-          "TitleID": "43430840",
+          "TitleID": "5841144C",
           "Serial": "CC-2112",
           "Region": "RF",
           "XEXCRC": "D179E732",
@@ -1926,8 +1926,8 @@
       "Moby_Score": null,
       "Moby_URL": "https://www.mobygames.com/game/79328/wrc-5/",
       "Platforms": [ "Windows", "PlayStation 3", "PlayStation 4", "PS Vita", "Xbox 360", "Xbox One" ],
-      "Publishers": [ "Bigben Interactive S.A.", "ak tronic Software & Services GmbH" ],
-      "Release_Date": "2015-10-08",
+      "Publishers": [ "Bigben Interactive S.A." ],
+      "Release_Date": "2015-10-13",
       "Title": "WRC 5",
       "Alternate_Name": null,
       "Variants": [
@@ -1974,12 +1974,12 @@
       "Platforms": [ "Xbox 360", "iPhone", "Wii U", "Xbox One", "tvOS", "PlayStation 3", "PlayStation 4", "Android", "Windows Apps", "iPad", "Windows Phone" ],
       "Publishers": [ "Telltale, Inc." ],
       "Release_Date": "2015-10-13",
-      "Title": "Minecraft: Story Mode - Episode 1: The Order of the Stone",
+      "Title": "Minecraft: Story Mode",
       "Alternate_Name": "minecraft story mode",
       "Variants": [
         {
           "GameName": "minecraft story mode",
-          "TitleID": "443607D9",
+          "TitleID": "5841149E",
           "Serial": "D6-2009",
           "Region": "PAL, NTSC/U",
           "XEXCRC": "564631D6",
@@ -2303,7 +2303,7 @@
       "Moby_Score": 8.37,
       "Moby_URL": "https://www.mobygames.com/game/75675/rise-of-the-tomb-raider/",
       "Platforms": [ "Linux", "Windows", "Xbox 360", "Macintosh", "Windows Apps", "Xbox One" ],
-      "Publishers": [ "Feral Interactive Ltd.", "Microsoft Corporation", "Square Enix Limited" ],
+      "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2015-11-10",
       "Title": "Rise of the Tomb Raider",
       "Alternate_Name": "rise of the tomb raider",

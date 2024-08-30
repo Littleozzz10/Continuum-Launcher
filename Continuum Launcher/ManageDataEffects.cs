@@ -163,17 +163,25 @@ namespace XeniaLauncher
                                 localTexture = game.white;
                                 Logging.Write(Logging.LogType.Critical, Logging.LogEvent.Error, "Icon unable to save", "exception", e.ToString());
                             }
-                            STFS24 stfs = new STFS24(file.FullName);
-                            XMetadata stfsMeta = stfs.ReturnMetadata();
-                            string newTitle = stfsMeta.GetDisplayName()[0];
-                            game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
-                            game.dataFiles[buttonIndex].Last().fileSize = localSize;
-                            Logging.Write(Logging.LogType.Standard, Logging.LogEvent.GameFileFound, "Game file found", new Dictionary<string, string>()
+                            STFS24 stfs = null;
+                            try
+                            {
+                                stfs = new STFS24(file.FullName);
+                                XMetadata stfsMeta = stfs.ReturnMetadata();
+                                string newTitle = stfsMeta.GetDisplayName()[0];
+                                game.dataFiles[buttonIndex].Add(new DataEntry(newTitle, Shared.contentTypes[dir.Name], game.ConvertDataSize("" + localSize), file.FullName, localTexture));
+                                game.dataFiles[buttonIndex].Last().fileSize = localSize;
+                                Logging.Write(Logging.LogType.Standard, Logging.LogEvent.GameFileFound, "Game file found", new Dictionary<string, string>()
                             {
                                 { "filepath", file.FullName },
                                 { "newTitle", newTitle },
                                 { "localSize", "" + localSize }
                             });
+                            }
+                            catch (Exception e)
+                            {
+                                Logging.Write(Logging.LogType.Critical, Logging.LogEvent.Error, "Failed to read STFS file", "exception", e.ToString());
+                            }
                         }
                     }
                 }
@@ -187,6 +195,7 @@ namespace XeniaLauncher
                     {
                         game.manageWindow.AddButton(new Rectangle(20, 150 + i * 130, 1880, 120));
                         game.manageWindow.extraSprites.Add(new TextSprite(game.font, game.dataFiles[buttonIndex][i].name, 0.6f, new Vector2(140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                        game.manageWindow.extraSprites.Last().tags.Add("data");
                         TextSprite sizeText = new TextSprite(game.font, game.dataFiles[buttonIndex][i].size, 0.6f, new Vector2(1140, 160 + i * 130), Color.FromNonPremultiplied(0, 0, 0, 0));
                         sizeText.JustifyRight(new Vector2(1820, 175 + i * 130));
                         game.manageWindow.extraSprites.Add(sizeText);

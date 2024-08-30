@@ -17,7 +17,7 @@ namespace Continuum_Launcher
 
         public void ActivateButton(Game1 game, Window source, ObjectSprite origin, int buttonIndex)
         {
-            if (game.tutorial == null)
+            if (game.tutorial == null || buttonIndex == 4)
             {
                 if (buttonIndex == 0)
                 {

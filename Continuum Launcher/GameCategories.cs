@@ -56,7 +56,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 2)
             {
-                if (folderIndex == 0)
+                if (game.folders[folderIndex] == "All Games")
                 {
                     game.message = new MessageWindow(game, "Oops!", "Cannot add or remove games from All Games", Game1.State.GameCategories);
                     game.state = Game1.State.Message;
@@ -73,7 +73,10 @@ namespace XeniaLauncher
                     }
                     AdjustButtonName(game, source);
                     game.SaveGames();
-                    game.forceInit = true;
+                    if (game.folders[game.folderIndex] != "All Games")
+                    {
+                        game.forceInit = true;
+                    }
                 }
             }
             else if (buttonIndex == 3)
@@ -82,7 +85,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 4)
             {
-                if (folderIndex == 0)
+                if (game.folders[folderIndex] == "All Games")
                 {
                     game.message = new MessageWindow(game, "Oops!", "Cannot rename the All Games category", Game1.State.GameCategories);
                     game.state = Game1.State.Message;
@@ -95,7 +98,7 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 5)
             {
-                if (folderIndex == 0)
+                if (game.folders[folderIndex] == "All Games")
                 {
                     game.message = new MessageWindow(game, "Oops!", "Cannot delete the All Games category", Game1.State.GameCategories);
                     game.state = Game1.State.Message;
@@ -129,7 +132,7 @@ namespace XeniaLauncher
         private void AdjustButtonName(Game1 game, Window source)
         {
             source.sprites[2].text = "Add Game to Cat.";
-            if (game.gameData[game.index].folders.Contains(game.folders[folderIndex]) || folderIndex == 0)
+            if (game.gameData[game.index].folders.Contains(game.folders[folderIndex]) || game.folders[folderIndex] == "All Games")
             {
                 source.sprites[2].text = "Remove Game From Cat.";
             }
@@ -171,9 +174,9 @@ namespace XeniaLauncher
         }
         public void LeftButton(Game1 game, Window source, int buttonIndex)
         {
-            if (buttonIndex != 6)
+            if (buttonIndex <= 1)
             {
-                if (buttonIndex % 2 == 1)
+                if (buttonIndex == 0)
                 {
                     buttonIndex++;
                 }
@@ -181,6 +184,22 @@ namespace XeniaLauncher
                 {
                     buttonIndex--;
                 }
+            }
+            else if (buttonIndex == 2)
+            {
+                buttonIndex = 3;
+            }
+            else if (buttonIndex == 3)
+            {
+                buttonIndex = 2;
+            }
+            else if (buttonIndex == 4)
+            {
+                buttonIndex = 5;
+            }
+            else if (buttonIndex == 5)
+            {
+                buttonIndex = 4;
             }
             else
             {

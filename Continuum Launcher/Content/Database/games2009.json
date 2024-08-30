@@ -1818,6 +1818,29 @@
       ]
     },
     {
+      "Developers": [ "Capcom Co., Ltd." ],
+      "Genres": [ "Action", "Shooter", "Horror", "Survival horror", "Behind view", "Africa", "Quick Time Events (QTEs)" ],
+      "ID": 40967,
+      "Moby_Score": 7.99,
+      "Moby_URL": "https://www.mobygames.com/game/40967/resident-evil-5/",
+      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Android", "Xbox One" ],
+      "Publishers": [ "Capcom Co., Ltd." ],
+      "Release_Date": "2009-03-05",
+      "Title": "Resident Evil 5",
+      "Alternate_Name": "resident evil 5",
+      "Variants": [
+        {
+          "GameName": "resident evil 5",
+          "TitleID": "434307D4",
+          "Serial": "CC-2004",
+          "Region": "RF",
+          "XEXCRC": "23B2C7D7",
+          "MediaID": "5B2A79D5",
+          "Wave": "2"
+        }
+      ]
+    },
+    {
       "Developers": [],
       "Genres": [ "Physical extras", "Special edition" ],
       "ID": 141685,
@@ -1878,29 +1901,6 @@
       "Title": "Burnout: Paradise - Toy Collection",
       "Alternate_Name": null,
       "Variants": null
-    },
-    {
-      "Developers": [ "Capcom Co., Ltd." ],
-      "Genres": [ "Action", "Shooter", "Horror", "Survival horror", "Behind view", "Africa", "Quick Time Events (QTEs)" ],
-      "ID": 40967,
-      "Moby_Score": 7.99,
-      "Moby_URL": "https://www.mobygames.com/game/40967/resident-evil-5/",
-      "Platforms": [ "Windows", "Xbox 360", "PlayStation 3", "Android", "Xbox One" ],
-      "Publishers": [ "NVIDIA Lightspeed Studios", "Capcom Co., Ltd.", "1C Company" ],
-      "Release_Date": "2009-03-05",
-      "Title": "Resident Evil 5",
-      "Alternate_Name": "resident evil 5",
-      "Variants": [
-        {
-          "GameName": "resident evil 5",
-          "TitleID": "434307D4",
-          "Serial": "CC-2004",
-          "Region": "RF",
-          "XEXCRC": "23B2C7D7",
-          "MediaID": "5B2A79D5",
-          "Wave": "2"
-        }
-      ]
     },
     {
       "Developers": [ "Ubisoft SRL" ],
@@ -4183,8 +4183,8 @@
       "Moby_Score": 8.28,
       "Moby_URL": "https://www.mobygames.com/game/6612/sonic-the-hedgehog-3/",
       "Platforms": [ "Windows", "Genesis", "Xbox 360", "Wii" ],
-      "Publishers": [ "SEGA Europe Ltd.", "Tec Toy Indústria de Brinquedos S.A.", "SEGA of America, Inc.", "SEGA Corporation", "SEGA Enterprises Ltd." ],
-      "Release_Date": "1994-02",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2009-06-10",
       "Title": "Sonic the Hedgehog 3",
       "Alternate_Name": "sonic the hedgehog 3",
       "Variants": [
@@ -6191,7 +6191,7 @@
       "Moby_Score": 8.83,
       "Moby_URL": "https://www.mobygames.com/game/42258/batman-arkham-asylum/",
       "Platforms": [ "Windows", "Xbox 360", "Macintosh", "PlayStation 3" ],
-      "Publishers": [ "Feral Interactive Ltd.", "Square Enix Co., Ltd.", "Eidos Interactive Limited" ],
+      "Publishers": [ "Eidos Interactive Limited" ],
       "Release_Date": "2009-08-25",
       "Title": "Batman: Arkham Asylum",
       "Alternate_Name": "batman arkham asylum",
@@ -6801,14 +6801,14 @@
       "Variants": null
     },
     {
-      "Developers": [ "Sonic Team", "SEGA Enterprises Ltd." ],
+      "Developers": [ "Sonic Team" ],
       "Genres": [ "Action", "Side view", "Platform", "Anime / Manga", "2D scrolling" ],
       "ID": 6614,
       "Moby_Score": 8.11,
       "Moby_URL": "https://www.mobygames.com/game/6614/sonic-knuckles/",
       "Platforms": [ "Genesis", "Xbox 360", "Wii" ],
-      "Publishers": [ "SEGA Europe Ltd.", "SEGA of America, Inc.", "SEGA Enterprises Ltd." ],
-      "Release_Date": "1994-10-18",
+      "Publishers": [ "SEGA of America, Inc." ],
+      "Release_Date": "2009-09-09",
       "Title": "Sonic & Knuckles",
       "Alternate_Name": "sonic and knuckles",
       "Variants": [
@@ -7979,7 +7979,7 @@
       "Variants": [
         {
           "GameName": "lucidity",
-          "TitleID": "584109000",
+          "TitleID": "584109E3",
           "Serial": "XA-2531",
           "Region": "",
           "XEXCRC": "",
@@ -9539,7 +9539,7 @@
       "Platforms": [ "Xbox 360" ],
       "Publishers": [ "Microsoft Corporation" ],
       "Release_Date": "2009-11-13",
-      "Title": "Lips: Canta en Español",
+      "Title": "Lips: Canta en Espanol",
       "Alternate_Name": "lips canta en espanol",
       "Variants": [
         {
@@ -10791,7 +10791,7 @@
       "Platforms": [ "Windows", "Xbox 360", "PlayStation 3" ],
       "Publishers": [ "Team17 Software Limited", "Team17 Digital Limited" ],
       "Release_Date": "2009-12-16",
-      "Title": "Alien Breed: Evolution - Episode 1",
+      "Title": "Alien Breed: Evolution",
       "Alternate_Name": "alien breed episode 1",
       "Variants": [
         {
