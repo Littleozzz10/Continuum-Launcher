@@ -3520,12 +3520,14 @@ namespace XeniaLauncher
                             message = new MessageWindow(this, "Not to worry, we're still flying half a ship", "Provided filepath does not exist", State.NewGame);
                             state = State.Message;
                             textWindowInput = null;
+                            newXEX = null;
                         }
                         else
                         {
                             message = new MessageWindow(this, "Who are you?", "A new game requires a valid name", State.NewGame);
                             state = State.Message;
                             textWindowInput = null;
+                            newXEX = null;
                         }
                     }
                     else if (newGameWindow.buttonIndex == 0 || newGameWindow.buttonIndex == 2)
