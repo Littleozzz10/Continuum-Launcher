@@ -508,7 +508,7 @@ namespace XeniaLauncher
                 source.buttonIndex += 10;
             }
             else if (buttonIndex >= 36 && buttonIndex <= 45)
-            {
+            {   
                 source.buttonIndex = 46;
             }
             else if (buttonIndex == 46)
@@ -554,6 +554,10 @@ namespace XeniaLauncher
             else if (buttonIndex == 23 || buttonIndex == 24)
             {
                 source.buttonIndex = 48;
+            }
+            else if (buttonIndex == 25)
+            {
+                source.buttonIndex += 11;
             }
             game.buttonSwitchSound.Play();
         }
