@@ -234,7 +234,7 @@ namespace XeniaLauncher
             SoundEffect.MasterVolume = (float)Math.Round(SoundEffect.MasterVolume, 1);
             source.extraSprites[1].ToTextSprite().text = "" + SoundEffect.MasterVolume * 10;
             source.extraSprites[1].ToTextSprite().Centerize(new Vector2(1155, 350));
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void AdjustTheme(Game1 game, Window source)
         {
@@ -267,7 +267,7 @@ namespace XeniaLauncher
             {
                 game.ResetTheme(Game1.Theme.Custom, true);
             }
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void AdjustCompat(Game1 game, Window source)
         {
@@ -287,7 +287,7 @@ namespace XeniaLauncher
                 source.extraSprites[5].ToTextSprite().Centerize(new Vector2(1155, 650));
             }
             game.cwSettings = compat;
-            game.SaveConfig();
+            game.SaveSettings();
         }
     }
 }

@@ -113,7 +113,7 @@ namespace XeniaLauncher
                 source.extraSprites[1].ToTextSprite().text = "" + game.GraphicsDevice.Viewport.Width + "x" + game.GraphicsDevice.Viewport.Height;
             }
             source.extraSprites[1].ToTextSprite().Centerize(new Vector2(1155, 400));
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void AdjustFullscreen(Game1 game, Window source, bool toggle)
         {
@@ -138,7 +138,7 @@ namespace XeniaLauncher
                 source.extraSprites[3].ToTextSprite().text = "Off";
             }
             source.extraSprites[3].ToTextSprite().Centerize(new Vector2(1155, 500));
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void AdjustVSync(Game1 game, Window source, bool toggle)
         {
@@ -160,7 +160,7 @@ namespace XeniaLauncher
                 source.extraSprites[5].ToTextSprite().text = "Off";
             }
             source.extraSprites[5].ToTextSprite().Centerize(new Vector2(1155, 600));
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void AdjustShowRings(Game1 game, Window source, bool toggle)
         {
@@ -183,7 +183,7 @@ namespace XeniaLauncher
                 source.extraSprites[7].ToTextSprite().text = "Off";
             }
             source.extraSprites[7].ToTextSprite().Centerize(new Vector2(1155, 700));
-            game.SaveConfig();
+            game.SaveSettings();
         }
         private void CalculateResolutionIndex(Game1 game)
         {
