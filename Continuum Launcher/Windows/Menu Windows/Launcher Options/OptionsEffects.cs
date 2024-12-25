@@ -232,7 +232,7 @@ namespace XeniaLauncher
         private void AdjustVolume(Game1 game, Window source)
         {
             SoundEffect.MasterVolume = (float)Math.Round(SoundEffect.MasterVolume, 1);
-            source.extraSprites[1].ToTextSprite().text = "" + SoundEffect.MasterVolume * 10;
+            source.extraSprites[1].ToTextSprite().text = Game1.languages[0].GetText("special", "sfxvol");
             source.extraSprites[1].ToTextSprite().Centerize(new Vector2(1155, 350));
             game.SaveSettings();
         }
@@ -273,17 +273,17 @@ namespace XeniaLauncher
         {
             if (compat == Game1.CWSettings.Off)
             {
-                source.extraSprites[5].ToTextSprite().text = "Never Show";
+                source.extraSprites[5].ToTextSprite().text = Game1.languages[0].GetText("launcherOptions", "never");
                 source.extraSprites[5].ToTextSprite().Centerize(new Vector2(1155, 650));
             }
             else if (compat == Game1.CWSettings.Untested)
             {
-                source.extraSprites[5].ToTextSprite().text = "Untested Only";
+                source.extraSprites[5].ToTextSprite().text = Game1.languages[0].GetText("launcherOptions", "untested");
                 source.extraSprites[5].ToTextSprite().Centerize(new Vector2(1155, 650));
             }
             else if (compat == Game1.CWSettings.All)
             {
-                source.extraSprites[5].ToTextSprite().text = "All Games";
+                source.extraSprites[5].ToTextSprite().text = Game1.languages[0].GetText("launcherOptions", "all");
                 source.extraSprites[5].ToTextSprite().Centerize(new Vector2(1155, 650));
             }
             game.cwSettings = compat;

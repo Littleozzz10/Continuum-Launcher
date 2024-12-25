@@ -52,21 +52,21 @@ namespace XeniaLauncher
                 if (state == State.Main && IsActive)
                 {
                     state = State.Menu;
-                    menuWindow = new Window(this, new Rectangle(560, 60, 800, 970), "Menu", new Menu(), new StdInputEvent(7), new GenericStart(), State.Main);
-                    menuWindow.AddButton(new Rectangle(610, 210, 700, 100), "Go back to the game selection menu.", DBSpawnPos.CenterLeftBottom, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 320, 700, 100), "Add a game to Continuum.", DBSpawnPos.CenterRightBottom, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 430, 700, 100), "Change preferences, Continuum settings,\nglobal Xenia settings, and more.", DBSpawnPos.CenterLeftBottom, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 540, 700, 100), "Manage imported game data,\ninstall add-on content,\ndelete temporary data, and more.", DBSpawnPos.CenterRightBottom, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 650, 700, 100), "Learn how to use Continuum Launcher.", DBSpawnPos.CenterLeftTop, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 760, 700, 100), "View Continuum's Credits.", DBSpawnPos.CenterRightTop, 0.4f);
-                    menuWindow.AddButton(new Rectangle(610, 870, 700, 100), "Close Continuum.", DBSpawnPos.CenterLeftTop, 0.4f);
-                    menuWindow.AddText("Return to Dashboard");
-                    menuWindow.AddText("Add a Game");
-                    menuWindow.AddText("Launcher Options");
-                    menuWindow.AddText("Manage Data");
-                    menuWindow.AddText("View Tutorials");
-                    menuWindow.AddText("About/Credits");
-                    menuWindow.AddText("Exit Launcher");
+                    menuWindow = new Window(this, new Rectangle(560, 60, 800, 970), languages[0].GetText("menu", "title"), new Menu(), new StdInputEvent(7), new GenericStart(), State.Main);
+                    menuWindow.AddButton(new Rectangle(610, 210, 700, 100), languages[0].GetText("menu", "returnDesc"), DBSpawnPos.CenterLeftBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 320, 700, 100), languages[0].GetText("menu", "addDesc"), DBSpawnPos.CenterRightBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 430, 700, 100), languages[0].GetText("menu", "optionsDesc"), DBSpawnPos.CenterLeftBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 540, 700, 100), languages[0].GetText("menu", "manageDesc"), DBSpawnPos.CenterRightBottom, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 650, 700, 100), languages[0].GetText("menu", "tutorialsDesc"), DBSpawnPos.CenterLeftTop, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 760, 700, 100), languages[0].GetText("menu", "aboutDesc"), DBSpawnPos.CenterRightTop, 0.4f);
+                    menuWindow.AddButton(new Rectangle(610, 870, 700, 100), languages[0].GetText("menu", "closeDesc"), DBSpawnPos.CenterLeftTop, 0.4f);
+                    menuWindow.AddText(languages[0].GetText("menu", "return"));
+                    menuWindow.AddText(languages[0].GetText("menu", "add"));
+                    menuWindow.AddText(languages[0].GetText("menu", "options"));
+                    menuWindow.AddText(languages[0].GetText("menu", "manage"));
+                    menuWindow.AddText(languages[0].GetText("menu", "tutorials"));
+                    menuWindow.AddText(languages[0].GetText("menu", "about"));
+                    menuWindow.AddText(languages[0].GetText("menu", "exit"));
                     foreach (TextSprite sprite in menuWindow.sprites)
                     {
                         sprite.scale = 0.6f;

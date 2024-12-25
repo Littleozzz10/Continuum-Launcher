@@ -44,20 +44,20 @@ namespace XeniaLauncher
             }
             else if (buttonIndex == 1)
             {
-                game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), "Add a Game", new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
+                game.newGameWindow = new Window(game, new Rectangle(560, 220, 800, 640), Game1.languages[0].GetText("addGameWindow", "title"), new NewGame(), new StdInputEvent(3), new GenericStart(), Game1.State.Menu);
                 game.state = Game1.State.NewGame;
-                game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100), "Import a game with it's parent folder/directory.\n\nNOTE: The game must be in GoD format with a valid\nSTFS header, with the original Xbox 360 folder\nstructure. See Continuum Launcher's Wiki pages on\nGitHub for more information.\n\nThis import will auto-import title IDs, which can be\nused for Database Lookups.", Ozzz.DescriptionBox.SpawnPositions.BottomRightInfoDump, 0.4f);
-                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "Directly provide a filepath to a game file,\neither in STFS/GoD format or XEX\nformat.", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 365, 700, 100), "addGameWindow", "folderDesc", Ozzz.DescriptionBox.SpawnPositions.BottomRightInfoDump, 0.4f);
+                game.newGameWindow.AddButton(new Rectangle(610, 475, 700, 100), "addGameWindow", "manualDesc", Ozzz.DescriptionBox.SpawnPositions.CenterLeftBottom, 0.4f);
                 game.newGameWindow.AddButton(new Rectangle(610, 695, 700, 100));
-                game.newGameWindow.AddText("STFS Folder Import");
-                game.newGameWindow.AddText("Manual Import");
-                game.newGameWindow.AddText("Back to Menu");
+                game.newGameWindow.AddText("addGameWindow", "folder");
+                game.newGameWindow.AddText("addGameWindow", "manual");
+                game.newGameWindow.AddText("addGameWindow", "back");
                 game.newGameWindow.buttonEffects.SetupEffects(game, source);
             }
             // Options window
             else if (buttonIndex == 2)
             {
-                game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), "Launcher Options", "Global Continuum Options", new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu, true);
+                game.optionsWindow = new Window(game, new Rectangle(460, 140, 1000, 840), Game1.languages[0].GetText("launcherOptions", "title"), Game1.languages[0].GetText("launcherOptions", "desc"), new OptionsEffects(), new OptionsInput(), new OptionsStart(), Game1.State.Menu, true);
                 // Volume buttons
                 game.optionsWindow.AddButton(new Rectangle(910, 305, 90, 90));
                 game.optionsWindow.AddText("<");
@@ -69,24 +69,24 @@ namespace XeniaLauncher
                 game.optionsWindow.AddButton(new Rectangle(1310, 405, 90, 190));
                 game.optionsWindow.AddText(">");
                 // Compat prompt buttons
-                game.optionsWindow.AddButton(new Rectangle(910, 605, 90, 90), "Changes when the Xenia compatibility opens after\nlaunching a game.\n  - All Games: Show the window after launching any game\n  - Untested Only: Show after launching Untested games\n  - Never Show: Never show the compatibility window", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.optionsWindow.AddButton(new Rectangle(910, 605, 90, 90), "launcherOptions", "compatPromptDesc", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.optionsWindow.AddText("<");
-                game.optionsWindow.AddButton(new Rectangle(1310, 605, 90, 90), "Changes when the Xenia compatibility opens after\nlaunching a game.\n  - All Games: Show the window after launching any game\n  - Untested Only: Show after launching Untested games\n  - Never Show: Never show the compatibility window", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.optionsWindow.AddButton(new Rectangle(1310, 605, 90, 90), "launcherOptions", "compatPromptDesc", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
                 game.optionsWindow.AddText(">");
                 // Other option window buttons
-                game.optionsWindow.AddButton(new Rectangle(500, 715, 450, 100), "Change graphics settings for Continuum.", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
-                game.optionsWindow.AddText("Graphics Settings");
-                game.optionsWindow.AddButton(new Rectangle(970, 715, 450, 100), "Change Xenia settings for all games", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
-                game.optionsWindow.AddText("Xenia Settings");
+                game.optionsWindow.AddButton(new Rectangle(500, 715, 450, 100), "launcherOptions", "graphicsDesc", Ozzz.DescriptionBox.SpawnPositions.AboveRight, 0.4f);
+                game.optionsWindow.AddText("launcherOptions", "graphicsButton");
+                game.optionsWindow.AddButton(new Rectangle(970, 715, 450, 100), "launcherOptions", "xeniaDesc", Ozzz.DescriptionBox.SpawnPositions.AboveLeft, 0.4f);
+                game.optionsWindow.AddText("launcherOptions", "xeniaButton");
 
                 game.optionsWindow.AddButton(new Rectangle(660, 840, 600, 100));
-                game.optionsWindow.AddText("Back To Menu");
+                game.optionsWindow.AddText("launcherOptions", "back");
 
-                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, "Sound Volume:", 0.6f, new Vector2(500, 310), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("launcherOptions", "ex1"), 0.6f, new Vector2(500, 310), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.optionsWindow.extraSprites.Add(new TextSprite(game.bold, "8", 0.8f, new Vector2(1140, 295), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, "UI Theme:", 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("launcherOptions", "ex2"), 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.optionsWindow.extraSprites.Add(new ObjectSprite(game.white, new Rectangle(1005, 405, 290, 180), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, "Show Compat Prompt:", 0.5f, new Vector2(500, 620), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                game.optionsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("launcherOptions", "ex3"), 0.5f, new Vector2(500, 620), Color.FromNonPremultiplied(0, 0, 0, 0)));
                 game.optionsWindow.extraSprites.Add(new TextSprite(game.bold, "Untested Only", 0.5f, new Vector2(1140, 625), Color.FromNonPremultiplied(0, 0, 0, 0)));
 
                 game.state = Game1.State.Options;

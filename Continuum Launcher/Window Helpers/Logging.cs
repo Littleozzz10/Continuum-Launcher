@@ -113,6 +113,9 @@ namespace Continuum_Launcher
             TutorialStart, // Triggered when a Tutorial begins it's starting process
             TutorialInstruction, // Contains an instruction read in for a Tutorial
             TutorialInstructionsRead, // Triggered when a Tutorial has finished loading a set of instructions
+            LanguageFileNotFound, // Error event for if a language file cannot be opened
+            LanguageFileInvalid, // Triggered when a language string file is incorrectly formatted
+            LanguageInvalidStringKey, // Triggered when the program tries to access a string key that doesn't exist
             Exit // Event when Continuum is exited
         }
 

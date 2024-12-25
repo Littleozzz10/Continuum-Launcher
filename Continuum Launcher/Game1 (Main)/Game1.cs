@@ -74,9 +74,10 @@ namespace XeniaLauncher
         public Tutorial tutorial;
         public MobyData mobyData;
         public List<GameInfo> databaseGameInfo;
+        public static List<LanguageStrings> languages;
         public System.Drawing.Image tempIconSTFS;
         public string xeniaPath, canaryPath, configPath, ver, compileDate, textWindowInput, newXEX, tempTitleSTFS, tempIdSTFS, tempFilepathSTFS, extractPath, newGamePath, tempGameTitle;
-        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay, jumpLayerAlpha, jumpTriggerCooldown, jumpTriggerCooldownDefault, configVernum, kinectGameAdded;
+        public int index, ringFrames, ringDuration, folderIndex, compatWaitFrames, selectedDataIndex, compatWindowDelay, fullscreenDelay, tempCategoryIndex, databaseResultIndex, tempYear, tempMonth, tempDay, jumpLayerAlpha, jumpTriggerCooldown, jumpTriggerCooldownDefault, configVernum, kinectGameAdded, languageIndex;
         public bool right, firstLoad, firstReset, skipDraw, showRings, xeniaFullscreen, consolidateFiles, runHeadless, triggerMissingWindow, updateFreeSpace, messageYes, militaryTime, inverseDate, checkDrivesOnManage, lastActiveCheck, forceInit, newGameProcess, enableExp, hideSecretMetadata, refreshData, showResearchPrompt, windowClickExit, enterCloseTextInput, rightClickGames, tutorialLock, tutorialExitPrompt, welcomeShown, resort;
         public enum State
         {
@@ -198,6 +199,9 @@ namespace XeniaLauncher
 
             // Loading cover art
             LoadArts();
+
+            // Loading strings
+            LoadLanguages();
 
             // Loading trivia
             LoadTrivia();

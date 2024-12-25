@@ -269,6 +269,24 @@ namespace XeniaLauncher
             Logging.Write(LogType.Critical, Event.ContentLoadEvent, "Internal assets loaded");
         }
 
+        public void LoadLanguages()
+        {
+            languages = new List<LanguageStrings>();
+            languageIndex = 0;
+
+            // Loading language
+            string index = Ozzz.Helper.IntToString(languageIndex + 1, 2);
+            string dir = "Content\\Language\\" + index + "\\";
+            languages.Add(new LanguageStrings());
+            if (Directory.Exists(dir))
+            {
+                for (int i = 1; File.Exists(dir + "str" + Ozzz.Helper.IntToString(i, 4) + ".clf"); i++)
+                {
+                    languages[0].ImportFile(dir + "str" + Ozzz.Helper.IntToString(i, 4) + ".clf");
+                }
+            }
+        }
+
         public void LoadTrivia()
         {
             if (File.Exists("Content\\Trivia.txt"))

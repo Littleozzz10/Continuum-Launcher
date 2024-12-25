@@ -142,6 +142,14 @@ namespace XeniaLauncher
             descriptionBoxes.Add(descBox);
         }
         /// <summary>
+        /// Adds a button to the Window, at a location of (0, 0), with a description provided by the language class
+        /// </summary>
+        /// <param name="rect"></param>
+        public void AddButton(Rectangle rect, string langLocation, string langKey, DescriptionBox.SpawnPositions spawnPos, float textScale)
+        {
+            AddButton(rect, Game1.languages[0].GetText(langLocation, langKey), spawnPos, textScale);
+        }
+        /// <summary>
         /// Adds text to a button, in order (Ex: The third call to AddText() will add text to the third button)
         /// </summary>
         /// <param name="text"></param>
@@ -156,6 +164,14 @@ namespace XeniaLauncher
             ResetTextPositions();
 
             Logging.Write(Logging.LogType.Debug, Logging.LogEvent.WindowStringAdded, "Button added: " + text);
+        }
+        /// <summary>
+        /// Adds text to a button, in order (Ex: The third call to AddText() will add text to the third button)
+        /// </summary>
+        /// <param name="text"></param>
+        public void AddText(string langLocation, string langKey)
+        {
+            AddText(Game1.languages[0].GetText(langLocation, langKey));
         }
         /// <summary>
         /// Closes the Window

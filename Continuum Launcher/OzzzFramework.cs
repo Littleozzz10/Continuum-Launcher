@@ -930,9 +930,9 @@ namespace XeniaLauncher
             {
                 try
                 {
-                    string ascii =  Encoding.ASCII.GetString(Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(Encoding.ASCII.EncodingName, new EncoderReplacementFallback(string.Empty), new DecoderExceptionFallback()), Encoding.UTF8.GetBytes(str))).Replace("" + (char)0x0019, "");
+                    //string ascii = Encoding.ASCII.GetString(Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(Encoding.ASCII.EncodingName, new EncoderReplacementFallback(string.Empty), new DecoderExceptionFallback()), Encoding.UTF8.GetBytes(str))).Replace("" + (char)0x0019, "");
                     string toReturn = "";
-                    foreach (char c in ascii)
+                    foreach (char c in str)
                     {
                         if (font.Characters.Contains(c))
                         {
