@@ -1,0 +1,21 @@
+launcherOptions
+title=Launcher Options
+desc=Global {globals, name} Options
+'Button Names
+graphicsButton=Graphics Settings
+xeniaButton={globals, xenia} Settings
+back=Back to Menu
+'Button Descriptions
+compatPromptDesc=Changes when the {globals, xenia} compatibility opens after\nlaunching a game.\n  - {launcherOptions, all}: Show the window after launching any game\n  - {launcherOptions, untested}: Show after launching {globals, untested} games\n  - {launcherOptions, never}: Never show the compatibility window
+graphicsDesc=Change graphics settings for {globals, name}.
+xeniaDesc=Change {globals, xenia} settings for all games.
+'Extra Sprites
+ex1=Sound Volume:
+ex2=UI Theme:
+ex3=Show Compat Prompt:
+'Compat Prompt Options
+never=Never Show
+untested={globals, untested} Only
+all=All Games
+'SFX Options
+sfx={vol}

@@ -133,6 +133,10 @@ namespace XeniaLauncher
                     return "Working!";
                 case "vol":
                     return "" + SoundEffect.MasterVolume * 10;
+                case "resx":
+                    return "" + OzzzFramework.GetResolution().X;
+                case "resy":
+                    return "" + OzzzFramework.GetResolution().Y;
             }
             return "";
         }

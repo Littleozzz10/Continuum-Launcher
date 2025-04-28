@@ -18,7 +18,7 @@ namespace XeniaLauncher
         }
 
         public static readonly string VERSION = "1.2.1 Alpha 2";
-        public static readonly string COMPILED = "December 24, 2024";
+        public static readonly string COMPILED = "April 27, 2025";
         public static readonly int VERNUM = 2101;
         public static readonly Dictionary<string, string> contentTypes = new Dictionary<string, string>() {
             { "00000001", "Xbox 360 Saved Game"  },

@@ -1,18 +1,1 @@
-menu
-title=Menu
-'Button Names
-return=Return To Dashboard
-add=Add a Game
-options=Launcher Options
-manage=Manage Data
-tutorials=View Tutorials
-about=About/Credits
-exit=Exit Launcher
-'Button Descriptions
-returnDesc=Go back to the game selection menu.
-addDesc=Add a game to {globals, name}.
-optionsDesc=Change preferences, {globals, name} settings,\nglobal {globals, xenia} settings, and more.
-manageDesc=Manage imported game data,\ninstall add-on content,\ndelete temporary data, and more.
-tutorialsDesc=Learn how to use {globals, fullname}.
-aboutDesc=View {globals, name}'s Credits.
-closeDesc=Close {globals, name}.
+dashboard

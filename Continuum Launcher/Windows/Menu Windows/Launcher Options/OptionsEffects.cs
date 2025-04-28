@@ -133,38 +133,38 @@ namespace XeniaLauncher
                     AdjustCompat(game, source);
                     break;
                 case 6:
-                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Graphics Settings", "Continuum Graphics Options", new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
+                    game.graphicsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), Game1.languages[0].GetText("graphicsOptions", "title"), Game1.languages[0].GetText("graphicsOptions", "desc"), new GraphicsWindowEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
                     // Resolution buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 355, 90, 90), "Decrease Continuum's resolution.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(910, 355, 90, 90), "graphicsOptions", "resDecreaseDesc", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "Increase Continuum's resolution.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "graphicsOptions", "resIncreaseDesc", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // Fullscreen buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 455, 90, 90), "Enable or disable Fullscreen mode.\nNote: Fullscreen can be buggy.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(910, 455, 90, 90), "graphicsOptions", "fullscreenDesc", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "Enable or disable Fullscreen mode.\nNote: Fullscreen can be buggy.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "graphicsOptions", "fullscreenDesc", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // V-Sync buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 555, 90, 90), "Enable or Disable V-Sync for Continuum.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(910, 555, 90, 90), "graphicsOptions", "vsyncDesc", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "Enable or Disable V-Sync for Continuum.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "graphicsOptions", "vsyncDesc", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
                     // Rings buttons
-                    game.graphicsWindow.AddButton(new Rectangle(910, 655, 90, 90), "Show or Hide Continuum's background ring effect.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(910, 655, 90, 90), "graphicsOptions", "ringsDesc", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.graphicsWindow.AddText("<");
-                    game.graphicsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "Show or Hide Continuum's background ring effect.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.graphicsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "graphicsOptions", "ringsDesc", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.graphicsWindow.AddText(">");
 
                     game.graphicsWindow.AddButton(new Rectangle(660, 790, 600, 100));
-                    game.graphicsWindow.AddText("Back To Options");
+                    game.graphicsWindow.AddText("graphicsOptions", "back");
 
-                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, "Resolution:", 0.6f, new Vector2(500, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("graphicsOptions", "ex1"), 0.6f, new Vector2(500, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.graphicsWindow.extraSprites.Add(new TextSprite(game.bold, "1728x972", 0.7f, new Vector2(1140, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, "Fullscreen:", 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("graphicsOptions", "ex2"), 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.graphicsWindow.extraSprites.Add(new TextSprite(game.bold, "Off", 0.7f, new Vector2(1140, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, "V-Sync:", 0.6f, new Vector2(500, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("graphicsOptions", "ex3"), 0.6f, new Vector2(500, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.graphicsWindow.extraSprites.Add(new TextSprite(game.bold, "Off", 0.7f, new Vector2(1140, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, "Rings:", 0.6f, new Vector2(500, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.graphicsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("graphicsOptions", "ex4"), 0.6f, new Vector2(500, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.graphicsWindow.extraSprites.Add(new TextSprite(game.bold, "On", 0.7f, new Vector2(1140, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
 
                     bool custom = true;
@@ -187,38 +187,38 @@ namespace XeniaLauncher
                     }
                     break;
                 case 7:
-                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), "Xenia Settings", "Options for all games", new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
-                    // Resolution buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 355, 90, 90), "Xenia Log Levels:\n  - 0: Critical errors only\n  - 1: Critical errors and other warnings\n  - 2: Critical errors, warnings, and other info\n  - 3: Debugging info (Highly storage intensive)", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    game.settingsWindow = new Window(game, new Rectangle(460, 190, 1000, 740), Game1.languages[0].GetText("xeniaOptions", "title"), Game1.languages[0].GetText("xeniaOptions", "desc"), new XeniaSettingsEffects(), new OptionsInput(), new GraphicsWindowStart(), Game1.State.Options, true);
+                    // Xenia Log buttons
+                    game.settingsWindow.AddButton(new Rectangle(910, 355, 90, 90), "xeniaOptions", "logLevelDesc", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "Xenia Log Levels:\n  - 0: Critical errors only\n  - 1: Critical errors and other warnings\n  - 2: Critical errors, warnings, and other info\n  - 3: Debugging info (Highly storage intensive)", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.settingsWindow.AddButton(new Rectangle(1310, 355, 90, 90), "xeniaOptions", "logLevelDesc", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
-                    // Fullscreen buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 455, 90, 90), "Whether or not to launch Xenia in Fullscreen.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    // Xenia Fullscreen buttons
+                    game.settingsWindow.AddButton(new Rectangle(910, 455, 90, 90), "xeniaOptions", "xeniaFullscreen", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "Whether or not to launch Xenia in Fullscreen.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.settingsWindow.AddButton(new Rectangle(1310, 455, 90, 90), "xeniaOptions", "xeniaFullscreen", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
-                    // V-Sync buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 555, 90, 90), "When enabled, Continuum will consolidate Xenia data within\nthe Launcher's files. Uses storage temporarily until manually\ncleared. Required to use the Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    // Consolidate Saves buttons
+                    game.settingsWindow.AddButton(new Rectangle(910, 555, 90, 90), "xeniaOptions", "consolidateSaves", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "When enabled, Continuum will consolidate Xenia data within\nthe Launcher's files. Uses storage temporarily until manually\ncleared. Required to use the Manage Data window.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.settingsWindow.AddButton(new Rectangle(1310, 555, 90, 90), "xeniaOptions", "consolidateSaves", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
-                    // Rings buttons
-                    game.settingsWindow.AddButton(new Rectangle(910, 655, 90, 90), "When running Headless, Xenia will not show any prompts\nthat require user interaction, instead using default actions.", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
+                    // Xenia Headless buttons
+                    game.settingsWindow.AddButton(new Rectangle(910, 655, 90, 90), "xeniaOptions", "xeniaHeadless", Ozzz.DescriptionBox.SpawnPositions.BelowRight, 0.4f);
                     game.settingsWindow.AddText("<");
-                    game.settingsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "When running Headless, Xenia will not show any prompts\nthat require user interaction, instead using default actions.", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
+                    game.settingsWindow.AddButton(new Rectangle(1310, 655, 90, 90), "xeniaOptions", "xeniaHeadless", Ozzz.DescriptionBox.SpawnPositions.BelowLeft, 0.4f);
                     game.settingsWindow.AddText(">");
 
                     game.settingsWindow.AddButton(new Rectangle(620, 790, 600, 100));
-                    game.settingsWindow.AddText("Back To Options");
+                    game.settingsWindow.AddText(Game1.languages[0].GetText("xeniaOptions", "back"));
 
-                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, "Log Level:", 0.6f, new Vector2(500, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("xeniaOptions", "ex1"), 0.6f, new Vector2(500, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.settingsWindow.extraSprites.Add(new TextSprite(game.bold, "2 (Info)", 0.6f, new Vector2(1140, 360), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, "Start Fullscreen:", 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("xeniaOptions", "ex3"), 0.6f, new Vector2(500, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.settingsWindow.extraSprites.Add(new TextSprite(game.bold, "No", 0.7f, new Vector2(1140, 460), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, "Consolidate Saves:", 0.6f, new Vector2(500, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("xeniaOptions", "ex5"), 0.6f, new Vector2(500, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.settingsWindow.extraSprites.Add(new TextSprite(game.bold, "Yes", 0.7f, new Vector2(1140, 560), Color.FromNonPremultiplied(0, 0, 0, 0)));
-                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, "Run Headless:", 0.6f, new Vector2(500, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
+                    game.settingsWindow.extraSprites.Add(new TextSprite(game.font, Game1.languages[0].GetText("xeniaOptions", "ex7"), 0.6f, new Vector2(500, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
                     game.settingsWindow.extraSprites.Add(new TextSprite(game.bold, "No", 0.7f, new Vector2(1140, 660), Color.FromNonPremultiplied(0, 0, 0, 0)));
 
                     game.state = Game1.State.Settings;
@@ -232,7 +232,7 @@ namespace XeniaLauncher
         private void AdjustVolume(Game1 game, Window source)
         {
             SoundEffect.MasterVolume = (float)Math.Round(SoundEffect.MasterVolume, 1);
-            source.extraSprites[1].ToTextSprite().text = Game1.languages[0].GetText("special", "sfxvol");
+            source.extraSprites[1].ToTextSprite().text = Game1.languages[0].GetText("launcherOptions", "sfx");
             source.extraSprites[1].ToTextSprite().Centerize(new Vector2(1155, 350));
             game.SaveSettings();
         }

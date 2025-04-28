@@ -1,19 +1,9 @@
-launcherOptions
-title=Launcher Options
-desc=Global {globals, name} Options
+addGameWindow
+title=Add a Game
 'Button Names
-graphicsButton=Graphics Settings
-xeniaButton={globals, xenia} Settings
+folder={globals, stfs} Folder Import
+manual=Manual Import
 back=Back to Menu
 'Button Descriptions
-compatPromptDesc=Changes when the {globals, xenia} compatibility opens after\nlaunching a game.\n  - {launcherOptions, all}: Show the window after launching any game\n  - {launcherOptions, untested}: Show after launching {globals, untested} games\n  - {launcherOptions, never}: Never show the compatibility window
-graphicsDesc=Change graphics settings for {globals, name}.
-xeniaDesc=Change {globals, xenia} settings for all games.
-'Extra Sprites
-ex1=Sound Volume:
-ex2=UI Theme:
-ex3=Show Compat Prompt:
-'Compat Prompt Options
-never=Never Show
-untested={globals, untested} Only
-all=All Games
+folderDesc=Import a game with it's parent folder/directory.\n\nNOTE: The game must be in {globals, god} format with a valid\n{globals, stfs} header, with the original {globals, x360} folder\nstructure. See {globals, fullname}'s Wiki pages on\n{globals, git} for more information.\n\nThis method will auto-import {globals, tid}s, which can be\nused for Database Lookups.
+manualDesc=Directly provide a filepath to a game file,\neither in {globals, stfs}/{globals, god} format or {globals, xex}\nformat.

@@ -1,0 +1,18 @@
+graphicsOptions
+title=Graphics Options
+desc={globals, name} Graphics Options
+'Button Names
+back=Back to Options
+'Button Descriptions
+resDecreaseDesc=Decrease {globals, name}'s resolution.
+resIncreaseDesc=Increase {globals, name}'s resolution.
+fullscreenDesc=Enable or disable Fullscreen mode.\nNote: Fullscreen can be buggy.
+vsyncDesc=Enable or Disable V-Sync for {globals, name}.
+ringsDesc=Show or Hide {globals, name}'s background ring effect.
+'Extra Sprites
+ex1=Resolution:
+ex2=Fullscreen:
+ex3=V-Sync:
+ex4=Rings:
+'Resolution Options
+res={special, res}

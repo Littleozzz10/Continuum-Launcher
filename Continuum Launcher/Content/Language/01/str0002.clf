@@ -1,3 +1,11 @@
 special
+'Volume
 sfxvol={vol}
 sfxvolLong=Master Volume: {vol}
+'Resolution
+resX={resx}
+resXLong=Horizontal Resolution: {resX}
+resY={resy}
+resYLong=Vertical Resolution: {resY}
+res={resX}x{resY}
+resLong=Resolution: {special, res}

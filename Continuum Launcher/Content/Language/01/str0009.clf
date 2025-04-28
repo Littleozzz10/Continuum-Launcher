@@ -1,0 +1,15 @@
+xeniaOptions
+title={globals, xenia} Options
+desc=Options for all games
+'Button Names
+back=Back to Options
+'Button Descriptions
+logLevelDesc={globals, xenia} Log Levels:\n  - 0: Critical errors only\n  - 1: Critical errors and other warnings\n  - 2: Critical errors, warnings, and other info\n  - 3: Debugging info (Highly storage intensive)
+xeniaFullscreen=Whether or not to launch {globals, Xenia} in {globals, fullscreen}.
+consolidateSaves=When enabled, {globals, name} will consolidate {globals, xenia} data within\nthe Launcher's files. Uses storage temporarily until manually\ncleared. Must be {globals, enabled} to use the Manage Data window.
+xeniaHeadless=When running Headless, {globals, xenia} will not show any prompts\nthat require user interaction, instead using default actions.
+'Extra Sprites
+ex1=Log Level:
+ex3=Start {globals, fullscreen}:
+ex5=Consolidate Saves:
+ex7=Run Headless:

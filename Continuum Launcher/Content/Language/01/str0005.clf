@@ -1,9 +1,18 @@
-addGameWindow
-title=Add a Game
+menu
+title=Menu
 'Button Names
-folder={globals, stfs} Folder Import
-manual=Manual Import
-back=Back to Menu
+return=Return To Dashboard
+add=Add a Game
+options=Launcher Options
+manage=Manage Data
+tutorials=View Tutorials
+about=About/Credits
+exit=Exit Launcher
 'Button Descriptions
-folderDesc=Import a game with it's parent folder/directory.\n\nNOTE: The game must be in {globals, god} format with a valid\n{globals, stfs} header, with the original {globals, x360} folder\nstructure. See {globals, fullname}'s Wiki pages on\n{globals, git} for more information.\n\nThis method will auto-import {globals, tid}s, which can be\nused for Database Lookups.
-manualDesc=Directly provide a filepath to a game file,\neither in {globals, stfs}/{globals, god} format or {globals, xex}\nformat.
+returnDesc=Go back to the game selection menu.
+addDesc=Add a game to {globals, name}.
+optionsDesc=Change preferences, {globals, name} settings,\nglobal {globals, xenia} settings, and more.
+manageDesc=Manage imported game data,\ninstall add-on content,\ndelete temporary data, and more.
+tutorialsDesc=Learn how to use {globals, fullname}.
+aboutDesc=View {globals, name}'s Credits.
+closeDesc=Close {globals, name}.

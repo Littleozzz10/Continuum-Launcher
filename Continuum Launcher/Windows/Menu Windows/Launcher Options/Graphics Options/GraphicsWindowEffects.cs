@@ -105,12 +105,12 @@ namespace XeniaLauncher
         {
             if (resolutionIndex != -1)
             {
-                source.extraSprites[1].ToTextSprite().text = "" + resolutions[resolutionIndex].X + "x" + resolutions[resolutionIndex].Y;
+                source.extraSprites[1].ToTextSprite().text = Game1.languages[0].GetText("graphicsOptions", "res");
                 game.SetResolution(resolutions[resolutionIndex]);
             }
             else
             {
-                source.extraSprites[1].ToTextSprite().text = "" + game.GraphicsDevice.Viewport.Width + "x" + game.GraphicsDevice.Viewport.Height;
+                source.extraSprites[1].ToTextSprite().text = Game1.languages[0].GetText("graphicsOptions", "res");
             }
             source.extraSprites[1].ToTextSprite().Centerize(new Vector2(1155, 400));
             game.SaveSettings();
